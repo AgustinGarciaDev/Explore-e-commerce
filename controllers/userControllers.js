@@ -14,6 +14,9 @@ const userControllers={
         if (!emailExistent) {
             try {
                 const passwordHashed= bcryptjs.hashSync(password,10)
+                console.log(user,email,urlImg,age,password)
+                console.log("hola")
+                console.log(req.body)
                 var newUserToAdd = new User ({user,email,urlImg,age,password: passwordHashed})  
                 var newUserSaved = await newUserToAdd.save() 
                 const token = jwt.sign({...newUserSaved},process.env.SECRET_KEY)
