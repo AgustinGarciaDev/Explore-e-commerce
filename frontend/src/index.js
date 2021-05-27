@@ -5,6 +5,7 @@ import thunk from 'redux-thunk';
 import { applyMiddleware, createStore } from 'redux'
 import { Provider } from 'react-redux' // Provee a mi aplicacion de redux
 import mainReducer from './redux/reducers/mainReducer'
+import "./Style/munoz.css"
 
 const miStore = createStore(mainReducer, applyMiddleware(thunk))
 

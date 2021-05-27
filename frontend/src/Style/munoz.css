@@ -1,0 +1,70 @@
+@import "~react-image-gallery/styles/css/image-gallery.css";
+
+.productContainer{
+    height: 100%;
+    width: 100vw;
+    display: flex;
+}
+
+.infoProducts{
+    height: 100vh;
+    width: 50%;
+/*     background-color: blue; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.photosProducts{
+    height: 100vh;
+    width: 50%;
+/*     background-color: chartreuse; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carrouselProduct{
+    height: 85%;
+    width: 85%;
+    margin-top: 15vh;
+}
+
+.logoProduct{
+    height: 7vw;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+/*     background-color: brown; */
+}
+
+.priceProduct{
+    height: 4vw;
+    width: 100%;
+    display: flex;
+    align-items: center;
+/*     background-color: crimson; */
+}
+
+.buyNowProduct{
+    height: 15vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+/*     background-color: darkmagenta; */
+}
+.buyNowProduct > button{
+    height: 35px;
+    width: 20vw;
+}
+
+.descProduct{
+    min-height: 30vh;
+    width: 80%;
+/*     background-color: darksalmon; */
+}
+
+.descProduct > p{
+    margin: 8px;
+}

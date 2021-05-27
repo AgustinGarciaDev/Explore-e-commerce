@@ -10,6 +10,7 @@ import { connect } from 'react-redux'
 import userActions from "./redux/actions/userActions"
 
 import { ToastContainer } from 'react-toastify';
+import Product from "./pages/Product";
 
 const App = (props) => {
   if (props.usuarioStatus) {
