@@ -1,0 +1,110 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.adminContainer{
+    background-color: lightblue;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.adminFrom{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    background: #DDDDDD;
+}
+
+.adminFormInputs{
+    border: none;
+    background: white;
+    border-radius: 25px;
+    outline: none;
+    padding: 2vh;
+    width: 90%;
+    margin: 2vh;
+    letter-spacing: 1px;
+}
+
+.adminFormInputsNumber{
+    border: none;
+    background: white;
+    border-radius: 25px;
+    outline: none;
+    padding: 5px;
+    margin: 2vh 0vh;
+    width: 10%;
+}
+
+.adminButton{
+    border: 1px solid black;
+    width: 6rem;
+    height: 2rem;
+    margin-bottom: 2vh;
+}
+
+.rowInputs{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.tags-input {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+    padding: 2vh;
+    width: 90%;
+    margin: 2vh;
+    background-color: white;
+	border-radius: 25px;
+}
+
+
+#tags {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.tag {
+	width: auto;
+	height: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	padding: 0 8px;
+	font-size: 14px;
+	list-style: none;
+	border-radius: 6px;
+	margin: 0 8px 8px 0;
+	background: hsl(216, 100%, 50%);
+    font-size: 1rem;
+}
+.tag-close-icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+    font-size: 14px;
+    margin-left: 8px;
+    color: #0052cc;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+}
+
+.newCategoryInput{
+    padding: 5px;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+}

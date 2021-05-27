@@ -1,6 +1,9 @@
+import Admin from "./pages/Admins"
+import './styles/admin.css'
+
 const App = () => {
   return(
-    <h1>Al toque perro</h1>
+    <Admin />
   )
 }
 
