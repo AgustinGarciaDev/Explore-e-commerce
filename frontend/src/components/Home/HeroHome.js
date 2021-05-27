@@ -6,7 +6,7 @@ const HeroHome = () => {
             <Carousel>
                 <Carousel.Item interval={1000}>
                     <img
-                        className="d-block w-100"
+                        className="d-block w-100 sizeImage"
                         src="https://cdn.shopify.com/s/files/1/0530/2091/7929/files/Banner1_1512x.jpg?v=1610375897"
                         alt="First slide"
                     />
@@ -17,7 +17,7 @@ const HeroHome = () => {
                 </Carousel.Item>
                 <Carousel.Item interval={500}>
                     <img
-                        className="d-block w-100"
+                        className="d-block w-100 sizeImage"
                         src="https://cdn.shopify.com/s/files/1/0530/2091/7929/files/Banner1_1512x.jpg?v=1610375897"
                         alt="Second slide"
                     />
@@ -28,7 +28,7 @@ const HeroHome = () => {
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
-                        className="d-block w-100"
+                        className="d-block w-100 sizeImage"
                         src="https://cdn.shopify.com/s/files/1/0530/2091/7929/files/Banner1_1512x.jpg?v=1610375897"
                         alt="Third slide"
                     />

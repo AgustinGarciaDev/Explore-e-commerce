@@ -1,6 +1,12 @@
 const Footer = () => {
     return (
-        <h1>Yo soy el footer </h1>
+        <div className="containerFooter">
+
+            <div className="containerSocialMedia">
+
+            </div>
+
+        </div>
     )
 }
 
