@@ -55,7 +55,7 @@ const SignUp = (props) => {
     }
     const responseGoogle = (response) => {
         const { email, imageUrl } = response.profileObj
-        createAccount(null, { email: email, password: 'Hola1234!', urlImg: imageUrl, legalAge: true })
+        createAccount(null, { email: email, password: 'Hola1234!', urlImg: imageUrl, legalAge: true, googleFlat: true })
     }
 
     /*    useEffect(() => {
