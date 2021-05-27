@@ -8,7 +8,7 @@ const userActions = {
         return async (dispatch, getState) => {
 
             try {
-                const response = await axios.post("http://localhost:4000/user/signup", infoUser)
+                const response = await axios.post("http://localhost:4000/api/user/signup", infoUser)
                 /*      if (!response.data.success) {
                          return response.data.errores
                      } */
@@ -23,7 +23,7 @@ const userActions = {
 
         return async (dispatch, getState) => {
             try {
-                const response = await axios.post("http://localhost:4000/user/signin", infoUser)
+                const response = await axios.post("http://localhost:4000/api/user/signin", infoUser)
                 /*   if (!response.data.success) {
   
                       return response.data.error
