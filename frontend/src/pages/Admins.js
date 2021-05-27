@@ -56,6 +56,7 @@ const Admin = (props) => {
         if (response) {
             console.log(response)
             if (response.success) {
+                setErrors({})
                 setCategories([])
                 setProductsImages([])
                 setNewProduct({ coverImage: '', description: '', price: '', discount: '', brand: '', name: '' })
