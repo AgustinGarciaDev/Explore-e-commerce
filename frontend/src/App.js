@@ -4,7 +4,7 @@ import './Style/admin.css'
 import Home from './pages/Home'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
-import Admins from './pages/Admins'
+import Admin from './pages/Admin'
 import { ToastContainer } from 'react-toastify';
 
 const App = () => {
@@ -14,7 +14,7 @@ const App = () => {
         <Route exact path="/" component={Home} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/signin" component={SignIn} />
-        <Route exact path="/Admin" component={Admins} />
+        <Route exact path="/Admin" component={Admin} />
       </Switch>
       < ToastContainer
         position="top-center"

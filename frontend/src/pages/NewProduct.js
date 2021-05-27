@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import productActions from '../redux/actions/productsActions'
 
-const Admin = (props) => {
+const NewProduct = (props) => {
     const [newProduct, setNewProduct] = useState({ coverImage: '', description: '', price: '', discount: '', brand: '', name: '' })
     const [categories, setCategories] = useState([])
     const [productsImages, setProductsImages] = useState([])
@@ -77,6 +77,11 @@ const Admin = (props) => {
                 <h2>Add new product</h2>
 
                 <input type="text" name="coverImage" value={newProduct.coverImage} placeholder="image" onChange={readInput} className="adminFormInputs" />
+                <label className="lbl-name">
+                    <span className="input-name">
+                        Image
+                    </span>
+                </label>
                 {errors.coverImage ? <small>{errors.coverImage}</small> : <small></small>}
 
                 <div className="tags-input">
@@ -160,4 +165,4 @@ const mapDispatchToProps = {
     createNewProdudct: productActions.createNewProdudct
 }
 
-export default connect(null, mapDispatchToProps)(Admin)
+export default connect(null, mapDispatchToProps)(NewProduct)
