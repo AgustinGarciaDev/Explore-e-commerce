@@ -5,6 +5,7 @@ const getAllProducts = async (req,res)=>{
     try {
         const result = await Product.find()
         .populate({ path:"comments", populate:{ path:"userId" , select:{ "_id":1 , "user":1 , "urlImg":1 } } })
+        .populate({ path:"scores", populate:{ path:"userId" , select:{ "_id":1 , "user":1 , "urlImg":1 } } })
 
         res.json({ success:true, result })
     } catch (error) {
@@ -97,6 +98,48 @@ const putComment = async( req,res )=>{
     }
 }
 
+/* -------------------Score----------------------------------------------------- */
+
+const postScore = async(req,res)=>{
+    const{ idProduct }= req.params
+
+    try {
+        const result = await Product.findByIdAndUpdate( idProduct ,{ $push:{ scores: req.body } },{ new:true } )
+        .populate({ path:"scores", populate:{ path:"userId" , select:{ "_id":1 , "user":1 , "urlImg":1 } } })
+        
+        res.json({ success:true, result })
+    } catch (error) {
+        res.json({ success:false, err: "An error has occurred on our server" })
+    }
+}
+
+const deleteScore = async( req,res )=>{
+    const{ idProduct, idScore } = req.params
+
+    try {
+        const result = await Product.findByIdAndUpdate( idProduct, { $pull:{ scores:{ _id: idScore } } }, { new:true } )
+        .populate({ path:"scores", populate:{ path:"userId" , select:{ "_id":1 , "user":1 , "urlImg":1 } } })
+        
+        res.json({ success:true, result })
+    } catch (error) {
+        res.json({ success:false, err: "An error has occurred on our server" })
+    }
+} 
+
+const putScore = async( req,res )=>{
+    const { idProduct, idScore } = req.params
+    const { score } = req.body
+
+    try {
+        const result = await Product.findOneAndUpdate({ "_id": idProduct, "scores._id":idScore },{ $set:{ "scores.$.score": score }},{ new:true } )
+        .populate({ path:"scores", populate:{ path:"userId" , select:{ "_id":1 , "user":1 , "urlImg":1 } } })
+
+        res.json({ success:true, result })
+    } catch (error) {
+        console.log( error )
+        res.json({ success:false, err: "An error has occurred on our server" })
+    }
+}
 
 
 module.exports ={
@@ -107,5 +150,8 @@ module.exports ={
     updateProduct,
     postComment,
     deleteComment,
-    putComment
+    putComment,
+    postScore,
+    deleteScore,
+    putScore
 }
