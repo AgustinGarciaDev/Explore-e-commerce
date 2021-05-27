@@ -3,14 +3,11 @@ const router = express.Router()
 const passport = require("passport")
 const productsValidator = require('../config/productsValidator')
 
-<<<<<<< HEAD
 const { getAllProducts, getProductById, postProduct, deleteProduct, 
         updateProduct, postComment, deleteComment, putComment,
         postScore, deleteScore, putScore } = require("../controllers/productsController")
-=======
-const { getAllProducts, getProductById, postProduct, deleteProduct, updateProduct, postComment, deleteComment, putComment } = require("../controllers/productsController")
+
 const { newUser, login, relogin } = require("../controllers/userControllers")
->>>>>>> b7803f7ce78eceda522902c52134cd70689b577f
 
 router.route("/products")
     .get(getAllProducts)
