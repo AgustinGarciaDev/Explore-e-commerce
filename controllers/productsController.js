@@ -4,6 +4,8 @@ const getAllProducts = async (req,res)=>{
 
     try {
         const result = await Product.find()
+        .populate({ path:"comments", populate:{ path:"userId" , select:{ "_id":1 , "user":1 , "urlImg":1 } } })
+
         res.json({ success:true, result })
     } catch (error) {
         res.json({ success:false, err: "An error has occurred on our server" })
@@ -59,7 +61,7 @@ const postComment = async(req,res)=>{
 
     try {
         const result = await Product.findByIdAndUpdate( idProduct ,{ $push:{ comments: req.body } },{ new:true } )
-        /* .populate({ path:"commments", populate:{ path:"userId" , select:{ "name":1 , "user":1 , "urlImg":1 } } }) */
+        .populate({ path:"comments", populate:{ path:"userId" , select:{ "_id":1 , "user":1 , "urlImg":1 } } })
         
         res.json({ success:true, result })
     } catch (error) {
@@ -72,7 +74,7 @@ const deleteComment = async( req,res )=>{
 
     try {
         const result = await Product.findByIdAndUpdate( idProduct, { $pull:{ comments:{ _id: idComment } } }, { new:true } )
-        /* .populate({ path:"opinion", populate:{ path:"userId" , select:{ "name":1 , "user":1 , "urlImg":1 } } }) */
+        .populate({ path:"comments", populate:{ path:"userId" , select:{ "_id":1 , "user":1 , "urlImg":1 } } })
         
         res.json({ success:true, result })
     } catch (error) {
@@ -86,6 +88,7 @@ const putComment = async( req,res )=>{
 
     try {
         const result = await Product.findOneAndUpdate({ "_id": idProduct, "comments._id":idComment },{ $set:{ "comments.$.comment": comment }},{ new:true } )
+        .populate({ path:"comments", populate:{ path:"userId" , select:{ "_id":1 , "user":1 , "urlImg":1 } } })
 
         res.json({ success:true, result })
     } catch (error) {
