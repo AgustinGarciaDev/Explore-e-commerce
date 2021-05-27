@@ -5,7 +5,7 @@ import './Style/admin.css'
 import Home from './pages/Home'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
-import Admins from './pages/Admins'
+import Admin from './pages/Admin'
 import { connect } from 'react-redux'
 import userActions from "./redux/actions/userActions"
 
@@ -31,6 +31,7 @@ const App = (props) => {
           <Route exact path="/" component={Home} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/Admin" component={Admin} />
         </Switch>
       </>
   }
