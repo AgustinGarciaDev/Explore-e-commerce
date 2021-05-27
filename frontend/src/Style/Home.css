@@ -1,120 +1,77 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
-.welcome-container {
-    background: rgb(228, 228, 228);
+.sizeImage{
     width: 100%;
-    height: 100vh;
-    /* margin-top: 20px; */
+    height: 40vw;
+}
+.carousel-caption {
+    position: absolute;
+    right: 15%;
+    top: 207px;
+    left: 15%;
+    z-index: 10;
+    color: #000;
 }
 
-.homeHeader-container {
-    width: 100%;
-    background: red;
-    /* height: 20vh; */
+.containerImgHome{
+    background-image: url("http://baravdg.com/wp-content/uploads/2021/05/Capture.jpg");
+    height: 30vw;
+    width: 30vw;
+    background-position: center;
+    background-size: cover;
 }
 
-.home-header {
-    background: green;
-    width: 80vw;
-    margin: 0 auto;
-}
-
-.header-navs-container{
-    background-color: rgb(121, 121, 121);
-    /* border: 1px solid black; */
+.containerAboutUs{
     display: flex;
-    justify-content: space-between;
-    /* width: 80vw;
-    margin: 0 auto; */
+    align-items: center;
+    justify-content: center;
+    background: #f2f2f2;
+}
+.containerTextAbout{
+     width: 40vw;
+    position: relative;
+    left: 10vw;
 }
 
-.left-nav {
+.productsListHome{
+    margin-top: 2vw;
+    justify-content: space-around;
     display: flex;
-    font-size: 10px;
-    color: white;
+    margin-bottom: 2vw;
 }
 
-.right-nav {
-    display: flex;
-    font-size: 10px;
-    color: white;
+.containerCardProduct{
+        box-shadow: rgb(0 0 0 / 23%) 2px 2px 10px;
+     width: 20vw;
 }
 
-.nav-select-container {
-    display: flex;
+.imgProductHome{
+    background-color:#F2F2F2;
 }
 
-.headerNav-item{ 
-    margin-right: 30px;
+.imgProductHome > img{
+ width: 100%;
 }
 
-.home-header-select{
-    color: white;
-    font-size: 10px;
-    background: grey;
-    border: none;
-    outline: none;
+.btnCardProduct{
+    background-color: red;
 }
 
-.navSelect-option{
-    font-size: 10px;
-    /* color: white; */
-}
-
-.logo-carrito-container {
-    width:100%;
-    background: yellow;
-    display: flex;
-    /* justify-content: center; */
-}
-
-.logo-container {
-    background: yellowgreen;
-    /* flex: 1; */
-    width: 55%;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.logo{
-    width: 100px;
-    height: 50px;
-    background: grey;
-}
-
-.carrito-container {
-    display: flex;
-    justify-content: flex-end;
-    /* flex: 1; */
-    width: 45%;
-    background: tomato;
-}
-
-.carrito {
-    width: 100px;
-    height: 50px;
-    background: pink;
-}
-
-.horizontal-bar {
-    width: 100%;
-    height: .5px;
-    background: black;
-}
-
-.header-bottom-nav-container {
-    background: violet;
-}
-.header-bottom-nav{
-    background: turquoise;
+.titleContainerProducts{
     display: flex;
     justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-.bottom-nav-item {
-    padding: 10px 15px;
+.titleContainerProducts > h2 {
+    font-size: 3rem;
+   font-family: 'Montserrat', sans-serif;
 }
-
+.titleProductHome{
+    font-family: 'Dancing Script', cursive;
+}
+.titleProductPrecie{
+   font-family: 'Montserrat', sans-serif;
+}
+.containerText{
+    padding: 20px;
+}
