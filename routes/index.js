@@ -3,7 +3,8 @@ const router = express.Router()
 const userControllers = require("../controllers/userControllers")
 const passport = require("passport")
 
-const { getAllProducts, getProductById, postProduct, deleteProduct, updateProduct, postComment, deleteComment, putComment } = require("../controllers/productsController")
+const { getAllProducts, getProductById, postProduct, deleteProduct, 
+        updateProduct, postComment, deleteComment, putComment } = require("../controllers/productsController")
 
 router.route("/products")
     .get(getAllProducts)

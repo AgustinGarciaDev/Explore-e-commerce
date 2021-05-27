@@ -8,7 +8,8 @@ const ProductScheme = new mongoose.Schema({
     price:{ type:Number, required:true },
     categories:{ type:[ String ] },
     name: { type:String, required:true },
-    opinion:{ type:[{ title:String, comment:String, score:Number, userId: mongoose.Types.ObjectId }] },
+    comments:{ type:[{ comment:String, userId: mongoose.Types.ObjectId }] },
+    scores:{ type:[{ score:{ type:Number }, userId:{ type: mongoose.Types.ObjectId } }] },
     brand:{ type:String, required:true }
 })
 
