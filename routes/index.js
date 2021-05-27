@@ -1,9 +1,9 @@
 const express = require("express")
 const router = express.Router()
-const userControllers = require("../controllers/userControllers")
 const passport = require("passport")
 
 const { getAllProducts, getProductById, postProduct, deleteProduct, updateProduct, postComment, deleteComment, putComment } = require("../controllers/productsController")
+const { newUser, login, relogin } = require("../controllers/userControllers")
 
 router.route("/products")
     .get(getAllProducts)
@@ -25,10 +25,14 @@ router.route("/products/comments/:idProduct/:idComment")
 
 
 router.route("/user/signup")
-    .post(userControllers.newUser)
+    .post( newUser)
 
 
 router.route("/user/signin")
-    .post(userControllers.login)
+    .post( login)
+
+router.route('/user/relogin')
+    .get(passport.authenticate('jwt', {session: false}), relogin)
+    
 
 module.exports = router

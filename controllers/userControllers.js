@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken")
 const userControllers={
     newUser: async (req, res) => {
         var error
-        var {user,email,urlImg,age,password} = req.body 
+        var {user,email,urlImg,legalAge,password} = req.body 
 
         const emailExistent = await User.findOne({email})
         
@@ -17,7 +17,7 @@ const userControllers={
                 console.log(user,email,urlImg,age,password)
                 console.log("hola")
                 console.log(req.body)
-                var newUserToAdd = new User ({user,email,urlImg,age,password: passwordHashed})  
+                var newUserToAdd = new User ({user,email,urlImg,legalAge,password: passwordHashed})  
                 var newUserSaved = await newUserToAdd.save() 
                 const token = jwt.sign({...newUserSaved},process.env.SECRET_KEY)
                 var response = token
@@ -58,7 +58,7 @@ const userControllers={
             error: error
         })
     },
-    loginForzado: (req, res) => {
+    relogin: (req, res) => {
         
           res.json({
           success: true, 
