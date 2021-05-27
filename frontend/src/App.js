@@ -1,17 +1,10 @@
-<<<<<<< HEAD
-import Admin from "./pages/Admins"
-import './styles/admin.css'
-
-const App = () => {
-  return(
-    <Admin />
-=======
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import './Style/Home.css'
+import './Style/admin.css'
 import Home from './pages/Home'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
-
+import Admins from './pages/Admins'
 import { ToastContainer } from 'react-toastify';
 
 const App = () => {
@@ -21,6 +14,7 @@ const App = () => {
         <Route exact path="/" component={Home} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/signin" component={SignIn} />
+        <Route exact path="/Admin" component={Admins} />
       </Switch>
       < ToastContainer
         position="top-center"
@@ -35,7 +29,6 @@ const App = () => {
       />
     </BrowserRouter>
 
->>>>>>> 76dd84df2f423f7d00f092ff87d1f8d64466b023
   )
 }
 

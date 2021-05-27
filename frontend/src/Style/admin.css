@@ -21,6 +21,11 @@
     background: #DDDDDD;
 }
 
+small {
+    color: red;
+    font-size: medium;
+}
+
 .adminFormInputs{
     border: none;
     background: white;
@@ -38,7 +43,7 @@
     border-radius: 25px;
     outline: none;
     padding: 5px;
-    margin: 2vh 0vh;
+    margin: 2vh 2vh;
     width: 10%;
 }
 
@@ -52,8 +57,20 @@
 .rowInputs{
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
     width: 100%;
+}
+
+.rowInputs div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.rowInputs div div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .tags-input {
