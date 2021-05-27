@@ -52,10 +52,53 @@ const updateProduct = async (req,res)=>{
     }
 }
 
+/*---------------- Comments ----------------------- */
+
+const postComment = (req,res)=>{
+    const{ idProduct }= req.params
+
+    try {
+        const result = Product.findByIdAndUpdate( idProduct ,{ $push:{ opinion: req.body } },{ new:true } )
+        res.json({ success:true, result })
+    } catch (error) {
+        res.json({ success:false, err: "An error has occurred on our server" })
+    }
+}
+
+const deleteComment =( req,res )=>{
+    const{ idProduct, idComment } = req.params
+
+    try {
+        const result = Product.findByIdAndUpdate( idProduct, { $pull:{ opinion:{ _id: idComment } } } )
+        res.json({ success:true, result })
+    } catch (error) {
+        res.json({ success:false, err: "An error has occurred on our server" })
+    }
+} 
+
+const putComment = ( req,res )=>{
+    const { idProduct, idComment } = req.params
+    const { comment } = req.body
+
+    try {
+        const result = Product.findOneAndUpdate({ "_id": idProduct, "opinion._id":idComment },{ $set:{ "opinion.$.comment":comment } },{ new:true } )
+        res.json({ success:true, result })
+    } catch (error) {
+        res.json({ success:false, err: "An error has occurred on our server" })
+    }
+}
+
+
+
+
+
 module.exports ={
     getAllProducts,
     getProductById,
     postProduct,
     deleteProduct,
-    updateProduct
+    updateProduct,
+    postComment,
+    deleteComment,
+    putComment
 }
