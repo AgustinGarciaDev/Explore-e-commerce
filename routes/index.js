@@ -4,7 +4,9 @@ const userControllers = require("../controllers/userControllers")
 const passport = require("passport")
 const productsValidator = require('../config/productsValidator')
 
-const { getAllProducts, getProductById, postProduct, deleteProduct, updateProduct, postComment, deleteComment, putComment } = require("../controllers/productsController")
+const { getAllProducts, getProductById, postProduct, deleteProduct, 
+        updateProduct, postComment, deleteComment, putComment,
+        postScore, deleteScore, putScore } = require("../controllers/productsController")
 
 router.route("/products")
     .get(getAllProducts)
@@ -15,12 +17,23 @@ router.route("/products/:id")
     .delete(deleteProduct)
     .put(updateProduct)
 
+/*-----------------Comments----------------------------  */   
 router.route("/products/comments/:idProduct")
     .post(postComment)
 
 router.route("/products/comments/:idProduct/:idComment")
     .delete(deleteComment)
     .put(putComment)
+
+/* --------------------Scores------------------------------ */
+router.route("/products/score/:idProduct")
+.post( postScore )
+
+router.route("/products/score/:idProduct/:idScore")
+.delete( deleteScore )
+.put( putScore )
+
+
 
 // const validator = require("../config/validator")
 
