@@ -1,20 +1,45 @@
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './Style/Home.css'
 import './Style/admin.css'
 import Home from './pages/Home'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import Admin from './pages/Admin'
+import { connect } from 'react-redux'
+import userActions from "./redux/actions/userActions"
+
 import { ToastContainer } from 'react-toastify';
 
-const App = () => {
+const App = (props) => {
+  if (props.usuarioStatus) {
+    var routes =
+      <>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/signin" component={SignIn} />
+        </Switch>
+      </>
+  } else if (localStorage.getItem('token')) {
+    props.relogin(localStorage.getItem('token'))
+    return null
+  } else {
+    var routes =
+      <>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/Admin" component={Admin} />
+        </Switch>
+      </>
+  }
+
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/signup" component={SignUp} />
-        <Route exact path="/signin" component={SignIn} />
-        <Route exact path="/Admin" component={Admin} />
+        {routes}
       </Switch>
       < ToastContainer
         position="top-center"
@@ -32,4 +57,15 @@ const App = () => {
   )
 }
 
-export default App
+const mapStateToProps = state => {
+  return {
+    usuarioStatus: state.user.usuarioStatus
+  }
+}
+
+const mapDispatchToProps = {
+  relogin: userActions.relogin
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

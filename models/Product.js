@@ -1,7 +1,6 @@
 const mongoose = require("mongoose")
 
 const ProductScheme = new mongoose.Schema({
-
     coverImage: { type: String, required: true },
     productsImages: [{ photo: { type: String, required: true } }],
     description: { type: String, required: true },
@@ -9,7 +8,8 @@ const ProductScheme = new mongoose.Schema({
     discount: { type: Number, required: true },
     categories: [{ name: { type: String, required: true } }],
     name: { type: String, required: true },
-    opinion: { type: [{ comment: String, score: Number, userId: mongoose.Types.ObjectId }] },
+    comments: { type: [{ comment: { type: String }, userId: { type: mongoose.Types.ObjectId, ref: "user" } }] },
+    scores: { type: [{ score: { type: Number }, userId: { type: mongoose.Types.ObjectId, ref: "user" } }] },
     brand: { type: String, required: true }
 })
 

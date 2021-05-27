@@ -13,7 +13,7 @@ const userActions = {
                          return response.data.errores
                      } */
                 console.log(response)
-                /*    dispatch({ type: 'LOGUEAR_USUARIO', payload: response.data.success ? response.data.respuesta : null }) */
+                /*    dispatch({ type: 'SIGNIN_USER', payload: response.data.success ? response.data.respuesta : null }) */
             } catch (error) {
                 console.log(error)
             }
@@ -29,8 +29,7 @@ const userActions = {
                       return response.data.error
                   } */
                 console.log(response)
-                /*   dispatch({ type: 'LOGUEAR_USUARIO', payload: response.data.success ? response.data.respuesta : null })
-   */
+                   dispatch({ type: 'SIGNIN_USER', payload: response.data.success ? response.data.response : null })
             } catch (error) {
                 console.log(error)
             }
@@ -46,6 +45,17 @@ const userActions = {
                 autoClose: 1000,
                 position: "top-center",
             })
+        }
+    },
+
+    relogin: (userToken) => {   
+        return async (dispatch, getState) => {
+          const response= await axios.get("http://localhost:4000/api//user/relogin", {headers: {'Authorization': 'Bearer '+userToken} })
+        
+                dispatch({type: 'SIGNIN_USER', payload: {
+                    ...response.data.response,
+                    token: userToken                  
+                }})
         }
     },
 

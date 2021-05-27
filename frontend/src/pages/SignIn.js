@@ -49,8 +49,10 @@ const SignIn = (props) => {
     return (
         <>
             <div>menu</div>
+            {  props.usuarioStatus? <h1 className="titleForm">Logueado</h1> : <h1 className="titleForm">NO logueado</h1> }
+            
             <div className="containerForm">
-                <h1 className="titleForm">Create Account</h1>
+                <h1 className="titleForm">Login</h1>
                 <div>
                     <div>
                         <label >
@@ -66,7 +68,7 @@ const SignIn = (props) => {
                         </label>
                     </div>
                     <div>
-                        <button onClick={loginUser}>Create Acount</button>
+                        <button onClick={loginUser}>login</button>
                     </div>
                     <GoogleLogin
                         clientId="96796139704-21kkhk4q7hqudkpvga86qprq8c61i53s.apps.googleusercontent.com"
@@ -76,11 +78,18 @@ const SignIn = (props) => {
                         cookiePolicy={'single_host_origin'}
                     />,
                 </div>
+                <button onClick={() =>console.log(props.usuarioStatus)}>console.log</button>
             </div>
         </>
     )
 }
 
+
+const mapStateToProps= state =>{
+    return{
+        usuarioStatus: state.user.usuarioStatus 
+    }
+}
 
 const mapDispatchToProps = {
 
@@ -88,4 +97,4 @@ const mapDispatchToProps = {
 }
 
 
-export default connect(null, mapDispatchToProps)(SignIn)
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn)

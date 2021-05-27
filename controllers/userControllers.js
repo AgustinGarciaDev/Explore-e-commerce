@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken")
 const userControllers={
     newUser: async (req, res) => {
         var error
-        var {user,email,urlImg,age,password} = req.body 
+        var {user,email,urlImg,legalAge,password} = req.body 
 
         const emailExistent = await User.findOne({email})
         
@@ -17,7 +17,7 @@ const userControllers={
                 console.log(user,email,urlImg,age,password)
                 console.log("hola")
                 console.log(req.body)
-                var newUserToAdd = new User ({user,email,urlImg,age,password: passwordHashed})  
+                var newUserToAdd = new User ({user,email,urlImg,legalAge,password: passwordHashed})  
                 var newUserSaved = await newUserToAdd.save() 
                 const token = jwt.sign({...newUserSaved},process.env.SECRET_KEY)
                 var response = token
@@ -31,11 +31,11 @@ const userControllers={
       
        res.json({
         success: !error ? true : false,
-        response: {token: response, img: newUserSaved.urlImg, name: newUserSaved.firstName ,  email: newUserSaved.email },
+        response: {token: response, img: newUserSaved.urlImg, name: newUserSaved.user ,  email: newUserSaved.email },
         error: error,
     })   
     },
-
+   
     login:async (req,res)=>{
         const {email, password} = req.body
         var response;
@@ -54,15 +54,16 @@ const userControllers={
         }      
         res.json({
             success: !error ? true : false,
-            response: !error && {token: response, img: userOK.urlImg, name: userOK.firstName, email: userOK.email },
+            response: !error && {token: response, img: userOK.urlImg, user: userOK.user, email: userOK.email },
             error: error
         })
     },
-    loginForzado: (req, res) => {
+   
+    relogin: (req, res) => {
         
           res.json({
           success: true, 
-          response: {img: req.user.urlImg, name: req.user.firstName, email: req.user.email}
+          response: {img: req.user.urlImg, user: req.user.user, email: req.user.email}
     })
     },
 
