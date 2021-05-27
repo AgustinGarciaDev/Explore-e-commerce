@@ -12,7 +12,7 @@ const SignUp = (props) => {
         email: "",
         password: "",
         urlImg: "",
-        legalAge: true,
+        legalAge: false,
     })
 
     const changeValue = (e) => {
@@ -21,13 +21,19 @@ const SignUp = (props) => {
             [e.target.name]: e.target.value
         })
     }
+    const changeInput = (e) => {
+        setInfoUser({
+            ...infoUser,
+            legalAge: !infoUser.legalAge,
+        })
 
-    console.log(infoUser)
+    }
+
     const createAccount = async (e = null, googleUser = null) => {
-
+        console.log(infoUser)
         e && e.preventDefault()
         let user = e ? infoUser : googleUser
-        if (user.user === "" || user.password === "" || user.email === "") {
+        if (user.user === "" || user.password === "" || user.email === "" || user.legalAge === false) {
             toast.error("😬 All fields must be completed")
 
         } else {
@@ -41,7 +47,7 @@ const SignUp = (props) => {
                        onClose: () => {
                            props.history.push('/')
                        },
-   
+     
                    }) */
                 console.log(respuesta)
             }
@@ -83,7 +89,7 @@ const SignUp = (props) => {
                     <div>
                         <label >
                             <p>Acepto que soy mayor de 18</p>
-                            <input required name="legalAge" id="legalAgePlus" onChange={changeValue} value={infoUser.legalAge} type="checkbox" />
+                            <input checked={infoUser.legalAge} name="legal" id="legalAgePlus" onChange={changeInput} type="checkbox" />
                         </label>
 
                     </div>
@@ -97,7 +103,7 @@ const SignUp = (props) => {
                         <button onClick={createAccount}>Create Acount</button>
                     </div>
                     <GoogleLogin
-                        clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+                        clientId="96796139704-21kkhk4q7hqudkpvga86qprq8c61i53s.apps.googleusercontent.com"
                         buttonText="Login"
                         onSuccess={responseGoogle}
                         onFailure={responseGoogle}
