@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import {  useState } from "react"
 import { connect } from "react-redux"
 import { toast } from 'react-toastify';
 import { GoogleLogin } from 'react-google-login'

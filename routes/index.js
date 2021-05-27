@@ -2,12 +2,13 @@ const express = require("express")
 const router = express.Router()
 const userControllers = require("../controllers/userControllers")
 const passport = require("passport")
+const productsValidator = require('../config/productsValidator')
 
 const { getAllProducts, getProductById, postProduct, deleteProduct, updateProduct, postComment, deleteComment, putComment } = require("../controllers/productsController")
 
 router.route("/products")
     .get(getAllProducts)
-    .post(postProduct)
+    .post(productsValidator, postProduct)
 
 router.route("/products/:id")
     .get(getProductById)
@@ -15,11 +16,11 @@ router.route("/products/:id")
     .put(updateProduct)
 
 router.route("/products/comments/:idProduct")
-.post( postComment )
+    .post(postComment)
 
 router.route("/products/comments/:idProduct/:idComment")
-.delete( deleteComment )
-.put( putComment )
+    .delete(deleteComment)
+    .put(putComment)
 
 // const validator = require("../config/validator")
 
