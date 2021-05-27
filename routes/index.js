@@ -3,14 +3,10 @@ const router = express.Router()
 const passport = require("passport")
 const productsValidator = require('../config/productsValidator')
 
-<<<<<<< HEAD
-const { getAllProducts, getProductById, postProduct, deleteProduct, 
-        updateProduct, postComment, deleteComment, putComment,
-        postScore, deleteScore, putScore } = require("../controllers/productsController")
-=======
-const { getAllProducts, getProductById, postProduct, deleteProduct, updateProduct, postComment, deleteComment, putComment } = require("../controllers/productsController")
+const { getAllProducts, getProductById, postProduct, deleteProduct,
+    updateProduct, postComment, deleteComment, putComment,
+    postScore, deleteScore, putScore } = require("../controllers/productsController")
 const { newUser, login, relogin } = require("../controllers/userControllers")
->>>>>>> b7803f7ce78eceda522902c52134cd70689b577f
 
 router.route("/products")
     .get(getAllProducts)
@@ -21,7 +17,7 @@ router.route("/products/:id")
     .delete(deleteProduct)
     .put(updateProduct)
 
-/*-----------------Comments----------------------------  */   
+/*-----------------Comments----------------------------  */
 router.route("/products/comments/:idProduct")
     .post(postComment)
 
@@ -31,11 +27,11 @@ router.route("/products/comments/:idProduct/:idComment")
 
 /* --------------------Scores------------------------------ */
 router.route("/products/score/:idProduct")
-.post( postScore )
+    .post(postScore)
 
 router.route("/products/score/:idProduct/:idScore")
-.delete( deleteScore )
-.put( putScore )
+    .delete(deleteScore)
+    .put(putScore)
 
 
 
@@ -43,14 +39,14 @@ router.route("/products/score/:idProduct/:idScore")
 
 
 router.route("/user/signup")
-    .post( newUser)
+    .post(newUser)
 
 
 router.route("/user/signin")
-    .post( login)
+    .post(login)
 
 router.route('/user/relogin')
-    .get(passport.authenticate('jwt', {session: false}), relogin)
-    
+    .get(passport.authenticate('jwt', { session: false }), relogin)
+
 
 module.exports = router
