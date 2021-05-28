@@ -9,14 +9,12 @@ const ContentHome = () => {
     const settings = {
         dots: true,
         infinite: true,
-        speed: 900,
+        speed: 100,
         slidesToShow: 4,
-        slidesToScroll: 3,
-        centerMode: true,
+        slidesToScroll: 2,
         width: 600,
-        autoplaySpeed: 1000,
+        autoplaySpeed: 2000,
         arrows: true,
-        cssEase: "linear"
     };
 
     return (

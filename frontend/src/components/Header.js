@@ -1,35 +1,50 @@
 import { Navbar, Nav } from 'react-bootstrap'
 import { connect } from "react-redux"
-import { Link } from "react-router-dom"
+import { LinkContainer } from 'react-router-bootstrap'
+
 
 const Header = (props) => {
     return (
         <Navbar collapseOnSelect expand="lg" variant="light">
-            <Navbar.Brand href="#home">
-                <img className="logo" src="http://tingarciadg.com/wp-content/uploads/2021/05/Diseno-sin-titulo-4.png" alt="" />
-            </Navbar.Brand>
+
+            <LinkContainer to="/" >
+                <Navbar.Brand>
+                    <img className="logo" src="http://tingarciadg.com/wp-content/uploads/2021/05/Diseno-sin-titulo-4.png" alt="" />
+                </Navbar.Brand>
+            </LinkContainer>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto" bg="light" variant="light">
-                    <Nav.Link href="#features">Sex toy</Nav.Link>
-                    <Nav.Link href="#pricing">Pricing</Nav.Link>
-                    <Nav.Link href="#pricing">All products</Nav.Link>
+                    < LinkContainer to="/sextoy">
+                        <Nav.Link> Sex toy </Nav.Link>
+                    </ LinkContainer>
+
+                    < LinkContainer to="/ds" >
+                        <Nav.Link> Lubricants </Nav.Link>
+                    </ LinkContainer>
+                    < LinkContainer to="/ds" >
+                        <Nav.Link> All products </Nav.Link>
+                    </ LinkContainer>
                 </Nav>
                 <Nav>
-                    <Nav.Link href="#deets">Sign In</Nav.Link>
-                    <Nav.Link eventKey={2} href="#memes">
-                        Sign Up
-                  </Nav.Link>
-                  <h2>{props.accountant}</h2>
-                  <Link to="/shoppingCart">cart</Link>
+                    < LinkContainer to="/ds" >
+                        <Nav.Link> Sign In </Nav.Link>
+                    </ LinkContainer>
+                    < LinkContainer to="/signup"  >
+                        <Nav.Link eventKey={2}> Sign Up </Nav.Link>
+                    </ LinkContainer>
+                    <h2>{props.accountant}</h2>
+                    <LinkContainer to="/shoppingCart">
+                        <Nav.Link > Cart </Nav.Link>
+                    </LinkContainer>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
     )
 }
 
-const mapStateToProps = state =>{
-    return{
+const mapStateToProps = state => {
+    return {
         accountant: state.cart.accountant
     }
 }

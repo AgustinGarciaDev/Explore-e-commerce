@@ -1,0 +1,59 @@
+.containerPortadaSexToy{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: -5rem;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    flex-direction: column;
+    background: url("https://sexplore.s3.eu-west-2.amazonaws.com/shopify/overlays/plants.png");
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 39vw;
+}
+
+.titleCategory{
+    background: -webkit-linear-gradient(#59175e,#ff4a5e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+     color: tomato;
+    font-size: 6rem;
+    font-family: 'Montserrat';
+    font-weight: 800;
+}
+.containerTextCategory{
+    width: 44vw;
+    text-align: center;
+}
+
+.textCategory{
+    font-family: 'Montserrat';
+    color: #86868b;
+}
+
+.containerProductCardSexToy{
+ background: #F1F1F1;
+     display: flex;
+}
+
+.containerTextCardSexToy{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerProducPresent{
+     background:url("https://sexplore.s3.eu-west-2.amazonaws.com/shopify/category-page-section-dividers/automatic-masturbators.png"),linear-gradient(0deg,var(--orange)0%,var(--yellow)100%);
+    height: 30vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50%;
+
+}
