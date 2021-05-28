@@ -4,18 +4,19 @@ import './Style/Home.css'
 import './Style/admin.css'
 import './Style/header.css'
 import './Style/Footer.css'
+import './Style/sexToyCategory.css'
 import Home from './pages/Home'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import Admin from './pages/Admin'
 import { connect } from 'react-redux'
 import userActions from "./redux/actions/userActions"
-
 import { ToastContainer } from 'react-toastify';
 import Product from "./pages/Product";
 import NewProduct from "./pages/NewProduct";
 import Products from "./pages/Products";
 import ShoppingCart from "./pages/ShoppingCart";
+import SexToyCategory from "./pages/SexToyCategory";
 
 const App = (props) => {
   if (props.usuarioStatus) {
@@ -27,6 +28,7 @@ const App = (props) => {
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/products" component={Products} />
           <Route exact path="/shoppingCart" component={ShoppingCart} />
+          <Route exact path="/sextoy" component={SexToyCategory} />
         </Switch>
       </>
   } else if (localStorage.getItem('token')) {
@@ -43,6 +45,7 @@ const App = (props) => {
           <Route exact path="/add-new-product" component={NewProduct} />
           <Route exact path="/products" component={Products} />
           <Route exact path="/shoppingCart" component={ShoppingCart} />
+          <Route exact path="/sextoy" component={SexToyCategory} />
         </Switch>
       </>
   }
