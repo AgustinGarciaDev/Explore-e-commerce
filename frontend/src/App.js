@@ -3,8 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Style/Home.css'
 import './Style/admin.css'
 import './Style/header.css'
-import './Style/footer.css'
-
+import './Style/Footer.css'
 import Home from './pages/Home'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
@@ -41,35 +40,32 @@ const App = (props) => {
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/Admin" component={Admin} />
-<<<<<<< HEAD
-        <Route exact path="/add-new-product" component={NewProduct} />
-=======
+          <Route exact path="/add-new-product" component={NewProduct} />
           <Route exact path="/products" component={Products} />
-        <Route exact path="/shoppingCart" component={ShoppingCart} />
->>>>>>> 28b58e6b73ca93e3ae0e332fd52669fd3da67955
-      </Switch>
+          <Route exact path="/shoppingCart" component={ShoppingCart} />
+        </Switch>
       </>
   }
 
-return (
-  <BrowserRouter>
-    <Switch>
-      {routes}
-    </Switch>
-    < ToastContainer
-      position="top-center"
-      autoClose={2000}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-    />
-  </BrowserRouter>
+  return (
+    <BrowserRouter>
+      <Switch>
+        {routes}
+      </Switch>
+      < ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+    </BrowserRouter>
 
-)
+  )
 }
 
 const mapStateToProps = state => {
