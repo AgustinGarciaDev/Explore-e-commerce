@@ -11,6 +11,7 @@ import userActions from "./redux/actions/userActions"
 
 import { ToastContainer } from 'react-toastify';
 import Product from "./pages/Product";
+import NewProduct from "./pages/NewProduct";
 
 const App = (props) => {
   if (props.usuarioStatus) {
@@ -33,6 +34,7 @@ const App = (props) => {
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/Admin" component={Admin} />
+          <Route exact path="/add-new-product" component={NewProduct} />
         </Switch>
       </>
   }

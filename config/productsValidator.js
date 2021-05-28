@@ -18,7 +18,7 @@ const validator = (req, res, next) => {
             'string.empty': 'You must complete this field'
         }),
         productsImages: joi.array().items(imageSchema).min(1).unique().required().messages({
-            'array.min': 'You most add at least 1 image'
+            'array.min': 'You must add at least one image'
         }),
         description: joi.string().trim().required().pattern(new RegExp(namesRegExp)).messages({
             'string.empty': 'You must complete this field'
@@ -30,7 +30,7 @@ const validator = (req, res, next) => {
             'string.empty': 'You must complete this field',
         }),
         categories: joi.array().items(objectSchema).min(1).unique().required().messages({
-            'array.min': 'You most add at least 1 caregory'
+            'array.min': 'You must add at least one caregory'
         }),
 
         name: joi.string().trim().required().pattern(new RegExp(namesRegExp)).messages({
