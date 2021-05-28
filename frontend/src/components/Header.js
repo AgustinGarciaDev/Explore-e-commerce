@@ -1,13 +1,13 @@
 import { Navbar, Nav } from 'react-bootstrap'
 const Header = () => {
     return (
-        <Navbar collapseOnSelect expand="lg" variant="dark">
+        <Navbar collapseOnSelect expand="lg" variant="light">
             <Navbar.Brand href="#home">
-                <img src="http://baravdg.com/wp-content/uploads/2021/05/Diseno-sin-titulo-1.png" alt="" />
+                <img className="logo" src="http://tingarciadg.com/wp-content/uploads/2021/05/Diseno-sin-titulo-4.png" alt="" />
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className="mr-auto">
+                <Nav className="mr-auto" bg="light" variant="light">
                     <Nav.Link href="#features">Sex toy</Nav.Link>
                     <Nav.Link href="#pricing">Pricing</Nav.Link>
                     <Nav.Link href="#pricing">All products</Nav.Link>

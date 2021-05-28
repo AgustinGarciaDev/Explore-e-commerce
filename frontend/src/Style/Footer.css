@@ -1,3 +1,62 @@
-.containerFooter{
-    background-color: red;
+.containerContentFooter{
+    background: #E62A54;
+    color: white;
+}
+.containerSocial{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerSocial > i {
+    font-size: 3vw;
+    margin: 1vw;
+}
+.containerSuscribe{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2vw
+}
+
+.inputSuscribe{
+    width: 24vw;
+    height: 3vw;
+    border: none;
+    padding: 20px;
+}
+.btnSuscribe{
+    height: 3vw;
+    margin-left: 1vw;
+    width: 8vw;
+    border: none;
+    background: white;
+    border-radius: 1vw;
+}
+.navFooterLogo{
+     display: flex;
+    background: white;
+
+}
+.navFooter{
+     background: white;
+     display: flex;
+}
+.titleNav{
+    color: black;
+    font-family: 'Dancing Script', cursive;
+    font-size: 3vw;
+}
+.listItemNav{
+    margin-left: 6vw;
+}
+.itemNav{
+    color: black;
+    font-family: 'Montserrat'
+}
+.logoFooter{
+    width: 13vw;
+    height: 6vw;
+    margin-right: 2vw;
+    margin-left: 2vw;
 }

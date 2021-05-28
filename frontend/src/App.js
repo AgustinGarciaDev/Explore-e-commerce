@@ -2,6 +2,9 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Style/Home.css'
 import './Style/admin.css'
+import './Style/header.css'
+import './Style/footer.css'
+
 import Home from './pages/Home'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
