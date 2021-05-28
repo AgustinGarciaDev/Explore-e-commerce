@@ -1,8 +1,10 @@
 import { Navbar, Nav } from 'react-bootstrap'
 const Header = () => {
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-            <Navbar.Brand href="#home">LOGO</Navbar.Brand>
+        <Navbar collapseOnSelect expand="lg" variant="dark">
+            <Navbar.Brand href="#home">
+                <img src="http://baravdg.com/wp-content/uploads/2021/05/Diseno-sin-titulo-1.png" alt="" />
+            </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
