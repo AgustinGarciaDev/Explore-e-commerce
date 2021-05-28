@@ -11,6 +11,8 @@ import userActions from "./redux/actions/userActions"
 
 import { ToastContainer } from 'react-toastify';
 import Product from "./pages/Product";
+import Products from "./pages/Products";
+import ShoppingCart from "./pages/ShoppingCart";
 
 const App = (props) => {
   if (props.usuarioStatus) {
@@ -20,6 +22,8 @@ const App = (props) => {
           <Route exact path="/" component={Home} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/products" component={Products} />
+          <Route exact path="/shoppingCart" component={ShoppingCart} />
         </Switch>
       </>
   } else if (localStorage.getItem('token')) {
@@ -33,6 +37,8 @@ const App = (props) => {
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/Admin" component={Admin} />
+          <Route exact path="/products" component={Products} />
+          <Route exact path="/shoppingCart" component={ShoppingCart} />
         </Switch>
       </>
   }
