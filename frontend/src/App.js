@@ -16,11 +16,8 @@ import Product from "./pages/Product";
 import NewProduct from "./pages/NewProduct";
 import Products from "./pages/Products";
 import ShoppingCart from "./pages/ShoppingCart";
-<<<<<<< HEAD
 import EditProducts from "./pages/EditProducts";
-=======
 import SexToyCategory from "./pages/SexToyCategory";
->>>>>>> 36fdb52fd2b3e8a2db02e72fb0852888aff635aa
 
 const App = (props) => {
   if (props.usuarioStatus) {
