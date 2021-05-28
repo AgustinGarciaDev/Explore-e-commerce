@@ -15,6 +15,7 @@ const ContentHome = () => {
         centerMode: true,
         width: 600,
         autoplaySpeed: 1000,
+        arrows: true,
         cssEase: "linear"
     };
 
