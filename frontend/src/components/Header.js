@@ -1,5 +1,8 @@
 import { Navbar, Nav } from 'react-bootstrap'
-const Header = () => {
+import { connect } from "react-redux"
+import { Link } from "react-router-dom"
+
+const Header = (props) => {
     return (
         <Navbar collapseOnSelect expand="lg" variant="light">
             <Navbar.Brand href="#home">
@@ -17,10 +20,18 @@ const Header = () => {
                     <Nav.Link eventKey={2} href="#memes">
                         Sign Up
                   </Nav.Link>
+                  <h2>{props.accountant}</h2>
+                  <Link to="/shoppingCart">cart</Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
     )
 }
 
-export default Header
+const mapStateToProps = state =>{
+    return{
+        accountant: state.cart.accountant
+    }
+}
+
+export default connect(mapStateToProps)(Header)

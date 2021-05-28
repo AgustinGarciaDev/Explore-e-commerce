@@ -15,6 +15,8 @@ import userActions from "./redux/actions/userActions"
 import { ToastContainer } from 'react-toastify';
 import Product from "./pages/Product";
 import NewProduct from "./pages/NewProduct";
+import Products from "./pages/Products";
+import ShoppingCart from "./pages/ShoppingCart";
 
 const App = (props) => {
   if (props.usuarioStatus) {
@@ -24,6 +26,8 @@ const App = (props) => {
           <Route exact path="/" component={Home} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/products" component={Products} />
+          <Route exact path="/shoppingCart" component={ShoppingCart} />
         </Switch>
       </>
   } else if (localStorage.getItem('token')) {
@@ -37,30 +41,35 @@ const App = (props) => {
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/Admin" component={Admin} />
-          <Route exact path="/add-new-product" component={NewProduct} />
-        </Switch>
+<<<<<<< HEAD
+        <Route exact path="/add-new-product" component={NewProduct} />
+=======
+          <Route exact path="/products" component={Products} />
+        <Route exact path="/shoppingCart" component={ShoppingCart} />
+>>>>>>> 28b58e6b73ca93e3ae0e332fd52669fd3da67955
+      </Switch>
       </>
   }
 
-  return (
-    <BrowserRouter>
-      <Switch>
-        {routes}
-      </Switch>
-      < ToastContainer
-        position="top-center"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
-    </BrowserRouter>
+return (
+  <BrowserRouter>
+    <Switch>
+      {routes}
+    </Switch>
+    < ToastContainer
+      position="top-center"
+      autoClose={2000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+    />
+  </BrowserRouter>
 
-  )
+)
 }
 
 const mapStateToProps = state => {

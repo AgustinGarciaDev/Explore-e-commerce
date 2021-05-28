@@ -9,7 +9,7 @@ const ContentHome = () => {
     const settings = {
         dots: true,
         infinite: true,
-        speed: 100,
+        speed: 900,
         slidesToShow: 4,
         slidesToScroll: 3,
         centerMode: true,
