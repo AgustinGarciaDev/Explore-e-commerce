@@ -5,7 +5,7 @@ import { connect } from "react-redux"
 const CardProduct = (props) => {
     const { buyArticle , product } = props
     const buy = () => {
-        buyArticle(product._id)
+        buyArticle(product)
     }
 
     return (
@@ -31,7 +31,6 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = {
     buyArticle: cartActions.buyArticle,
-    allProducts: cartActions.allProducts
 }
 
 

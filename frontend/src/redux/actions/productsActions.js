@@ -17,7 +17,8 @@ const productActions = {
                 console.log(error)
             }
         }
-    }
+    },
+    
 
 }
 

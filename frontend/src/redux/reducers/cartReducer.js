@@ -1,5 +1,6 @@
 const initialState = {
     articles: [],
+    item: [],
     cart: [],
     accountant: 0
 }
@@ -7,11 +8,25 @@ const initialState = {
 const cartReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'BUY':
-            console.log(action.payload)
             return {
-                ...state,
-                cart: action.payload,
-                accountant: initialState.accountant ++
+                cart: [...state.cart,action.payload],
+                accountant: state.accountant + 1
+            }
+            break
+        case 'REMOVE':
+            return {
+                cart: state.cart.filter( article => article._id !== action.payload._id ),
+                accountant: state.accountant - 1
+            }
+            break
+        case 'ADD':
+            return {
+                accountant: state.accountant + 1
+            }
+            break
+        case 'SUBTRACT':
+            return {
+                accountant: state.accountant - 1
             }
             break
         default:

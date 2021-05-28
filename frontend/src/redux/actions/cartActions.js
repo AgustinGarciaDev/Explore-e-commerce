@@ -17,9 +17,24 @@ const cartActions = {
             }
         }
     },
-    buyArticle: (id) => {
+    buyArticle: (product) => {
         return (dispatch, getState) => {
-            dispatch({ type: 'BUY' })
+            dispatch({ type: 'BUY' , payload: product })
+        }
+    },
+    removeArticle: (product) => {
+        return (dispatch, getState) => {
+            dispatch({ type: 'REMOVE' , payload: product })
+        }
+    },
+    add: () => {
+        return (dispatch, getState) => {
+            dispatch({ type: 'ADD' })
+        }
+    },
+    subtract: () => {
+        return (dispatch, getState) => {
+            dispatch({ type: 'SUBTRACT' })
         }
     },
 }
