@@ -4,6 +4,7 @@ const cors = require("cors")
 const router = require("./routes/index")
 const passport = require ("passport")
 const fileUpload = require("express-fileupload")
+const cloudinary = require('cloudinary').v2
 require("./config/database")
 require("./config/passport")
 
@@ -15,7 +16,11 @@ app.use(express.json())
 app.use( fileUpload({ useTempFiles: true }) )
 app.use("/api", router)
 
-
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME, 
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET  
+})
 
 app.listen(4000, ()=>console.log( "app listening on port 4000" ) )
 

@@ -44,7 +44,10 @@ router.route("/products/categories/:idProduct/:idCategory")
 .delete( deleteCategories )
 .put( putCategories )
 
+/* ----------hosteo--------------- */
 
+router.route("/hosteo")
+.post( pruebaHosteo )
 
 // const validator = require("../config/validator")
 
