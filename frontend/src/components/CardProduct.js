@@ -1,24 +1,22 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import cartActions from "../redux/actions/cartActions"
 import { connect } from "react-redux"
 
 const CardProduct = (props) => {
-
-    const { name, precie, productsImages, _id, categories } = props.product
-
+    const { buyArticle , product } = props
     const buy = () => {
-        props.buyArticle(_id)
+        buyArticle(product._id)
     }
 
     return (
         <div className="containerCardProduct">
             <div className="imgProductHome"  >
-                <img src={productsImages} alt="" />
+                <img src={product.coverImage} alt="" />
             </div>
             <div className="containerText">
-                <p>Marca</p>
-                <h3 className="titleProductHome">{name}</h3>
-                <h4 className="titleProductPrecie">€{precie}</h4>
+                <p>{product.brand}</p>
+                <h3 className="titleProductHome">{product.name}</h3>
+                <h4 className="titleProductPrecie">€{product.price}</h4>
                 <button onClick={buy}>add to cart</button>
             </div>
         </div>
@@ -32,7 +30,8 @@ const mapStateToProps = state =>{
 }
 
 const mapDispatchToProps = {
-    buyArticle: cartActions.buyArticle
+    buyArticle: cartActions.buyArticle,
+    allProducts: cartActions.allProducts
 }
 
 

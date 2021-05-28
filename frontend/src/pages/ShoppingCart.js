@@ -3,12 +3,14 @@ import Footer from "../components/Footer"
 import Header from "../components/Header"
 
 const ShoppingCart = (props) => {
+
+    console.log(props.cart)
     return (
         <>
             <Header />
-            {
+{/*             {
                 props.articles.map(article => <h1>{article.name}</h1>)
-            }
+            } */}
             <Footer />
         </>
     )
@@ -16,7 +18,7 @@ const ShoppingCart = (props) => {
 
 const mapStateToProps = state => {
     return {
-        articles: state.cart.articles
+        cart: state.cart.cart
     }
 }
 

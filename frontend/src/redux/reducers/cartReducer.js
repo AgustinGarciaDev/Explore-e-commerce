@@ -1,5 +1,6 @@
 const initialState = {
     articles: [],
+    cart: [],
     accountant: 0
 }
 
@@ -9,8 +10,8 @@ const cartReducer = (state = initialState, action) => {
             console.log(action.payload)
             return {
                 ...state,
-                articles: action.payload,
-                accountant: + 1
+                cart: action.payload,
+                accountant: initialState.accountant ++
             }
             break
         default:

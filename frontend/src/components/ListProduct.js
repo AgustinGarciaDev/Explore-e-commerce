@@ -1,30 +1,22 @@
+import { useEffect, useState } from "react"
 import CardProduct from "../components/CardProduct"
+import { connect } from "react-redux"
+import cartActions from "../redux/actions/cartActions"
 
-const ListProduct = () => {
+const ListProduct = (props) => {
 
-    const products = [
-        {
-            name: "Glass G-Spot Wand",
-            precie: 50,
-            categories: ["sex toy", "sexi", "new"],
-            productsImages: "http://baravdg.com/wp-content/uploads/2021/05/1_9b31637f-3d1d-4b61-9285-c25339d940e1_400x.png",
-            _id: "60b0135e7877711718bf57ec"
-        },
-        {
-            name: "Glass G-Spot Wand",
-            precie: 50,
-            categories: ["accesorios"],
-            productsImages: "http://baravdg.com/wp-content/uploads/2021/05/1_9b31637f-3d1d-4b61-9285-c25339d940e1_400x.png",
-            _id: "60b0135e7877711718bf57ec"
-        },
-        {
-            name: "Glass G-Spot Wand",
-            precie: 50,
-            categories: ["cremas"],
-            productsImages: "http://baravdg.com/wp-content/uploads/2021/05/1_9b31637f-3d1d-4b61-9285-c25339d940e1_400x.png",
-            _id: "60b0135e7877711718bf57ec"
-        },
-    ]
+    const [products,setProducts] = useState([])
+
+    useEffect(()=>{
+        fetchProducts()
+    },[])
+
+    const fetchProducts = async () => {
+        let response = await props.allProducts()
+        if (response) {
+            setProducts(response.result)
+        }
+    }
 
     return (
         <>
@@ -50,4 +42,15 @@ const ListProduct = () => {
     )
 }
 
-export default ListProduct
+const mapStateToProps = state =>{
+    return{
+        usuarioStatus: state.user.usuarioStatus 
+    }
+}
+
+const mapDispatchToProps = {
+    allProducts: cartActions.allProducts
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListProduct)
