@@ -1,64 +1,59 @@
-import CardProductHome from "./CardProductHome"
+
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+import Slider from "react-slick"
 
 const ContentHome = () => {
 
-    const products = [
-        {
-            name: "Glass G-Spot Wand",
-            precie: 50,
-            categories: ["sex toy", "sexi", "new"],
-            productsImages: "http://baravdg.com/wp-content/uploads/2021/05/1_9b31637f-3d1d-4b61-9285-c25339d940e1_400x.png",
-            _id: "123"
-        },
-        {
-            name: "Glass G-Spot Wand",
-            precie: 50,
-            categories: ["accesorios"],
-            productsImages: "http://baravdg.com/wp-content/uploads/2021/05/1_9b31637f-3d1d-4b61-9285-c25339d940e1_400x.png",
-            _id: "123"
-        },
-        {
-            name: "Glass G-Spot Wand",
-            precie: 50,
-            categories: ["cremas"],
-            productsImages: "http://baravdg.com/wp-content/uploads/2021/05/1_9b31637f-3d1d-4b61-9285-c25339d940e1_400x.png",
-            _id: "123"
-        },
-    ]
 
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 900,
+        slidesToShow: 4,
+        slidesToScroll: 3,
+        centerMode: true,
+        width: 600,
+        autoplaySpeed: 1000,
+        arrows: true,
+        cssEase: "linear"
+    };
 
     return (
         <>
             <div className="containerAboutUs">
                 <div className="containerImgHome"></div>
                 <div className="containerTextAbout">
-                    <h2>Where do I start!?</h2>
-                    <p>
-                        So many toys, so little time! Knowing where to start is a minefield and that's why we have created Sexplore, an online sex toy website where each toy has been handpicked by out team because we love them.
+                    <h2 className="titleContent">Where do I start!?</h2>
+                    <p className="textContent">
+                        So many toys, so little time! Knowing where to start is a minefield and that's why we have created Explore, an online sex toy website where each toy has been handpicked by out team because we love them.
                 </p>
-                    <p>
+                    <p className="textContent">
                         We don't subscribe to gender stereotypes, we let you choose toys based on your body parts so take a look, we have sex toys for Penises, Vulvas and Butts
                 </p>
                 </div>
             </div>
-            <div>
-                <div className="titleContainerProducts"><h2>Popular sextoy</h2></div>
-                <div className="productsListHome">
-                    {products.map(product => <CardProductHome key={product._id} product={product} />)}
-                </div>
-            </div>
+            <div className="containerCarrousel">
+                <Slider {...settings}>
+                    <div className="slideOne">
 
-            <div>
-                <div className="titleContainerProducts"><h2>Popular Accesorios</h2></div>
-                <div className="productsListHome">
-                    {products.map(product => <CardProductHome key={product._id} product={product} />)}
-                </div>
-            </div>
-            <div >
-                <div className="titleContainerProducts"><h2>Popular Cremas</h2></div>
-                <div className="productsListHome">
-                    {products.map(product => <CardProductHome key={product._id} product={product} />)}
-                </div>
+                    </div>
+                    <div className="slideTwo">
+
+                    </div>
+                    <div className="slideThree">
+
+                    </div>
+                    <div className="slideFor">
+
+                    </div>
+                    <div className="slideOne">
+
+                    </div>
+                    <div className="slideSix">
+
+                    </div>
+                </Slider>
             </div>
 
 

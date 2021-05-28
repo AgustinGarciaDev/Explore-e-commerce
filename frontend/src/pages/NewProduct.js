@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import productActions from '../redux/actions/productsActions'
+import { Link } from 'react-router-dom'
 
 const NewProduct = (props) => {
     const [newProduct, setNewProduct] = useState({ coverImage: '', description: '', price: '', discount: '', brand: '', name: '' })
@@ -54,7 +55,6 @@ const NewProduct = (props) => {
         }
         const response = await props.createNewProdudct(product)
         if (response) {
-            console.log(response)
             if (response.success) {
                 setErrors({})
                 setCategories([])
@@ -76,13 +76,11 @@ const NewProduct = (props) => {
             <form className="adminFrom">
                 <h2>Add new product</h2>
 
-                <input type="text" name="coverImage" value={newProduct.coverImage} placeholder="image" onChange={readInput} className="adminFormInputs" />
-                <label className="lbl-name">
-                    <span className="input-name">
-                        Image
-                    </span>
-                </label>
-                {errors.coverImage ? <small>{errors.coverImage}</small> : <small></small>}
+                <div className="inputContainer">
+                    <label>Image</label>
+                    <input type="text" name="coverImage" value={newProduct.coverImage} onChange={readInput} className="adminFormInputs" />
+                </div>
+                {errors.coverImage ? <small>{errors.coverImage}</small> : <p></p>}
 
                 <div className="tags-input">
                     <ul id="tags">
@@ -104,13 +102,19 @@ const NewProduct = (props) => {
                         placeholder="Press enter to add categories"
                     />
                 </div>
-                {errors.productsImages ? <small>{errors.productsImages}</small> : <small></small>}
+                {errors.productsImages ? <small>{errors.productsImages}</small> : <p></p>}
 
-                <input type="text" name="description" value={newProduct.description} placeholder="Product description" onChange={readInput} className="adminFormInputs" />
-                {errors.description ? <small>{errors.description}</small> : <small></small>}
+                <div className="inputContainer">
+                    <label>Product description</label>
+                    <input type="text" name="description" value={newProduct.description} onChange={readInput} className="adminFormInputs" />
+                </div>
+                {errors.description ? <small>{errors.description}</small> : <p></p>}
 
-                <input type="text" name="name" value={newProduct.name} placeholder="Product name" onChange={readInput} className="adminFormInputs" />
-                {errors.name ? <small>{errors.name}</small> : <small></small>}
+                <div className="inputContainer">
+                    <label>Product name</label>
+                    <input type="text" name="name" value={newProduct.name} onChange={readInput} className="adminFormInputs" />
+                </div>
+                {errors.name ? <small>{errors.name}</small> : <p></p>}
 
                 <div className="tags-input">
                     <ul id="tags">
@@ -132,10 +136,13 @@ const NewProduct = (props) => {
                         placeholder="Press enter to add categories"
                     />
                 </div>
-                {errors.categories ? <small>{errors.categories}</small> : <small></small>}
+                {errors.categories ? <small>{errors.categories}</small> : <p></p>}
 
-                <input type="text" name="brand" value={newProduct.brand} placeholder="Prodcut brand" onChange={readInput} className="adminFormInputs" />
-                {errors.brand ? <small>{errors.brand}</small> : <small></small>}
+                <div className="inputContainer">
+                    <label>Product brand</label>
+                    <input type="text" name="brand" value={newProduct.brand} onChange={readInput} className="adminFormInputs" />
+                </div>
+                {errors.brand ? <small>{errors.brand}</small> : <p></p>}
 
                 <div className="rowInputs">
                     <div>
@@ -143,7 +150,7 @@ const NewProduct = (props) => {
                             <label htmlFor="price">Price: </label>
                             <input type="number" name="price" value={newProduct.price} id="price" onChange={readInput} className="adminFormInputsNumber" />
                         </div>
-                        {errors.price ? <small>{errors.price}</small> : <small></small>}
+                        {errors.price ? <small>{errors.price}</small> : <p></p>}
                     </div>
 
                     <div>
@@ -151,10 +158,11 @@ const NewProduct = (props) => {
                             <label htmlFor="discount">Discount: </label>
                             <input type="number" name="discount" value={newProduct.discount} onChange={readInput} className="adminFormInputsNumber" />
                         </div>
-                        {errors.price ? <small>{errors.price}</small> : <small></small>}
+                        {errors.discount ? <small>{errors.discount}</small> : <p></p>}
                     </div>
 
                 </div>
+                <Link to="/admin" className="adminButton">Go back</Link>
                 <button type="button" onClick={sendNewProdcut} className="adminButton">Add</button>
             </form>
         </div>

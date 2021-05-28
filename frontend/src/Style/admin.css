@@ -19,23 +19,32 @@
     align-items: center;
     width: 80%;
     background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,.2);
+    border-radius: 5px;
 }
 
 small {
     color: red;
-    font-size: medium;
+    font-weight: 600;
+    opacity: 1;
+
 }
 
 .adminFormInputs{
     border: none;
     background: none;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid silver;
     outline: none;
     padding: 5px;
     width: 90%;
-    margin: 2vh;
+    margin: 1vh;
     letter-spacing: 1px;
     font-size: medium;
+    transition: all .2s;
+}
+
+.adminFormInputs:hover{
+    border-bottom: 1px solid grey;
 }
 
 .adminFormInputs:focus{
@@ -44,19 +53,21 @@ small {
 
 .adminFormInputsNumber{
     border: none;
-    background: white;
-    border-radius: 25px;
+    background: none;
+    border-bottom: 1px solid grey;
     outline: none;
     padding: 5px;
-    margin: 2vh 2vh;
-    width: 10%;
+    width: 50%;
+    margin: 2vh;
+    letter-spacing: 1px;
+    font-size: medium;
 }
 
 .adminButton{
     border: 1px solid black;
     width: 6rem;
     height: 2rem;
-    margin-bottom: 2vh;
+    margin: 2vh 0;
 }
 
 .rowInputs{
@@ -74,7 +85,6 @@ small {
 .rowInputs div div{
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: center;
 }
 
@@ -82,17 +92,26 @@ small {
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
-    padding: 2vh;
+    padding: 1vh;
     width: 90%;
     margin: 2vh;
-    background-color: white;
-	border-radius: 25px;
+    background-color: ghostwhite;
+	border-radius: 6px;
+    border: 1px solid ghostwhite;
+    transition: all .2s;
+}
+
+.tags-input:hover{
+    border: 1px solid hsl(240, 100%, 30%);
 }
 
 
 #tags {
 	display: flex;
 	flex-wrap: wrap;
+}
+ul {
+    margin-bottom: 0;
 }
 
 .tag {
@@ -125,8 +144,26 @@ small {
 }
 
 .newCategoryInput{
+    flex: 1;
     padding: 5px;
     border: none;
-    border-bottom: 1px solid black;
     outline: none;
+    background: none;
+    margin-bottom: 8px;
+}
+
+.inputContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label{
+    position: relative;
+    top: 22px;
+    color: silver;
+}
+.inputContainer label{
+    width: 90%;
 }
