@@ -18,7 +18,7 @@
     flex-direction: column;
     align-items: center;
     width: 80%;
-    background: #DDDDDD;
+    background: #fff;
 }
 
 small {
@@ -28,13 +28,18 @@ small {
 
 .adminFormInputs{
     border: none;
-    background: white;
-    border-radius: 25px;
+    background: none;
+    border-bottom: 1px solid grey;
     outline: none;
-    padding: 2vh;
+    padding: 5px;
     width: 90%;
     margin: 2vh;
     letter-spacing: 1px;
+    font-size: medium;
+}
+
+.adminFormInputs:focus{
+    border-bottom: 1px solid blue;
 }
 
 .adminFormInputsNumber{

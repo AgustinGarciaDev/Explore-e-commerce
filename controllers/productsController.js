@@ -1,7 +1,6 @@
 const Product = require("../models/Product")
 
 const getAllProducts = async (req, res) => {
-
     try {
         const result = await Product.find()
             .populate({ path: "comments", populate: { path: "userId", select: { "_id": 1, "user": 1, "urlImg": 1 } } })
@@ -21,7 +20,6 @@ const getProductById = async (req, res) => {
         res.json({ success: false, err: "An error has occurred on our server" })
     }
 }
-
 const postProduct = async (req, res) => {
     try {
         const result = await new Product(req.body).save()
@@ -31,7 +29,6 @@ const postProduct = async (req, res) => {
         res.json({ success: false, err: "An error has occurred on our server" })
     }
 }
-
 const deleteProduct = async (req, res) => {
     const { id } = req.params
 
@@ -42,7 +39,6 @@ const deleteProduct = async (req, res) => {
         res.json({ success: false, err: "An error has occurred on our server" })
     }
 }
-
 const updateProduct = async (req, res) => {
     const { id } = req.params
 
@@ -53,9 +49,7 @@ const updateProduct = async (req, res) => {
         res.json({ success: false, err: "An error has occurred on our server" })
     }
 }
-
 /*---------------- Comments ----------------------- */
-
 const postComment = async (req, res) => {
     const { idProduct } = req.params
 
@@ -68,10 +62,8 @@ const postComment = async (req, res) => {
         res.json({ success: false, err: "An error has occurred on our server" })
     }
 }
-
 const deleteComment = async (req, res) => {
     const { idProduct, idComment } = req.params
-
     try {
         const result = await Product.findByIdAndUpdate(idProduct, { $pull: { comments: { _id: idComment } } }, { new: true })
             .populate({ path: "comments", populate: { path: "userId", select: { "_id": 1, "user": 1, "urlImg": 1 } } })
@@ -81,11 +73,9 @@ const deleteComment = async (req, res) => {
         res.json({ success: false, err: "An error has occurred on our server" })
     }
 }
-
 const putComment = async (req, res) => {
     const { idProduct, idComment } = req.params
     const { comment } = req.body
-
     try {
         const result = await Product.findOneAndUpdate({ "_id": idProduct, "comments._id": idComment }, { $set: { "comments.$.comment": comment } }, { new: true })
             .populate({ path: "comments", populate: { path: "userId", select: { "_id": 1, "user": 1, "urlImg": 1 } } })
@@ -96,9 +86,7 @@ const putComment = async (req, res) => {
         res.json({ success: false, err: "An error has occurred on our server" })
     }
 }
-
 /* -------------------Score----------------------------------------------------- */
-
 const postScore = async (req, res) => {
     const { idProduct } = req.params
 
@@ -111,7 +99,6 @@ const postScore = async (req, res) => {
         res.json({ success: false, err: "An error has occurred on our server" })
     }
 }
-
 const deleteScore = async (req, res) => {
     const { idProduct, idScore } = req.params
 
@@ -124,7 +111,6 @@ const deleteScore = async (req, res) => {
         res.json({ success: false, err: "An error has occurred on our server" })
     }
 }
-
 const putScore = async (req, res) => {
     const { idProduct, idScore } = req.params
     const { score } = req.body
@@ -139,6 +125,45 @@ const putScore = async (req, res) => {
         res.json({ success: false, err: "An error has occurred on our server" })
     }
 }
+/* ---------------Categories ----------------- */
+const postCategories = async (req, res) => {
+    const { idProduct } = req.params
+    const { name } = req.body
+
+    try {
+        const result = await Product.findByIdAndUpdate( idProduct, { $push:{ categories: req.body  }}, { new: true })
+        res.json({ success: true, result })
+    } catch (error) {
+        res.json({ success: false, err: "An error has occurred on our server" })
+    }
+}
+
+const deleteCategories = async (req, res) => {
+    const { idProduct, idCategory } = req.params
+
+    try {
+        const result = await Product.findByIdAndUpdate(idProduct, { $pull: { categories: { _id: idCategory } } }, { new: true })
+        res.json({ success: true, result })
+    } catch (error) {
+        res.json({ success: false, err: "An error has occurred on our server" })
+    }
+}
+
+const putCategories = async (req, res) => {
+    const { idProduct, idCategory } = req.params
+    const { name } = req.body
+
+    try {
+        const result = await Product.findOneAndUpdate({ "_id": idProduct, "categories._id": idCategory }, { $set: { "categories.$.name": name } }, { new: true })
+        res.json({ success: true, result })
+    } catch (error) {
+        console.log(error)
+        res.json({ success: false, err: "An error has occurred on our server" })
+    }
+}
+
+
+
 
 
 module.exports = {
@@ -152,5 +177,8 @@ module.exports = {
     putComment,
     postScore,
     deleteScore,
-    putScore
+    putScore,
+    postCategories,
+    deleteCategories,
+    putCategories
 }
