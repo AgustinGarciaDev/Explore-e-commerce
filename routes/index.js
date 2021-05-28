@@ -6,7 +6,7 @@ const productsValidator = require('../config/productsValidator')
 const { getAllProducts, getProductById, postProduct, deleteProduct,
     updateProduct, postComment, deleteComment, putComment,
     postScore, deleteScore, putScore,
-    postCategories, deleteCategories, putCategories } = require("../controllers/productsController")
+    postCategories, deleteCategories, putCategories, pruebaHosteo } = require("../controllers/productsController")
     
 const { newUser, login, relogin } = require("../controllers/userControllers")
 
@@ -43,6 +43,8 @@ router.route("/products/categories/:idProduct")
 router.route("/products/categories/:idProduct/:idCategory")
 .delete( deleteCategories )
 .put( putCategories )
+
+
 
 // const validator = require("../config/validator")
 

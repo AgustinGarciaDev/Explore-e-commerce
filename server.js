@@ -3,6 +3,7 @@ const express = require("express")
 const cors = require("cors")
 const router = require("./routes/index")
 const passport = require ("passport")
+const fileUpload = require("express-fileupload")
 require("./config/database")
 require("./config/passport")
 
@@ -11,6 +12,7 @@ const app = express()
 
 app.use(cors())
 app.use(express.json())
+app.use( fileUpload({ useTempFiles: true }) )
 app.use("/api", router)
 
 
