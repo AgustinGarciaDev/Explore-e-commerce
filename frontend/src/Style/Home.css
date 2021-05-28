@@ -1,15 +1,98 @@
-.sizeImage{
-    width: 100%;
-    height: 40vw;
+/* Hero */
+
+#video_hero {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  z-index: -1000;
+  overflow: hidden;
 }
-.carousel-caption {
-    position: absolute;
-    right: 15%;
-    top: 207px;
-    left: 15%;
-    z-index: 10;
-    color: #000;
+.contenido {
+    height: 33vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    backdrop-filter: brightness(0.5);
+    color: white;
 }
+.titleHero{
+    font-family: "Montserrat";
+    font-size: 4.5rem;
+}
+
+
+.subTitleHero{
+    font-family: "Montserrat";
+    font-weight: 300;
+}
+
+.callToActionHome{
+    background-color: #4158D0;
+    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    border: none;
+    padding: 10px;
+    width: 15vw;
+    color: white;
+    border-radius: 10px;
+    font-family: "Montserrat";
+    font-weight: 300;
+    
+}
+
+/* Contenct carrousel */
+
+.containerCarrousel{
+       overflow: hidden;
+}
+.slideOne{
+
+    background: url("https://sexplore.s3.eu-west-2.amazonaws.com/shopify/homepage-4-category/butt-plug.png"),linear-gradient(0deg
+    ,#63cae0 0,#0f84ea 100%);
+    background-position: center;
+     background-size: contain ;  
+    height: 42vw;
+}
+
+.slideTwo{
+    background: url("https://sexplore.s3.eu-west-2.amazonaws.com/shopify/homepage-4-category/cock-rings.png"),linear-gradient(0deg,#f3a900 0,#ff7615 100%);
+     background-position: center;
+      background-size: contain ;  
+    height: 42vw;
+}
+
+.slideThree{
+    background: url("https://sexplore.s3.eu-west-2.amazonaws.com/shopify/homepage-4-category/clitoral.png"),linear-gradient(0deg,#f54a5d 0,#671e6d 100%);
+ background-position: center;
+  background-size: contain ;  
+    height: 42vw;
+}
+
+.slideFor{
+   background: url("https://sexplore.s3.eu-west-2.amazonaws.com/shopify/homepage-4-category/prostate-massager.png"),linear-gradient(0deg,#8ccfde 0,#03b583 100%);
+    background-position: center;
+    background-size: contain ;  
+   height: 42vw;
+}
+
+.slideSix{
+    background: url("https://sexplore.s3.eu-west-2.amazonaws.com/shopify/homepage-4-category/wands.png"),linear-gradient(0deg,#0c6b80 0,#d22c50 100%);
+    background-position: center;
+    background-size: contain ;  
+    height: 42vw;
+}
+.titleContent{
+    font-family: 'Montserrat';
+    font-weight: bold;
+}
+.textContent{
+    font-family: 'Montserrat';
+}
+/* Card Product */
 
 .containerImgHome{
     background-image: url("http://baravdg.com/wp-content/uploads/2021/05/Capture.jpg");
