@@ -22,6 +22,8 @@ const getProductById = async (req, res) => {
     }
 }
 const postProduct = async (req, res) => {
+ 
+
     try {
         const result = await new Product(req.body).save()
         res.json({ success: true, result })
@@ -164,7 +166,6 @@ const putCategories = async (req, res) => {
 }
 
 /* ------------------------- hosteo-------------------------------------- */
-
 
 const pruebaHosteo = async (req,res)=>{
 
