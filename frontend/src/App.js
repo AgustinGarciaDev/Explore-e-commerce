@@ -4,14 +4,11 @@ import './Style/Home.css'
 import './Style/admin.css'
 import './Style/header.css'
 import './Style/Footer.css'
-<<<<<<< HEAD
 import './Style/sexToyCategory.css'
 import './Style/accesories.css'
-=======
 import "./Style/checkout.css"
 import 'react-credit-cards/es/styles-compiled.css';
 import "./Style/CreditCard.css"
->>>>>>> c5f83eb18f0cd59ac7b74cb102f7643bb8d58e31
 import Home from './pages/Home'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
@@ -23,13 +20,10 @@ import Product from "./pages/Product";
 import NewProduct from "./pages/NewProduct";
 import Products from "./pages/Products";
 import ShoppingCart from "./pages/ShoppingCart";
-<<<<<<< HEAD
 import EditProducts from "./pages/EditProducts";
 import SexToyCategory from "./pages/SexToyCategory";
 import Accesories from "./pages/Accesories"
-=======
 import Checkout from "./pages/Checkout"
->>>>>>> c5f83eb18f0cd59ac7b74cb102f7643bb8d58e31
 
 const App = (props) => {
   if (props.usuarioStatus) {
@@ -60,12 +54,9 @@ const App = (props) => {
           <Route exact path="/edit-products" component={EditProducts} />
           <Route exact path="/products" component={Products} />
           <Route exact path="/shoppingCart" component={ShoppingCart} />
-<<<<<<< HEAD
           <Route exact path="/sextoy" component={SexToyCategory} />
           <Route exact path="/accesories" component={Accesories} />
-=======
-          <Route exact path="/checkout" component={ Checkout } />
->>>>>>> c5f83eb18f0cd59ac7b74cb102f7643bb8d58e31
+          <Route exact path="/checkout" component={Checkout} />
         </Switch>
       </>
   }
