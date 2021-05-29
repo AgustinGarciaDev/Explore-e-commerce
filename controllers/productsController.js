@@ -1,7 +1,5 @@
 const Product = require("../models/Product")
-const path = require("path")
-let cloudinary = require('cloudinary').v2
-
+const cloudinary = require('cloudinary').v2
 
 const getAllProducts = async (req, res) => {
     try {
@@ -134,7 +132,7 @@ const postCategories = async (req, res) => {
     const { name } = req.body
 
     try {
-        const result = await Product.findByIdAndUpdate( idProduct, { $push:{ categories: req.body  }}, { new: true })
+        const result = await Product.findByIdAndUpdate(idProduct, { $push: { categories: req.body } }, { new: true })
         res.json({ success: true, result })
     } catch (error) {
         res.json({ success: false, err: "An error has occurred on our server" })
@@ -165,20 +163,19 @@ const putCategories = async (req, res) => {
     }
 }
 
-/* --------------------------------------------------------------- */
-// cloudinary.config({ 
-//     cloud_name : 'dvh9yxfgi' , 
-//     api_key : '547514222417516' , 
-//     api_secret : 'FnGih22hdSCaHVD-4ebA5e-CVhk'  
-// })
-
-// const pruebaHosteo = async (req,res)=>{
-
-//    const { url } = await cloudinary.uploader.upload( req.files.img.tempFilePath , {width: 100, height: 100, gravity: "faces", crop: "thumb"} )
-
-// }
+/* ------------------------- hosteo-------------------------------------- */
 
 
+const pruebaHosteo = async (req, res) => {
+
+    const { url } = await cloudinary.uploader.upload(req.files.img.tempFilePath, {
+        folder: "users",
+        transformation: [{ width: 100, height: 100, gravity: "faces", crop: "thumb" }]
+    })
+
+    console.log(url, "poner en la base de datos")
+
+}
 
 
 module.exports = {
@@ -195,5 +192,6 @@ module.exports = {
     putScore,
     postCategories,
     deleteCategories,
-    putCategories
+    putCategories,
+    pruebaHosteo
 }
