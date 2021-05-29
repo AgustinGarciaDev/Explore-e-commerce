@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 
 const CardProduct = (props) => {
     const { buyArticle , product } = props
+
     const buy = () => {
         buyArticle(product)
     }
