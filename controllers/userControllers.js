@@ -1,6 +1,7 @@
 const User = require ("../models/User")
 const bcryptjs = require ("bcryptjs")
 const jwt = require("jsonwebtoken")
+let cloudinary = require('cloudinary').v2
 
 
 
@@ -51,15 +52,14 @@ const userControllers={
 
         console.log(req.files.photo)
 
-    //     cloudinary.config({ 
-    //         cloud_name : 'dvh9yxfgi' , 
-    //         api_key : '547514222417516' , 
-    //         api_secret : 'FnGih22hdSCaHVD-4ebA5e-CVhk'  
-    //     })
+        cloudinary.config({ 
+            cloud_name : 'dvh9yxfgi' , 
+            api_key : '547514222417516' , 
+            api_secret : 'FnGih22hdSCaHVD-4ebA5e-CVhk'  
+        })
     
-    //    const { url } = await cloudinary.uploader.upload( req.files.photo , {width: 100, height: 100, gravity: "faces", crop: "thumb"} )
-    //    console.log(url)
-    //    console.log("hola2")
+       const { url } = await cloudinary.uploader.upload( req.files.photo.tempFilePath , {folder: "users", transformation: [{width: 100, height: 100, gravity: "faces", crop: "thumb"}]} )
+       console.log(url)
     
     }
 
