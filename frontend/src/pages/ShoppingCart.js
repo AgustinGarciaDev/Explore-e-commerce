@@ -22,7 +22,7 @@ const ShoppingCart = (props) => {
                         props.cart.length === 0 ?
                             <h1>NO HAY ARTICULOS CARGADOS</h1>
                             :
-                            props.cart.map(article => <ArticleCart article={article}/>)
+                            props.cart.map(article => <ArticleCart key={article._id} article={article}/>)
                     }
                     <div className="totalCart">
                         <div><h3>Subtotal:</h3></div>
