@@ -3,9 +3,11 @@ import { connect } from "react-redux"
 import { toast } from 'react-toastify';
 import { GoogleLogin } from 'react-google-login'
 import userActions from '../redux/actions/userActions'
+import axios from "axios";
 
 const SignUp = (props) => {
 
+    const [photo, setPhoto] = useState({photo: ''})
     const [errores, setErrores] = useState([])
     const [infoUser, setInfoUser] = useState({
         user: "",
@@ -14,6 +16,19 @@ const SignUp = (props) => {
         urlImg: "",
         legalAge: false,
     })
+
+    const uploadPhoto= e => {
+        setPhoto({photo: e.target.files[0]})
+    }
+
+    const sendPhoto = async (e) => {
+        e.preventDefault()
+        const formData = new FormData()
+        formData.append('photo', photo.photo)
+        props.uploadPhoto(formData)
+        // await axios.post("http://localhost:4000/api/user/uploadPhoto", formData)
+    
+    }
 
     const changeValue = (e) => {
         setInfoUser({
@@ -110,6 +125,8 @@ const SignUp = (props) => {
                         cookiePolicy={'single_host_origin'}
                     />,
                 </div>
+                <input type="file" name="foto" id="foto" onChange={uploadPhoto} />
+                    <input type="submit" onClick={sendPhoto}/>   
             </div>
         </>
     )
@@ -120,7 +137,8 @@ const SignUp = (props) => {
 
 const mapDispatchToProps = {
 
-    createAcount: userActions.createAcount
+    createAcount: userActions.createAcount,
+    uploadPhoto: userActions.uploadPhoto,
 }
 
 

@@ -50,12 +50,18 @@ const userActions = {
 
     relogin: (userToken) => {   
         return async (dispatch, getState) => {
-          const response= await axios.get("http://localhost:4000/api//user/relogin", {headers: {'Authorization': 'Bearer '+userToken} })
+          const response= await axios.get("http://localhost:4000/api/user/relogin", {headers: {'Authorization': 'Bearer '+userToken} })
         
                 dispatch({type: 'SIGNIN_USER', payload: {
                     ...response.data.response,
                     token: userToken                  
                 }})
+        }
+    },
+
+     uploadPhoto: (formData) => {   
+        return async (dispatch, getState) => {
+            await axios.post("http://localhost:4000/api/user/uploadPhoto", formData)
         }
     },
 
