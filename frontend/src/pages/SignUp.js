@@ -25,8 +25,8 @@ const SignUp = (props) => {
         e.preventDefault()
         const formData = new FormData()
         formData.append('photo', photo.photo)
-        console.log(photo)
-        await axios.post("http://localhost:4000/api/user/uploadPhoto", formData)
+        props.uploadPhoto(formData)
+        // await axios.post("http://localhost:4000/api/user/uploadPhoto", formData)
     
     }
 
@@ -137,7 +137,8 @@ const SignUp = (props) => {
 
 const mapDispatchToProps = {
 
-    createAcount: userActions.createAcount
+    createAcount: userActions.createAcount,
+    uploadPhoto: userActions.uploadPhoto,
 }
 
 

@@ -59,6 +59,12 @@ const userActions = {
         }
     },
 
+     uploadPhoto: (formData) => {   
+        return async (dispatch, getState) => {
+            await axios.post("http://localhost:4000/api/user/uploadPhoto", formData)
+        }
+    },
+
 }
 
 export default userActions

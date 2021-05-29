@@ -49,17 +49,17 @@ const userControllers={
     
     uploadPhoto: async (req,res)=>{
 
-        console.log("hola")
+        console.log(req.files.photo)
 
-        cloudinary.config({ 
-            cloud_name : 'dvh9yxfgi' , 
-            api_key : '547514222417516' , 
-            api_secret : 'FnGih22hdSCaHVD-4ebA5e-CVhk'  
-        })
+    //     cloudinary.config({ 
+    //         cloud_name : 'dvh9yxfgi' , 
+    //         api_key : '547514222417516' , 
+    //         api_secret : 'FnGih22hdSCaHVD-4ebA5e-CVhk'  
+    //     })
     
-       const { url } = await cloudinary.uploader.upload( req.files.photo , {width: 100, height: 100, gravity: "faces", crop: "thumb"} )
-       console.log(url)
-       console.log("hola2")
+    //    const { url } = await cloudinary.uploader.upload( req.files.photo , {width: 100, height: 100, gravity: "faces", crop: "thumb"} )
+    //    console.log(url)
+    //    console.log("hola2")
     
     }
 
