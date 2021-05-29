@@ -57,3 +57,44 @@
     width: 50%;
 
 }
+
+.containerProductsSextoy{
+    display: flex;
+    justify-content: center;
+    margin: 2vw;
+    align-items: center;
+     flex-wrap: wrap;
+}
+
+.containerTextCardSexToy > h2{
+    font-family: 'Montserrat';
+}
+
+.containerTextCardSexToy > p {
+        width: 30vw;
+    text-align: center;
+    font-family: 'Montserrat';
+}
+.containerText{
+    padding: 20px;
+    height: 14vw;
+    min-height: 14vw;
+}
+/* Container Products Vulva */
+
+.containerProductsVulva{
+    background-image:url("https://sexplore.s3.eu-west-2.amazonaws.com/shopify/category-page-section-dividers/glass-dildos.png"),linear-gradient(140deg,var(--green)0%,var(--blue)100%);
+    height: 30vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50%;
+}
+.containerProductsButts{
+    background-image:url("https://sexplore.s3.eu-west-2.amazonaws.com/shopify/category-page-section-dividers/anal-beads.png"),linear-gradient(140deg,var(--orange)0%,var(--yellow)100%) ;
+     height: 30vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50%;
+}

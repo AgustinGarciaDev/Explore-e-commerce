@@ -5,6 +5,7 @@ import './Style/admin.css'
 import './Style/header.css'
 import './Style/Footer.css'
 import './Style/sexToyCategory.css'
+import './Style/accesories.css'
 import Home from './pages/Home'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
@@ -18,6 +19,7 @@ import Products from "./pages/Products";
 import ShoppingCart from "./pages/ShoppingCart";
 import EditProducts from "./pages/EditProducts";
 import SexToyCategory from "./pages/SexToyCategory";
+import Accesories from "./pages/Accesories"
 
 const App = (props) => {
   if (props.usuarioStatus) {
@@ -30,6 +32,7 @@ const App = (props) => {
           <Route exact path="/products" component={Products} />
           <Route exact path="/shoppingCart" component={ShoppingCart} />
           <Route exact path="/sextoy" component={SexToyCategory} />
+          <Route exact path="/accesories" component={Accesories} />
         </Switch>
       </>
   } else if (localStorage.getItem('token')) {
@@ -48,6 +51,7 @@ const App = (props) => {
           <Route exact path="/products" component={Products} />
           <Route exact path="/shoppingCart" component={ShoppingCart} />
           <Route exact path="/sextoy" component={SexToyCategory} />
+          <Route exact path="/accesories" component={Accesories} />
         </Switch>
       </>
   }
