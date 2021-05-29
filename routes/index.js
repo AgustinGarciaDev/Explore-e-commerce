@@ -8,7 +8,7 @@ const { getAllProducts, getProductById, postProduct, deleteProduct,
     postScore, deleteScore, putScore,
     postCategories, deleteCategories, putCategories, pruebaHosteo } = require("../controllers/productsController")
     
-const { newUser, login, relogin } = require("../controllers/userControllers")
+const { newUser, login, relogin, uploadPhoto } = require("../controllers/userControllers")
 
 router.route("/products")
 .get(getAllProducts)
@@ -59,5 +59,7 @@ router.route("/user/signin")
 router.route('/user/relogin')
     .get(passport.authenticate('jwt', { session: false }), relogin)
 
+router.route("/user/uploadPhoto")
+    .post(uploadPhoto)
 
 module.exports = router

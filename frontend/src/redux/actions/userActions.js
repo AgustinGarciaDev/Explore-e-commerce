@@ -50,7 +50,7 @@ const userActions = {
 
     relogin: (userToken) => {   
         return async (dispatch, getState) => {
-          const response= await axios.get("http://localhost:4000/api//user/relogin", {headers: {'Authorization': 'Bearer '+userToken} })
+          const response= await axios.get("http://localhost:4000/api/user/relogin", {headers: {'Authorization': 'Bearer '+userToken} })
         
                 dispatch({type: 'SIGNIN_USER', payload: {
                     ...response.data.response,
