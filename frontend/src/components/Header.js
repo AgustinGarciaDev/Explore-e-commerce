@@ -19,8 +19,8 @@ const Header = (props) => {
                         <Nav.Link> Sex toy </Nav.Link>
                     </ LinkContainer>
 
-                    < LinkContainer to="/ds" >
-                        <Nav.Link> Lubricants </Nav.Link>
+                    < LinkContainer to="/accesories" >
+                        <Nav.Link> Accesories </Nav.Link>
                     </ LinkContainer>
                     < LinkContainer to="/ds" >
                         <Nav.Link> All products </Nav.Link>
