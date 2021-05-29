@@ -6,7 +6,8 @@ import './Style/header.css'
 import './Style/Footer.css'
 import './Style/sexToyCategory.css'
 import './Style/accesories.css'
-import "./Style/checkout.css"
+import './Style/checkout.css'
+import './Style/paymentSucessFull.css'
 import 'react-credit-cards/es/styles-compiled.css';
 import "./Style/CreditCard.css"
 import Home from './pages/Home'
@@ -24,6 +25,7 @@ import EditProducts from "./pages/EditProducts";
 import SexToyCategory from "./pages/SexToyCategory";
 import Accesories from "./pages/Accesories"
 import Checkout from "./pages/Checkout"
+import PaymentSuccesfull from "./pages/PaymentSuccesfull"
 
 const App = (props) => {
   if (props.usuarioStatus) {
@@ -37,6 +39,7 @@ const App = (props) => {
           <Route exact path="/shoppingCart" component={ShoppingCart} />
           <Route exact path="/sextoy" component={SexToyCategory} />
           <Route exact path="/accesories" component={Accesories} />
+          <Route exact path="/payment" component={PaymentSuccesfull} />
         </Switch>
       </>
   } else if (localStorage.getItem('token')) {
@@ -57,6 +60,7 @@ const App = (props) => {
           <Route exact path="/sextoy" component={SexToyCategory} />
           <Route exact path="/accesories" component={Accesories} />
           <Route exact path="/checkout" component={Checkout} />
+          <Route exact path="/payment" component={PaymentSuccesfull} />
         </Switch>
       </>
   }
