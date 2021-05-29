@@ -1,0 +1,212 @@
+
+.mainContainer{
+    min-height: 100vh;
+    display: flex;
+    font-family: "Montserrat";
+}
+
+.leftContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 2;
+    background-color:#F1F1F1 ;
+    padding: 2.5% 2%;
+}
+.imgContainer {
+    display: flex;
+    justify-content: center;
+}
+.logo{
+    background-image: url("http://tingarciadg.com/wp-content/uploads/2021/05/Diseno-sin-titulo-4.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: center;
+    background-position-y: center;
+    width: 17rem;
+    height: 5rem;
+}
+
+.formasDePagoContainer{
+    margin-top: 2.5%;
+   display: flex;
+   justify-content: center;
+}
+
+.divider{
+    height: 2px;
+    color: black;
+}
+
+.formContainer{
+    margin: 0 12% 0 12%;
+}
+
+.ContactInformation > div{
+    display: flex;
+    width:110%;
+    align-items: center;
+}
+
+.ContactInformation > input {
+    height: 2.5rem;
+    border-radius: 5px;
+    border: 0.5px solid #CDCDCD;
+    width:100%;
+    padding-left: 1.5%;
+    outline: none;
+}
+.ContactInformation > input:focus{
+    border:2px solid #FF4A5E
+} 
+
+.ContactInformation > div > h6{
+    margin-left: 15%;
+}
+
+.ContactInformation > div > h6 > span{
+    color: #FF4A5E;
+    cursor: pointer;
+}
+
+.checkbox{
+    display: flex;
+    margin-top: 1%;
+}
+.checkbox > input {
+    margin: 1% 0.5% 0 0;
+    
+}
+.checkbox > input:checked{
+    color: #FF4A5E;
+}
+
+.deliveryAdress div{
+    margin: 2.5% 0;
+}
+
+.deliveryAdress input {
+    height: 2.5rem;
+    border-radius: 5px;
+    border: 0.5px solid #CDCDCD;
+    width:100%;
+    padding-left: 1.5%;
+    outline: none;
+}
+
+.deliveryAdress input:focus{
+    border:2px solid #FF4A5E
+} 
+
+.inputDouble input {
+    width: 49%;
+}
+.inputDouble select {
+    height: 2.5rem;
+    border-radius: 5px;
+    border: 1px solid grey;
+    width: 49%;
+    padding-left: 1.5%;
+}
+
+.inputRigth{
+    margin-left: 2%;
+}
+
+.continue{
+    width: 30% ;
+    height: 3.5rem;
+    background-color: #FF1731;
+    border: none;
+    border-radius: 7px;
+    color: whitesmoke;
+}
+
+.d-block{
+    display: block;
+}
+
+.d-none{
+    display: none;
+}
+
+/* --------------right------------- */
+.rigthContainer{
+    flex-grow: 1;
+    margin: 0 3.5% 0 3%;
+    padding: 2.5% 2%;
+    
+}
+.rightChildContainer{
+    height: 70vh;
+    position: sticky;
+    top: 5%;
+}
+.productsContainer{ 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;   
+}
+.productsContainer > div {
+    display: flex;
+    align-items: center;
+}
+.productsContainer > div > h6 {
+    margin-left: 1%;
+}
+.productImg{
+    width: 5rem;
+    height: 5rem;
+    border: 1px solid #CDCDCD;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: center;
+    border-radius: 7px;
+}
+
+.discountContainer{
+    display: flex;
+    align-items:center;
+}
+
+.discountContainer input{
+    height: 2.5rem;
+    border-radius: 5px;
+    border: 0.5px solid #CDCDCD;
+    width:100%;
+    padding-left: 1.5%;
+    outline: none;
+}
+
+.discountContainer input:focus{
+    border: 2px solid #FF4A5E
+} 
+
+.discountContainer button {
+    width: 4.5rem;
+    height: 3rem;
+    padding: 0.7rem;
+    margin-left: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    background-color:#CCCCCC ;
+    color: white;
+}
+
+.counts-flex{
+    display: flex;
+    justify-content: space-between;
+}
+.counts-flex h6{
+    font-size: 1.1rem;
+}
+/* ----------paymentContainer------------------ */
+
+.paymentContainer > h1{
+    text-align: center;
+}
+
+.MakePayment{
+    display: flex;
+    justify-content: center;
+}

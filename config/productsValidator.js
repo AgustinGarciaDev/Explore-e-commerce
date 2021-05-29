@@ -32,7 +32,8 @@ const validator = (req, res, next) => {
         categories: joi.array().items(objectSchema).min(1).unique().required().messages({
             'array.min': 'You must add at least one caregory'
         }),
-
+        comments: joi.array(),
+        scores: joi.array(),
         name: joi.string().trim().required().pattern(new RegExp(namesRegExp)).messages({
             'string.empty': 'You must complete this field'
         }),

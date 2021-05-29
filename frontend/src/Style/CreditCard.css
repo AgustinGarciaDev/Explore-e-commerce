@@ -1,0 +1,35 @@
+
+.maincontainer{
+    display: flex;
+    flex-direction: column;
+}
+.maincontainer > h1 {
+    text-align: center;
+}
+
+
+#PaymentForm{
+    padding: 2%;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form > input {
+    width: 70%;
+    height: 2.5rem ;
+    border-radius: 5px;
+    border: 0.5px solid #CDCDCD;
+    padding-left: 1.5%;
+    outline: none;
+    margin: 0.5% 0;
+}
+form > input:focus{
+    border:2px solid #FF4A5E
+} 
