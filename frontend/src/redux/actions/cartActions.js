@@ -5,9 +5,14 @@ const cartActions = {
         return async (dispatch, getState) => {
             try {
                 const response = await axios.get('http://localhost:4000/api/products')
+/*                 const Data = [...response.data.result]
+                Data.map((article) => {
+                    article["units"] = 0
+                }) */
                 if (response) {
                     if (response.data.success) {
-                        return response.data
+                        dispatch({ type: 'PRODUCTS' , payload: response.data.result })
+                        return response.data 
                     } else {
                         return response.data
                     }
