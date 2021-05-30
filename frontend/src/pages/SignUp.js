@@ -25,9 +25,7 @@ const SignUp = (props) => {
         e.preventDefault()
         const formData = new FormData()
         formData.append('photo', photo.photo)
-        props.uploadPhoto(formData)
-        // await axios.post("http://localhost:4000/api/user/uploadPhoto", formData)
-    
+        props.uploadPhoto(formData)  
     }
 
     const changeValue = (e) => {
@@ -52,6 +50,13 @@ const SignUp = (props) => {
             toast.error("😬 All fields must be completed")
 
         } else {
+
+            if(!user.googleFlat){
+                const formData = new FormData()
+                formData.append('photo', photo.photo)
+                props.uploadPhoto(formData)
+                }
+                
             const respuesta = await props.createAcount(user)
 
             if (respuesta) {
@@ -98,7 +103,7 @@ const SignUp = (props) => {
                     <div>
                         <label >
                             <p>Foto user</p>
-                            <input name="urlImg" onChange={changeValue} value={infoUser.urlImg} type="text" />
+                            <input type="file" name="foto" id="foto" onChange={uploadPhoto} />
                         </label>
                     </div>
                     <div>
@@ -125,8 +130,6 @@ const SignUp = (props) => {
                         cookiePolicy={'single_host_origin'}
                     />,
                 </div>
-                <input type="file" name="foto" id="foto" onChange={uploadPhoto} />
-                    <input type="submit" onClick={sendPhoto}/>   
             </div>
         </>
     )
