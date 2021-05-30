@@ -10,6 +10,9 @@ const { getAllProducts, getProductById, postProduct, deleteProduct,
     
 const { newUser, login, relogin, uploadPhoto } = require("../controllers/userControllers")
 
+const { SendpurchaseSummary } = require("../controllers/mailerController")
+
+
 router.route("/products")
 .get(getAllProducts)
 .post(productsValidator, postProduct)
@@ -44,10 +47,10 @@ router.route("/products/categories/:idProduct/:idCategory")
 .delete( deleteCategories )
 .put( putCategories )
 
-/* ----------hosteo--------------- */
+/* ----------Envio de mails--------------- */
 
-router.route("/hosteo")
-.post( pruebaHosteo )
+router.route("/mails/sendSumary")
+.post( SendpurchaseSummary )
 
 // const validator = require("../config/validator")
 

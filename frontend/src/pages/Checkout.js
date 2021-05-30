@@ -1,10 +1,14 @@
 import react,{ useState ,useEffect } from "react"
+import { connect } from "react-redux"
+import productsAction from "../redux/actions/productsActions"
 import PaymentForm from "../components/PaymentForm"
 
-const Checkout =()=>{
+
+const Checkout =({ sendMail, history })=>{
     const [ form, setForm ] = useState({ email:"", check:false, firstName:"",lastName:"",adress:"",apartment:"",city:"",country:"",postCode:"",phone:"" })
     const [ countries, setCountries ] = useState([])
     const [ visible, setVisible ] = useState(false)
+    const [ creditCard, setCreditCard ] = useState({})
 
     useEffect(()=>{
         fetch("https://restcountries.eu/rest/v2/all")
@@ -15,8 +19,11 @@ const Checkout =()=>{
 
     const readFields = (e)=>{ setForm({...form, [e.target.name]: e.target.value }) } 
 
-    const readCreditCard =(state)=>{
-        console.log( state  )
+    const readCreditCard = state =>{ setCreditCard( state ) }
+
+    const sendAll = ()=>{
+        sendMail(form, creditCard )
+        .then( data => data.success && history.push("/sucess") )
     }
 
 
@@ -80,10 +87,8 @@ return<div className="mainContainer">
                 <PaymentForm  redState={ readCreditCard } />
 
                <div className="MakePayment" text-center>
-                <button className="continue">Make payment</button>
+                <button onClick={ sendAll } className="continue">Make payment</button>
                </div>
-                
-
             </div>              
 
         </div>
@@ -95,6 +100,7 @@ return<div className="mainContainer">
                     <div className="productImg" style={{ backgroundImage:"url('https://staticcl.natura.com/cdn/ff/Bz_PZGIa5cFUtEI-s7cptyY034XRKwLsHRvU8va9MyU/1617908940/public/styles/product_image_facebook_share/public/products/77430_1_8.jpg?itok=mDW-q_n-')" }} ></div>
                     <h6>Hola</h6>   
                 </div>
+                
                     <h6>$255</h6>
             </div>
             <hr />
@@ -123,4 +129,9 @@ return<div className="mainContainer">
     </div>
 }
 
-export default Checkout
+const mapDispatchToProps={
+    sendMail: productsAction.sendMail
+}
+
+
+export default connect(null, mapDispatchToProps ) (Checkout)

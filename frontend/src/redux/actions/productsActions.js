@@ -13,9 +13,14 @@ const productActions = {
                         return response.data
                     }
                 }
-            } catch (error) {
-                console.log(error)
-            }
+            } catch (error) { console.log(error) }
+        }
+    },
+    sendMail:( form )=>{
+        return()=>{
+           return axios.post("http://localhost:4000/api/mails/sendSumary",{ receiver: form })
+            .then( data => data.data )
+            .catch( err => console.log( err ) )
         }
     },
 
@@ -33,7 +38,6 @@ const productActions = {
             }
         }
     }
-
 }
 
 export default productActions
