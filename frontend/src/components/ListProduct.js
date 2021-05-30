@@ -5,17 +5,17 @@ import cartActions from "../redux/actions/cartActions"
 
 const ListProduct = (props) => {
 
-    const [products, setProducts] = useState([])
+    /* const [products,setProducts] = useState([]) */
 
     useEffect(() => {
         fetchProducts()
     }, [])
 
-    const fetchProducts = async () => {
-        let response = await props.allProducts()
-        if (response) {
-            setProducts(response.result)
-        }
+    const fetchProducts = () => {
+        /* let response = await */ props.allProducts()
+        /*         if (response) {
+                    setProducts(response.result)
+                } */
     }
 
     return (
@@ -23,7 +23,7 @@ const ListProduct = (props) => {
             <div>
                 <div className="titleContainerProducts"><h2>Popular sextoy</h2></div>
                 <div className="productsListHome">
-                    {products.map(product => <CardProduct key={product._id} product={product} />)}
+                    {props.products.map(product => <CardProduct key={product._id} product={product} />)}
                 </div>
             </div>
             {/*             <div>
@@ -44,7 +44,7 @@ const ListProduct = (props) => {
 
 const mapStateToProps = state => {
     return {
-        usuarioStatus: state.user.usuarioStatus
+        products: state.cart.articles
     }
 }
 

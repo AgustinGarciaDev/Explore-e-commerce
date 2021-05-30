@@ -4,7 +4,7 @@ import cartActions from "../redux/actions/cartActions"
 
 const ArticleCart = (props) => {
     const { article , removeArticle , add , subtract , globalAccountant } = props
-    const [accountant,setAccountant] = useState(1)
+    const [accountant,setAccountant] = useState( article.units )
 
     const remove = () => {
         removeArticle(article)

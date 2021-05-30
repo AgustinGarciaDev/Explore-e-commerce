@@ -1,13 +1,14 @@
 import { connect } from "react-redux"
+import { Redirect , Link } from "react-router-dom"
 import ArticleCart from "../components/ArticleCart"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
 
 const ShoppingCart = (props) => {
-    console.log(props.cart)
     return (
         <>
             <Header />
+            <Link to="/products">volver</Link>
             <div className="cartContainer">
                 <div className="titleShoppingCart">
                     <h1>Shopping Bag</h1>
