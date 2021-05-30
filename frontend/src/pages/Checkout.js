@@ -23,7 +23,7 @@ const Checkout =({ sendMail, history })=>{
 
     const sendAll = ()=>{
         sendMail(form, creditCard )
-        .then( data => history.push("/") )
+        .then( data => data.success && history.push("/sucess") )
     }
 
 
