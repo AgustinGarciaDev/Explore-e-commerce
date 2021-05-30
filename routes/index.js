@@ -15,7 +15,7 @@ const { SendpurchaseSummary } = require("../controllers/mailerController")
 
 router.route("/products")
 .get(getAllProducts)
-.post(productsValidator, postProduct)
+.post(/* productsValidator, */ postProduct)
 
 router.route("/products/:id")
 .get(getProductById)
@@ -32,7 +32,7 @@ router.route("/products/comments/:idProduct/:idComment")
 
 /* --------------------Scores------------------------------ */
 router.route("/products/score/:idProduct")
-    .post(postScore)
+.post(postScore)
 
 router.route("/products/score/:idProduct/:idScore")
 .delete(deleteScore)

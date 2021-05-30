@@ -19,7 +19,7 @@ const productActions = {
     sendMail:( form )=>{
         return()=>{
            return axios.post("http://localhost:4000/api/mails/sendSumary",{ receiver: form })
-            .then( data => data.data )
+            .then( data => data.data  )
             .catch( err => console.log( err ) )
         }
     },

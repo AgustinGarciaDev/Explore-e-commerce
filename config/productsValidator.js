@@ -34,6 +34,7 @@ const validator = (req, res, next) => {
         }),
         comments: joi.array(),
         scores: joi.array(),
+        stock:joi.number(),
         name: joi.string().trim().required().pattern(new RegExp(namesRegExp)).messages({
             'string.empty': 'You must complete this field'
         }),
