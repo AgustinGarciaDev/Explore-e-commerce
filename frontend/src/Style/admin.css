@@ -167,3 +167,201 @@ label{
 .inputContainer label{
     width: 90%;
 }
+
+/* EDIT PRODUCTS */
+
+.editProductsContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.productsContainer{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: whitesmoke;
+}
+
+.productForEdit{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    background-color: ghostwhite;
+    margin: 2vh 2vh;
+    box-shadow: 0 1px 3px rgba(0,0,0,.2);
+
+}
+
+.productForEditImg{
+    width: 100%;
+    height: 40vh;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.4s; 
+}
+
+.productForEdit:hover{
+    transform: scale(1.02);
+}
+
+.productNameContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+}
+
+.productNameContainer h4{
+    text-align: center;
+    color: black;
+}
+.productNameContainer h4:hover{
+    border-bottom: none;
+}
+
+
+@media(max-width: 800px){
+    .productForEdit{
+        width: 40%;
+    }
+}
+@media(max-width: 600px){
+    .productForEdit{
+        width: 70%;
+    }
+}
+
+.edittingProductContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: whitesmoke;
+    min-height: 100vh;
+}
+
+.productEditContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+}
+
+.productEditImg{
+    width: 100%;
+    height: 40vh;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    border: 1px solid silver;
+    margin: 2vh 0;
+}
+
+.productEditImg input{
+    flex: 1;
+    border: none;
+    border-bottom: 1px solid black;
+    background: none;
+    outline: none;
+    width: 100%;
+}
+.editInput{
+    width: 100%;
+    display: flex;
+}
+
+.editInput input{
+    flex: 1;
+    border: none;
+    border-bottom: 1px solid black;
+    background: none;
+    outline: none;
+    width: 100%;
+}
+.editInput textarea{
+    flex: 1;
+    border: 1px solid black;
+    background: none;
+    outline: none;
+    width: 100%;
+    padding: 5px;
+    resize: none;
+}
+
+.material-icons{
+    cursor: pointer;
+    margin-left: 1vw;
+}
+
+.shortInputs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shortInputs p{
+    margin-bottom: 0;
+}
+
+.shortInputs input{
+    background: none;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid silver;
+    width: auto;
+    margin: 0 2vh;
+}
+
+.shortsInputsContainer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 2vh 0;
+}
+
+
+
+@media(max-width: 1000px){
+    .productEditContainer{
+        width: 80%;
+    }
+}
+@media(max-width: 700px){
+    .productEditContainer{
+        width: 90%;
+    }
+}
+@media(max-width: 600px){
+    .shortsInputsContainer{
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+    }
+    .shortInputs input{
+        margin: 2vh 2vh;
+    }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

@@ -17,6 +17,7 @@ import NewProduct from "./pages/NewProduct";
 import Products from "./pages/Products";
 import ShoppingCart from "./pages/ShoppingCart";
 import EditProducts from "./pages/EditProducts";
+import ProductEdit from "./components/ProductEdit";
 
 const App = (props) => {
   if (props.usuarioStatus) {
@@ -43,6 +44,7 @@ const App = (props) => {
           <Route exact path="/Admin" component={Admin} />
           <Route exact path="/add-new-product" component={NewProduct} />
           <Route exact path="/edit-products" component={EditProducts} />
+          <Route exact path="/edit/prodcut/:_id" component={ProductEdit} />
           <Route exact path="/products" component={Products} />
           <Route exact path="/shoppingCart" component={ShoppingCart} />
         </Switch>

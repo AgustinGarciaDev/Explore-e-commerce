@@ -11,6 +11,17 @@ const productReducer = (state = initialState, action) => {
                 products: action.payload
             }
 
+        case 'UPDATE_CATEGORY':
+            return {
+                ...state,
+                products: state.products.map(product => {
+                    if (product._id === action.payload._id) {
+                        product = action.payload
+                    }
+                    return product
+                })
+            }
+
         default:
             return state
     }
