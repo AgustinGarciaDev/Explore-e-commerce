@@ -2,20 +2,19 @@ import React from 'react';
 import Cards from 'react-credit-cards';
 
 export default class PaymentForm extends React.Component {
-  state = { cvc: '', expiry: '', focus: '', name: '', number: '', };
+  state = { cvc: '', expiry: '', focus: '', name: '', number: '', cardBrand:""};
 
   handleInputFocus = (e) => { this.setState({ focus: e.target.name }); }
   
   handleInputChange = (e) => { const { name, value } = e.target;
    this.setState({ [name]: value });
-   
    this.props.redState( this.state )
   }
 
    
   render() {
     return  <div id="PaymentForm" >
-              <Cards cvc={this.state.cvc} expiry={this.state.expiry} focused={this.state.focus} name={this.state.name}
+              <Cards callback={ ({ issuer })=> this.setState({... this.state,cardBrand:issuer })  } cvc={this.state.cvc} expiry={this.state.expiry} focused={this.state.focus} name={this.state.name}
                   number={this.state.number} />
                 <form >
                   <input type="text" name="number" maxLength={ 16 } placeholder="Card Number" onChange={this.handleInputChange}

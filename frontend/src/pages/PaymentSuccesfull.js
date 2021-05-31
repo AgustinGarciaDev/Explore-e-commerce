@@ -1,7 +1,12 @@
+import { useEffect } from "react"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 
-const PaymentSuccessFull = () => {
+const PaymentSuccessFull = ({ history }) => {
+
+    useEffect(()=>{
+        window.scrollTo(0,0)
+    },[])
 
     return (
         <>
@@ -15,7 +20,7 @@ const PaymentSuccessFull = () => {
                     <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_ynz5xr.json" background="transparent" speed="1" style={{ width: 300, height: 300 }} loop autoplay></lottie-player>
                 </div>
                 <div>
-                    <button className="botonHomePayment">Go to Home!</button>
+                    <button onClick={ ()=> history.push("/") } className="botonHomePayment">Go to Home!</button>
                 </div>
             </div>
             <Footer />

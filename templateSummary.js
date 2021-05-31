@@ -1,8 +1,24 @@
 
-const Summary =(data)=>{
+const Summary =(form, creditCard, products)=>{
 
- data.name = "agustin"
- data.number = 123
+  let totalBuy = 0
+
+  products=[
+  { name:"producto1", price:20 },
+  { name:"producto2", price:30 },
+  { name:"producto3", price:40}]
+
+  products.map( product => totalBuy += product.price   )
+
+  const GetDate =( suma = 0 )=>{
+    let dateObj = new Date();
+    let month = dateObj.getUTCMonth() + 1
+    let day = dateObj.getUTCDate()
+    let year = dateObj.getUTCFullYear()
+    
+    return newdate = day + "/" + ( month + suma  ) + "/" + year ;
+  }
+
 
 
 return  `
@@ -454,7 +470,7 @@ return  `
             <tr>
               <td class="email-masthead">
                 <a href="https://example.com" class="f-fallback email-masthead_name">
-                [Product Name]
+                <img className="logo" src="http://tingarciadg.com/wp-content/uploads/2021/05/Diseno-sin-titulo-4.png" alt="" />
               </a>
               </td>
             </tr>
@@ -466,15 +482,15 @@ return  `
                   <tr>
                     <td class="content-cell">
                       <div class="f-fallback">
-                        <h1>Hi ${ data.name },</h1>
-                        <p>Thanks for using Explore   . This email is the receipt for your purchase. No payment is due.</p>
-                        <p>This purchase will appear as “Explore purchase” on your credit card statement for your {{credit_card_brand}} ending in ${ data.number }. Need to <a href="{{billing_url}}">update your payment information</a>?</p>
+                        <h1>Hi ${ form.firstName + " " + form.lastName },</h1>
+                        <p>Thanks for using Explore.This email is the receipt for your purchase.No payment is due.</p>
+                        <p>This purchase will appear as “<strong>Explore purchase</strong>” on your credit card statement for your <strong>${ creditCard.cardBrand }</strong> ending in <strong>${ creditCard.number.slice( -3 ) }</strong> . Need to <a href="{{billing_url}}">update your payment information</a>?</p>
                         <!-- Discount -->
                         <table class="discount" align="center" width="100%" cellpadding="0" cellspacing="0" role="presentation">
                           <tr>
                             <td align="center">
                               <h1 class="f-fallback discount_heading">10% off your next purchase!</h1>
-                              <p class="f-fallback discount_body">Thanks for your support! Here's a coupon for 10% off your next purchase if used by {{expiration_date}}.</p>
+                              <p class="f-fallback discount_body">Thanks for your support! Here's a coupon for 10% off your next purchase if used by ${ GetDate(1) } .</p>
                               <!-- Border based button
            https://litmus.com/blog/a-guide-to-bulletproof-buttons-in-email-design -->
                               <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
@@ -490,33 +506,37 @@ return  `
                         <table class="purchase" width="100%" cellpadding="0" cellspacing="0" role="presentation">
                           <tr>
                             <td>
-                              <h3>{{receipt_id}}</h3></td>
+                              <h3>#gn58th2f5gh8jdrt</h3></td>
                             <td>
-                              <h3 class="align-right">${ new Date().getDay() + "/"+ new Date().getMonth() + "/" + new Date().getFullYear()  }</h3></td>
+                              <h3 class="align-right">${ GetDate() }</h3></td>
                           </tr>
                           <tr>
                             <td colspan="2">
                               <table class="purchase_content" width="100%" cellpadding="0" cellspacing="0">
                                 <tr>
                                   <th class="purchase_heading" align="left">
-                                    <p class="f-fallback">Description</p>
+                                    <p class="f-fallback">Product</p>
                                   </th>
                                   <th class="purchase_heading" align="right">
                                     <p class="f-fallback">Amount</p>
                                   </th>
                                 </tr>
-                                {{#each receipt_details}}
-                                <tr>
-                                  <td width="80%" class="purchase_item"><span class="f-fallback">{{description}}</span></td>
-                                  <td class="align-right" width="20%" class="purchase_item"><span class="f-fallback">{{amount}}</span></td>
-                                </tr>
-                                {{/each}}
+                                ${ products.map( product =>`<tr>
+                                
+                                <td width="80%" class="purchase_item"><span class="f-fallback">${ product.name }</span></td>
+                                
+                                <td class="align-right" width="20%" class="purchase_item"><span class="f-fallback">${ product.price }</span></td>
+                                
+                                </tr>  `)
+
+                                }
+                              
                                 <tr>
                                   <td width="80%" class="purchase_footer" valign="middle">
                                     <p class="f-fallback purchase_total purchase_total--label">Total</p>
                                   </td>
                                   <td width="20%" class="purchase_footer" valign="middle">
-                                    <p class="f-fallback purchase_total">{{total}}</p>
+                                    <p class="f-fallback purchase_total">${ totalBuy }</p>
                                   </td>
                                 </tr>
                               </table>
@@ -525,7 +545,7 @@ return  `
                         </table>
                         <p>If you have any questions about this receipt, simply reply to this email or reach out to our <a href="{{support_url}}">support team</a> for help.</p>
                         <p>Cheers,
-                          <br>The [Product Name] Team</p>
+                          <br>The Explore Team</p>
                         <!-- Action -->
                         <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0" role="presentation">
                           <tr>
@@ -562,9 +582,9 @@ return  `
                 <table class="email-footer" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation">
                   <tr>
                     <td class="content-cell" align="center">
-                      <p class="f-fallback sub align-center">&copy; 2021 [Product Name]. All rights reserved.</p>
+                      <p class="f-fallback sub align-center">&copy; 2021 Explore. All rights reserved.</p>
                       <p class="f-fallback sub align-center">
-                        [Company Name, LLC]
+                        Explore
                         <br>1234 Street Rd.
                         <br>Suite 1234
                       </p>
