@@ -81,7 +81,4 @@ router.route('/user/relogin')
 router.route("/user/uploadPhoto")
     .post(uploadPhoto)
 
-
-
-
 module.exports = router

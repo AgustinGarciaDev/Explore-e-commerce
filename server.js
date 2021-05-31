@@ -5,6 +5,7 @@ const router = require("./routes/index")
 const passport = require ("passport")
 const fileUpload = require("express-fileupload")
 const cloudinary = require('cloudinary').v2
+const path = require("path")
 require("./config/database")
 require("./config/passport")
 
@@ -21,6 +22,15 @@ cloudinary.config({
     api_key: process.env.API_KEY,
     api_secret: process.env.API_SECRET  
 })
+
+if( process.env.NODE_ENV === "production" ){
+    app.use( express.static("build/build") )
+    app.get("*", (req,res)=>{
+    res.sendFile(path.join( __dirname+"/build/build/index.html" ) ) })
+}
+
+
+
 
 const port = process.env.PORT
 
