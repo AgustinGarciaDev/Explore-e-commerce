@@ -65,9 +65,11 @@ const userActions = {
         }
     },
 
+
     modifyUser: (dateToChange, token) => {   
         return async (dispatch, getState) => {
-            await axios.put("http://localhost:4000/api/user/modifyuser", dateToChange,  {headers: {'Authorization': 'Bearer '+ token} })
+           const response= await axios.put("http://localhost:4000/api/user/modifyuser/:id", dateToChange,  {headers: {'Authorization': 'Bearer '+ token} })
+           return(response)
         }
     },
 

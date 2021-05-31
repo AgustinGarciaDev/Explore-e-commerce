@@ -2,6 +2,8 @@ const express = require("express")
 const router = express.Router()
 const passport = require("passport")
 const productsValidator = require('../config/productsValidator')
+const validator = require("../config/validator")
+const validatorChangeUsers = require("../config/validatorChangeUsers")
 
 const { getAllProducts, getProductById, postProduct, deleteProduct,
     updateProduct, postComment, deleteComment, putComment,
@@ -14,7 +16,7 @@ const { newUser, login, relogin, uploadPhoto,  modifyUser  } = require("../contr
 const { SendpurchaseSummary } = require("../controllers/mailerController")
 
 
-const validator = require("../config/validator")
+
 
 router.route("/products")
     .get(getAllProducts)
@@ -82,6 +84,6 @@ router.route("/user/uploadPhoto")
     .post(uploadPhoto)
 
 router.route("/user/modifyuser/:id")
-    .put(passport.authenticate('jwt', {session: false}),modifyUser)
+    .put(passport.authenticate('jwt', {session: false}),validatorChangeUsers,modifyUser)
 
 module.exports = router

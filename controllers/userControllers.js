@@ -24,11 +24,8 @@ const userControllers={
    
     login:async (req,res)=>{
         const {email, password} = req.body
-        console.log(req.body)
         const userOK = await User.findOne({email})
-        console.log(userOK,"1")
         if (userOK) {
-            console.log(req.body,"2")
             const passwordOk = bcryptjs.compareSync(req.body.password, userOK.password)
             if (passwordOk) {
                 const token = jwt.sign({...userOK}, process.env.SECRET_KEY)
@@ -51,7 +48,7 @@ const userControllers={
     uploadPhoto: async (req,res)=>{
 
         console.log(req.body.email)
-        
+
 
         cloudinary.config({ 
             cloud_name : 'dvh9yxfgi' , 
@@ -67,8 +64,14 @@ const userControllers={
 
     modifyUser: async (req, res) => {
         const id = req.user._id 
-        try {
-            const userChanged = await User.findOneAndUpdate({ _id: id }, { ...req.body }, { new: true })
+        try {if(req.body.password){ const passwordHashed= bcryptjs.hashSync(req.body.password,10)
+                const userChanged = await User.findOneAndUpdate({ _id: id }, { password:passwordHashed  }, { new: true })
+                res.json({ success: true, response: userChanged })
+            }else{
+                const userChanged = await User.findOneAndUpdate({ _id: id }, { ...req.body }, { new: true })
+                res.json({ success: true, response: userChanged })
+            }
+           
             res.json({ success: true, response: userChanged })
          
         } catch (error) {
