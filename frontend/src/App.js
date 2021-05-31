@@ -26,9 +26,15 @@ import SexToyCategory from "./pages/SexToyCategory";
 import Accesories from "./pages/Accesories"
 import Checkout from "./pages/Checkout"
 import PaymentSuccesfull from "./pages/PaymentSuccesfull"
-import ProductEdit from "./components/ProductEdit";
+import cartActions from "./redux/actions/cartActions";
 
 const App = (props) => {
+  if (localStorage.getItem("cart")) {
+    const response = JSON.parse(localStorage.getItem("cart"))
+    console.log(response)
+    props.localStorage(response)
+  }
+
   if (props.usuarioStatus) {
     var routes =
       <>
@@ -41,6 +47,7 @@ const App = (props) => {
           <Route exact path="/sextoy" component={SexToyCategory} />
           <Route exact path="/accesories" component={Accesories} />
           <Route exact path="/payment" component={PaymentSuccesfull} />
+          <Route exact path="/product/:id" component={Product} />
         </Switch>
       </>
   } else if (localStorage.getItem('token')) {
@@ -63,6 +70,7 @@ const App = (props) => {
           <Route exact path="/accesories" component={Accesories} />
           <Route exact path="/checkout" component={Checkout} />
           <Route exact path="/payment" component={PaymentSuccesfull} />
+          <Route exact path="/product/:id" component={Product} />
         </Switch>
       </>
   }
@@ -95,8 +103,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  relogin: userActions.relogin
-
+  relogin: userActions.relogin,
+  localStorage: cartActions.localStorage
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
