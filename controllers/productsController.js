@@ -1,7 +1,5 @@
 const Product = require("../models/Product")
-const path = require("path")
-let cloudinary = require('cloudinary').v2
-
+const cloudinary = require('cloudinary').v2
 
 const getAllProducts = async (req, res) => {
     try {
@@ -18,12 +16,21 @@ const getProductById = async (req, res) => {
     const { id } = req.params
     try {
         const result = await Product.findById(id)
+        console.log(result)
         res.json({ success: true, result })
     } catch (error) {
         res.json({ success: false, err: "An error has occurred on our server" })
     }
 }
 const postProduct = async (req, res) => {
+
+    if (req.files) {
+        req.body = JSON.parse(req.body.form)
+
+        const { url } = await cloudinary.uploader.upload(req.files.img.tempFilePath, { folder: "products" })
+        req.body.coverImage = url
+    }
+
     try {
         const result = await new Product(req.body).save()
         res.json({ success: true, result })
@@ -52,6 +59,66 @@ const updateProduct = async (req, res) => {
         res.json({ success: false, err: "An error has occurred on our server" })
     }
 }
+
+const editCategory = async (req, res) => {
+
+    let idProduct = req.params.idProduct;
+
+    const { action, idCategory, newNameCategory } = req.body;
+    let querySelector, updateOperator;
+
+    switch (action) {
+        case "add":
+            querySelector = { _id: idProduct };
+            updateOperator = { $push: { categories: { name: newNameCategory } } };
+            break;
+        case "update":
+            querySelector = { _id: idProduct, "categories._id": idCategory }
+            updateOperator = { $set: { "categories.$.name": newNameCategory } };
+            break;
+        case "delete":
+            querySelector = { _id: idProduct };
+            updateOperator = { $pull: { categories: { _id: idCategory } } };
+            break;
+        default:
+            respondFrontend(res, response, `error, unknown action: "${action} "`);
+            break;
+    }
+    try {
+        let result = await Product.findOneAndUpdate(querySelector, updateOperator, { new: true });
+        res.json({ success: true, result })
+    } catch {
+        res.json({ success: false, err: 'An error has occurred on our server' })
+    }
+}
+
+const imagesActions = async (req, res) => {
+
+    let idProduct = req.params.idProduct;
+    const { action, idPhoto, newNamePhoto } = req.body;
+    let querySelector, updateOperator;
+    switch (action) {
+        case "add":
+            querySelector = { _id: idProduct };
+            updateOperator = { $push: { productsImages: { photo: newNamePhoto } } };
+            break;
+        case "delete":
+            querySelector = { _id: idProduct };
+            updateOperator = { $pull: { productsImages: { _id: idPhoto } } };
+            break;
+        default:
+            respondFrontend(res, response, `error, unknown action: "${action} "`);
+            break;
+    }
+    try {
+        let result = await Product.findOneAndUpdate(querySelector, updateOperator, { new: true });
+        res.json({ success: true, result })
+    } catch {
+        res.json({ success: false, err: 'An error has occurred on our server' })
+    }
+}
+
+
 /*---------------- Comments ----------------------- */
 const postComment = async (req, res) => {
     const { idProduct } = req.params
@@ -134,7 +201,7 @@ const postCategories = async (req, res) => {
     const { name } = req.body
 
     try {
-        const result = await Product.findByIdAndUpdate( idProduct, { $push:{ categories: req.body  }}, { new: true })
+        const result = await Product.findByIdAndUpdate(idProduct, { $push: { categories: req.body } }, { new: true })
         res.json({ success: true, result })
     } catch (error) {
         res.json({ success: false, err: "An error has occurred on our server" })
@@ -165,6 +232,7 @@ const putCategories = async (req, res) => {
     }
 }
 
+<<<<<<< HEAD
 /* --------------------------------------------------------------- */
 cloudinary.config({ 
     cloud_name : 'dvh9yxfgi' , 
@@ -177,6 +245,56 @@ const pruebaHosteo = async (req,res)=>{
    const { url } = await cloudinary.uploader.upload( req.files.img.tempFilePath , {width: 100, height: 100, gravity: "faces", crop: "thumb"} )
 
 }
+=======
+/* ------------------------- Photos-------------------------------------- */
+
+const postPhotos = async (req, res) => {
+    const { idProduct } = req.params
+    let { photo } = req.body
+
+    if (req.files) {
+        const { url } = await cloudinary.uploader.upload(req.files.img.tempFilePath, { folder: "products" })
+        photo = url
+    }
+
+    try {
+        const result = await Product.findByIdAndUpdate(idProduct, { $push: { productsImages: photo } }, { new: true })
+        res.json({ success: true, result })
+    } catch (error) {
+        res.json({ success: false, err: "An error has occurred on our server" })
+    }
+}
+
+const deletePhotos = async (req, res) => {
+    const { idProduct, idPhoto } = req.params
+
+    try {
+        const result = await Product.findByIdAndUpdate(idProduct, { $pull: { productsImages: { _id: idPhoto } } }, { new: true })
+        res.json({ success: true, result })
+    } catch (error) {
+        res.json({ success: false, err: "An error has occurred on our server" })
+    }
+}
+
+const putPhotos = async (req, res) => {
+    const { idProduct, idPhoto } = req.params
+    const { photo } = req.body
+
+    if (req.files) {
+        const { url } = await cloudinary.uploader.upload(req.files.img.tempFilePath, { folder: "products" })
+        photo = url
+    }
+
+    try {
+        const result = await Product.findOneAndUpdate({ "_id": idProduct, "productsImages._id": idPhoto }, { $set: { "productsImages.$.photo": photo } }, { new: true })
+        res.json({ success: true, result })
+    } catch (error) {
+        console.log(error)
+        res.json({ success: false, err: "An error has occurred on our server" })
+    }
+}
+
+>>>>>>> 0f6cc74337528a94e153f8c7f8e5d919b01cb524
 
 
 
@@ -195,5 +313,10 @@ module.exports = {
     putScore,
     postCategories,
     deleteCategories,
-    putCategories
+    putCategories,
+    editCategory,
+    imagesActions,
+    postPhotos,
+    deletePhotos,
+    putPhotos
 }

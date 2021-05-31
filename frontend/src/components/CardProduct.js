@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react"
 import cartActions from "../redux/actions/cartActions"
 import { connect } from "react-redux"
+import { Link } from "react-router-dom"
 
 const CardProduct = (props) => {
     const { buyArticle , product } = props
-    const buy = () => {
-        buyArticle(product._id)
-    }
 
     return (
         <div className="containerCardProduct">
@@ -15,9 +13,8 @@ const CardProduct = (props) => {
             </div>
             <div className="containerText">
                 <p>{product.brand}</p>
-                <h3 className="titleProductHome">{product.name}</h3>
+                <Link to={`/product/${product._id}`}><h3 className="titleProductHome">{product.name}</h3></Link>
                 <h4 className="titleProductPrecie">€{product.price}</h4>
-                <button onClick={buy}>add to cart</button>
             </div>
         </div>
     )
@@ -31,7 +28,6 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = {
     buyArticle: cartActions.buyArticle,
-    allProducts: cartActions.allProducts
 }
 
 

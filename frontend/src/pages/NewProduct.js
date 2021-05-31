@@ -60,6 +60,7 @@ const NewProduct = (props) => {
                 setCategories([])
                 setProductsImages([])
                 setNewProduct({ coverImage: '', description: '', price: '', discount: '', brand: '', name: '' })
+                console.log("The product was added successfully")
             } else {
                 response.error.details.map(error => {
                     errorInput[error.path[0]] = error.message
@@ -68,6 +69,8 @@ const NewProduct = (props) => {
 
                 setErrors(errorInput)
             }
+        }else{
+            console.log("Something went wrong")
         }
     }
 

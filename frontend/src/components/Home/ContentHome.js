@@ -9,14 +9,12 @@ const ContentHome = () => {
     const settings = {
         dots: true,
         infinite: true,
-        speed: 900,
+        speed: 100,
         slidesToShow: 4,
-        slidesToScroll: 3,
-        centerMode: true,
+        slidesToScroll: 2,
         width: 600,
-        autoplaySpeed: 1000,
+        autoplaySpeed: 2000,
         arrows: true,
-        cssEase: "linear"
     };
 
     return (
@@ -56,6 +54,28 @@ const ContentHome = () => {
                 </Slider>
             </div>
 
+            <div className="containerIconsHome">
+                <div className="boxTextAndIcon">
+                    <i class="fas fa-truck"></i>
+                    <h2>Free Delivery</h2>
+                    <p>On Orders Over £50</p>
+                </div>
+                <div className="boxTextAndIcon">
+                    <i class="fas fa-box-open"></i>
+                    <h2>14 Day Returns</h2>
+                    <p>T&C's Apply</p>
+                </div>
+                <div className="boxTextAndIcon">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h2>Hand Picked</h2>
+                    <p>By Our Team</p>
+                </div>
+                <div className="boxTextAndIcon">
+                    <i class="fas fa-box"></i>
+                    <h2>Discreet</h2>
+                    <p>Non-Identifiable Packaging</p>
+                </div>
+            </div>
 
         </>
     )

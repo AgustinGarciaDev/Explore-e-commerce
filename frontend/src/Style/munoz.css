@@ -2,22 +2,27 @@
 
 .productContainer{
     height: 100%;
-    width: 100vw;
+    width: 100%;
     display: flex;
 }
 
 .infoProducts{
     height: 100vh;
     width: 50%;
-/*     background-color: blue; */
+   /*  background-color: blue; */
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
+.infoProduct{
+    width: 100%;
+/*     background-color: chartreuse; */
+}
+
 .photosProducts{
-    height: 100vh;
-    width: 50%;
+    min-height: 100vh;
+    width: 50vw;
 /*     background-color: chartreuse; */
     display: flex;
     align-items: center;
@@ -27,7 +32,7 @@
 .carrouselProduct{
     height: 85%;
     width: 85%;
-    margin-top: 15vh;
+    /* margin-top: 15vh; */
 }
 
 .logoProduct{
@@ -147,3 +152,257 @@
 .containerText{
     padding: 20px;
 }
+
+.cartContainer{
+/*     background-color: brown; */
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.titleShoppingCart{
+/*     background-color: crimson; */
+    width: 90vw;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+}
+
+.titleShoppingCart > h2{
+    font-size: 40;
+}
+
+.cart{
+ /*    background-color: coral; */
+    min-height: 60vh;
+    width: 90vw;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.titlesCart{
+    width: 100%;
+    height: 8vh;
+  /*   background-color: darkkhaki; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-bottom: 1px solid black;
+}
+
+.titlesCart > div {
+/*     background-color: darkorchid; */
+    width: 5vw;
+    height: 6vh;
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titlesCart > div > p {
+    padding-top: 1rem;
+}
+
+.totalCart{
+    width: 100%;
+    height: 8vh;
+/*     background-color: darkkhaki; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-top: 2px solid black;
+}
+
+.totalCart > div{
+    width: 10vw;
+    height: 6vh;
+/*     background-color: darkkhaki; */
+    margin-right: 20px;
+    display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   /*  background-color: blue; */
+}
+
+.articleCart {
+    height: 40vh;
+    width: 100%;
+/*     background-color: chartreuse; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+
+.photoCart{
+    height: 35vh;
+    width: 35vh;
+   /*  background-color: wheat; */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.textInput{
+    width: 100%;
+    height: 100%;
+    background-color: #1E2747;
+    border: 0px;
+    outline: none;
+    font-size: 15px;
+    color: white;
+    padding: 5px 0 0 5px
+}
+
+.divSend{
+    width: 60%;
+    height: 3rem;
+    background-color: #141A32;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.buttonSend {
+    height: 100%;
+    width: 6rem;
+    background-color: rgb(13, 106, 119);
+    border: 0px;
+    outline: none;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+.buttonSend:hover{
+    transform: scale(1.1);
+}
+
+.textTareaConteiner{
+    display: flex;
+    width: 60%;
+    height: 8rem;
+/*     margin-top: 6em; */
+}
+
+.avatarComment{
+    height: 9rem;
+    width: 9rem; 
+    background-color: #1E2747;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatarImgComment{
+    height: 60px;
+    width: 60px;
+    background-color: white;
+    border-radius: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.commentsVideo{
+    margin-top: 2rem;
+    min-height: 50vh;
+    width: 60%;
+}
+
+.comment{
+    height: 40px;
+    width: 50vw;
+    background-color: cornsilk;
+    margin: 1em;
+    color: black;
+}
+
+.comment > p {
+    padding: 5px 0 0 10px;
+}
+
+.commentConteiner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .buttonCloseOff{
+    display: none;
+} */
+
+.buttonCloseOn{
+    height: 40px;
+    width: 20px;
+    color: #E50913;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.buttonCloseOn > p{
+    cursor: pointer;
+}
+
+.seasonsConteiner{
+    margin-top: 5rem;
+    min-height: 50vh;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.seasonsConteiner > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.chapters{
+    background-color: #E50913;
+    color: white;
+    width: 35vw;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+}
+
+.seasonNumber{
+    background-color: white;
+    color: black;
+    width: 40vw;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.InputConteiner{
+    margin-top: 2em;
+}
+
+.inputProduct{
+    height: 60vh;
+    width: 100%;
+/*     background-color: cadetblue; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+

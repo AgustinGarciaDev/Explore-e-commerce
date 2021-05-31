@@ -1,0 +1,31 @@
+.containerPayment{
+    display: flex;
+    justify-content: center;
+    font-family: 'Montserrat';
+    flex-direction: column;
+    align-items: center;
+    
+}
+.subTitlePayment{
+    font-weight: 400;
+    width: 60vw;
+    text-align: center;
+}
+.titlePayment{
+        background: -webkit-linear-gradient(#20eb85,#33ad02);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+     color: tomato;
+    font-family: 'Montserrat';
+    font-weight: 800;
+    text-align: center;
+}
+
+.botonHomePayment{
+    width: 20vw;
+    height: 3.5rem;
+    background-color: #FF1731;
+    border: none;
+    border-radius: 7px;
+    color: whitesmoke;
+}

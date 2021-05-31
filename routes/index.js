@@ -6,51 +6,70 @@ const productsValidator = require('../config/productsValidator')
 const { getAllProducts, getProductById, postProduct, deleteProduct,
     updateProduct, postComment, deleteComment, putComment,
     postScore, deleteScore, putScore,
-    postCategories, deleteCategories, putCategories, pruebaHosteo } = require("../controllers/productsController")
-    
-const { newUser, login, relogin, uploadPhoto, modifyUser } = require("../controllers/userControllers")
+    postCategories, deleteCategories, putCategories,
+    postPhotos, deletePhotos, putPhotos, editCategory, imagesActions } = require("../controllers/productsController")
+
+const { newUser, login, relogin, uploadPhoto,  modifyUser  } = require("../controllers/userControllers")
+
+const { SendpurchaseSummary } = require("../controllers/mailerController")
+
+
+const validator = require("../config/validator")
 
 router.route("/products")
-.get(getAllProducts)
-.post(productsValidator, postProduct)
+    .get(getAllProducts)
+    .post(productsValidator, postProduct)
 
 router.route("/products/:id")
-.get(getProductById)
-.delete(deleteProduct)
-.put(updateProduct)
+    .get(getProductById)
+    .delete(deleteProduct)
+    .put(updateProduct)
 
 /*-----------------Comments----------------------------  */
 router.route("/products/comments/:idProduct")
-.post(postComment)
+    .post(postComment)
 
 router.route("/products/comments/:idProduct/:idComment")
-.delete(deleteComment)
-.put(putComment)
+    .delete(deleteComment)
+    .put(putComment)
 
 /* --------------------Scores------------------------------ */
 router.route("/products/score/:idProduct")
     .post(postScore)
 
 router.route("/products/score/:idProduct/:idScore")
-.delete(deleteScore)
-.put(putScore)
+    .delete(deleteScore)
+    .put(putScore)
 
 /*----------------Categories---------------------------------  */
 
 router.route("/products/categories/:idProduct")
-.post( postCategories ) 
+    .put(editCategory)
 
-router.route("/products/categories/:idProduct/:idCategory")
-.delete( deleteCategories )
-.put( putCategories )
+/*----------------Photos--------------------------------------- */
+
+router.route("/products/photos/:idProduct")
+    .post(postPhotos)
+
+router.route("/products/photos/:idProduct/:idPhoto")
+    .delete(deletePhotos)
+    .put(putPhotos)
 
 
+/* ----------Envio de images--------------- */
 
+router.route("/products/images/:idProduct")
+    .put(imagesActions)
+
+/* Envio de email */
+
+router.route("/mails/sendSumary")
+    .post(SendpurchaseSummary)
 // const validator = require("../config/validator")
 
 
 router.route("/user/signup")
-    .post(newUser)
+    .post(validator, newUser)
 
 
 router.route("/user/signin")
