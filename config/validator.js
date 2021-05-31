@@ -16,12 +16,8 @@ const validator = (req, res, next) => {
             'string.empty': 'Your password is a required field',
             'string.pattern.base': 'Your password must contain at least one uppercase and lowercase letter, a special character and a number'
         }),
-        urlImg: Joi.string().trim().uri().messages({
-            'string.uri': 'este URL no es valido',
-            'string.empty': 'You should use a valid URL',
-        }),
 
-    })
+    }).unknown(true)
     const validation = schema.validate(req.body, { abortEarly: false })
 
     if (validation.error) {

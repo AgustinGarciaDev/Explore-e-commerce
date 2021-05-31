@@ -69,7 +69,7 @@ router.route("/mails/sendSumary")
 
 
 router.route("/user/signup")
-    .post(validator, newUser)
+    .post(validator,newUser)
 
 
 router.route("/user/signin")

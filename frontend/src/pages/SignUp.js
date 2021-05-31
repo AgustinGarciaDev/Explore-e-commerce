@@ -43,20 +43,22 @@ const SignUp = (props) => {
     }
 
     const createAccount = async (e = null, googleUser = null) => {
-        console.log(infoUser)
+       
         e && e.preventDefault()
+        console.log(infoUser)
+
         let user = e ? infoUser : googleUser
         if (user.user === "" || user.password === "" || user.email === "" || user.legalAge === false) {
             toast.error("😬 All fields must be completed")
 
         } else {
-
+           
             if(!user.googleFlat){
                 const formData = new FormData()
                 formData.append('photo', photo.photo)
                 props.uploadPhoto(formData)
                 }
-                
+            console.log(user)  
             const respuesta = await props.createAcount(user)
 
             if (respuesta) {
@@ -74,8 +76,8 @@ const SignUp = (props) => {
         }
     }
     const responseGoogle = (response) => {
-        const { email, imageUrl } = response.profileObj
-        createAccount(null, { email: email, password: 'Hola1234!', urlImg: imageUrl, legalAge: true, googleFlat: true })
+        const { email, imageUrl, givenName } = response.profileObj
+        createAccount(null, { user:givenName ,email: email, password: 'Hola1234!', urlImg: imageUrl, legalAge: true, googleFlat: true })
     }
 
     /*    useEffect(() => {

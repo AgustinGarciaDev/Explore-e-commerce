@@ -232,20 +232,6 @@ const putCategories = async (req, res) => {
     }
 }
 
-<<<<<<< HEAD
-/* --------------------------------------------------------------- */
-cloudinary.config({ 
-    cloud_name : 'dvh9yxfgi' , 
-    api_key : '547514222417516' , 
-    api_secret : 'FnGih22hdSCaHVD-4ebA5e-CVhk'  
-})
-
-const pruebaHosteo = async (req,res)=>{
-
-   const { url } = await cloudinary.uploader.upload( req.files.img.tempFilePath , {width: 100, height: 100, gravity: "faces", crop: "thumb"} )
-
-}
-=======
 /* ------------------------- Photos-------------------------------------- */
 
 const postPhotos = async (req, res) => {
@@ -294,7 +280,6 @@ const putPhotos = async (req, res) => {
     }
 }
 
->>>>>>> 0f6cc74337528a94e153f8c7f8e5d919b01cb524
 
 
 

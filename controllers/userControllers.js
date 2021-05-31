@@ -8,18 +8,18 @@ let cloudinary = require('cloudinary').v2
 const userControllers={
     newUser: async (req, res) => {
         var error
-        const emailExistent = await User.findOne({...req.body.email})    
+        const emailExistent = await User.findOne({email: req.body.email}) 
         if (!emailExistent) {
             try {
                 const passwordHashed= bcryptjs.hashSync(req.body.password,10)
                 var newUserSaved = await new User ({...req.body,password: passwordHashed}).save() 
                 const token = jwt.sign({...newUserSaved},process.env.SECRET_KEY)
                 var response = token
-            } catch (e) {error = "Hubo un error en el grabado del usuario. Reintente"}                  
+            } catch (e) { error = "Hubo un error en el grabado del usuario. Reintente"}                  
        } else {error = "That email is already taken"}      
        res.json({
         success: !error ? true : false,
-        response: {token: response, img: newUserSaved.urlImg, name:newUserSaved.user ,  email:newUserSaved.email }, error: error,})   
+        response: !error? {token: response, img: newUserSaved.urlImg, name:newUserSaved.user , email:newUserSaved.email }:{ error: error}})   
     },
    
     login:async (req,res)=>{
