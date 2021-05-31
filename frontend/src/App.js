@@ -1,6 +1,8 @@
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Style/Home.css'
+import './Style/SignIn.css'
+import './Style/SignUp.css'
 import './Style/admin.css'
 import './Style/header.css'
 import './Style/Footer.css'
@@ -29,6 +31,8 @@ import Checkout from "./pages/Checkout"
 import PaymentSuccesfull from "./pages/PaymentSuccesfull"
 import cartActions from "./redux/actions/cartActions";
 import ProductEdit from "./components/ProductEdit";
+
+
 
 const App = (props) => {
   if (localStorage.getItem("cart")) {

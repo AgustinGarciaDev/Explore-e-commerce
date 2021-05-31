@@ -1,0 +1,118 @@
+.containerForm{
+    background-image: url("http://tingarciadg.com/wp-content/uploads/2021/05/pexels-sameera-ganegoda-2234783-scaled.jpg");
+    width: 100%;
+height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.formularioSignUP{
+    width: 25vw;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 22px;
+        border-radius: 1vw;
+}
+
+.titleForm{
+    color: white;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
+.inputCointainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inputCointainer > label > input {
+    width: 19vw;
+    height: 2.5vw;
+    font-family: 'Montserrat';
+    padding: 10px;
+    outline: none;
+    border-radius: 1vw;
+    border: 2px solid #0000003b;
+}
+
+.inputCointainer  input:focus{
+    border: 2px solid #FF4A5E
+} 
+
+
+.inputCointainer  > label > p{
+        color: black;
+    font-family: 'Montserrat';
+    margin: 0;
+    font-weight: bold;
+}
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn {
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 2vw;
+    width: 19vw;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.btnSendForm{
+    margin-top: 35px;
+    margin-bottom: 20px;
+    width: 21vw;
+    height: 3vw;
+        border: none;
+    background: linear-gradient(
+140deg
+,var(--purple),var(--pink));
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 1vw;
+}
+
+.btnGoogleSignUp{
+    border: none;
+    color: white;
+    background: #3f7bf0;
+    padding: 9px;
+    border-radius: 1vw;
+    width: 21vw;
+
+}
+
+.btnGoogleSignUp > i {
+    margin-right: 10px;
+}
+.titleRegisterEmail{
+    text-align: center;
+    font-size: 17px;
+    font-family: 'Montserrat';
+    margin-top: 16px;
+}

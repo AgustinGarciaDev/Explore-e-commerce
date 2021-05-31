@@ -27,7 +27,7 @@ const Header = (props) => {
                     </ LinkContainer>
                 </Nav>
                 <Nav>
-                    < LinkContainer to="/ds" >
+                    < LinkContainer to="/signin" >
                         <Nav.Link> Sign In </Nav.Link>
                     </ LinkContainer>
                     < LinkContainer to="/signup"  >
