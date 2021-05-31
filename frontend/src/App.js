@@ -27,6 +27,7 @@ import Accesories from "./pages/Accesories"
 import Checkout from "./pages/Checkout"
 import PaymentSuccesfull from "./pages/PaymentSuccesfull"
 import cartActions from "./redux/actions/cartActions";
+import ProductEdit from "./components/ProductEdit";
 
 const App = (props) => {
   if (localStorage.getItem("cart")) {

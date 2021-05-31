@@ -232,21 +232,55 @@ const putCategories = async (req, res) => {
     }
 }
 
-/* --------------------------------------------------------------- */
-cloudinary.config({
-    cloud_name: 'dvh9yxfgi',
-    api_key: '547514222417516',
-    api_secret: 'FnGih22hdSCaHVD-4ebA5e-CVhk'
-})
+/* ------------------------- Photos-------------------------------------- */
 
-const pruebaHosteo = async (req, res) => {
+const postPhotos = async (req, res) => {
+    const { idProduct } = req.params
+    let { photo } = req.body
 
-    const { url } = await cloudinary.uploader.upload(req.files.img.tempFilePath, { width: 100, height: 100, gravity: "faces", crop: "thumb" })
+    if (req.files) {
+        const { url } = await cloudinary.uploader.upload(req.files.img.tempFilePath, { folder: "products" })
+        photo = url
+    }
 
-
-    console.log(url, "poner en la base de datos")
-
+    try {
+        const result = await Product.findByIdAndUpdate(idProduct, { $push: { productsImages: photo } }, { new: true })
+        res.json({ success: true, result })
+    } catch (error) {
+        res.json({ success: false, err: "An error has occurred on our server" })
+    }
 }
+
+const deletePhotos = async (req, res) => {
+    const { idProduct, idPhoto } = req.params
+
+    try {
+        const result = await Product.findByIdAndUpdate(idProduct, { $pull: { productsImages: { _id: idPhoto } } }, { new: true })
+        res.json({ success: true, result })
+    } catch (error) {
+        res.json({ success: false, err: "An error has occurred on our server" })
+    }
+}
+
+const putPhotos = async (req, res) => {
+    const { idProduct, idPhoto } = req.params
+    const { photo } = req.body
+
+    if (req.files) {
+        const { url } = await cloudinary.uploader.upload(req.files.img.tempFilePath, { folder: "products" })
+        photo = url
+    }
+
+    try {
+        const result = await Product.findOneAndUpdate({ "_id": idProduct, "productsImages._id": idPhoto }, { $set: { "productsImages.$.photo": photo } }, { new: true })
+        res.json({ success: true, result })
+    } catch (error) {
+        console.log(error)
+        res.json({ success: false, err: "An error has occurred on our server" })
+    }
+}
+
+
 
 
 
@@ -266,5 +300,8 @@ module.exports = {
     deleteCategories,
     putCategories,
     editCategory,
-    imagesActions
+    imagesActions,
+    postPhotos,
+    deletePhotos,
+    putPhotos
 }

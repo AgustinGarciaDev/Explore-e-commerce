@@ -5,9 +5,16 @@ const productsValidator = require('../config/productsValidator')
 
 const { getAllProducts, getProductById, postProduct, deleteProduct,
     updateProduct, postComment, deleteComment, putComment,
-    postScore, deleteScore, putScore, pruebaHosteo, editCategory, imagesActions } = require("../controllers/productsController")
+    postScore, deleteScore, putScore,
+    postCategories, deleteCategories, putCategories,
+    postPhotos, deletePhotos, putPhotos, editCategory, imagesActions } = require("../controllers/productsController")
 
-const { newUser, login, relogin } = require("../controllers/userControllers")
+const { newUser, login, relogin, uploadPhoto } = require("../controllers/userControllers")
+
+const { SendpurchaseSummary } = require("../controllers/mailerController")
+
+
+const validator = require("../config/validator")
 
 router.route("/products")
     .get(getAllProducts)
@@ -39,16 +46,30 @@ router.route("/products/score/:idProduct/:idScore")
 router.route("/products/categories/:idProduct")
     .put(editCategory)
 
-/*----------------Images---------------------------------  */
+/*----------------Photos--------------------------------------- */
+
+router.route("/products/photos/:idProduct")
+    .post(postPhotos)
+
+router.route("/products/photos/:idProduct/:idPhoto")
+    .delete(deletePhotos)
+    .put(putPhotos)
+
+
+/* ----------Envio de images--------------- */
 
 router.route("/products/images/:idProduct")
     .put(imagesActions)
 
+/* Envio de email */
+
+router.route("/mails/sendSumary")
+    .post(SendpurchaseSummary)
 // const validator = require("../config/validator")
 
 
 router.route("/user/signup")
-    .post(newUser)
+    .post(validator, newUser)
 
 
 router.route("/user/signin")
