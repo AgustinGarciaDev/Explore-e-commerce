@@ -17,9 +17,9 @@ const productActions = {
             } catch (error) { console.log(error) }
         }
     },
-    sendMail:( form )=>{
+    sendMail:( form,creditCard )=>{
         return()=>{
-           return axios.post("http://localhost:4000/api/mails/sendSumary",{ receiver: form })
+           return axios.post("http://localhost:4000/api/mails/sendSumary",{ form, creditCard })
             .then( data => data.data  )
             .catch( err => console.log( err ) )
         }

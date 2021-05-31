@@ -61,7 +61,7 @@ router.route("/products/photos/:idProduct/:idPhoto")
 router.route("/products/images/:idProduct")
     .put(imagesActions)
 
-/* Envio de email */
+/*---------- Envio de email----------------- */
 
 router.route("/mails/sendSumary")
     .post(SendpurchaseSummary)
