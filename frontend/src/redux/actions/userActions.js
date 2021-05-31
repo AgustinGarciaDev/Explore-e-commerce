@@ -11,7 +11,8 @@ const userActions = {
                 /*      if (!response.data.success) {
                          return response.data.errores
                      } */
-                console.log(response)
+                     return(response)
+                console.log(response.data)
                 /*    dispatch({ type: 'SIGNIN_USER', payload: response.data.success ? response.data.respuesta : null }) */
             } catch (error) {
                 console.log(error)

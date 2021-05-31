@@ -52,14 +52,18 @@ const SignUp = (props) => {
             toast.error("😬 All fields must be completed")
 
         } else {
-           
-            if(!user.googleFlat){
-                const formData = new FormData()
-                formData.append('photo', photo.photo)
-                props.uploadPhoto(formData)
-                }
-            console.log(user)  
+             
             const respuesta = await props.createAcount(user)
+            console.log(respuesta.data.success)
+            if(respuesta.data.success){
+                console.log(photo)
+                if(photo.photo){
+                    const formData = new FormData()
+                    formData.append('email', user.email)
+                    formData.append('photo', photo.photo)
+                    props.uploadPhoto(formData)
+                }
+            }
 
             if (respuesta) {
                 console.log(respuesta)

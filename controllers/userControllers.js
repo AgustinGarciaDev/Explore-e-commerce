@@ -50,7 +50,8 @@ const userControllers={
     
     uploadPhoto: async (req,res)=>{
 
-        console.log(req.files.photo)
+        console.log(req.body.email)
+        
 
         cloudinary.config({ 
             cloud_name : 'dvh9yxfgi' , 
@@ -59,9 +60,9 @@ const userControllers={
         })
     
        const { url } = await cloudinary.uploader.upload( req.files.photo.tempFilePath , {folder: "users", transformation: [{width: 100, height: 100, gravity: "faces", crop: "thumb"}]} )
-       console.log(url)
-    
-    //    agregar envio a base de datos con url
+       console.log(url)    
+       const userChanged = await User.findOneAndUpdate({ email: req.body.email }, { urlImg: url }) 
+
     },
 
     modifyUser: async (req, res) => {
