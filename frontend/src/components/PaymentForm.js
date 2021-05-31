@@ -18,17 +18,17 @@ export default class PaymentForm extends React.Component {
               <Cards cvc={this.state.cvc} expiry={this.state.expiry} focused={this.state.focus} name={this.state.name}
                   number={this.state.number} />
                 <form >
-                  <input type="tel" name="number" placeholder="Card Number" onChange={this.handleInputChange}
+                  <input type="text" name="number" maxLength={ 16 } placeholder="Card Number" onChange={this.handleInputChange}
                     onFocus={this.handleInputFocus} />
 
                     <input
-                      type="tel" name="name" placeholder="Your name" onChange={this.handleInputChange}
+                      type="text" name="name"  placeholder="Your name" onChange={this.handleInputChange}
                       onFocus={this.handleInputFocus} />
 
-                    <input type="tel" name="expiry" placeholder="Valid thru" onChange={this.handleInputChange}
+                    <input type="text" maxLength={ 4 } name="expiry" placeholder="Valid thru" onChange={this.handleInputChange}
                       onFocus={this.handleInputFocus} />
 
-                    <input type="tel" name="cvc" placeholder="cvc" onChange={this.handleInputChange}
+                    <input type="text" maxLength={ 3 } name="cvc" placeholder="cvc" onChange={this.handleInputChange}
                       onFocus={this.handleInputFocus} />
                     </form>
               </div> 

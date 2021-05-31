@@ -1,4 +1,5 @@
 const transporter = require("../config/nodeMailer")
+const template = require("../templateSummary")
 
 const SendpurchaseSummary = async (req,res)=>{
     const{ receiver, } = req.body
@@ -8,7 +9,8 @@ const SendpurchaseSummary = async (req,res)=>{
         from:"prueba node",
         to: receiver.email,
         subject:"purchase summary",
-        text: receiver.firstName
+        html: template({})
+
         })
         
         res.json({ success:true })

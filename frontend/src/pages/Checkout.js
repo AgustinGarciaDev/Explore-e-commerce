@@ -26,7 +26,6 @@ const Checkout = ({ sendMail, history }) => {
         .then(data => data.success && history.push("/payment") )
     }
 
-
     return <div className="mainContainer">
 
         <div className="leftContainer ">
@@ -44,7 +43,7 @@ const Checkout = ({ sendMail, history }) => {
                         <h3>Contact Information</h3>
                         <h6>Already have an account? <span>SignIn</span></h6>
                     </div>
-                    <input type="text" disabled={visible ? true : false} name="email" onChange={readFields} placeholder="Email" />
+                    <input type="text" disabled={visible ? true : false} name="email"  onChange={ readFields } placeholder="Email" />
                 </div>
                 <div className="checkbox">
                     <input type="checkbox" disabled={visible ? true : false} onClick={() => setForm({ ...form, check: !form.check })} />
@@ -74,7 +73,7 @@ const Checkout = ({ sendMail, history }) => {
                         <input type="text" disabled={visible ? true : false} name="postCode" onChange={readFields} placeholder="Postcode" className="inputRigth" />
                     </div>
                     <div>
-                        <input type="text" disabled={visible ? true : false} name="phone" onChange={readFields} placeholder="Phone (optional)" />
+                        <input type="number" disabled={visible ? true : false} name="phone" onChange={readFields} placeholder="Phone (optional)" />
                     </div>
                     <button className="continue" onClick={() => setVisible(!visible)} >{!visible ? "Continue to delivery" : "Back to form"}</button>
                 </div>
