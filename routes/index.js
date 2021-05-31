@@ -6,7 +6,8 @@ const productsValidator = require('../config/productsValidator')
 const { getAllProducts, getProductById, postProduct, deleteProduct,
     updateProduct, postComment, deleteComment, putComment,
     postScore, deleteScore, putScore,
-    postCategories, deleteCategories, putCategories, pruebaHosteo } = require("../controllers/productsController")
+    postCategories, deleteCategories, putCategories,
+    postPhotos, deletePhotos, putPhotos } = require("../controllers/productsController")
     
 const { newUser, login, relogin, uploadPhoto } = require("../controllers/userControllers")
 
@@ -46,6 +47,16 @@ router.route("/products/categories/:idProduct")
 router.route("/products/categories/:idProduct/:idCategory")
 .delete( deleteCategories )
 .put( putCategories )
+
+/*----------------Photos--------------------------------------- */
+
+router.route("/products/photos/:idProduct")
+.post( postPhotos ) 
+
+router.route("/products/photos/:idProduct/:idPhoto")
+.delete( deletePhotos )
+.put( putPhotos )
+
 
 /* ----------Envio de mails--------------- */
 
