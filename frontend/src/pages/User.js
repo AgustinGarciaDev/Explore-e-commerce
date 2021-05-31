@@ -38,7 +38,7 @@ const User = (props) => {
             toast.error("😬 All fields must be completed")
 
         } else {
-            const respuesta = await props.createAcount(dateToChange)
+            const respuesta = await props.createAcount(dateToChange,localStorage.getItem('token'))
 
             if (respuesta) {
                 console.log(respuesta)

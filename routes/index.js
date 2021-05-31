@@ -62,7 +62,7 @@ router.route('/user/relogin')
 router.route("/user/uploadPhoto")
     .post(uploadPhoto)
 
-router.route("/user/modifyuser")
-    .put(modifyUser)
+router.route("/user/modifyuser/:id")
+    .put(passport.authenticate('jwt', {session: false}),modifyUser)
 
 module.exports = router

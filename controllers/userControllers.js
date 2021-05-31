@@ -64,11 +64,11 @@ const userControllers={
     //    agregar envio a base de datos con url
     },
 
-    modifyuser: async (req, res) => {
-        const { idProduct, idScore } = req.params
-        const { score } = req.body
-    
+    modifyUser: async (req, res) => {
+        const id = req.user._id 
         try {
+            const userChanged = await User.findOneAndUpdate({ _id: id }, { ...req.body }, { new: true })
+            res.json({ success: true, response: userChanged })
          
         } catch (error) {
             console.log(error)
