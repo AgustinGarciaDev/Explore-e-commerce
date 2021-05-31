@@ -16,8 +16,6 @@ const SendpurchaseSummary = async (req,res)=>{
         res.json({ success:false, err:"An error has ocurred" })
     }
 
-        
-
 }
 
 module.exports={

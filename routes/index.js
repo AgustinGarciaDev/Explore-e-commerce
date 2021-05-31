@@ -10,8 +10,13 @@ const { getAllProducts, getProductById, postProduct, deleteProduct,
 const { newUser, login, relogin } = require("../controllers/userControllers")
 
 router.route("/products")
+<<<<<<< HEAD
     .get(getAllProducts)
     .post(productsValidator, postProduct)
+=======
+.get(getAllProducts)
+.post(/* productsValidator, */ postProduct)
+>>>>>>> ecdfd285b93738012f033bef55bacfe0fba3cdd8
 
 router.route("/products/:id")
     .get(getProductById)
@@ -28,7 +33,7 @@ router.route("/products/comments/:idProduct/:idComment")
 
 /* --------------------Scores------------------------------ */
 router.route("/products/score/:idProduct")
-    .post(postScore)
+.post(postScore)
 
 router.route("/products/score/:idProduct/:idScore")
     .delete(deleteScore)

@@ -24,6 +24,12 @@ const getProductById = async (req, res) => {
 }
 const postProduct = async (req, res) => {
 
+    if (req.files) {
+        req.body = JSON.parse(req.body.form)
+
+        const { url } = await cloudinary.uploader.upload(req.files.img.tempFilePath, { folder: "products" })
+        req.body.coverImage = url
+    }
 
     try {
         const result = await new Product(req.body).save()
@@ -236,6 +242,9 @@ cloudinary.config({
 const pruebaHosteo = async (req, res) => {
 
     const { url } = await cloudinary.uploader.upload(req.files.img.tempFilePath, { width: 100, height: 100, gravity: "faces", crop: "thumb" })
+
+
+    console.log(url, "poner en la base de datos")
 
 }
 
