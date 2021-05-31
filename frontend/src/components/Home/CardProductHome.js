@@ -1,4 +1,4 @@
-import {Link, NavLink, Redirect} from "react-router-dom"
+import { Link, NavLink, Redirect } from "react-router-dom"
 
 const CardProductHome = (props) => {
     /*     console.log(props) */
@@ -6,14 +6,14 @@ const CardProductHome = (props) => {
 
     return (
         <div className="containerCardProduct">
-            <div className="imgProductHome"  >
-                <img src={coverImage} alt="" />
-            </div>
+            <div className="imgProductHome"  style={{backgroundImage:(`url('${coverImage}')`)}} />
             <div className="containerText">
                 <p>{brand}</p>
-                <NavLink to={`/product/${_id}`}>
-                    <h3 className="titleProductHome">{name}</h3>
-                </NavLink>
+                <div className="tittleProductContainer">
+                    <NavLink to={`/product/${_id}`}>
+                        <h3 className="titleProductHome">{name}</h3>
+                    </NavLink>
+                </div>
                 <h4 className="titleProductPrecie">€{price}</h4>
             </div>
         </div>

@@ -1,34 +1,38 @@
 .containerContentFooter{
     background: #E62A54;
     color: white;
+    display: flex;
+    flex-direction: column;
 }
 .containerSocial{
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 1em;
 }
 
 .containerSocial > i {
-    font-size: 3vw;
-    margin: 1vw;
+    font-size: 3rem;
+    margin: 0 4vh;
 }
 .containerSuscribe{
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2vw
+    padding: 2em;
 }
 
 .inputSuscribe{
-    width: 24vw;
-    height: 3vw;
     border: none;
     padding: 20px;
+    outline: none;
+    height: 2vh;
+    width: 50%;
 }
 .btnSuscribe{
-    height: 3vw;
-    margin-left: 1vw;
-    width: 8vw;
+    height: 3rem;
+    margin-left: 3vh;
+    width: 6rem;
     border: none;
     background: white;
     border-radius: 1vw;
@@ -39,9 +43,9 @@
 
 }
 .navFooter{
-     background: white;
      display: flex;
 }
+
 .titleNav{
     color: black;
     font-family: 'Dancing Script', cursive;
