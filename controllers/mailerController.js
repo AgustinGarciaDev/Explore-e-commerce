@@ -1,5 +1,5 @@
 const transporter = require("../config/nodeMailer")
-const template = require("../templateSummary")
+const template = require("../templateEmail/templateSummary")
 
 const SendpurchaseSummary = async (req,res)=>{
     const{ form, creditCard } = req.body
