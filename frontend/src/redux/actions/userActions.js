@@ -65,6 +65,12 @@ const userActions = {
         }
     },
 
+    modifyUser: (dateToChange) => {   
+        return async (dispatch, getState) => {
+            await axios.put("http://localhost:4000/api/user/modifyuser", dateToChange)
+        }
+    },
+
 }
 
 export default userActions

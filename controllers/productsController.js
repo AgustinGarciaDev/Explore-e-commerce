@@ -166,17 +166,17 @@ const putCategories = async (req, res) => {
 }
 
 /* --------------------------------------------------------------- */
-// cloudinary.config({ 
-//     cloud_name : 'dvh9yxfgi' , 
-//     api_key : '547514222417516' , 
-//     api_secret : 'FnGih22hdSCaHVD-4ebA5e-CVhk'  
-// })
+cloudinary.config({ 
+    cloud_name : 'dvh9yxfgi' , 
+    api_key : '547514222417516' , 
+    api_secret : 'FnGih22hdSCaHVD-4ebA5e-CVhk'  
+})
 
-// const pruebaHosteo = async (req,res)=>{
+const pruebaHosteo = async (req,res)=>{
 
-//    const { url } = await cloudinary.uploader.upload( req.files.img.tempFilePath , {width: 100, height: 100, gravity: "faces", crop: "thumb"} )
+   const { url } = await cloudinary.uploader.upload( req.files.img.tempFilePath , {width: 100, height: 100, gravity: "faces", crop: "thumb"} )
 
-// }
+}
 
 
 

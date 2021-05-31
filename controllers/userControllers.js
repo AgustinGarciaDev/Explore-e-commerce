@@ -61,6 +61,19 @@ const userControllers={
        const { url } = await cloudinary.uploader.upload( req.files.photo.tempFilePath , {folder: "users", transformation: [{width: 100, height: 100, gravity: "faces", crop: "thumb"}]} )
        console.log(url)
     
+    //    agregar envio a base de datos con url
+    },
+
+    modifyuser: async (req, res) => {
+        const { idProduct, idScore } = req.params
+        const { score } = req.body
+    
+        try {
+         
+        } catch (error) {
+            console.log(error)
+            res.json({ success: false, err: "An error has occurred on our server" })
+        }
     }
 
 }

@@ -7,6 +7,7 @@ import './Style/Footer.css'
 import Home from './pages/Home'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
+import User from './pages/User'
 import Admin from './pages/Admin'
 import { connect } from 'react-redux'
 import userActions from "./redux/actions/userActions"
@@ -25,6 +26,7 @@ const App = (props) => {
           <Route exact path="/" component={Home} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/user" component={User} />
           <Route exact path="/products" component={Products} />
           <Route exact path="/shoppingCart" component={ShoppingCart} />
         </Switch>
@@ -39,6 +41,7 @@ const App = (props) => {
           <Route exact path="/" component={Home} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/user" component={User} />
           <Route exact path="/Admin" component={Admin} />
           <Route exact path="/add-new-product" component={NewProduct} />
           <Route exact path="/products" component={Products} />
