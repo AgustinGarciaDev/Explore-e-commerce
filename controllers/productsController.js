@@ -248,9 +248,6 @@ const pruebaHosteo = async (req, res) => {
 
 }
 
-console.log(url, "poner en la base de datos")
-
-
 
 
 module.exports = {
