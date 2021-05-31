@@ -6,6 +6,7 @@ import { applyMiddleware, createStore } from 'redux'
 import { Provider } from 'react-redux'
 import mainReducer from './redux/reducers/mainReducer'
 import "./Style/munoz.css"
+
 const miStore = createStore(mainReducer, applyMiddleware(thunk))
 
 ReactDOM.render(

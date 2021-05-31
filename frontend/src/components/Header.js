@@ -22,7 +22,7 @@ const Header = (props) => {
                     < LinkContainer to="/accesories" >
                         <Nav.Link> Accesories </Nav.Link>
                     </ LinkContainer>
-                    < LinkContainer to="/ds" >
+                    < LinkContainer to="/products" >
                         <Nav.Link> All products </Nav.Link>
                     </ LinkContainer>
                 </Nav>

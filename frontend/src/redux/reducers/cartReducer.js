@@ -1,6 +1,5 @@
 const initialState = {
     articles: [],
-    item: [],
     cart: [],
     accountant: 0
 }
@@ -18,7 +17,6 @@ const cartReducer = (state = initialState, action) => {
                 console.log("entro al if")
                 state.articles.map(article => {
                     if(article._id === action.payload._id) {
-                        console.log(article.units)
                         article.units = article.units + 1
                     }
                     return article
@@ -31,8 +29,7 @@ const cartReducer = (state = initialState, action) => {
                 console.log("entro al else")
                 state.articles.map(article => {
                     if(article._id === action.payload._id) {
-                        article.units = 1
-                    /*     article.units = article.units + 1 */
+                        article.units = article.units + 1
                     }
                     return article
                 })
@@ -44,6 +41,7 @@ const cartReducer = (state = initialState, action) => {
             }
             break
         case 'REMOVE':
+            localStorage.clear()
             return {
                 ...state,
                 cart: state.cart.filter( article => article._id !== action.payload._id ),
