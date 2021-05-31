@@ -1,23 +1,32 @@
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
+import ProductForEdit from '../components/PorductForEdit'
 import productActions from '../redux/actions/productsActions'
+import Header from '../components/Header'
 
 const EditProduct = (props) => {
 
     useEffect(() => {
-        props.getProducts()
+        if (props.products.length === 0) {
+            props.getProducts()
+        }
     }, [])
 
     return (
         <>
-            <h1>edit product</h1>
-            {
-                props.products.length === 0
-                ?
-                <h2>loading</h2>
-                :
-                props.products.map(product => <h3>{product._id}</h3>)
-            }
+            <Header />
+            <div className="editProductsContainer">
+                <h1>edit product</h1>
+                <div className="productsContainer">
+                    {
+                        props.products.length === 0
+                            ?
+                            <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_9ivolvho.json" background="transparent" speed="1" loop autoplay></lottie-player>
+                            :
+                            props.products.map(product => <ProductForEdit key={product._id} product={product} />)
+                    }
+                </div>
+            </div>
         </>
     )
 }

@@ -16,6 +16,7 @@ const getProductById = async (req, res) => {
     const { id } = req.params
     try {
         const result = await Product.findById(id)
+        console.log(result)
         res.json({ success: true, result })
     } catch (error) {
         res.json({ success: false, err: "An error has occurred on our server" })
@@ -52,6 +53,66 @@ const updateProduct = async (req, res) => {
         res.json({ success: false, err: "An error has occurred on our server" })
     }
 }
+
+const editCategory = async (req, res) => {
+
+    let idProduct = req.params.idProduct;
+
+    const { action, idCategory, newNameCategory } = req.body;
+    let querySelector, updateOperator;
+
+    switch (action) {
+        case "add":
+            querySelector = { _id: idProduct };
+            updateOperator = { $push: { categories: { name: newNameCategory } } };
+            break;
+        case "update":
+            querySelector = { _id: idProduct, "categories._id": idCategory }
+            updateOperator = { $set: { "categories.$.name": newNameCategory } };
+            break;
+        case "delete":
+            querySelector = { _id: idProduct };
+            updateOperator = { $pull: { categories: { _id: idCategory } } };
+            break;
+        default:
+            respondFrontend(res, response, `error, unknown action: "${action} "`);
+            break;
+    }
+    try {
+        let result = await Product.findOneAndUpdate(querySelector, updateOperator, { new: true });
+        res.json({ success: true, result })
+    } catch {
+        res.json({ success: false, err: 'An error has occurred on our server' })
+    }
+}
+
+const imagesActions = async (req, res) => {
+
+    let idProduct = req.params.idProduct;
+    const { action, idPhoto, newNamePhoto } = req.body;
+    let querySelector, updateOperator;
+    switch (action) {
+        case "add":
+            querySelector = { _id: idProduct };
+            updateOperator = { $push: { productsImages: { photo: newNamePhoto } } };
+            break;
+        case "delete":
+            querySelector = { _id: idProduct };
+            updateOperator = { $pull: { productsImages: { _id: idPhoto } } };
+            break;
+        default:
+            respondFrontend(res, response, `error, unknown action: "${action} "`);
+            break;
+    }
+    try {
+        let result = await Product.findOneAndUpdate(querySelector, updateOperator, { new: true });
+        res.json({ success: true, result })
+    } catch {
+        res.json({ success: false, err: 'An error has occurred on our server' })
+    }
+}
+
+
 /*---------------- Comments ----------------------- */
 const postComment = async (req, res) => {
     const { idProduct } = req.params
@@ -165,18 +226,22 @@ const putCategories = async (req, res) => {
     }
 }
 
-/* ------------------------- hosteo-------------------------------------- */
+/* --------------------------------------------------------------- */
+cloudinary.config({
+    cloud_name: 'dvh9yxfgi',
+    api_key: '547514222417516',
+    api_secret: 'FnGih22hdSCaHVD-4ebA5e-CVhk'
+})
 
 const pruebaHosteo = async (req, res) => {
 
-    const { url } = await cloudinary.uploader.upload(req.files.img.tempFilePath, {
-        folder: "users",
-        transformation: [{ width: 100, height: 100, gravity: "faces", crop: "thumb" }]
-    })
-
-    console.log(url, "poner en la base de datos")
+    const { url } = await cloudinary.uploader.upload(req.files.img.tempFilePath, { width: 100, height: 100, gravity: "faces", crop: "thumb" })
 
 }
+
+console.log(url, "poner en la base de datos")
+
+
 
 
 module.exports = {
@@ -194,5 +259,6 @@ module.exports = {
     postCategories,
     deleteCategories,
     putCategories,
-    pruebaHosteo
+    editCategory,
+    imagesActions
 }
