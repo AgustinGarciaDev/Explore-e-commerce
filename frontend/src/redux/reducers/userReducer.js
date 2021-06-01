@@ -8,7 +8,8 @@ const userReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case 'SIGNIN_USER':
-            localStorage.setItem('userLogged', JSON.stringify({ foto: action.payload.foto, name: action.payload.name }))
+            console.log(action.payload)
+            localStorage.setItem('userLogged', JSON.stringify({ foto: action.payload.img, name: action.payload.user }))
             localStorage.setItem('token', action.payload.token)
             return {
                 ...state,
