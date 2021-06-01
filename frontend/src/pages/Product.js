@@ -24,6 +24,7 @@ const Product = (props) => {
 
     const item = async () => {
         let response = await props.allProducts()
+        console.log(response)
         let item = response.find(article => article._id === props.match.params.id)
         setArticle(item)
     }
@@ -60,8 +61,6 @@ const Product = (props) => {
              setRenderComment(response) */
     }
 
-    console.log(article.productsImages)
-
     const imagenes = article.productsImages ? article.productsImages.map(imagen => 
         {
             return {
@@ -69,24 +68,7 @@ const Product = (props) => {
                 thumbnail: imagen.photo,
             }
         }) 
-        : null
-
-    console.log(imagenes)
-
-/*     const images = [
-        {
-            original: 'https://picsum.photos/id/1018/1000/600/',
-            thumbnail: 'https://picsum.photos/id/1018/250/150/',
-        },
-        {
-            original: 'https://picsum.photos/id/1015/1000/600/',
-            thumbnail: 'https://picsum.photos/id/1015/250/150/',
-        },
-        {
-            original: 'https://picsum.photos/id/1019/1000/600/',
-            thumbnail: 'https://picsum.photos/id/1019/250/150/',
-        },
-    ]; */
+    : null
 
     return (
         <>

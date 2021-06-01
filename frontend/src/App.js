@@ -35,11 +35,6 @@ import ProductEdit from "./components/ProductEdit";
 
 
 const App = (props) => {
-  if (localStorage.getItem("cart")) {
-    const response = JSON.parse(localStorage.getItem("cart"))
-    console.log(response)
-    props.localStorage(response)
-  }
 
   if (props.usuarioStatus) {
     var routes =
