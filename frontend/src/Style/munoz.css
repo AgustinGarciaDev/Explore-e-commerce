@@ -87,26 +87,6 @@
     color: #000;
 }
 
-.containerImgHome{
-    background-image: url("http://baravdg.com/wp-content/uploads/2021/05/Capture.jpg");
-    height: 30vw;
-    width: 30vw;
-    background-position: center;
-    background-size: cover;
-}
-
-.containerAboutUs{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f2f2f2;
-}
-.containerTextAbout{
-    width: 40vw;
-    position: relative;
-    left: 10vw;
-}
-
 .productsListHome{
     margin-top: 2vw;
     justify-content: space-around;
@@ -116,16 +96,30 @@
 }
 
 .containerCardProduct{
-        box-shadow: rgb(0 0 0 / 23%) 2px 2px 10px;
-     width: 20vw;
+    box-shadow: rgb(0 0 0 / 23%) 2px 2px 10px;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    margin: 5vh 5vh;
+    transition: all .4s;
+    cursor: pointer;
+}
+
+.containerCardProduct:hover{
+    transform: scale(1.02);
 }
 
 .imgProductHome{
     background-color:#F2F2F2;
+    width: 100%;
+    height: 50vh;
+    background-position: center;
+    background-size: cover;
 }
 
-.imgProductHome > img{
- width: 100%;
+.containerText{
+    width: 100%;
+    padding: 2vh;
 }
 
 .btnCardProduct{
@@ -135,23 +129,41 @@
 .titleContainerProducts{
     display: flex;
     justify-content: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
+}
+
+.tittleProductContainer{
+    height: 10vh;
+    display: flex;
+    align-items: center;
 }
 
 .titleContainerProducts > h2 {
-    font-size: 3rem;
    font-family: 'Montserrat', sans-serif;
 }
 .titleProductHome{
     font-family: 'Dancing Script', cursive;
 }
+
 .titleProductPrecie{
    font-family: 'Montserrat', sans-serif;
 }
-.containerText{
-    padding: 20px;
+
+@media (max-width: 1200px){
+    .containerCardProduct{
+        width: 33%;
+    }
 }
+@media (max-width: 820px){
+    .containerCardProduct{
+        width: 40%;
+    }
+}
+@media (max-width: 735px){
+    .containerCardProduct{
+        width: 70%;
+    }
+}
+
 
 .cartContainer{
 /*     background-color: brown; */

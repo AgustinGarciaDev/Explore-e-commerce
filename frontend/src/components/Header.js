@@ -9,7 +9,7 @@ const Header = (props) => {
 
             <LinkContainer to="/" >
                 <Navbar.Brand>
-                    <img className="logo" src="http://tingarciadg.com/wp-content/uploads/2021/05/Diseno-sin-titulo-4.png" alt="" />
+                    <div className="logo" style={{backgroundImage: `url('http://tingarciadg.com/wp-content/uploads/2021/05/Diseno-sin-titulo-4.png')`}}  />
                 </Navbar.Brand>
             </LinkContainer>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />

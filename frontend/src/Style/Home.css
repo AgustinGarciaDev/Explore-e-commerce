@@ -11,7 +11,8 @@
   overflow: hidden;
 }
 .contenido {
-     height: 34vw;
+    width: 100%;
+     height: 30vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -19,6 +20,12 @@
     text-align: center;
     backdrop-filter: brightness(0.5);
     color: white;
+}
+
+@media (max-width: 1000px){
+    .contenido{
+        height: 45vh;
+    }
 }
 .titleHero{
     font-family: "Montserrat";
@@ -36,11 +43,11 @@
     background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
     border: none;
     padding: 10px;
-    width: 15vw;
     color: white;
     border-radius: 10px;
     font-family: "Montserrat";
     font-weight: 300;
+    width: 7rem;
     
 }
 
@@ -96,10 +103,22 @@
 
 .containerImgHome{
     background-image: url("http://baravdg.com/wp-content/uploads/2021/05/Capture.jpg");
-    height: 30vw;
-    width: 30vw;
+    height: 100%;
+    width: 50%;
     background-position: center;
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.containerTextAbout{
+    width: 50%;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.containerTextAbout p{
+    text-align: center;
 }
 
 .containerAboutUs{
@@ -107,11 +126,26 @@
     align-items: center;
     justify-content: center;
     background: #f2f2f2;
+    height: 45vh;
 }
-.containerTextAbout{
-     width: 40vw;
-    position: relative;
-    left: 10vw;
+
+@media (max-width: 750px){
+    .containerAboutUs{
+        display: flex;
+        flex-direction: column-reverse;
+        height: auto;
+    }
+    .containerImgHome{
+        height: 40vh;
+        width: 100%;
+        background-size: contain;
+    }
+    .containerTextAbout{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .productsListHome{
@@ -162,25 +196,21 @@
 .containerIconsHome{
     display: flex;
     align-items: center;
-    max-width: 1080px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    justify-content: center;
+    justify-content: space-around;
+    width: 100%;
+    flex-wrap: wrap;
 }
 
 .boxTextAndIcon{
-    margin-left: 3vw;
-    margin-right: 3vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 2vh 4vh;
 }
 
 .boxTextAndIcon > i {
-      background-color: var(--pink);
+    background-color: var(--pink);
     background-image: linear-gradient(140deg,var(--purple),var(--pink));
     background-size: 100%;
     -webkit-background-clip: text;
@@ -188,7 +218,7 @@
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
     margin-bottom: .5em;
-    font-size: 3vw;
+    font-size: 2.5rem;
 }
 
 .boxTextAndIcon > h2{
