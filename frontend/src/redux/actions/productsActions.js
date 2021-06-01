@@ -14,14 +14,31 @@ const productActions = {
                         return response.data
                     }
                 }
-            } catch (error) { console.log(error) }
+            } catch (error) {
+                toast.error('Something went wrong, try again later!', {
+                position: "top-right",
+                autoClose: 1700,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            }) }
         }
     },
     sendMail:( form,creditCard )=>{
         return()=>{
            return axios.post("http://localhost:4000/api/mails/sendSumary",{ form, creditCard })
             .then( data => data.data  )
-            .catch( err => console.log( err ) )
+            .catch( err => toast.error('Something went wrong, try again later!', {
+                position: "top-right",
+                autoClose: 1700,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            }) )
         }
     },
 
@@ -35,7 +52,15 @@ const productActions = {
                     }
                 }
             } catch (error) {
-                console.log(error)
+                toast.error('Something went wrong, try again later!', {
+                    position: "top-right",
+                    autoClose: 1700,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                })
             }
         }
     },
