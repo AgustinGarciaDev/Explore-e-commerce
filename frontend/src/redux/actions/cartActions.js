@@ -39,19 +39,19 @@ const cartActions = {
             dispatch({ type: 'REMOVE' , payload: product })
         }
     },
-    add: () => {
+    subtract: (product) => {
         return (dispatch, getState) => {
-            dispatch({ type: 'ADD' })
-        }
-    },
-    subtract: () => {
-        return (dispatch, getState) => {
-            dispatch({ type: 'SUBTRACT' })
+            dispatch({ type: 'SUBTRACT' , payload: product })
         }
     },
     localStorage: (response) => {
         return (dispatch, getState) => {
             dispatch({ type: 'PRODUCTS' , payload: response })
+        }   
+    },
+    localStorageNum: (response) => {
+        return (dispatch, getState) => {
+            dispatch({ type: 'NUM_CART' , payload: response })
         }   
     }
 }

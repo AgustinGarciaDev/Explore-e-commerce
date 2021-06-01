@@ -9,7 +9,8 @@ import Header from "../components/Header"
 const ShoppingCart = (props) => {
 
     const cart = props.articles ? props.articles : []
-
+    let prices = cart.map(article => article.price * article.units)
+    let total = prices.length === 0 ? 0 : prices.reduce((a, b) => a + b)
     return (
         <>
             <Header />
@@ -32,7 +33,7 @@ const ShoppingCart = (props) => {
                     }
                     <div className="totalCart">
                         <div><h3>Subtotal:</h3></div>
-                        <div><h3>£36.99</h3></div>
+                        <div><h3>£ {total}</h3></div>
                     </div>
                 </div>
             </div>
