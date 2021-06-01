@@ -251,7 +251,7 @@ const ProductEdit = (props) => {
 
                         )
                 }
-                <Link to="/edit-products">Go back</Link>
+                <Link to="/admin">Go back</Link>
             </div>
         </>
     )
