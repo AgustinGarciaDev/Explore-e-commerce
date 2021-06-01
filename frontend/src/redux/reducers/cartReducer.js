@@ -13,39 +13,31 @@ const cartReducer = (state = initialState, action) => {
             }
             break
         case 'BUY':
-            if (state.cart.filter(article => article._id === action.payload._id).length > 0) {
-                console.log("entro al if")
-                state.articles.map(article => {
-                    if(article._id === action.payload._id) {
-                        article.units = article.units + 1
-                    }
-                    return article
-                })
-                return {
-                    ...state,
-                    accountant: state.accountant + 1
+            const buy = state.articles.map(article => {
+                if(article._id === action.payload._id) {
+                    article.status = true
+                    article.units = article.units + 1
                 }
-            } else {
-                console.log("entro al else")
-                state.articles.map(article => {
-                    if(article._id === action.payload._id) {
-                        article.units = article.units + 1
-                    }
-                    return article
-                })
-                return {
-                    ...state,
-                    cart: [...state.cart,action.payload],
-                    accountant: state.accountant + 1
-                }
+                return article
+            })
+            localStorage.setItem('cart', JSON.stringify(buy))
+            return {
+                ...state,
+                articles: buy
             }
             break
         case 'REMOVE':
+            const remove = state.articles.map(article => {
+                if(article._id === action.payload._id) {
+                    article.status = false
+                    article.units = article.units + 1
+                }
+                return article
+            })
             localStorage.clear()
             return {
                 ...state,
-                cart: state.cart.filter( article => article._id !== action.payload._id ),
-                accountant: state.accountant - 1
+                articles: remove
             }
             break
         case 'ADD':

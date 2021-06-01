@@ -35,7 +35,7 @@ const Header = (props) => {
                     </ LinkContainer>
                     <h2>{props.accountant}</h2>
                     <LinkContainer to="/shoppingCart">
-                        <Nav.Link > Cart </Nav.Link>
+                        <Nav.Link > <i className="fas fa-shopping-cart"></i> </Nav.Link>
                     </LinkContainer>
                 </Nav>
             </Navbar.Collapse>

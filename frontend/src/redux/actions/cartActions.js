@@ -8,7 +8,13 @@ const cartActions = {
                 const Data = [...response.data.result]
                 Data.map((article) => {
                     article["units"] = 0
+                    article["status"] = false
                 })
+                if (localStorage.getItem("cart")) {
+                    const response = JSON.parse(localStorage.getItem("cart"))
+                    dispatch({ type: 'PRODUCTS' , payload: response })
+                    return response
+                } else {
                 if (response) {
                     if (response.data.success) {
                         dispatch({ type: 'PRODUCTS' , payload: Data })
@@ -17,13 +23,13 @@ const cartActions = {
                         return Data
                     }
                 }
+            }
             } catch (error) {
                 console.log(error)
             }
         }
     },
     buyArticle: (product) => {
-        localStorage.setItem("cart", JSON.stringify(product))
         return (dispatch, getState) => {
             dispatch({ type: 'BUY' , payload: product })
         }
@@ -40,12 +46,12 @@ const cartActions = {
     },
     subtract: () => {
         return (dispatch, getState) => {
-            dispatch({ type: 'ADD' })
+            dispatch({ type: 'SUBTRACT' })
         }
     },
     localStorage: (response) => {
         return (dispatch, getState) => {
-            dispatch({ type: 'BUY' , payload: response })
+            dispatch({ type: 'PRODUCTS' , payload: response })
         }   
     }
 }
