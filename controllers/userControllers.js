@@ -8,10 +8,10 @@ let cloudinary = require('cloudinary').v2
 const userControllers = {
     newUser: async (req, res) => {
         var error
+
         if (req.files) {
-            const user = JSON.parse(req.body.user)
             const { url } = await cloudinary.uploader.upload(req.files.photo.tempFilePath, { folder: "users", transformation: [{ width: 100, height: 100, gravity: "faces", crop: "thumb" }] })
-            req.body = { ...user, urlImg: url }
+            req.body.urlImg = url
         }
         const emailExistent = await User.findOne({ email: req.body.email })
         if (!emailExistent) {
