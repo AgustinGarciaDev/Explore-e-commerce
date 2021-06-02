@@ -2,15 +2,14 @@ const transporter = require("../config/nodeMailer")
 const template = require("../templateEmail/templateSummary")
 
 const SendpurchaseSummary = async (req,res)=>{
-    const{ form, creditCard } = req.body
-
+    const{ form, creditCard, cart } = req.body
     
     try {
        await transporter.sendMail({
         from:"Explore",
         to: form.email,
         subject:"purchase summary",
-        html: template( form, creditCard, products =[] )
+        html: template( form, creditCard, cart )
 
         })
         

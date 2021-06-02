@@ -62,6 +62,8 @@ const App = (props) => {
           <Route exact path="/accesories" component={Accesories} />
           <Route exact path="/payment" component={PaymentSuccesfull} />
           <Route exact path="/product/:id" component={Product} />
+          <Route exact path="/checkout" component={Checkout} />
+          <Route exact path="/payment" component={PaymentSuccesfull} />
         </Switch>
       </>
   } else if (localStorage.getItem('token')) {
@@ -82,8 +84,6 @@ const App = (props) => {
           <Route exact path="/shoppingCart" component={ShoppingCart} />
           <Route exact path="/sextoy" component={SexToyCategory} />
           <Route exact path="/accesories" component={Accesories} />
-          <Route exact path="/checkout" component={Checkout} />
-          <Route exact path="/payment" component={PaymentSuccesfull} />
           <Route exact path="/product/:id" component={Product} />
         </Switch>
       </>
