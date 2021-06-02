@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Style/Home.css'
 import './Style/SignIn.css'
 import './Style/SignUp.css'
+import "./Style/munoz.css"
+import "./Style/like.scss"
 import './Style/admin.css'
 import './Style/header.css'
 import './Style/Footer.css'

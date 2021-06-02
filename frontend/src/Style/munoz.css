@@ -44,7 +44,7 @@
 }
 
 .priceProduct{
-    height: 4vw;
+  /*   height: 4vw; */
     width: 100%;
     display: flex;
     align-items: center;
@@ -345,6 +345,14 @@
     justify-content: center;
 }
 
+.modifyComment {
+    position: absolute;
+    height: 40px;
+    width: 50vw;
+    background-color: cornsilk;
+    color: black;
+}
+
 /* .buttonCloseOff{
     display: none;
 } */
@@ -357,6 +365,11 @@
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+    margin: 0 2px 0 2px;
+}
+
+.DivEditAndDelete{
+    display: flex;
 }
 
 .buttonCloseOn > p{
@@ -407,9 +420,9 @@
 }
 
 .inputProduct{
-    height: 60vh;
+    min-height: 60vh;
     width: 100%;
-/*     background-color: cadetblue; */
+    background-color: cadetblue;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -417,18 +430,21 @@
 }
 
 .fa-shopping-cart{
-   /*  background-color: red; */
-    height: 35px;
-    width: 35px;
+ /*    background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
     font-size: 30px;
 } 
 
-.ndea {
+.cartContainerHeader {
     display: flex;
-    /* background-color: violet; */
 }
 
-.xd {
+.totalCartHeader {
+    position: absolute;
     background-color: red;
     color: white;
     width: 20px;
@@ -437,6 +453,19 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
+    margin-bottom: 30px !important;
+    margin-left: 29px !important;
 }
 
+.navigator{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+#checkbox{
+    top: 0px !important;
+    position: unset !important;
+    margin-bottom: 0rem !important;
+    display: block;
+}

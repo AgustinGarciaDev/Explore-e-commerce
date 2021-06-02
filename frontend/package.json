@@ -24,6 +24,7 @@
     "react-toastify": "^7.0.4",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0",
+    "sass": "^1.34.0",
     "slick-carousel": "^1.8.1",
     "web-vitals": "^1.1.2"
   },
