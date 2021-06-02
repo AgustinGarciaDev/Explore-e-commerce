@@ -35,6 +35,11 @@ const ShoppingCart = (props) => {
                         <div><h3>£ {total}</h3></div>
                     </div>
                 </div>
+                <div >
+                        <button>
+                        <Link to="/checkout" >Me llevo todo!!!!</Link>
+                        </button>
+                    </div>
             </div>
             <Footer />
         </>
