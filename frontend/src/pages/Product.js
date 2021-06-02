@@ -24,13 +24,16 @@ const Product = (props) => {
 
     const item = async () => {
         let response = await props.allProducts()
-        console.log(response)
         let item = response.find(article => article._id === props.match.params.id)
         setArticle(item)
     }
 
     const buy = () => {
-        props.buyArticle(article)
+        if (article.units === article.stock) {
+            alert("llegaste al stock pa")
+        } else {
+            props.buyArticle(article)
+        }
     }
 
     const readInput = (e) => {

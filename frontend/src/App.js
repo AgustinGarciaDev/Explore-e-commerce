@@ -36,6 +36,16 @@ import ProductEdit from "./components/ProductEdit";
 
 const App = (props) => {
 
+  if (localStorage.getItem("cart")) {
+    const response = JSON.parse(localStorage.getItem("cart"))
+    props.localStorage(response)
+  }
+
+  if (localStorage.getItem("num")) {
+    const response = JSON.parse(localStorage.getItem("num"))
+    props.localStorageNum(response)
+  }
+
   if (props.usuarioStatus) {
     var routes =
       <>
@@ -106,7 +116,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   relogin: userActions.relogin,
-  localStorage: cartActions.localStorage
+  localStorage: cartActions.localStorage,
+  localStorageNum: cartActions.localStorageNum,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -33,9 +33,11 @@ const Header = (props) => {
                     < LinkContainer to="/signup"  >
                         <Nav.Link eventKey={2}> Sign Up </Nav.Link>
                     </ LinkContainer>
-                    <h2>{props.accountant}</h2>
                     <LinkContainer to="/shoppingCart">
-                        <Nav.Link > <i className="fas fa-shopping-cart"></i> </Nav.Link>
+                        <Nav.Link className="ndea" >
+                            <i className="fas fa-shopping-cart"></i>
+                            <span className="xd">{props.accountant}</span>
+                        </Nav.Link>
                     </LinkContainer>
                 </Nav>
             </Navbar.Collapse>
