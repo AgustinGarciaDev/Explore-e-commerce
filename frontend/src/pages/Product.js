@@ -179,9 +179,9 @@ const Product = (props) => {
                 <div className="textTareaConteiner">
                     <div className="avatarComment">
                         <div style={{ backgroundImage: `url(${imgUser})` }} className="avatarImgComment"></div>
-                        <p style={{ color: "white", marginTop: "2px" }}>{props.usuarioStatus ? props.usuarioStatus.user : "Example"}</p>
+                        <p style={{ color: "white", marginTop: "2px" }}>{props.usuarioStatus ? props.usuarioStatus.user : "Explore.com"}</p>
                     </div>
-                    <input className="textInput" onChange={readInput} value={comment.comment} name="comment" placeholder="Hello!" required />
+                    <input className="textInput" onChange={readInput} value={comment.comment} name="comment" placeholder="Hello!" disabled={props.usuarioStatus ? false : true} required />
                 </div>
                 <div className="divSend">
                     <button className="buttonSend" onClick={addComment}>send</button>
