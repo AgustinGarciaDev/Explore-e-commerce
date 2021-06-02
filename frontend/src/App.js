@@ -55,6 +55,7 @@ const App = (props) => {
           <Route exact path="/" component={Home} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/user" component={User} />
           <Route exact path="/products" component={Products} />
           <Route exact path="/shoppingCart" component={ShoppingCart} />
           <Route exact path="/sextoy" component={SexToyCategory} />
@@ -73,7 +74,6 @@ const App = (props) => {
           <Route exact path="/" component={Home} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
-          <Route exact path="/user" component={User} />
           <Route exact path="/Admin" component={Admin} />
           <Route exact path="/add-new-product" component={NewProduct} />
           <Route exact path="/edit-products" component={EditProducts} />

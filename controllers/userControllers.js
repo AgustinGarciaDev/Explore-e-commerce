@@ -54,7 +54,15 @@ const userControllers = {
     modifyUser: async (req, res) => {
         const id = req.user._id
         try {
-            const userChanged = await User.findOneAndUpdate({ _id: id }, { ...req.body }, { new: true })
+            if (req.body.password) {
+                const passwordHashed = bcryptjs.hashSync(req.body.password, 10)
+                const userChanged = await User.findOneAndUpdate({ _id: id }, { password: passwordHashed }, { new: true })
+                res.json({ success: true, response: userChanged })
+            } else {
+                const userChanged = await User.findOneAndUpdate({ _id: id }, { ...req.body }, { new: true })
+                res.json({ success: true, response: userChanged })
+            }
+
             res.json({ success: true, response: userChanged })
 
         } catch (error) {

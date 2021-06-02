@@ -69,9 +69,11 @@ const userActions = {
         }
     },
 
+
     modifyUser: (dateToChange, token) => {
         return async (dispatch, getState) => {
-            await axios.put("https://explore-2021.herokuapp.com/api/user/modifyuser", dateToChange, { headers: { 'Authorization': 'Bearer ' + token } })
+            const response = await axios.put("https://explore-2021.herokuapp.com/api/user/modifyuser/:id", dateToChange, { headers: { 'Authorization': 'Bearer ' + token } })
+            return (response)
         }
     },
 
