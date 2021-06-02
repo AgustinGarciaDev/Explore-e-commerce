@@ -1,15 +1,15 @@
 import { NavLink } from 'react-router-dom'
+import Header from '../components/Header'
+import EditProducts from './EditProducts'
 
 const Admin = () => {
     return (
         <>
-            <h1>soy admin</h1>
+            <Header />
             <NavLink to="/add-new-product" >
                 <p>add new course</p>
             </NavLink>
-            <NavLink to="/edit-products" >
-                <p>edit products</p>
-            </NavLink>
+            <EditProducts />
         </>
     )
 }

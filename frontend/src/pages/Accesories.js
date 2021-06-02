@@ -61,7 +61,7 @@ const Accesories = (props) => {
                     </div>
                 </div>
                 <div className="containerProductCardSexToy">
-                    <div className="containerTextCardSexToy">
+                    <div className="lubricantContainer">
                         <h2>Lubricants</h2>
                         <p>
                             We have hand picked our favourite lubricants from the vast, vast array available on the market from water based, silicone based and lubricants designed for anal usage.
@@ -76,8 +76,8 @@ const Accesories = (props) => {
                 </div>
 
                 <div className="containerProductCardSexToy">
-                    <div className="sexGameCover"></div>
-                    <div className="containerTextCardSexToy">
+                    <div className="sexGameCover" />
+                    <div className="lubricantContainer">
                         <h2>Sex Games</h2>
                         <p>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum repudiandae quia praesentium placeat atque sunt id iusto? Rerum odio repellat iure quidem illum quisquam, eos, sint sequi ducimus, dolor earum!
@@ -90,10 +90,10 @@ const Accesories = (props) => {
                     }
                 </div>
                 <div className="containerProductCardSexToy">
-                    <div className="containerTextCardSexToy">
+                    <div className="lubricantContainer">
                         <h2>Clenear</h2>
                         <p>
-                            Anal stimulation is a powerful part of sexual pleasure and commonly one of the least explored. And we think thats a shame! There's so much to offer - from the full feeling of butt plugs, designed to stay in place during play or the popping sensations of anal beads being repeatedly removed and reinserted to the infamous prostate massagers and anal dildos, the array of sensations available to explore are mind blowing.
+                            Anal stimulation is a powerful part of sexual pleasure and commonly one of the least explored. And we think thats a shame! There's so much to offer !!
                     </p>
                     </div>
                     <div className="clearToy"></div>

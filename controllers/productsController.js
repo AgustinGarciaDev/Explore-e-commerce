@@ -124,8 +124,7 @@ const postComment = async (req, res) => {
     const { idProduct } = req.params
 
     try {
-        const result = await Product.findByIdAndUpdate(idProduct, { $push: { comments: req.body } }, { new: true })
-            .populate({ path: "comments", populate: { path: "userId", select: { "_id": 1, "user": 1, "urlImg": 1 } } })
+        const result = await Product.findByIdAndUpdate(idProduct, { $push: { comments: req.body } }, { new: true }).populate({ path: "comments", populate: { path: "userId", select: { "_id": 1, "user": 1, "urlImg": 1 } } })
 
         res.json({ success: true, result })
     } catch (error) {
@@ -135,8 +134,7 @@ const postComment = async (req, res) => {
 const deleteComment = async (req, res) => {
     const { idProduct, idComment } = req.params
     try {
-        const result = await Product.findByIdAndUpdate(idProduct, { $pull: { comments: { _id: idComment } } }, { new: true })
-            .populate({ path: "comments", populate: { path: "userId", select: { "_id": 1, "user": 1, "urlImg": 1 } } })
+        const result = await Product.findByIdAndUpdate(idProduct, { $pull: { comments: { _id: idComment } } }, { new: true }).populate({ path: "comments", populate: { path: "userId", select: { "_id": 1, "user": 1, "urlImg": 1 } } })
 
         res.json({ success: true, result })
     } catch (error) {
@@ -147,8 +145,7 @@ const putComment = async (req, res) => {
     const { idProduct, idComment } = req.params
     const { comment } = req.body
     try {
-        const result = await Product.findOneAndUpdate({ "_id": idProduct, "comments._id": idComment }, { $set: { "comments.$.comment": comment } }, { new: true })
-            .populate({ path: "comments", populate: { path: "userId", select: { "_id": 1, "user": 1, "urlImg": 1 } } })
+        const result = await Product.findOneAndUpdate({ "_id": idProduct, "comments._id": idComment }, { $set: { "comments.$.comment": comment } }, { new: true }).populate({ path: "comments", populate: { path: "userId", select: { "_id": 1, "user": 1, "urlImg": 1 } } })
 
         res.json({ success: true, result })
     } catch (error) {

@@ -6,7 +6,7 @@ const productActions = {
     createNewProdudct: (data) => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.post('http://localhost:4000/api/products', data)
+                const response = await axios.post('https://explore-2021.herokuapp.com/api/products', data)
                 if (response) {
                     if (response.data.success) {
                         return response.data
@@ -14,28 +14,54 @@ const productActions = {
                         return response.data
                     }
                 }
-            } catch (error) { console.log(error) }
+            } catch (error) {
+                toast.error('Something went wrong, try again later!', {
+                    position: "top-right",
+                    autoClose: 1700,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                })
+            }
         }
     },
-    sendMail:( form,creditCard )=>{
-        return()=>{
-           return axios.post("http://localhost:4000/api/mails/sendSumary",{ form, creditCard })
-            .then( data => data.data  )
-            .catch( err => console.log( err ) )
+    sendMail: (form, creditCard) => {
+        return () => {
+            return axios.post("https://explore-2021.herokuapp.com/api/mails/sendSumary", { form, creditCard })
+                .then(data => data.data)
+                .catch(err => toast.error('Something went wrong, try again later!', {
+                    position: "top-right",
+                    autoClose: 1700,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                }))
         }
     },
 
     getAllProduct: () => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.get('http://localhost:4000/api/products')
+                const response = await axios.get('https://explore-2021.herokuapp.com/api/products')
                 if (response) {
                     if (response.data.success) {
                         dispatch({ type: 'GET_PRODUCTS', payload: response.data.result })
                     }
                 }
             } catch (error) {
-                console.log(error)
+                toast.error('Something went wrong, try again later!', {
+                    position: "top-right",
+                    autoClose: 1700,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                })
             }
         }
     },
@@ -43,7 +69,7 @@ const productActions = {
     editCategory: (data) => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.put('http://localhost:4000/api/products/categories/' + data.id, data.info)
+                const response = await axios.put('https://explore-2021.herokuapp.com/api/products/categories/' + data.id, data.info)
                 if (response) {
                     if (response.data.success) {
                         dispatch({ type: 'UPDATE_CATEGORY', payload: response.data.result })
@@ -77,7 +103,7 @@ const productActions = {
     imageActions: (data) => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.put('http://localhost:4000/api/products/images/' + data.id, data.info)
+                const response = await axios.put('https://explore-2021.herokuapp.com/api/products/images/' + data.id, data.info)
                 if (response) {
                     if (response.data.success) {
                         dispatch({ type: 'UPDATE_CATEGORY', payload: response.data.result })
@@ -111,7 +137,7 @@ const productActions = {
     editProduct: (data) => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.put('http://localhost:4000/api/products/' + data.id, data.data)
+                const response = await axios.put('https://explore-2021.herokuapp.com/api/products/' + data.id, data.data)
                 if (response) {
                     if (response.data.success) {
                         dispatch({ type: 'UPDATE_CATEGORY', payload: response.data.result })

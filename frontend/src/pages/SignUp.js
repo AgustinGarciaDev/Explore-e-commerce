@@ -8,22 +8,12 @@ const SignUp = (props) => {
 
     const [photo, setPhoto] = useState({ photo: '' })
     const [errores, setErrores] = useState([])
-    const [infoUser, setInfoUser] = useState({
-        user: "",
-        email: "",
-        password: "",
-        urlImg: "",
-    })
+    const [infoUser, setInfoUser] = useState({ user: "", email: "", password: "" })
+    const [error, setError] = useState({})
+    const errorsImput = { user: null, email: null, password: null }
 
     const uploadPhoto = e => {
         setPhoto({ photo: e.target.files[0] })
-    }
-
-    const sendPhoto = async (e) => {
-        e.preventDefault()
-        const formData = new FormData()
-        formData.append('photo', photo.photo)
-        props.uploadPhoto(formData)
     }
 
     const changeValue = (e) => {
@@ -33,61 +23,46 @@ const SignUp = (props) => {
         })
     }
 
-
     const createAccount = async (e = null, googleUser = null) => {
-
         e && e.preventDefault()
-        console.log(infoUser)
 
         let user = e ? infoUser : googleUser
-        if (user.user === "" || user.password === "" || user.email === "") {
-            toast.error("😬 All fields must be completed")
 
+        if (googleUser) {
+            const response = await props.createAcount(user)
+            console.log(response)
         } else {
-            const respuesta = await props.createAcount(user)
-            if (respuesta.data.success) {
-                if (photo.photo) {
-                    const formData = new FormData()
-                    formData.append('email', user.email)
-                    formData.append('photo', photo.photo)
-                    props.uploadPhoto(formData)
+            if (photo.photo) {
+                const formData = new FormData()
+                formData.append('user', user.user )
+                formData.append('email', user.email )
+                formData.append('password', user.password )
+                formData.append('photo', photo.photo)
+
+                const response = await props.createAcount(formData)
+                if (response) {
+                    if (response.error) {
+                        console.log("aca ariba")
+                        if (response.error.details) {
+                            response.error.details.map(error => {
+                                errorsImput[error.context.label] = error.message
+                                return null
+                            })
+                            setError(errorsImput)
+                        }
+                    }else {
+                        toast.error(response.response.error)
+                    }
                 }
-                toast.success("👋 Welcome", {
-                    onClose: () => {
-                        props.history.push('/')
-                    },
-
-                })
             } else {
-                setErrores(respuesta.data.errores.details)
+                alert("carga una imagen puto")
             }
-
         }
     }
+
     const responseGoogle = (response) => {
         const { email, imageUrl, givenName } = response.profileObj
-        createAccount(null, { user: givenName, email: email, password: 'Hola1234!', urlImg: imageUrl, googleFlat: true })
-    }
-
-    useEffect(() => {
-        notificacionesToast()
-    }, [errores])
-
-    const notificacionesToast = () => {
-
-        errores.map(error => {
-            toast.error(error.message, {
-                position: "top-center",
-                autoClose: false,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                toastId: error.message
-
-            });
-        })
+        createAccount(null, { user: givenName, email: email, password: 'Hola1234!', urlImg: imageUrl, googleFlag: true })
     }
 
     return (
@@ -107,6 +82,7 @@ const SignUp = (props) => {
                         cookiePolicy={'single_host_origin'}
                     />
                     <h3 className="titleRegisterEmail">Our use your email for registration:</h3>
+
                     <div className="inputCointainer">
 
                         <label >
@@ -114,25 +90,30 @@ const SignUp = (props) => {
                             <input name="user" placeholder="Nick Name" onChange={changeValue} value={infoUser.user} type="text" />
                         </label>
                     </div>
+                    {error.user ? <small>{error.user}</small> : <p></p>}
+
                     <div className="inputCointainer">
                         <label >
                             <p>Email</p>
                             <input name="email" placeholder="Email" onChange={changeValue} value={infoUser.email} type="text" />
                         </label>
                     </div>
-                    <div className="inputCointainer">
+                    {error.email ? <small>{error.email}</small> : <p></p>}
 
-                        <div class="upload-btn-wrapper">
-                            <button class="btn">Upload a file</button>
+                    <div className="inputCointainer">
+                        <div className="upload-btn-wrapper">
                             <input id="foto" onChange={uploadPhoto} type="file" name="myfile" />
                         </div>
                     </div>
+
                     <div className="inputCointainer">
                         <label >
                             <p>Password</p>
                             <input name="password" placeholder="Password" onChange={changeValue} value={infoUser.password} type="password" />
                         </label>
                     </div>
+                    {error.password ? <small>{error.password}</small> : <p></p>}
+
                     <button className="btnSendForm" onClick={createAccount}>Create Acount</button>
                 </div>
             </section>

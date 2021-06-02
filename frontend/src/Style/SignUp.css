@@ -1,7 +1,7 @@
 .containerForm{
     background-image: url("http://tingarciadg.com/wp-content/uploads/2021/05/pexels-sameera-ganegoda-2234783-scaled.jpg");
     width: 100%;
-height: 100vh;
+    height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
@@ -9,7 +9,7 @@ height: 100vh;
     align-items: center;
 }
 .formularioSignUP{
-    width: 25vw;
+    width: 50%;
     background: white;
     display: flex;
     flex-direction: column;
@@ -18,6 +18,7 @@ height: 100vh;
     padding: 22px;
         border-radius: 1vw;
 }
+
 
 .titleForm{
     color: white;
@@ -32,69 +33,90 @@ height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+}
+
+.inputCointainer label{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .inputCointainer > label > input {
-    width: 19vw;
-    height: 2.5vw;
+    width: 80%;
+    height: 6vh;
     font-family: 'Montserrat';
     padding: 10px;
     outline: none;
-    border-radius: 1vw;
+    border-radius: 1vh;
     border: 2px solid #0000003b;
+    margin-bottom: 2vh;
 }
 
+.inputCointainer  input:hover{
+    border: 2px solid #f3c3ef
+} 
 .inputCointainer  input:focus{
-    border: 2px solid #FF4A5E
+    border: 2px solid #b56daf
 } 
 
 
 .inputCointainer  > label > p{
-        color: black;
+    color: black;
     font-family: 'Montserrat';
     margin: 0;
     font-weight: bold;
+    width: 85%;
+    margin-bottom: 1vh;
+}
+
+@media (max-width: 800px){
+    .formularioSignUP{
+        width: 70%;
+    }
+}
+
+@media (max-width: 600px){
+    .formularioSignUP{
+        width: 90%;
+    }
 }
 
 .upload-btn-wrapper {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 2vh 0;
 }
 
 .btn {
     border: 2px solid gray;
     color: gray;
     background-color: white;
-    padding: 8px 20px;
-    border-radius: 8px;
-    font-size: 12px;
-    font-weight: bold;
-    margin-top: 2vw;
-    width: 19vw;
+    border-radius: 1vh;
+    font-size: large;
 }
 
-.upload-btn-wrapper input[type=file] {
-  font-size: 100px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
+.upload-btn-wrapper input {
+    width: 50%;
+    border: none;
+}
+.upload-btn-wrapper input:hover {
+    border: none;
 }
 
 .btnSendForm{
-    margin-top: 35px;
-    margin-bottom: 20px;
-    width: 21vw;
-    height: 3vw;
-        border: none;
-    background: linear-gradient(
-140deg
-,var(--purple),var(--pink));
+    margin: 3vh 0;
+    height: 5vh;
+    border: none;
+    background: linear-gradient(140deg,var(--purple),var(--pink));
     color: white;
-    font-size: 16px;
     font-weight: bold;
-    border-radius: 1vw;
+    border-radius: 2vh;
+    font-size: large;
+    padding: 0 1.4rem;
 }
 
 .btnGoogleSignUp{
@@ -102,9 +124,7 @@ height: 100vh;
     color: white;
     background: #3f7bf0;
     padding: 9px;
-    border-radius: 1vw;
-    width: 21vw;
-
+    border-radius: 1vh;
 }
 
 .btnGoogleSignUp > i {

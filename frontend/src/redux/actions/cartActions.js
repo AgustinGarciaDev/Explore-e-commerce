@@ -4,17 +4,24 @@ const cartActions = {
     allProducts: () => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.get('http://localhost:4000/api/products')
+                const response = await axios.get('https://explore-2021.herokuapp.com/api/products')
                 const Data = [...response.data.result]
                 Data.map((article) => {
                     article["units"] = 0
+                    article["status"] = false
                 })
-                if (response) {
-                    if (response.data.success) {
-                        dispatch({ type: 'PRODUCTS' , payload: Data })
-                        return Data
-                    } else {
-                        return Data
+                if (localStorage.getItem("cart")) {
+                    const response = JSON.parse(localStorage.getItem("cart"))
+                    dispatch({ type: 'PRODUCTS', payload: response })
+                    return response
+                } else {
+                    if (response) {
+                        if (response.data.success) {
+                            dispatch({ type: 'PRODUCTS', payload: Data })
+                            return Data
+                        } else {
+                            return Data
+                        }
                     }
                 }
             } catch (error) {
@@ -23,30 +30,29 @@ const cartActions = {
         }
     },
     buyArticle: (product) => {
-        localStorage.setItem("cart", JSON.stringify(product))
         return (dispatch, getState) => {
-            dispatch({ type: 'BUY' , payload: product })
+            dispatch({ type: 'BUY', payload: product })
         }
     },
     removeArticle: (product) => {
         return (dispatch, getState) => {
-            dispatch({ type: 'REMOVE' , payload: product })
+            dispatch({ type: 'REMOVE', payload: product })
         }
     },
-    add: () => {
+    subtract: (product) => {
         return (dispatch, getState) => {
-            dispatch({ type: 'ADD' })
-        }
-    },
-    subtract: () => {
-        return (dispatch, getState) => {
-            dispatch({ type: 'ADD' })
+            dispatch({ type: 'SUBTRACT', payload: product })
         }
     },
     localStorage: (response) => {
         return (dispatch, getState) => {
-            dispatch({ type: 'BUY' , payload: response })
-        }   
+            dispatch({ type: 'PRODUCTS', payload: response })
+        }
+    },
+    localStorageNum: (response) => {
+        return (dispatch, getState) => {
+            dispatch({ type: 'NUM_CART', payload: response })
+        }
     }
 }
 

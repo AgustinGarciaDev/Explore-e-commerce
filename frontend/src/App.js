@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Style/Home.css'
 import './Style/SignIn.css'
 import './Style/SignUp.css'
+import "./Style/munoz.css"
+import "./Style/like.scss"
 import './Style/admin.css'
 import './Style/header.css'
 import './Style/Footer.css'
@@ -35,10 +37,15 @@ import ProductEdit from "./components/ProductEdit";
 
 
 const App = (props) => {
+
   if (localStorage.getItem("cart")) {
     const response = JSON.parse(localStorage.getItem("cart"))
-    console.log(response)
     props.localStorage(response)
+  }
+
+  if (localStorage.getItem("num")) {
+    const response = JSON.parse(localStorage.getItem("num"))
+    props.localStorageNum(response)
   }
 
   if (props.usuarioStatus) {
@@ -111,7 +118,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   relogin: userActions.relogin,
-  localStorage: cartActions.localStorage
+  localStorage: cartActions.localStorage,
+  localStorageNum: cartActions.localStorageNum,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

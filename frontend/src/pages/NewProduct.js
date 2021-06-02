@@ -102,7 +102,7 @@ const NewProduct = (props) => {
                         className="newCategoryInput"
                         type="text"
                         onKeyUp={event => event.key === "Enter" ? addImages(event) : null}
-                        placeholder="Press enter to add categories"
+                        placeholder="Press enter to add image"
                     />
                 </div>
                 {errors.productsImages ? <small>{errors.productsImages}</small> : <p></p>}

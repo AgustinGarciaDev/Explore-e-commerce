@@ -1,6 +1,5 @@
 const initialState = {
     articles: [],
-    cart: [],
     accountant: 0
 }
 
@@ -13,51 +12,57 @@ const cartReducer = (state = initialState, action) => {
             }
             break
         case 'BUY':
-            if (state.cart.filter(article => article._id === action.payload._id).length > 0) {
-                console.log("entro al if")
-                state.articles.map(article => {
-                    if(article._id === action.payload._id) {
-                        article.units = article.units + 1
-                    }
-                    return article
-                })
-                return {
-                    ...state,
-                    accountant: state.accountant + 1
+            const buy = state.articles.map(article => {
+                if (article._id === action.payload._id) {
+                    article.status = true
+                    article.units = article.units + 1
                 }
-            } else {
-                console.log("entro al else")
-                state.articles.map(article => {
-                    if(article._id === action.payload._id) {
-                        article.units = article.units + 1
-                    }
-                    return article
-                })
-                return {
-                    ...state,
-                    cart: [...state.cart,action.payload],
-                    accountant: state.accountant + 1
-                }
-            }
-            break
-        case 'REMOVE':
-            localStorage.clear()
+                return article
+            })
+            localStorage.setItem('cart', JSON.stringify(buy))
+            localStorage.setItem('num', JSON.stringify(state.accountant + 1))
             return {
                 ...state,
-                cart: state.cart.filter( article => article._id !== action.payload._id ),
-                accountant: state.accountant - 1
-            }
-            break
-        case 'ADD':
-            return {
-                ...state,
+                articles: buy,
                 accountant: state.accountant + 1
             }
             break
+        case 'REMOVE':
+            var cont = 0
+            const remove = state.articles.map(article => {
+                if (article._id === action.payload._id) {
+                    article.status = false
+                    cont = article.units
+                    article.units = 0
+                }
+                return article
+            })
+            localStorage.setItem('cart', JSON.stringify(remove))
+            localStorage.setItem('num', JSON.stringify(state.accountant - cont))
+            return {
+                ...state,
+                articles: remove,
+                accountant: state.accountant - cont
+            }
+            break
         case 'SUBTRACT':
+            const subtract = state.articles.map(article => {
+                if (article._id === action.payload._id) {
+                    article.units = article.units - 1
+                }
+                return article
+            })
+            localStorage.setItem('cart', JSON.stringify(subtract))
+            localStorage.setItem('num', JSON.stringify(state.accountant - 1))
             return {
                 ...state,
                 accountant: state.accountant - 1
+            }
+            break
+        case 'NUM_CART':
+            return {
+                ...state,
+                accountant: action.payload
             }
             break
         default:

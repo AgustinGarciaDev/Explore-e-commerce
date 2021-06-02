@@ -23,10 +23,10 @@ const validator = (req, res, next) => {
         description: joi.string().trim().required().pattern(new RegExp(namesRegExp)).messages({
             'string.empty': 'You must complete this field'
         }),
-        price: joi.string().trim().required().messages({
+        price: joi.number().required().messages({
             'string.empty': 'You must complete this field',
         }),
-        discount: joi.string().trim().required().messages({
+        discount: joi.number().required().messages({
             'string.empty': 'You must complete this field',
         }),
         categories: joi.array().items(objectSchema).min(1).unique().required().messages({
@@ -43,7 +43,14 @@ const validator = (req, res, next) => {
         }),
     })
 
-    const validation = schema.validate(req.body, { abortEarly: false })
+    let validation
+
+    if( req.files ){
+        validation = schema.validate( JSON.parse( req.body.form ) , { abortEarly: false })
+        
+    }else{ validation = schema.validate(req.body, { abortEarly: false }) }
+
+    
 
     if (validation.error) {
         return res.json({ success: false, error: validation.error })

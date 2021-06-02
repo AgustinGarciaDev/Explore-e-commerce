@@ -18,12 +18,10 @@
     justify-content: center;
 }
 .logo{
-    background-image: url("http://tingarciadg.com/wp-content/uploads/2021/05/Diseno-sin-titulo-4.png");
     background-repeat: no-repeat;
     background-size: contain;
-    background-position-x: center;
-    background-position-y: center;
-    width: 17rem;
+    background-position: center;
+    width: 20vh;
     height: 5rem;
 }
 

@@ -9,33 +9,35 @@ const Header = (props) => {
 
             <LinkContainer to="/" >
                 <Navbar.Brand>
-                    <img className="logo" src="http://tingarciadg.com/wp-content/uploads/2021/05/Diseno-sin-titulo-4.png" alt="" />
+                    <div className="logo" style={{ backgroundImage: `url('http://tingarciadg.com/wp-content/uploads/2021/05/Diseno-sin-titulo-4.png')` }} />
                 </Navbar.Brand>
             </LinkContainer>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto" bg="light" variant="light">
-                    < LinkContainer to="/sextoy">
+                    < LinkContainer to="/sextoy" className="navigator">
                         <Nav.Link> Sex toy </Nav.Link>
                     </ LinkContainer>
 
-                    < LinkContainer to="/accesories" >
+                    < LinkContainer to="/accesories" className="navigator">
                         <Nav.Link> Accesories </Nav.Link>
                     </ LinkContainer>
-                    < LinkContainer to="/products" >
+                    < LinkContainer to="/products" className="navigator">
                         <Nav.Link> All products </Nav.Link>
                     </ LinkContainer>
                 </Nav>
                 <Nav>
-                    < LinkContainer to="/signin" >
-                        <Nav.Link> Sign In </Nav.Link>
+                    < LinkContainer className="navigator" to="/signin" >
+                        <Nav.Link> Log In </Nav.Link>
                     </ LinkContainer>
-                    < LinkContainer to="/signup"  >
+                    < LinkContainer className="navigator" to="/signup"  >
                         <Nav.Link eventKey={2}> Sign Up </Nav.Link>
                     </ LinkContainer>
-                    <h2>{props.accountant}</h2>
                     <LinkContainer to="/shoppingCart">
-                        <Nav.Link > Cart </Nav.Link>
+                        <Nav.Link className="cartContainerHeader" >
+                            <i className="fas fa-shopping-cart"></i>
+                            <span className="totalCartHeader">{props.accountant}</span>
+                        </Nav.Link>
                     </LinkContainer>
                 </Nav>
             </Navbar.Collapse>

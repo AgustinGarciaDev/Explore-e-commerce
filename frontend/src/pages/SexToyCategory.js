@@ -61,10 +61,10 @@ const SexToyCategory = (props) => {
                     </div>
                 </div>
                 <div className="containerProductCardSexToy">
-                    <div className="containerTextCardSexToy">
+                    <div className="lubricantContainer">
                         <h2>Sex Toys for Penises</h2>
                         <p>
-                            The best sex toys for penises are for sexual pleasure, what sriracha sauce is for a bowl of hot noodles! With such a great selection, whether your playing solo or with a partner, you'll be amazed at how a well designed toy can enhance your sex life, no matter how great it is to begin with.
+                            The best sex toys for penises are for sexual pleasure, what sriracha sauce is for a bowl of hot noodles! With such a great selection, whether your playing solo or with a partner.
                     </p>
                     </div>
                     <div className="containerProducPresent"></div>
@@ -77,12 +77,10 @@ const SexToyCategory = (props) => {
 
                 <div className="containerProductCardSexToy">
                     <div className="containerProductsVulva"></div>
-                    <div className="containerTextCardSexToy">
+                    <div className="lubricantContainer">
                         <h2>Sex Toys for Vulvas</h2>
                         <p>
-                            The selection of toys available for vulvas is enormous so our team have been working like busy bees to hand pick a great edited selection that provide a little bit of everything.
-
-                            For internal pleasure we have vibrators and dildos in all shapes and sizes, clitoral stimulators, suckers and powerful vibrating wands for the ultimate clitoral pleasure.
+                            The selection of toys available for vulvas is enormous so our team have been working like busy bees to hand pick a great edited selection that provide a little bit of everything. For internal pleasure we have vibrators, dildos in all shapes and sizes, and much more.
                     </p>
                     </div>
                 </div>
@@ -92,10 +90,10 @@ const SexToyCategory = (props) => {
                     }
                 </div>
                 <div className="containerProductCardSexToy">
-                    <div className="containerTextCardSexToy">
+                    <div className="lubricantContainer">
                         <h2>Sex Toys for Butts</h2>
                         <p>
-                            Anal stimulation is a powerful part of sexual pleasure and commonly one of the least explored. And we think thats a shame! There's so much to offer - from the full feeling of butt plugs, designed to stay in place during play or the popping sensations of anal beads being repeatedly removed and reinserted to the infamous prostate massagers and anal dildos, the array of sensations available to explore are mind blowing.
+                            Anal stimulation is a powerful part of sexual pleasure and commonly one of the least explored. And we think thats a shame! There's so much to offer.
                     </p>
                     </div>
                     <div className="containerProductsButts"></div>

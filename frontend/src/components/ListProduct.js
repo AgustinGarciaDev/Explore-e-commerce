@@ -4,18 +4,14 @@ import { connect } from "react-redux"
 import cartActions from "../redux/actions/cartActions"
 
 const ListProduct = (props) => {
-
-    /* const [products,setProducts] = useState([]) */
+    const products = props.products 
 
     useEffect(() => {
         fetchProducts()
     }, [])
 
     const fetchProducts = () => {
-        /* let response = await */ props.allProducts()
-        /*         if (response) {
-                    setProducts(response.result)
-                } */
+        props.allProducts()
     }
 
     return (
@@ -23,21 +19,9 @@ const ListProduct = (props) => {
             <div>
                 <div className="titleContainerProducts"><h2>Popular sextoy</h2></div>
                 <div className="productsListHome">
-                    {props.products.map(product => <CardProduct key={product._id} product={product} />)}
-                </div>
-            </div>
-            {/*             <div>
-                <div className="titleContainerProducts"><h2>Popular Accesorios</h2></div>
-                <div className="productsListHome">
                     {products.map(product => <CardProduct key={product._id} product={product} />)}
                 </div>
             </div>
-            <div >
-                <div className="titleContainerProducts"><h2>Popular Cremas</h2></div>
-                <div className="productsListHome">
-                    {products.map(product => <CardProduct key={product._id} product={product} />)}
-                </div>
-            </div> */}
         </>
     )
 }
