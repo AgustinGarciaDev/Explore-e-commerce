@@ -14,15 +14,23 @@ const User = (props) => {
         legalAge: false,
     })
 
-    const uploadPhoto= e => {
+    const addPhoto= e => {
         setPhoto({photo: e.target.files[0]})
     }
 
-    const sendPhoto = async (e) => {
-        e.preventDefault()
-        const formData = new FormData()
-        formData.append('photo', photo.photo)
-        props.uploadPhoto(formData)  
+    const sendPhoto = async () => {
+        console.log(props.usuarioStatus.email)
+        if( photo.photo){
+            console.log("hola2")
+            
+
+            const formData = new FormData()
+            formData.append('email', props.usuarioStatus.email)
+            formData.append('photo', photo.photo)
+            props.uploadPhoto(formData)
+        } else {
+            toast.error("😬 The field must be completed")
+        }
     }
 
     const changeValue = (e) => {
@@ -32,13 +40,13 @@ const User = (props) => {
         })
     }
    
-    const changeAccount = async (dateToChange) => {
-        dateToChange.preventDefault()
+    const changeAccount = async (dateToChange,e) => {
+       
         if (!dateToChange) {
-            toast.error("😬 All fields must be completed")
+            toast.error("😬 The field must be completed")
 
         } else {
-            const respuesta = await props.createAcount(dateToChange,localStorage.getItem('token'))
+            const respuesta = await props.modifyUser(dateToChange,localStorage.getItem('token'))
 
             if (respuesta) {
                 console.log(respuesta)
@@ -63,34 +71,34 @@ const User = (props) => {
         <>
             <div>menu</div>
             <div className="containerForm">
-                <h1 className="titleForm">Create Account</h1>
+                <h1 className="titleForm">User</h1>
                 <div>
                     <div>
                         <label >
                             <p>Nick Name</p>
                             <input name="user" onChange={changeValue} value={infoUser.user} type="text" />
                         </label>
-                        <button onClick={changeAccount(infoUser.user)}>Change Nick Name</button>
+                        <button onClick={()=>changeAccount({user: infoUser.user})}>Change Nick Name</button>
                     </div>
                     <div>
                         <label >
                             <p>Email</p>
                             <input name="email" onChange={changeValue} value={infoUser.email} type="text" />
-                            <button onClick={changeAccount(infoUser.email)}>Change email</button>
+                            <button onClick={()=>changeAccount({email: infoUser.email})}>Change email</button>
                         </label>
                     </div>
                     <div>
                         <label >
                             <p>Foto user</p>
-                            <input type="file" name="foto" id="foto" onChange={uploadPhoto} />
-                            <button onClick={sendPhoto}>Change photo</button>
+                            <input type="file" name="foto" id="foto" onChange={addPhoto} />
+                            <button onClick={()=>sendPhoto()}>Change photo</button>
                         </label>
                     </div>
                     <div>
                         <label >
                             <p>Password</p>
                             <input name="password" onChange={changeValue} value={infoUser.password} type="password" />
-                            <button onClick={changeAccount(infoUser.password)}>Change password</button>
+                            <button onClick={()=>changeAccount({password: infoUser.password})}>Change password</button>
                         </label>
                     </div>
                 </div>
@@ -98,11 +106,18 @@ const User = (props) => {
         </>
     )
 }
+
+const mapStateToProps= state =>{
+    return{
+        usuarioStatus: state.user.usuarioStatus 
+    }
+}
+
 const mapDispatchToProps = {
 
-    createAcount: userActions.createAcount,
+    modifyUser: userActions.modifyUser,
     uploadPhoto: userActions.uploadPhoto,
 }
 
 
-export default connect(null, mapDispatchToProps)(User)
+export default connect(mapStateToProps, mapDispatchToProps)(User)
