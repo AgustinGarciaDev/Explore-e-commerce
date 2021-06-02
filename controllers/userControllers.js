@@ -26,7 +26,7 @@ const userControllers = {
         }
         res.json({
             success: !error ? true : false,
-            response: !error ? { token: response, img: newUserSaved.urlImg, name: newUserSaved.user, email: newUserSaved.email } : { error: error }
+            response: !error ? { token: response, img: newUserSaved.urlImg, name: newUserSaved.user, email: newUserSaved.email, admin: newUserSaved.admin } : { error: error }
         })
     },
 
@@ -42,13 +42,13 @@ const userControllers = {
         } else { var error = "Users and/or password are incorrect" }
         res.json({
             success: !error ? true : false,
-            response: !error && { token: response, img: userOK.urlImg, user: userOK.user, email: userOK.email },
+            response: !error && { token: response, img: userOK.urlImg, user: userOK.user, email: userOK.email, admin: userOK.admin },
             error: error
         })
     },
 
     relogin: (req, res) => {
-        res.json({ success: true, response: { img: req.user.urlImg, user: req.user.user, email: req.user.email } })
+        res.json({ success: true, response: { img: req.user.urlImg, user: req.user.user, email: req.user.email, admin: req.user.admin } })
     },
 
     modifyUser: async (req, res) => {

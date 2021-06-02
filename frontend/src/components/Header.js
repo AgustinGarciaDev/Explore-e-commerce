@@ -1,9 +1,10 @@
 import { Navbar, Nav } from 'react-bootstrap'
 import { connect } from "react-redux"
 import { LinkContainer } from 'react-router-bootstrap'
-
+import userActions from '../redux/actions/userActions'
 
 const Header = (props) => {
+
     return (
         <Navbar collapseOnSelect expand="lg" variant="light">
 
@@ -25,14 +26,33 @@ const Header = (props) => {
                     < LinkContainer to="/products" className="navigator">
                         <Nav.Link> All products </Nav.Link>
                     </ LinkContainer>
+                    {
+                        props.userLooged.usuarioStatus && props.userLooged.usuarioStatus.admin &&
+                        <>
+                            < LinkContainer to="/admin" className="navigator">
+                                <Nav.Link> Admin </Nav.Link>
+                            </ LinkContainer>
+                        </>
+                    }
                 </Nav>
                 <Nav>
-                    < LinkContainer className="navigator" to="/signin" >
-                        <Nav.Link> Log In </Nav.Link>
-                    </ LinkContainer>
-                    < LinkContainer className="navigator" to="/signup"  >
-                        <Nav.Link eventKey={2}> Sign Up </Nav.Link>
-                    </ LinkContainer>
+                    {
+                        !props.userLooged.usuarioStatus
+                            ?
+                            <>
+                                < LinkContainer className="navigator" to="/signin" >
+                                    <Nav.Link> Sign in </Nav.Link>
+                                </ LinkContainer>
+                                < LinkContainer className="navigator" to="/signup"  >
+                                    <Nav.Link eventKey={2}> Sign Up </Nav.Link>
+                                </ LinkContainer>
+                            </>
+                            :
+                            <>
+                                <div className="userLogo" style={{ backgroundImage: `url('${props.userLooged.usuarioStatus.img}')` }} />
+                                <p className="signOutHeader" onClick={props.signOut}>Sign out</p>
+                            </>
+                    }
                     <LinkContainer to="/shoppingCart">
                         <Nav.Link className="cartContainerHeader" >
                             <i className="fas fa-shopping-cart"></i>
@@ -47,8 +67,13 @@ const Header = (props) => {
 
 const mapStateToProps = state => {
     return {
-        accountant: state.cart.accountant
+        accountant: state.cart.accountant,
+        userLooged: state.user
     }
 }
 
-export default connect(mapStateToProps)(Header)
+const mapDispatchToProps = {
+    signOut: userActions.SignOut
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
