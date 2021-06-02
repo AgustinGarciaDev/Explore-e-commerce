@@ -59,7 +59,7 @@ const SignUp = (props) => {
 
     const responseGoogle = (response) => {
         const { email, imageUrl, givenName } = response.profileObj
-        createAccount(null, { user: givenName, email: email, password: 'Hola1234!', urlImg: imageUrl, googleFlat: true })
+        createAccount(null, { user: givenName, email: email, password: 'Hola1234!', urlImg: imageUrl, googleFlag: true })
     }
 
     return (
