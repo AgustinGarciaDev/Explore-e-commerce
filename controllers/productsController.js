@@ -122,6 +122,8 @@ const imagesActions = async (req, res) => {
 /*---------------- Comments ----------------------- */
 const postComment = async (req, res) => {
     const { idProduct } = req.params
+    const { _id } = req.user
+    req.body.userId = _id
 
     try {
         const result = await Product.findByIdAndUpdate(idProduct, { $push: { comments: req.body } }, { new: true })
@@ -159,6 +161,8 @@ const putComment = async (req, res) => {
 /* -------------------Score----------------------------------------------------- */
 const postScore = async (req, res) => {
     const { idProduct } = req.params
+    const { _id } = req.user
+    req.body.userId = _id
 
     try {
         const result = await Product.findByIdAndUpdate(idProduct, { $push: { scores: req.body } }, { new: true })
