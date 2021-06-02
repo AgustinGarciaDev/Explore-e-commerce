@@ -16,6 +16,7 @@ const SignUp = (props) => {
     })
 
     const uploadPhoto = e => {
+        console.log(e.target.files[0])
         setPhoto({ photo: e.target.files[0] })
     }
 
@@ -45,21 +46,22 @@ const SignUp = (props) => {
 
         } else {
             const respuesta = await props.createAcount(user)
-            if (respuesta.data.success) {
-                if (photo.photo) {
-                    const formData = new FormData()
-                    formData.append('email', user.email)
-                    formData.append('photo', photo.photo)
-                    props.uploadPhoto(formData)
-                }
+            if (photo.photo) {
+                const formData = new FormData()
+                formData.append('email', user.email)
+                formData.append('photo', photo.photo)
+                props.uploadPhoto(formData)
+            }
+            if (respuesta) {
+                setErrores(respuesta.details)
+            } else {
+
                 toast.success("👋 Welcome", {
                     onClose: () => {
                         props.history.push('/')
                     },
 
                 })
-            } else {
-                setErrores(respuesta.data.errores.details)
             }
 
         }
@@ -122,8 +124,8 @@ const SignUp = (props) => {
                     </div>
                     <div className="inputCointainer">
 
-                        <div class="upload-btn-wrapper">
-                            <button class="btn">Upload a file</button>
+                        <div className="upload-btn-wrapper">
+                            <button className="btn">Upload a file</button>
                             <input id="foto" onChange={uploadPhoto} type="file" name="myfile" />
                         </div>
                     </div>

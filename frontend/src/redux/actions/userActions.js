@@ -4,16 +4,15 @@ import { toast } from 'react-toastify';
 const userActions = {
 
     createAcount: (infoUser) => {
-
         return async (dispatch, getState) => {
             try {
-                const response = await axios.post("http://localhost:4000/api/user/signup", infoUser)
-                /*      if (!response.data.success) {
-                         return response.data.errores
-                     } */
-                     return(response)
-                console.log(response.data)
-                /*    dispatch({ type: 'SIGNIN_USER', payload: response.data.success ? response.data.respuesta : null }) */
+                const response = await axios.post("https://explore-2021.herokuapp.com/api/user/signup", infoUser)
+                if (!response.data.success) {
+                    return response.data.errores
+                }
+                console.log(response)
+                /*   return (response) */
+                dispatch({ type: 'SIGNIN_USER', payload: response.data.success ? response.data.response : null })
             } catch (error) {
                 console.log(error)
             }
@@ -23,13 +22,13 @@ const userActions = {
 
         return async (dispatch, getState) => {
             try {
-                const response = await axios.post("http://localhost:4000/api/user/signin", infoUser)
-                /*   if (!response.data.success) {
-  
-                      return response.data.error
-                  } */
+                const response = await axios.post("https://explore-2021.herokuapp.com/api/user/signin", infoUser)
+                if (!response.data.success) {
+
+                    return response.data.error
+                }
                 console.log(response)
-                   dispatch({ type: 'SIGNIN_USER', payload: response.data.success ? response.data.response : null })
+                dispatch({ type: 'SIGNIN_USER', payload: response.data.success ? response.data.response : null })
             } catch (error) {
                 console.log(error)
             }
@@ -48,26 +47,28 @@ const userActions = {
         }
     },
 
-    relogin: (userToken) => {   
+    relogin: (userToken) => {
         return async (dispatch, getState) => {
-          const response= await axios.get("http://localhost:4000/api/user/relogin", {headers: {'Authorization': 'Bearer '+userToken} })
-        
-                dispatch({type: 'SIGNIN_USER', payload: {
+            const response = await axios.get("https://explore-2021.herokuapp.com/api/user/relogin", { headers: { 'Authorization': 'Bearer ' + userToken } })
+
+            dispatch({
+                type: 'SIGNIN_USER', payload: {
                     ...response.data.response,
-                    token: userToken                  
-                }})
+                    token: userToken
+                }
+            })
         }
     },
 
-     uploadPhoto: (formData) => {   
+    uploadPhoto: (formData) => {
         return async (dispatch, getState) => {
-            await axios.post("http://localhost:4000/api/user/uploadPhoto", formData)
+            await axios.post("https://explore-2021.herokuapp.com/api/user/uploadPhoto", formData)
         }
     },
 
-    modifyUser: (dateToChange, token) => {   
+    modifyUser: (dateToChange, token) => {
         return async (dispatch, getState) => {
-            await axios.put("http://localhost:4000/api/user/modifyuser", dateToChange,  {headers: {'Authorization': 'Bearer '+ token} })
+            await axios.put("https://explore-2021.herokuapp.com/api/user/modifyuser", dateToChange, { headers: { 'Authorization': 'Bearer ' + token } })
         }
     },
 

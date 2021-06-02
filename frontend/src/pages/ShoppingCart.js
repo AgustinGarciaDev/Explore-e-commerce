@@ -14,7 +14,6 @@ const ShoppingCart = (props) => {
     return (
         <>
             <Header />
-            <Link to="/products">volver</Link>
             <div className="cartContainer">
                 <div className="titleShoppingCart">
                     <h1>Shopping Bag</h1>

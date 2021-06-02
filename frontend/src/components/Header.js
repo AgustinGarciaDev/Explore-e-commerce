@@ -15,28 +15,28 @@ const Header = (props) => {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto" bg="light" variant="light">
-                    < LinkContainer to="/sextoy">
+                    < LinkContainer to="/sextoy" className="navigator">
                         <Nav.Link> Sex toy </Nav.Link>
                     </ LinkContainer>
 
-                    < LinkContainer to="/accesories" >
+                    < LinkContainer to="/accesories" className="navigator">
                         <Nav.Link> Accesories </Nav.Link>
                     </ LinkContainer>
-                    < LinkContainer to="/products" >
+                    < LinkContainer to="/products" className="navigator">
                         <Nav.Link> All products </Nav.Link>
                     </ LinkContainer>
                 </Nav>
                 <Nav>
-                    < LinkContainer to="/signin" >
-                        <Nav.Link> Sign In </Nav.Link>
+                    < LinkContainer className="navigator" to="/signin" >
+                        <Nav.Link> Log In </Nav.Link>
                     </ LinkContainer>
-                    < LinkContainer to="/signup"  >
+                    < LinkContainer className="navigator" to="/signup"  >
                         <Nav.Link eventKey={2}> Sign Up </Nav.Link>
                     </ LinkContainer>
                     <LinkContainer to="/shoppingCart">
-                        <Nav.Link className="ndea" >
+                        <Nav.Link className="cartContainerHeader" >
                             <i className="fas fa-shopping-cart"></i>
-                            <span className="xd">{props.accountant}</span>
+                            <span className="totalCartHeader">{props.accountant}</span>
                         </Nav.Link>
                     </LinkContainer>
                 </Nav>

@@ -4,7 +4,7 @@ const cartActions = {
     allProducts: () => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.get('http://localhost:4000/api/products')
+                const response = await axios.get('https://explore-2021.herokuapp.com/api/products')
                 const Data = [...response.data.result]
                 Data.map((article) => {
                     article["units"] = 0
@@ -12,18 +12,18 @@ const cartActions = {
                 })
                 if (localStorage.getItem("cart")) {
                     const response = JSON.parse(localStorage.getItem("cart"))
-                    dispatch({ type: 'PRODUCTS' , payload: response })
+                    dispatch({ type: 'PRODUCTS', payload: response })
                     return response
                 } else {
-                if (response) {
-                    if (response.data.success) {
-                        dispatch({ type: 'PRODUCTS' , payload: Data })
-                        return Data
-                    } else {
-                        return Data
+                    if (response) {
+                        if (response.data.success) {
+                            dispatch({ type: 'PRODUCTS', payload: Data })
+                            return Data
+                        } else {
+                            return Data
+                        }
                     }
                 }
-            }
             } catch (error) {
                 console.log(error)
             }
@@ -31,12 +31,12 @@ const cartActions = {
     },
     buyArticle: (product) => {
         return (dispatch, getState) => {
-            dispatch({ type: 'BUY' , payload: product })
+            dispatch({ type: 'BUY', payload: product })
         }
     },
     removeArticle: (product) => {
         return (dispatch, getState) => {
-            dispatch({ type: 'REMOVE' , payload: product })
+            dispatch({ type: 'REMOVE', payload: product })
         }
     },
     subtract: (product) => {
