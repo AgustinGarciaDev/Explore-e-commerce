@@ -5,7 +5,7 @@ import cartActions from "../redux/actions/cartActions"
 
 const ListProduct = (props) => {
     const products = props.products 
-    console.log(products)
+
     useEffect(() => {
         fetchProducts()
     }, [])

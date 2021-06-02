@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import { connect } from 'react-redux'
 import ProductForEdit from '../components/PorductForEdit'
 import productActions from '../redux/actions/productsActions'
-import Header from '../components/Header'
 
 const EditProduct = (props) => {
 
@@ -14,10 +13,9 @@ const EditProduct = (props) => {
 
     return (
         <>
-            <Header />
             <div className="editProductsContainer">
-                <h1>edit product</h1>
-                <div className="productsContainer">
+                <h1>Products</h1>
+                <div className="productsContainerimportant">
                     {
                         props.products.length === 0
                             ?

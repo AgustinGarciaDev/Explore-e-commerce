@@ -7,14 +7,23 @@ const userActions = {
         return async (dispatch, getState) => {
             try {
                 const response = await axios.post("https://explore-2021.herokuapp.com/api/user/signup", infoUser)
-                if (!response.data.success) {
-                    return response.data.errores
+                if (response) {
+                    if (!response.data.success) {
+                        return response.data
+                    } else {
+                        dispatch({ type: 'SIGNIN_USER', payload: response.data.response })
+                    }
                 }
-                console.log(response)
-                /*   return (response) */
-                dispatch({ type: 'SIGNIN_USER', payload: response.data.success ? response.data.response : null })
-            } catch (error) {
-                console.log(error)
+            } catch {
+                toast.error('Something went wrong, try again later!', {
+                    position: "top-right",
+                    autoClose: 1700,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                })
             }
         }
     },
@@ -39,8 +48,8 @@ const userActions = {
     SignOut: () => {
         return (dispatch, getState) => {
 
-            dispatch({ type: 'DESLOGUEAR_USUARIO' })
-            toast.success("👋Bye", {
+            dispatch({ type: 'SIGNOUT_USER' })
+            toast.success("Bye", {
                 autoClose: 1000,
                 position: "top-center",
             })
@@ -57,12 +66,6 @@ const userActions = {
                     token: userToken
                 }
             })
-        }
-    },
-
-    uploadPhoto: (formData) => {
-        return async (dispatch, getState) => {
-            await axios.post("https://explore-2021.herokuapp.com/api/user/uploadPhoto", formData)
         }
     },
 

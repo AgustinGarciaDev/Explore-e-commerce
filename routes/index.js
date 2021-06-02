@@ -9,7 +9,7 @@ const { getAllProducts, getProductById, postProduct, deleteProduct,
     postCategories, deleteCategories, putCategories,
     postPhotos, deletePhotos, putPhotos, editCategory, imagesActions } = require("../controllers/productsController")
 
-const { newUser, login, relogin, uploadPhoto,  modifyUser  } = require("../controllers/userControllers")
+const { newUser, login, relogin,  modifyUser  } = require("../controllers/userControllers")
 
 const { SendpurchaseSummary } = require("../controllers/mailerController")
 
@@ -77,9 +77,6 @@ router.route("/user/signin")
 
 router.route('/user/relogin')
     .get(passport.authenticate('jwt', { session: false }), relogin)
-
-router.route("/user/uploadPhoto")
-    .post(uploadPhoto)
 
 router.route("/user/modifyuser/:id")
     .put(passport.authenticate('jwt', {session: false}),modifyUser)
