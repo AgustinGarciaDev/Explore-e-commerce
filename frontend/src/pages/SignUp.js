@@ -34,8 +34,11 @@ const SignUp = (props) => {
         } else {
             if (photo.photo) {
                 const formData = new FormData()
-                formData.append('user', JSON.stringify(user))
+                formData.append('user', user.user )
+                formData.append('email', user.email )
+                formData.append('password', user.password )
                 formData.append('photo', photo.photo)
+
                 const response = await props.createAcount(formData)
                 if (response) {
                     if (response.error) {

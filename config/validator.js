@@ -24,16 +24,8 @@ const validator = (req, res, next) => {
         urlImg: Joi.string()
     })
 
-    let validation;
-
-    if (req.files) {
-        const body = JSON.parse(req.body.user)
-        validation = schema.validate(body, { abortEarly: false })
-    } else {
-        validation = schema.validate(req.body, { abortEarly: false })
-    }
-
-
+    const validation = schema.validate(req.body, { abortEarly: false })
+    
     if (validation.error) {
         return res.json({ succes: false, error: validation.error })
     }
