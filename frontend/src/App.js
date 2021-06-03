@@ -1,3 +1,5 @@
+import io from 'socket.io-client'
+import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Style/Home.css'
@@ -14,25 +16,11 @@ import './Style/checkout.css'
 import './Style/paymentSucessFull.css'
 import 'react-credit-cards/es/styles-compiled.css';
 import "./Style/CreditCard.css"
-import Home from './pages/Home'
-import SignIn from './pages/SignIn'
-import SignUp from './pages/SignUp'
-import User from './pages/User'
-import Admin from './pages/Admin'
 import { connect } from 'react-redux'
-import userActions from "./redux/actions/userActions"
 import { ToastContainer } from 'react-toastify';
-import Product from "./pages/Product";
-import NewProduct from "./pages/NewProduct";
-import Products from "./pages/Products";
-import ShoppingCart from "./pages/ShoppingCart";
-import EditProducts from "./pages/EditProducts";
-import SexToyCategory from "./pages/SexToyCategory";
-import Accesories from "./pages/Accesories"
-import Checkout from "./pages/Checkout"
-import PaymentSuccesfull from "./pages/PaymentSuccesfull"
+import getRoutesByRole from './helpers/rutes'
 import cartActions from "./redux/actions/cartActions";
-import ProductEdit from "./components/ProductEdit";
+import userActions from "./redux/actions/userActions"
 
 
 
@@ -48,52 +36,27 @@ const App = (props) => {
     props.localStorageNum(response)
   }
 
+  if (!props.usuarioStatus && localStorage.getItem('token')) {
+    const userData = JSON.parse(localStorage.getItem('userLogged'))
+    const userLoggedForzed = {
+      token: localStorage.getItem('token'),
+      ...userData
+    }
+    props.relogin(userLoggedForzed)
+  }
+
+  let role = "notLogged"
   if (props.usuarioStatus) {
-    var routes =
-      <>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/signin" component={SignIn} />
-          <Route exact path="/user" component={User} />
-          <Route exact path="/products" component={Products} />
-          <Route exact path="/shoppingCart" component={ShoppingCart} />
-          <Route exact path="/sextoy" component={SexToyCategory} />
-          <Route exact path="/accesories" component={Accesories} />
-          <Route exact path="/payment" component={PaymentSuccesfull} />
-          <Route exact path="/product/:id" component={Product} />
-          <Route exact path="/checkout" component={Checkout} />
-          <Route exact path="/payment" component={PaymentSuccesfull} />
-        </Switch>
-      </>
-  } else if (localStorage.getItem('token')) {
-    props.relogin(localStorage.getItem('token'))
-    return null
-  } else {
-    var routes =
-      <>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/signin" component={SignIn} />
-          <Route exact path="/Admin" component={Admin} />
-          <Route exact path="/add-new-product" component={NewProduct} />
-          <Route exact path="/edit-products" component={EditProducts} />
-          <Route exact path="/edit/prodcut/:_id" component={ProductEdit} />
-          <Route exact path="/products" component={Products} />
-          <Route exact path="/shoppingCart" component={ShoppingCart} />
-          <Route exact path="/sextoy" component={SexToyCategory} />
-          <Route exact path="/accesories" component={Accesories} />
-          <Route exact path="/product/:id" component={Product} />
-        </Switch>
-      </>
+    if (props.usuarioStatus.admin) {
+      role = "admin"
+    } else {
+      role = "common"
+    }
   }
 
   return (
     <BrowserRouter>
-      <Switch>
-        {routes}
-      </Switch>
+      {getRoutesByRole(role)}
       < ToastContainer
         position="top-center"
         autoClose={2000}

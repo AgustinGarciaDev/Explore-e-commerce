@@ -1,15 +1,14 @@
-import {  useState } from "react"
+import { useState } from "react"
 import { connect } from "react-redux"
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { GoogleLogin } from 'react-google-login'
 import userActions from '../redux/actions/userActions'
+import Header from '../components/Header'
+
 const SignIn = (props) => {
 
-    const [infoUser, setInfoUser] = useState({
-        email: "",
-        password: "",
-    })
+    const [infoUser, setInfoUser] = useState({ email: "", password: "", })
 
     const changeValue = (e) => {
         setInfoUser({
@@ -18,76 +17,69 @@ const SignIn = (props) => {
         })
     }
     const loginUser = async (e = null, googleUser = null) => {
-
         e && e.preventDefault()
         let user = e ? infoUser : googleUser
-        if (user.password === "" || user.email === "") {
-            toast.error("😬 All fields must be completed")
 
-        } else {
-            const respuesta = await props.signInUser(user)
-
-            if (respuesta) {
-                console.log(respuesta)
-                /* setErrores(respuesta.details) */
-            } else {
-                /*    toast.success("👋 Welcome", {
-                       onClose: () => {
-                           props.history.push('/')
-                       },
-   
-                   }) */
-                console.log(respuesta)
-            }
+        const response = await props.signInUser(user)
+        if (response) {
+            toast.error(response.error, {
+                position: "top-right",
+                autoClose: 1700,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            })
         }
+
     }
     const responseGoogle = (response) => {
-        const { email } = response.profileObj
-        loginUser(null, { email: email, password: 'Hola1234!' })
+        const { email, googleId } = response.profileObj
+        loginUser(null, { email: email, password: 'a'+googleId })
     }
 
     return (
         <>
-            <div>menu</div>
-            {  props.usuarioStatus? <h1 className="titleForm">Logueado</h1> : <h1 className="titleForm">NO logueado</h1> }
-            
+            <Header />
             <div className="containerForm">
                 <h1 className="titleForm">Login</h1>
-                <div>
-                    <div>
+                <div className="formularioSignUP">
+                    <GoogleLogin
+                        clientId="96796139704-21kkhk4q7hqudkpvga86qprq8c61i53s.apps.googleusercontent.com"
+                        render={renderProps => (
+                            <button className="btnGoogleSignUp" onClick={renderProps.onClick} disabled={renderProps.disabled}><i className="fab fa-google"></i>Sign in with Google</button>
+                        )}
+                        onSuccess={responseGoogle}
+                        onFailure={responseGoogle}
+                        cookiePolicy={'single_host_origin'}
+                    />
+                    <div className="inputCointainer">
                         <label >
                             <p>Email</p>
                             <input name="email" onChange={changeValue} value={infoUser.email} type="text" />
                         </label>
                     </div>
 
-                    <div>
+                    <div className="inputCointainer">
                         <label >
                             <p>Password</p>
                             <input name="password" onChange={changeValue} value={infoUser.password} type="password" />
                         </label>
                     </div>
                     <div>
-                        <button onClick={loginUser}>login</button>
+                        <button className="btnSendForm" onClick={loginUser}>login</button>
                     </div>
-                    <GoogleLogin
-                        clientId="96796139704-21kkhk4q7hqudkpvga86qprq8c61i53s.apps.googleusercontent.com"
-                        buttonText="Login"
-                        onSuccess={responseGoogle}
-                        onFailure={responseGoogle}
-                        cookiePolicy={'single_host_origin'}
-                    />,
                 </div>
-                <button onClick={() =>console.log(props.usuarioStatus)}>console.log</button>
             </div>
         </>
     )
 }
 
 
-const mapStateToProps= state =>{
-    return{
-        usuarioStatus: state.user.usuarioStatus 
+const mapStateToProps = state => {
+    return {
+        usuarioStatus: state.user.usuarioStatus
     }
 }
 

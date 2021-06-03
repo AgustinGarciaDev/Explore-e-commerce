@@ -31,8 +31,8 @@ router.route("/products/comments/:idProduct")
     .post(passport.authenticate("jwt", { session: false }), postComment)
 
 router.route("/products/comments/:idProduct/:idComment")
-    .delete(passport.authenticate("jwt", { session: false }), deleteComment)
-    .put(passport.authenticate("jwt", { session: false }), putComment)
+    .delete(deleteComment)
+    .put(putComment)
 
 /* --------------------Scores------------------------------ */
 router.route("/products/score/:idProduct")
