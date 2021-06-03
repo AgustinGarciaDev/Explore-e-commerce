@@ -1,13 +1,14 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import CardProduct from "../components/CardProduct"
 import { connect } from "react-redux"
 import cartActions from "../redux/actions/cartActions"
 
 const ListProduct = (props) => {
-    const products = props.products 
+    const products = props.products
 
     useEffect(() => {
         fetchProducts()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const fetchProducts = () => {

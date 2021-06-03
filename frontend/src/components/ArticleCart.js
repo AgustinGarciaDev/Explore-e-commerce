@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { connect } from "react-redux"
 import cartActions from "../redux/actions/cartActions"
 
 const ArticleCart = (props) => {
-    const { article , removeArticle , buyArticle , subtract , globalAccountant } = props
-    const [accountant,setAccountant] = useState( article.units )
+    const { article, removeArticle, buyArticle, subtract } = props
+    const [accountant, setAccountant] = useState(article.units)
 
     const remove = () => {
         removeArticle(article)
@@ -33,9 +33,9 @@ const ArticleCart = (props) => {
             <div className="photoCart" style={{ backgroundImage: `url(${article.coverImage})` }} ></div>
             <div><p>{article.name}</p></div>
             <div>
-                <button onClick={()=>{addAndRemove("Add")}}>+</button>
+                <button onClick={() => { addAndRemove("Add") }}>+</button>
                 <p>{accountant}</p>
-                <button onClick={()=>{addAndRemove("remove")}}>-</button>
+                <button onClick={() => { addAndRemove("remove") }}>-</button>
             </div>
             <div><p>£ {article.price * accountant}</p></div>
             <button onClick={remove}>X</button>
@@ -52,7 +52,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     removeArticle: cartActions.removeArticle,
     buyArticle: cartActions.buyArticle,
-    subtract: cartActions.subtract, 
+    subtract: cartActions.subtract,
 }
 
 

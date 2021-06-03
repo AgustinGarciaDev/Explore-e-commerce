@@ -68,7 +68,7 @@ const SignIn = (props) => {
                         </label>
                     </div>
                     <div>
-                        <button className="btnSendForm" onClick={loginUser}>login</button>
+                        <button className="btnSendForm" onClick={loginUser}>Sign In</button>
                     </div>
                 </div>
             </div>

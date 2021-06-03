@@ -1,6 +1,4 @@
-import io from 'socket.io-client'
-import { useEffect, useState } from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Style/Home.css'
 import './Style/SignIn.css'

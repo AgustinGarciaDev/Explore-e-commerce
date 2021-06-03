@@ -2,8 +2,11 @@
     background: white;
 }
 .signOutHeader{
+    display: flex;
+    align-items: center;
     text-align: center;
     color: gray;
+    margin: 0 2vh;
 }
 .signOutHeader:hover{
     color: black;
@@ -20,7 +23,20 @@
     border-radius: 50%;
 }
 
-.navbar-var{
+.navbar-nav{
     display: flex;
     align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 991px){
+
+    .navbar-collapse{
+        position: absolute;
+        width: 100vw;
+        background-color: white;
+        top: 12vh;
+        left: 0;
+        z-index: 10;
+    }
 }

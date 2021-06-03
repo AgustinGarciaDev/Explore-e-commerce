@@ -1,4 +1,4 @@
-import react, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import { connect } from "react-redux"
 import productsAction from "../redux/actions/productsActions"
 import PaymentForm from "../components/PaymentForm"
@@ -9,16 +9,16 @@ const Checkout = ({ articles, sendMail, history }) => {
     const [countries, setCountries] = useState([])
     const [visible, setVisible] = useState(false)
     const [creditCard, setCreditCard] = useState({})
-    const [ cartArticles, setCartArticles ] = useState( articles && articles.filter( article => article.status ) )
-    const [ total, setTotal ] = useState("")
+    const cartArticles = articles && articles.filter(article => article.status)
+    const [total, setTotal] = useState("")
 
-    useEffect(()=>{
+    useEffect(() => {
         let contador = 0
-        cartArticles.map( article =>{ contador += article.price * article.units } )
-        
-        setTotal( contador )
-    },[ cartArticles ])
-    
+        cartArticles.map(article => contador += article.price * article.units)
+
+        setTotal(contador)
+    }, [cartArticles])
+
     useEffect(() => {
         fetch("https://restcountries.eu/rest/v2/all")
             .then(data => data.json())
@@ -31,11 +31,11 @@ const Checkout = ({ articles, sendMail, history }) => {
     const readCreditCard = state => { setCreditCard(state) }
 
     const sendAll = () => {
-        sendMail(form, creditCard,{ cartArticles, total } )
+        sendMail(form, creditCard, { cartArticles, total })
         history.push("/payment")
     }
 
-    console.log( cartArticles )
+    console.log(cartArticles)
 
 
     return <div className="mainContainer">
@@ -55,7 +55,7 @@ const Checkout = ({ articles, sendMail, history }) => {
                         <h3>Contact Information</h3>
                         <h6>Already have an account? <span>SignIn</span></h6>
                     </div>
-                    <input type="text" disabled={visible ? true : false} name="email"  onChange={ readFields } placeholder="Email" />
+                    <input type="text" disabled={visible ? true : false} name="email" onChange={readFields} placeholder="Email" />
                 </div>
                 <div className="checkbox">
                     <input type="checkbox" disabled={visible ? true : false} onClick={() => setForm({ ...form, check: !form.check })} />
@@ -108,20 +108,20 @@ const Checkout = ({ articles, sendMail, history }) => {
             <div className="rightChildContainer">
                 <div className="productsContainer" >
 
-                    { cartArticles.length 
-                        ? cartArticles.map( article =>{
-                        return<div >
+                    {cartArticles.length
+                        ? cartArticles.map(article => {
+                            return <div >
                                 <div>
-                                    <div className="productImg" style={{ backgroundImage: `url('${ article.coverImage }')` }} ></div>
-                                        <h6>{ article.name }</h6>
-                                    </div>
-                                <h6> { article.units } X { article.price }</h6>
+                                    <div className="productImg" style={{ backgroundImage: `url('${article.coverImage}')` }} ></div>
+                                    <h6>{article.name}</h6>
+                                </div>
+                                <h6> {article.units} X {article.price}</h6>
                             </div>
-                        
+
                         })
                         : <h4>Don't have any articles</h4>
                     }
-                    
+
                 </div>
                 <hr />
                 <div className="discountContainer">
@@ -132,7 +132,7 @@ const Checkout = ({ articles, sendMail, history }) => {
                 <div>
                     <div className="counts-flex">
                         <h6 className="d-flex">Subtotal</h6>
-                        <span>{ total }</span>
+                        <span>{total}</span>
                     </div>
                     <div className="counts-flex">
                         <h6>Delivery </h6>
@@ -142,16 +142,16 @@ const Checkout = ({ articles, sendMail, history }) => {
                 <hr />
                 <div className="counts-flex">
                     <h6>Total</h6>
-                    <span>{ total }</span>
+                    <span>{total}</span>
                 </div>
             </div>
         </div>
     </div>
 }
 
-const mapStateToProps = state =>{
-    return{
-        articles:state.cart.articles
+const mapStateToProps = state => {
+    return {
+        articles: state.cart.articles
     }
 }
 

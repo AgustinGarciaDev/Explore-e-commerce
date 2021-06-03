@@ -9,6 +9,7 @@ const EditProduct = (props) => {
         if (props.products.length === 0) {
             props.getProducts()
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

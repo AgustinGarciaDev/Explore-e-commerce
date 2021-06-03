@@ -1,7 +1,6 @@
 import Home from '../pages/Home'
 import SignIn from '../pages/SignIn'
 import SignUp from '../pages/SignUp'
-import User from '../pages/User'
 import Admin from '../pages/Admin'
 import Product from "../pages/Product";
 import NewProduct from "../pages/NewProduct";

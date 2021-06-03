@@ -1,7 +1,5 @@
-import { use } from "passport"
-import { useEffect, useState } from "react"
 import { connect } from "react-redux"
-import { Redirect , Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import ArticleCart from "../components/ArticleCart"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
@@ -28,7 +26,7 @@ const ShoppingCart = (props) => {
                         cart.length === 0 ?
                             <h1>NO HAY ARTICULOS CARGADOS</h1>
                             :
-                        cart.map(article => <ArticleCart key={article._id} article={article}/>)
+                            cart.map(article => <ArticleCart key={article._id} article={article} />)
                     }
                     <div className="totalCart">
                         <div><h3>Subtotal:</h3></div>
@@ -36,10 +34,10 @@ const ShoppingCart = (props) => {
                     </div>
                 </div>
                 <div >
-                        <button>
+                    <button>
                         <Link to="/checkout" >Me llevo todo!!!!</Link>
-                        </button>
-                    </div>
+                    </button>
+                </div>
             </div>
             <Footer />
         </>
@@ -49,7 +47,7 @@ const ShoppingCart = (props) => {
 const mapStateToProps = state => {
     return {
         cart: state.cart.cart,
-        articles: state.cart.articles.filter(article => article.status === true )
+        articles: state.cart.articles.filter(article => article.status === true)
     }
 }
 
