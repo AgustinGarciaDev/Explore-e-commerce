@@ -36,18 +36,14 @@ const port = process.env.PORT
 
 const host = process.env.HOST || "0.0.0.0"
 
-<<<<<<< HEAD
-app.listen(port, host, () => console.log("app listening on port" + port + " on " + host))
-=======
-const server = app.listen( port, host, ()=> console.log( "app listening on port" + port + " on " + host  ) )
+const server = app.listen(port, host, () => console.log("app listening on port" + port + " on " + host))
 
-const io = socket(server, {cors: {origin: '*'}})
+const io = socket(server, { cors: { origin: '*' } })
 
 io.on('connection', (socket) => {
     socket.on("NewMessage", () => {
         io.sockets.emit('update')
     })
 })
->>>>>>> fb3b47eab2249dd65ab313561a01593cefe45714
 
 
