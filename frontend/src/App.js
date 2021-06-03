@@ -45,10 +45,10 @@ const App = (props) => {
 
   let role = "notLogged"
   if (props.usuarioStatus) {
-    if(props.usuarioStatus.admin){
+    if (props.usuarioStatus.admin) {
       role = "admin"
-    }else{
-      role= "common"
+    } else {
+      role = "common"
     }
   }
 

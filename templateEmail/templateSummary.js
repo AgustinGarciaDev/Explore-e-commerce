@@ -1,14 +1,6 @@
 
-const Summary =(form, creditCard, products)=>{
+const Summary =(form, creditCard, cart )=>{
 
-  let totalBuy = 0
-
-  products=[
-  { name:"producto1", price:20 },
-  { name:"producto2", price:30 },
-  { name:"producto3", price:40}]
-
-  products.map( product => totalBuy += product.price   )
 
   const GetDate =( suma = 0 )=>{
     let dateObj = new Date();
@@ -521,11 +513,11 @@ return  `
                                     <p class="f-fallback">Amount</p>
                                   </th>
                                 </tr>
-                                ${ products.map( product =>`<tr>
+                                ${ cart.cartArticles.map( product =>`<tr>
                                 
                                 <td width="80%" class="purchase_item"><span class="f-fallback">${ product.name }</span></td>
                                 
-                                <td class="align-right" width="20%" class="purchase_item"><span class="f-fallback">${ product.price }</span></td>
+                                <td class="align-right" width="20%" class="purchase_item"><span class="f-fallback">${ product.units } X ${ product.price }</span></td>
                                 
                                 </tr>  `)
 
@@ -536,7 +528,7 @@ return  `
                                     <p class="f-fallback purchase_total purchase_total--label">Total</p>
                                   </td>
                                   <td width="20%" class="purchase_footer" valign="middle">
-                                    <p class="f-fallback purchase_total">${ totalBuy }</p>
+                                    <p class="f-fallback purchase_total">${ cart.total }</p>
                                   </td>
                                 </tr>
                               </table>
