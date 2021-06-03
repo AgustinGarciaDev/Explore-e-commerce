@@ -1,3 +1,5 @@
+import io from 'socket.io-client'
+import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Style/Home.css'
@@ -48,6 +50,12 @@ const App = (props) => {
     props.localStorageNum(response)
   }
 
+  const [socket, setSocket] = useState(null)
+
+  useEffect(() => {
+    setSocket(io('http://localhost:4000'))
+  }, [])
+
   if (props.usuarioStatus) {
     var routes =
       <>
@@ -61,7 +69,7 @@ const App = (props) => {
           <Route exact path="/sextoy" component={SexToyCategory} />
           <Route exact path="/accesories" component={Accesories} />
           <Route exact path="/payment" component={PaymentSuccesfull} />
-          <Route exact path="/product/:id" component={Product} />
+          <Route exact path="/product/:id" render={(props) => <Product {...props} socket={socket} />} />
         </Switch>
       </>
   } else if (localStorage.getItem('token')) {
@@ -84,7 +92,7 @@ const App = (props) => {
           <Route exact path="/accesories" component={Accesories} />
           <Route exact path="/checkout" component={Checkout} />
           <Route exact path="/payment" component={PaymentSuccesfull} />
-          <Route exact path="/product/:id" component={Product} />
+          <Route exact path="/product/:id" render={(props) => <Product {...props} socket={socket} />} />
         </Switch>
       </>
   }

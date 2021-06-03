@@ -5,6 +5,7 @@ const router = require("./routes/index")
 const passport = require ("passport")
 const fileUpload = require("express-fileupload")
 const cloudinary = require('cloudinary').v2
+const socket = require('socket.io')
 const path = require("path")
 require("./config/database")
 require("./config/passport")
@@ -36,6 +37,14 @@ const port = process.env.PORT
 
 const host = process.env.HOST || "0.0.0.0"
 
-app.listen( port, host, ()=>console.log( "app listening on port" + port + " on " + host  ) )
+const server = app.listen( port, host, ()=> console.log( "app listening on port" + port + " on " + host  ) )
+
+const io = socket(server, {cors: {origin: '*'}})
+
+io.on('connection', (socket) => {
+    socket.on("NewMessage", () => {
+        io.sockets.emit('update')
+    })
+})
 
 
