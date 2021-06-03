@@ -93,6 +93,8 @@ const Product = (props) => {
         /* setIlike(true) */
     }
 
+    const imgUser = props.usuarioStatus ? props.usuarioStatus.img : "https://i.pinimg.com/originals/0f/61/31/0f6131023edac341954285cf2d97c8e3.jpg"
+
     return (
         <>
             <Header />
@@ -176,10 +178,10 @@ const Product = (props) => {
                 </div>
                 <div className="textTareaConteiner">
                     <div className="avatarComment">
-                        <div style={{ backgroundImage: `url(${props.usuarioStatus.img})` }} className="avatarImgComment"></div>
-                        <p style={{ color: "white", marginTop: "2px" }}>{props.usuarioStatus.user}</p>
+                        <div style={{ backgroundImage: `url(${imgUser})` }} className="avatarImgComment"></div>
+                        <p style={{ color: "white", marginTop: "2px" }}>{props.usuarioStatus ? props.usuarioStatus.user : "Explore.com"}</p>
                     </div>
-                    <input className="textInput" onChange={readInput} value={comment.comment} name="comment" placeholder="Hello!" required />
+                    <input className="textInput" onChange={readInput} value={comment.comment} name="comment" placeholder="Hello!" disabled={props.usuarioStatus ? false : true} required />
                 </div>
                 <div className="divSend">
                     <button className="buttonSend" onClick={addComment}>send</button>

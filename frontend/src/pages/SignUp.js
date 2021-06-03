@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 import { toast } from 'react-toastify';
 import { GoogleLogin } from 'react-google-login'
 import userActions from '../redux/actions/userActions'
+import Header from '../components/Header'
 
 const SignUp = (props) => {
 
@@ -61,13 +62,13 @@ const SignUp = (props) => {
     }
 
     const responseGoogle = (response) => {
-        const { email, imageUrl, givenName } = response.profileObj
-        createAccount(null, { user: givenName, email: email, password: 'Hola1234!', urlImg: imageUrl, googleFlag: true })
+        const { email, imageUrl, givenName, googleId } = response.profileObj
+        createAccount(null, { user: givenName, email: email, password: 'a'+googleId, urlImg: imageUrl, googleFlag: true })
     }
 
     return (
         <>
-            <div>menu</div>
+            <Header />
             <section className="containerForm">
                 <h1 className="titleForm">Create Account</h1>
                 <div className="formularioSignUP">

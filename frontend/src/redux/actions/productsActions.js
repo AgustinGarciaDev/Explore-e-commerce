@@ -27,9 +27,9 @@ const productActions = {
             }
         }
     },
-    sendMail: (form, creditCard) => {
+    sendMail: (form, creditCard, cart ) => {
         return () => {
-            return axios.post("https://explore-2021.herokuapp.com/api/mails/sendSumary", { form, creditCard })
+            return axios.post("https://explore-2021.herokuapp.com/api/mails/sendSumary", { form, creditCard, cart })
                 .then(data => data.data)
                 .catch(err => toast.error('Something went wrong, try again later!', {
                     position: "top-right",

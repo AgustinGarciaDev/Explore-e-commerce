@@ -4,12 +4,21 @@ import productsAction from "../redux/actions/productsActions"
 import PaymentForm from "../components/PaymentForm"
 
 
-const Checkout = ({ sendMail, history }) => {
+const Checkout = ({ articles, sendMail, history }) => {
     const [form, setForm] = useState({ email: "", check: false, firstName: "", lastName: "", adress: "", apartment: "", city: "", country: "", postCode: "", phone: "" })
     const [countries, setCountries] = useState([])
     const [visible, setVisible] = useState(false)
     const [creditCard, setCreditCard] = useState({})
+    const [ cartArticles, setCartArticles ] = useState( articles && articles.filter( article => article.status ) )
+    const [ total, setTotal ] = useState("")
 
+    useEffect(()=>{
+        let contador = 0
+        cartArticles.map( article =>{ contador += article.price * article.units } )
+        
+        setTotal( contador )
+    },[ cartArticles ])
+    
     useEffect(() => {
         fetch("https://restcountries.eu/rest/v2/all")
             .then(data => data.json())
@@ -22,9 +31,12 @@ const Checkout = ({ sendMail, history }) => {
     const readCreditCard = state => { setCreditCard(state) }
 
     const sendAll = () => {
-        sendMail(form, creditCard)
+        sendMail(form, creditCard,{ cartArticles, total } )
         history.push("/payment")
     }
+
+    console.log( cartArticles )
+
 
     return <div className="mainContainer">
 
@@ -95,12 +107,21 @@ const Checkout = ({ sendMail, history }) => {
         <div className="rigthContainer">
             <div className="rightChildContainer">
                 <div className="productsContainer" >
-                    <div>
-                        <div className="productImg" style={{ backgroundImage: "url('https://staticcl.natura.com/cdn/ff/Bz_PZGIa5cFUtEI-s7cptyY034XRKwLsHRvU8va9MyU/1617908940/public/styles/product_image_facebook_share/public/products/77430_1_8.jpg?itok=mDW-q_n-')" }} ></div>
-                        <h6>Hola</h6>
-                    </div>
 
-                    <h6>$255</h6>
+                    { cartArticles.length 
+                        ? cartArticles.map( article =>{
+                        return<div >
+                                <div>
+                                    <div className="productImg" style={{ backgroundImage: `url('${ article.coverImage }')` }} ></div>
+                                        <h6>{ article.name }</h6>
+                                    </div>
+                                <h6> { article.units } X { article.price }</h6>
+                            </div>
+                        
+                        })
+                        : <h4>Don't have any articles</h4>
+                    }
+                    
                 </div>
                 <hr />
                 <div className="discountContainer">
@@ -111,7 +132,7 @@ const Checkout = ({ sendMail, history }) => {
                 <div>
                     <div className="counts-flex">
                         <h6 className="d-flex">Subtotal</h6>
-                        <span>$7</span>
+                        <span>{ total }</span>
                     </div>
                     <div className="counts-flex">
                         <h6>Delivery </h6>
@@ -121,16 +142,23 @@ const Checkout = ({ sendMail, history }) => {
                 <hr />
                 <div className="counts-flex">
                     <h6>Total</h6>
-                    <span>$7.19</span>
+                    <span>{ total }</span>
                 </div>
             </div>
         </div>
     </div>
 }
 
+const mapStateToProps = state =>{
+    return{
+        articles:state.cart.articles
+    }
+}
+
+
 const mapDispatchToProps = {
     sendMail: productsAction.sendMail
 }
 
 
-export default connect(null, mapDispatchToProps)(Checkout)
+export default connect(mapStateToProps, mapDispatchToProps)(Checkout)
