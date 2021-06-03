@@ -97,7 +97,6 @@ const Accesories = (props) => {
                         loading
                             ?
                             <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_9ivolvho.json" background="transparent" speed="1" loop autoplay></lottie-player>
-
                             :
                             sexToyVulva.map(item => <CardProductHome product={item} key={item._id} />)
                     }
@@ -116,7 +115,6 @@ const Accesories = (props) => {
                         loading
                             ?
                             <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_9ivolvho.json" background="transparent" speed="1" loop autoplay></lottie-player>
-
                             :
                             sexToyButts.map(item => <CardProductHome product={item} key={item._id} />)
                     }

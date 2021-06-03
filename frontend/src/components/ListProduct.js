@@ -1,26 +1,32 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import CardProduct from "../components/CardProduct"
 import { connect } from "react-redux"
 import cartActions from "../redux/actions/cartActions"
 
 const ListProduct = (props) => {
-    const products = props.products
+    const [products, setProducts] = useState([])
 
     useEffect(() => {
-        fetchProducts()
+        if (props.products.length === 0) {
+            props.allProducts()
+        } else {
+            setProducts(props.products)
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [props.products])
 
-    const fetchProducts = () => {
-        props.allProducts()
-    }
 
     return (
         <>
             <div>
                 <div className="titleContainerProducts"><h2>Popular sextoy</h2></div>
                 <div className="productsListHome">
-                    {products.map(product => <CardProduct key={product._id} product={product} />)}
+                    {
+                        props.products.length === 0
+                            ?
+                            <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_9ivolvho.json" background="transparent" speed="1" loop autoplay></lottie-player>
+                            :
+                            products.map(product => <CardProduct key={product._id} product={product} />)}
                 </div>
             </div>
         </>
