@@ -19,6 +19,7 @@ const SexToyCategory = (props) => {
             setLoading(false)
         }
         filterProducts()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [products])
 
     const filterProducts = () => {
@@ -38,7 +39,9 @@ const SexToyCategory = (props) => {
                     } else if (category.name === 'butt') {
                         butts.push(product)
                     }
+                    return null
                 })
+                return null
             })
         }
 
@@ -71,7 +74,12 @@ const SexToyCategory = (props) => {
                 </div>
                 <div className="containerProductsSextoy">
                     {
-                        sexToyPennis.map(item => <CardProductHome product={item} key={item._id} />)
+                        loading
+                            ?
+                            <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_9ivolvho.json" background="transparent" speed="1" loop autoplay></lottie-player>
+
+                            :
+                            sexToyPennis.map(item => <CardProductHome product={item} key={item._id} />)
                     }
                 </div>
 
@@ -86,7 +94,12 @@ const SexToyCategory = (props) => {
                 </div>
                 <div className="containerProductsSextoy">
                     {
-                        sexToyVulva.map(item => <CardProductHome product={item} key={item._id} />)
+                        loading
+                            ?
+                            <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_9ivolvho.json" background="transparent" speed="1" loop autoplay></lottie-player>
+
+                            :
+                            sexToyVulva.map(item => <CardProductHome product={item} key={item._id} />)
                     }
                 </div>
                 <div className="containerProductCardSexToy">
@@ -100,7 +113,12 @@ const SexToyCategory = (props) => {
                 </div>
                 <div className="containerProductsSextoy">
                     {
-                        sexToyButts.map(item => <CardProductHome product={item} key={item._id} />)
+                        loading
+                            ?
+                            <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_9ivolvho.json" background="transparent" speed="1" loop autoplay></lottie-player>
+
+                            :
+                            sexToyButts.map(item => <CardProductHome product={item} key={item._id} />)
                     }
 
                 </div>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { connect } from "react-redux"
 import { toast } from 'react-toastify';
 import { GoogleLogin } from 'react-google-login'
@@ -8,7 +8,6 @@ import Header from '../components/Header'
 const SignUp = (props) => {
 
     const [photo, setPhoto] = useState({ photo: '' })
-    const [errores, setErrores] = useState([])
     const [infoUser, setInfoUser] = useState({ user: "", email: "", password: "" })
     const [error, setError] = useState({})
     const errorsImput = { user: null, email: null, password: null }

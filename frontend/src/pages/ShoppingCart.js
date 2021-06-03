@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import { useEffect, useState } from "react"
 import { connect } from "react-redux"
 import { Redirect, Link } from "react-router-dom"
+=======
+import { connect } from "react-redux"
+import { Link } from "react-router-dom"
+>>>>>>> e7bb8f93978c7109b4080157d9018c6b1d8aae5c
 import ArticleCart from "../components/ArticleCart"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
@@ -39,6 +44,7 @@ const ShoppingCart = (props) => {
                     </div>
                 </div>
                 <div >
+<<<<<<< HEAD
                 <button onClick={()=>{
                         if (cart.length === 0) {
                             alert("tenes el carrito vacio date cuenta pa")
@@ -46,6 +52,11 @@ const ShoppingCart = (props) => {
                            props.history.push("/checkout")
                         }
                     }}>Me llevo todo!!!!</button>
+=======
+                    <button>
+                        <Link to="/checkout" >Me llevo todo!!!!</Link>
+                    </button>
+>>>>>>> e7bb8f93978c7109b4080157d9018c6b1d8aae5c
                 </div>
             </div>
             <Footer />

@@ -7,7 +7,7 @@ import Header from '../components/Header';
 import cartActions from '../redux/actions/cartActions';
 import commentsActions from '../redux/actions/commentsActions';
 import ReactTooltip from 'react-tooltip';
-import userActions from '../redux/actions/userActions';
+
 
 const Product = (props) => {
     const [article, setArticle] = useState({})
@@ -21,6 +21,7 @@ const Product = (props) => {
     useEffect(() => {
         item()
         fetchComments()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [reload])
 
     useEffect(() => {
@@ -37,9 +38,9 @@ const Product = (props) => {
         setRenderComment(item.comments)
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         scroll()
-    },[])
+    }, [])
 
     const scroll = () => {
         window.scroll({
@@ -105,7 +106,7 @@ const Product = (props) => {
             id: index
         }
     })
-    : null
+        : null
 
     const imgUser = props.usuarioStatus ? props.usuarioStatus.img : "https://i.pinimg.com/originals/0f/61/31/0f6131023edac341954285cf2d97c8e3.jpg"
 
@@ -133,8 +134,8 @@ const Product = (props) => {
                         <h2 >{article.brand}</h2>
                     </div>
                     <p className={operatorDiscount === 0 ? "priceProduct" : "priceProductD"}>£ {article.price}</p>
-                    <p style={{fontSize: "25px"}}>£ {operatorDiscount}</p>
-                    <p style={{color: "red"}}>{article.discount}% discount</p>
+                    <p style={{ fontSize: "25px" }}>£ {operatorDiscount}</p>
+                    <p style={{ color: "red" }}>{article.discount}% discount</p>
                     <div className="buyNowProduct">
                         <button onClick={buy}>add to cart</button>
                     </div>
@@ -146,7 +147,7 @@ const Product = (props) => {
                     </div>
                     <div className="cardContainer">
                         {
-                            imgCard.map((card)=> <div className="cardProduct" style={{backgroundImage: `url(${card})`}}></div> )
+                            imgCard.map((card) => <div className="cardProduct" style={{ backgroundImage: `url(${card})` }}></div>)
                         }
                     </div>
                 </div>

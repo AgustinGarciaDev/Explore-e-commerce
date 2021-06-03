@@ -16,7 +16,7 @@ const ProductEdit = (props) => {
             setProduct(props.products.find(product => product._id === props.match.params._id))
             setProductToCompare(props.products.find(product => product._id === props.match.params._id))
         }
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.products])
 
     const categoriesActions = async ({ action, event, category }) => {

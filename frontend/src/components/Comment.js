@@ -10,6 +10,7 @@ const Comment = (props) => {
         if (usuarioStatus && (comment.userId.email === usuarioStatus.email)) {
             setLegitimateUser(true)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [legitimateUser])
 
     const readInput = (e) => {
