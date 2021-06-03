@@ -37,11 +37,11 @@ const ShoppingCart = (props) => {
                     </div>
                 </div>
                 <div >
-                <button onClick={()=>{
+                    <button onClick={() => {
                         if (cart.length === 0) {
                             alert("tenes el carrito vacio date cuenta pa")
                         } else {
-                           props.history.push("/checkout")
+                            props.history.push("/checkout")
                         }
                     }}>Me llevo todo!!!!</button>
                 </div>

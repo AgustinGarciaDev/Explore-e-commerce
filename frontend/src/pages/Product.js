@@ -15,7 +15,6 @@ const Product = (props) => {
     const [comment, setComment] = useState({ comment: "", token: localStorage.getItem('token') })
     const [reload, setReload] = useState(false)
 
-    const disabled = props.usuarioStatus ? false : true
     const operatorDiscount = article.price - (article.discount / 100) * article.price
 
     useEffect(() => {
@@ -147,7 +146,7 @@ const Product = (props) => {
                     </div>
                     <div className="cardContainer">
                         {
-                            imgCard.map((card) => <div className="cardProduct" style={{ backgroundImage: `url(${card})` }}></div>)
+                            imgCard.map((card, index) => <div key={index} className="cardProduct" style={{ backgroundImage: `url(${card})` }}></div>)
                         }
                     </div>
                 </div>

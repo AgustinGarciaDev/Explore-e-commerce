@@ -1,3 +1,5 @@
+import io from 'socket.io-client'
+import { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Style/Home.css'
@@ -37,7 +39,7 @@ const App = (props) => {
   const [socket, setSocket] = useState(null)
 
   useEffect(() => {
-      setSocket(io('https://explore-2021.herokuapp.com'))
+    setSocket(io('https://explore-2021.herokuapp.com'))
   }, [])
 
   if (!props.usuarioStatus && localStorage.getItem('token')) {
@@ -60,7 +62,7 @@ const App = (props) => {
 
   return (
     <BrowserRouter>
-      {getRoutesByRole(role,socket)}
+      {getRoutesByRole(role, socket)}
       < ToastContainer
         position="top-center"
         autoClose={2000}
