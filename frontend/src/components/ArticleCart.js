@@ -5,6 +5,7 @@ import cartActions from "../redux/actions/cartActions"
 const ArticleCart = (props) => {
     const { article , removeArticle , buyArticle , subtract , globalAccountant } = props
     const [accountant,setAccountant] = useState( article.units )
+    let operatorDiscount = article.price - (article.discount / 100) * article.price
 
     const remove = () => {
         removeArticle(article)
@@ -37,7 +38,7 @@ const ArticleCart = (props) => {
                 <p>{accountant}</p>
                 <button onClick={()=>{addAndRemove("remove")}}>-</button>
             </div>
-            <div><p>£ {article.price * accountant}</p></div>
+            <div><p>£ {operatorDiscount * accountant}</p></div>
             <button onClick={remove}>X</button>
         </div>
     )

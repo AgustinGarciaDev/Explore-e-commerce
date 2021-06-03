@@ -55,6 +55,27 @@ p{
 /*     background-color: crimson; */
 }
 
+.priceProductD{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: line-through;
+}
+
+.cardContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.cardProduct {
+    height: 7vh;
+    width: 7vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .buyNowProduct{
     height: 15vh;
     width: 100%;
