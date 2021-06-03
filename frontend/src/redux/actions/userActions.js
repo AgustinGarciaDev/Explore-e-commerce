@@ -12,6 +12,15 @@ const userActions = {
                         return response.data
                     } else {
                         dispatch({ type: 'SIGNIN_USER', payload: response.data.response })
+                        toast.success('Welcome back ' + response.data.response.name + '!', {
+                            position: "top-center",
+                            autoClose: 1700,
+                            hideProgressBar: true,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                        })
                     }
                 }
             } catch {
@@ -31,15 +40,33 @@ const userActions = {
 
         return async (dispatch, getState) => {
             try {
-                const response = await axios.post("https://explore-2021.herokuapp.com/api/user/signin", infoUser)
-                if (!response.data.success) {
-
-                    return response.data.error
+                const response = await axios.post("http://localhost:4000/api/user/signin", infoUser)
+                if (response) {
+                    if (response.data.success) {
+                        dispatch({ type: 'SIGNIN_USER', payload: response.data.response })
+                        toast.success('Welcome back ' + response.data.response.user + '!', {
+                            position: "top-center",
+                            autoClose: 1700,
+                            hideProgressBar: true,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                        })
+                    } else {
+                        return response.data
+                    }
                 }
-                console.log(response)
-                dispatch({ type: 'SIGNIN_USER', payload: response.data.success ? response.data.response : null })
-            } catch (error) {
-                console.log(error)
+            } catch {
+                toast.error('Something went wrong, try again later!', {
+                    position: "top-right",
+                    autoClose: 1700,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                })
             }
         }
 
@@ -49,23 +76,35 @@ const userActions = {
         return (dispatch, getState) => {
 
             dispatch({ type: 'SIGNOUT_USER' })
-            toast.success("Bye", {
+            toast.success("see you soon", {
                 autoClose: 1000,
                 position: "top-center",
             })
         }
     },
 
-    relogin: (userToken) => {
+    relogin: (userLoggedForzed) => {
         return async (dispatch, getState) => {
-            const response = await axios.get("https://explore-2021.herokuapp.com/api/user/relogin", { headers: { 'Authorization': 'Bearer ' + userToken } })
-
-            dispatch({
-                type: 'SIGNIN_USER', payload: {
-                    ...response.data.response,
-                    token: userToken
+            try {
+                const response = await axios.get('http://localhost:4000/api/user/relogin', {
+                    headers: {
+                        'Authorization': 'Bearer ' + userLoggedForzed.token
+                    }
+                })
+                dispatch({
+                    type: 'SIGNIN_USER', payload: {
+                        ...response.data.response,
+                        token: userLoggedForzed.token
+                    }
+                })
+            } catch (error) {
+                if (error.response) {
+                    if (error.response.status === 401) {
+                        localStorage.clear()
+                        toast.error("what are you trying to do ???")
+                    }
                 }
-            })
+            }
         }
     },
 

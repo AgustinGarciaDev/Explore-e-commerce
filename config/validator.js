@@ -21,7 +21,8 @@ const validator = (req, res, next) => {
             "string.min": "Your Password  must have at least 5 characters",
             "string.pattern.base": "Your Password must have at least a letter and a number",
         }),
-        urlImg: Joi.string()
+        urlImg: Joi.string(),
+        googleFlag: Joi.boolean()
     })
 
     const validation = schema.validate(req.body, { abortEarly: false })

@@ -1,3 +1,26 @@
 .navbar{
     background: white;
 }
+.signOutHeader{
+    text-align: center;
+    color: gray;
+}
+.signOutHeader:hover{
+    color: black;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+.userLogo{
+    height: 4rem;
+    width: 4rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 50%;
+}
+
+.navbar-var{
+    display: flex;
+    align-items: center;
+}
