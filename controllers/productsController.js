@@ -4,7 +4,7 @@ const cloudinary = require('cloudinary').v2
 const getAllProducts = async (req, res) => {
     try {
         const result = await Product.find()
-            .populate({ path: "comments", populate: { path: "userId", select: { "_id": 1, "user": 1, "urlImg": 1 } } })
+            .populate({ path: "comments", populate: { path: "userId", select: { "_id": 1, "user": 1, "urlImg": 1, "email": 1 } } })
             .populate({ path: "scores", populate: { path: "userId", select: { "_id": 1, "user": 1, "urlImg": 1 } } })
 
         res.json({ success: true, result })
@@ -122,12 +122,11 @@ const imagesActions = async (req, res) => {
 /*---------------- Comments ----------------------- */
 const postComment = async (req, res) => {
     const { idProduct } = req.params
-    const { _id } = req.user
-    req.body.userId = _id
+    const userId = req.user._id
+    const { comment } = req.body
 
     try {
-        const result = await Product.findByIdAndUpdate(idProduct, { $push: { comments: req.body } }, { new: true }).populate({ path: "comments", populate: { path: "userId", select: { "_id": 1, "user": 1, "urlImg": 1 } } })
-
+        const result = await Product.findByIdAndUpdate({ _id: idProduct }, { $push: { comments: {comment: comment, userId: userId}} }, { new: true }).populate({ path: "comments", populate: { path: "userId", select: { "_id": 1, "user": 1, "urlImg": 1, "email": 1 } } })
         res.json({ success: true, result })
     } catch (error) {
         res.json({ success: false, err: "An error has occurred on our server" })
@@ -136,8 +135,7 @@ const postComment = async (req, res) => {
 const deleteComment = async (req, res) => {
     const { idProduct, idComment } = req.params
     try {
-        const result = await Product.findByIdAndUpdate(idProduct, { $pull: { comments: { _id: idComment } } }, { new: true }).populate({ path: "comments", populate: { path: "userId", select: { "_id": 1, "user": 1, "urlImg": 1 } } })
-
+        const result = await Product.findByIdAndUpdate({ _id: idProduct }, { $pull: { comments: { _id: idComment } } }, { new: true }).populate({ path: "comments", populate: { path: "userId", select: { "_id": 1, "user": 1, "urlImg": 1, "email": 1 } } })
         res.json({ success: true, result })
     } catch (error) {
         res.json({ success: false, err: "An error has occurred on our server" })
@@ -147,7 +145,7 @@ const putComment = async (req, res) => {
     const { idProduct, idComment } = req.params
     const { comment } = req.body
     try {
-        const result = await Product.findOneAndUpdate({ "_id": idProduct, "comments._id": idComment }, { $set: { "comments.$.comment": comment } }, { new: true }).populate({ path: "comments", populate: { path: "userId", select: { "_id": 1, "user": 1, "urlImg": 1 } } })
+        const result = await Product.findOneAndUpdate({ "_id": idProduct, "comments._id": idComment }, { $set: { "comments.$.comment": comment } }, { new: true }).populate({ path: "comments", populate: { path: "userId", select: { "_id": 1, "user": 1, "urlImg": 1, "email": 1 } } })
 
         res.json({ success: true, result })
     } catch (error) {
