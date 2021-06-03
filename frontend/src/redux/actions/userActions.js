@@ -40,7 +40,7 @@ const userActions = {
 
         return async (dispatch, getState) => {
             try {
-                const response = await axios.post("http://localhost:4000/api/user/signin", infoUser)
+                const response = await axios.post("https://explore-2021.herokuapp.com/api/user/signin", infoUser)
                 if (response) {
                     if (response.data.success) {
                         dispatch({ type: 'SIGNIN_USER', payload: response.data.response })
@@ -86,7 +86,7 @@ const userActions = {
     relogin: (userLoggedForzed) => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.get('http://localhost:4000/api/user/relogin', {
+                const response = await axios.get('https://explore-2021.herokuapp.com/api/user/relogin', {
                     headers: {
                         'Authorization': 'Bearer ' + userLoggedForzed.token
                     }

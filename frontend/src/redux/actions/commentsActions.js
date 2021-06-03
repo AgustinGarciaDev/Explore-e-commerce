@@ -4,7 +4,7 @@ const commentsActions = {
     products: () => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.get('http://localhost:4000/api/products')
+                const response = await axios.get('https://explore-2021.herokuapp.com/api/products')
                 if (response) {
                     if (response.data.success) {
                         return response.data.result
