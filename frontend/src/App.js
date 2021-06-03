@@ -53,7 +53,7 @@ const App = (props) => {
   const [socket, setSocket] = useState(null)
 
   useEffect(() => {
-    setSocket(io('http://localhost:4000'))
+    setSocket(io('https://explore-2021.herokuapp.com'))
   }, [])
 
   if (props.usuarioStatus) {

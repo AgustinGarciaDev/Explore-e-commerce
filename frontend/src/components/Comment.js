@@ -4,7 +4,7 @@ const Comment = (props) => {
     const { updateComment, usuarioStatus, deleteComment, comment, setLegitimateUser, legitimateUser } = props
     const [modify, setModify] = useState(false)
     const [modifyComment, setmodifyComment] = useState({ comment: comment.comment })
-    console.log(comment)
+
     useEffect(() => {
         if (usuarioStatus && (comment.userId.email === usuarioStatus.email)) {
             setLegitimateUser(true)
