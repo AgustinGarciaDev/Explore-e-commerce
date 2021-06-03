@@ -6,25 +6,41 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import cartActions from '../redux/actions/cartActions';
 import commentsActions from '../redux/actions/commentsActions';
+import ReactTooltip from 'react-tooltip';
 import userActions from '../redux/actions/userActions';
 
 const Product = (props) => {
     const [article, setArticle] = useState({})
     const [renderComment, setRenderComment] = useState([])
     const [comment, setComment] = useState({ comment: "", token: localStorage.getItem('token') })
-    const [Ilike,setIlike] = useState(false)
+    const [legitimateUser, setLegitimateUser] = useState(false)
+    const [reload, setReload] = useState(false)
+    const [Ilike, setIlike] = useState(false)
+
+    const disabled = props.usuarioStatus ? false : true
 
     useEffect(() => {
-        scroll()
         item()
         fetchComments()
-    }, [])
+    }, [reload])
+
+    useEffect(() => {
+        if (props.socket) {
+            props.socket.on('update', () => {
+                setReload(!reload)
+            })
+        }
+    })
 
     const fetchComments = async () => {
         let response = await props.products()
         let item = response.find(article => article._id === props.match.params.id)
         setRenderComment(item.comments)
     }
+
+    useEffect(()=>{
+        scroll()
+    },[])
 
     const scroll = () => {
         window.scroll({
@@ -65,6 +81,7 @@ const Product = (props) => {
             var response = await props.fetchComments(comment, article._id)
             if (response) {
                 setRenderComment(response)
+                props.socket.emit('NewMessage')
                 setComment({ comment: "", token: localStorage.getItem('token') })
             }
         }
@@ -73,11 +90,13 @@ const Product = (props) => {
     const deleteComment = async (id) => {
         var response = await props.deleteComment(id, article._id)
         setRenderComment(response)
+        props.socket.emit('NewMessage')
     }
 
     const updateComment = async (id, comment) => {
         var response = await props.updateComment(comment, article._id, id)
         setRenderComment(response)
+        props.socket.emit('NewMessage')
     }
 
     const images = article.productsImages ? article.productsImages.map(image => {
@@ -86,11 +105,15 @@ const Product = (props) => {
             thumbnail: image.photo,
         }
     })
-    : null
+        : null
 
     const liked = (e) => {
-        console.log(e.target.checked)
-        /* setIlike(true) */
+        if (disabled === false) {
+            console.log(e.target.checked)
+            /* setIlike(true) */
+        } else {
+            alert("logueate para likear maestro")
+        }
     }
 
     const imgUser = props.usuarioStatus ? props.usuarioStatus.img : "https://i.pinimg.com/originals/0f/61/31/0f6131023edac341954285cf2d97c8e3.jpg"
@@ -108,10 +131,10 @@ const Product = (props) => {
                 </div>
                 <div className="infoProducts">
                     <div className="logoProduct">
-                        <h2>{article.brand}</h2>
+                        <h2 data-tip="hello world" >{article.brand}</h2>
                     </div>
                     <p className="priceProduct">$ {article.price}</p>
-                    <input type="checkbox" onChange={liked} id="checkbox"/>
+                    <input type="checkbox" onChange={liked} id="checkbox" disabled={disabled} />
                     <label for="checkbox">
                         <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
                             <g id="Group" fill="none" fill-rule="evenodd" transform="translate(467 392)">
@@ -173,6 +196,9 @@ const Product = (props) => {
                             deleteComment={deleteComment}
                             comment={comment}
                             updateComment={updateComment}
+                            usuarioStatus={props.usuarioStatus}
+                            legitimateUser={legitimateUser}
+                            setLegitimateUser={setLegitimateUser}
                         />)
                     }
                 </div>
@@ -187,6 +213,7 @@ const Product = (props) => {
                     <button className="buttonSend" onClick={addComment}>send</button>
                 </div>
             </div>
+            <ReactTooltip />
             <Footer />
         </>
     )
