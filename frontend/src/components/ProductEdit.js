@@ -16,13 +16,13 @@ const ProductEdit = (props) => {
             setProduct(props.products.find(product => product._id === props.match.params._id))
             setProductToCompare(props.products.find(product => product._id === props.match.params._id))
         }
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.products])
 
     const categoriesActions = async ({ action, event, category }) => {
         if (action === 'add') {
             if (event.target.value !== "") {
-                const data = { id: product._id, info: { action: action, newNameCategory: event.target.value } }
+                const data = { id: product._id, info: { action: action, newNameCategory: event.target.value }, token: localStorage.getItem('token') }
                 const response = await props.editCategory(data)
                 if (response) {
                     if (response.success) {
@@ -44,7 +44,7 @@ const ProductEdit = (props) => {
                     progress: undefined,
                 })
             } else {
-                const data = { id: product._id, info: { action: action, idCategory: category._id } }
+                const data = { id: product._id, info: { action: action, idCategory: category._id }, token: localStorage.getItem('token') }
                 const response = await props.editCategory(data)
                 if (response) {
                     if (!response.success) {
@@ -58,7 +58,7 @@ const ProductEdit = (props) => {
     const imagesActions = async ({ action, event, image }) => {
         if (action === 'add') {
             if (event.target.value !== "") {
-                const data = { id: product._id, info: { action: action, newNamePhoto: event.target.value } }
+                const data = { id: product._id, info: { action: action, newNamePhoto: event.target.value }, token: localStorage.getItem('token') }
                 const response = await props.imageActions(data)
                 if (response) {
                     if (response.success) {
@@ -80,7 +80,7 @@ const ProductEdit = (props) => {
                     progress: undefined,
                 })
             } else {
-                const data = { id: product._id, info: { action: action, idPhoto: image._id } }
+                const data = { id: product._id, info: { action: action, idPhoto: image._id }, token: localStorage.getItem('token') }
                 const response = await props.imageActions(data)
                 if (response) {
                     if (!response.success) {
@@ -103,7 +103,7 @@ const ProductEdit = (props) => {
     const editProduct = async ({ name }) => {
         if (product[name].toString().trim() !== '') {
             if (product[name].toString().trim() !== productToCompare[name].toString()) {
-                const response = await props.editProduct({ id: product._id, data: { [name]: product[name] } })
+                const response = await props.editProduct({ id: product._id, data: { [name]: product[name] }, token: localStorage.getItem('token') })
                 if (response) {
                     if (response.success) {
                         toast.success('Changes were saved', {

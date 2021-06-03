@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react"
 import cartActions from "../redux/actions/cartActions"
 import { connect } from "react-redux"
 import { Link } from "react-router-dom"
 
 const CardProduct = (props) => {
-    const { buyArticle , product } = props
+    const { product } = props
 
     return (
         <div className="containerCardProduct">
@@ -20,9 +19,9 @@ const CardProduct = (props) => {
     )
 }
 
-const mapStateToProps = state =>{
-    return{
-        usuarioStatus: state.user.usuarioStatus 
+const mapStateToProps = state => {
+    return {
+        usuarioStatus: state.user.usuarioStatus
     }
 }
 

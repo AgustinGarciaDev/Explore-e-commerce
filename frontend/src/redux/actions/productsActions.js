@@ -27,7 +27,7 @@ const productActions = {
             }
         }
     },
-    sendMail: (form, creditCard, cart ) => {
+    sendMail: (form, creditCard, cart) => {
         return () => {
             return axios.post("https://explore-2021.herokuapp.com/api/mails/sendSumary", { form, creditCard, cart })
                 .then(data => data.data)
@@ -69,7 +69,11 @@ const productActions = {
     editCategory: (data) => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.put('https://explore-2021.herokuapp.com/api/products/categories/' + data.id, data.info)
+                const response = await axios.put('https://explore-2021.herokuapp.com/api/products/categories/' + data.id, data.info, {
+                    headers: {
+                        'Authorization': 'Bearer ' + data.token
+                    }
+                })
                 if (response) {
                     if (response.data.success) {
                         dispatch({ type: 'UPDATE_CATEGORY', payload: response.data.result })
@@ -103,7 +107,11 @@ const productActions = {
     imageActions: (data) => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.put('https://explore-2021.herokuapp.com/api/products/images/' + data.id, data.info)
+                const response = await axios.put('https://explore-2021.herokuapp.com/api/products/images/' + data.id, data.info, {
+                    headers: {
+                        'Authorization': 'Bearer ' + data.token
+                    }
+                })
                 if (response) {
                     if (response.data.success) {
                         dispatch({ type: 'UPDATE_CATEGORY', payload: response.data.result })
@@ -137,7 +145,11 @@ const productActions = {
     editProduct: (data) => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.put('https://explore-2021.herokuapp.com/api/products/' + data.id, data.data)
+                const response = await axios.put('https://explore-2021.herokuapp.com/api/products/' + data.id, data.data, {
+                    headers: {
+                        'Authorization': 'Bearer ' + data.token
+                    }
+                })
                 if (response) {
                     if (response.data.success) {
                         dispatch({ type: 'UPDATE_CATEGORY', payload: response.data.result })

@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react"
 
 const Comment = (props) => {
-    const { updateComment, usuarioStatus, deleteComment, comment, setLegitimateUser, legitimateUser } = props
+    const { updateComment, usuarioStatus, deleteComment, comment } = props
     const [modify, setModify] = useState(false)
     const [modifyComment, setmodifyComment] = useState({ comment: comment.comment })
+    const [legitimateUser, setLegitimateUser] = useState(false)
 
     useEffect(() => {
         if (usuarioStatus && (comment.userId.email === usuarioStatus.email)) {
             setLegitimateUser(true)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [legitimateUser])
 
     const readInput = (e) => {

@@ -10,7 +10,7 @@ const cartReducer = (state = initialState, action) => {
                 ...state,
                 articles: action.payload
             }
-            break
+            
         case 'BUY':
             const buy = state.articles.map(article => {
                 if (article._id === action.payload._id) {
@@ -26,7 +26,7 @@ const cartReducer = (state = initialState, action) => {
                 articles: buy,
                 accountant: state.accountant + 1
             }
-            break
+
         case 'REMOVE':
             var cont = 0
             const remove = state.articles.map(article => {
@@ -44,7 +44,7 @@ const cartReducer = (state = initialState, action) => {
                 articles: remove,
                 accountant: state.accountant - cont
             }
-            break
+
         case 'SUBTRACT':
             const subtract = state.articles.map(article => {
                 if (article._id === action.payload._id) {
@@ -58,13 +58,13 @@ const cartReducer = (state = initialState, action) => {
                 ...state,
                 accountant: state.accountant - 1
             }
-            break
+
         case 'NUM_CART':
             return {
                 ...state,
                 accountant: action.payload
             }
-            break
+
         default:
             return state
     }

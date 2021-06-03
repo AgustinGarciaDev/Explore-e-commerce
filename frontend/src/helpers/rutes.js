@@ -1,7 +1,6 @@
 import Home from '../pages/Home'
 import SignIn from '../pages/SignIn'
 import SignUp from '../pages/SignUp'
-import User from '../pages/User'
 import Admin from '../pages/Admin'
 import Product from "../pages/Product";
 import NewProduct from "../pages/NewProduct";
@@ -16,7 +15,7 @@ import ProductEdit from "../components/ProductEdit";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 const routesProtected = {
-    routerUserDontLogged: () => {
+    routerUserDontLogged: (socket) => {
         return (
             <Switch>
                 <Route exact path="/" component={Home} />
@@ -26,14 +25,14 @@ const routesProtected = {
                 <Route exact path="/accesories" component={Accesories} />
                 <Route exact path="/checkout" component={Checkout} />
                 <Route exact path="/payment" component={PaymentSuccesfull} />
-                <Route exact path="/product/:id" component={Product} />
+                <Route exact path="/product/:id" render={(props) => <Product {...props} socket={socket} />} />
                 <Route exact path="/signup" component={SignUp} />
                 <Route exact path="/signin" component={SignIn} />
                 <Redirect to="/" />
             </Switch>
         )
     },
-    routerUserLoggedCommon: () => {
+    routerUserLoggedCommon: (socket) => {
         return (
             <Switch>
                 <Route exact path="/" component={Home} />
@@ -43,13 +42,13 @@ const routesProtected = {
                 <Route exact path="/accesories" component={Accesories} />
                 <Route exact path="/checkout" component={Checkout} />
                 <Route exact path="/payment" component={PaymentSuccesfull} />
-                <Route exact path="/product/:id" component={Product} />
+                <Route exact path="/product/:id" render={(props) => <Product {...props} socket={socket} />} />
                 <Redirect to="/" />
             </Switch>
         )
     },
 
-    routerUserLoggedAdmin: () => {
+    routerUserLoggedAdmin: (socket) => {
         return (
             <Switch>
                 <Route exact path="/" component={Home} />
@@ -59,7 +58,7 @@ const routesProtected = {
                 <Route exact path="/accesories" component={Accesories} />
                 <Route exact path="/checkout" component={Checkout} />
                 <Route exact path="/payment" component={PaymentSuccesfull} />
-                <Route exact path="/product/:id" component={Product} />
+                <Route exact path="/product/:id" render={(props) => <Product {...props} socket={socket} />} />
                 <Route exact path="/Admin" component={Admin} />
                 <Route exact path="/add-new-product" component={NewProduct} />
                 <Route exact path="/edit-products" component={EditProducts} />
@@ -70,13 +69,13 @@ const routesProtected = {
     }
 }
 
-const getRoutesByRole = (role) => {
+const getRoutesByRole = (role,socket) => {
     if (role === "notLogged")
-        return routesProtected.routerUserDontLogged();
+        return routesProtected.routerUserDontLogged(socket);
     if (role === "common")
-        return routesProtected.routerUserLoggedCommon();
+        return routesProtected.routerUserLoggedCommon(socket);
     if (role === "admin")
-        return routesProtected.routerUserLoggedAdmin();
+        return routesProtected.routerUserLoggedAdmin(socket);
 }
 
 

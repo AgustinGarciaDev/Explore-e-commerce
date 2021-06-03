@@ -1,12 +1,11 @@
-import { Link, NavLink, Redirect } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 
 const CardProductHome = (props) => {
-    /*     console.log(props) */
     const { name, price, _id, brand, coverImage } = props.product
 
     return (
         <div className="containerCardProduct">
-            <div className="imgProductHome"  style={{backgroundImage:(`url('${coverImage}')`)}} />
+            <div className="imgProductHome" style={{ backgroundImage: (`url('${coverImage}')`) }} />
             <div className="containerText">
                 <p>{brand}</p>
                 <div className="tittleProductContainer">

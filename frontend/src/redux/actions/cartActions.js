@@ -9,6 +9,7 @@ const cartActions = {
                 Data.map((article) => {
                     article["units"] = 0
                     article["status"] = false
+                    return null
                 })
                 if (localStorage.getItem("cart")) {
                     const response = JSON.parse(localStorage.getItem("cart"))

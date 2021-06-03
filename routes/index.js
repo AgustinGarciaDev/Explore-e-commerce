@@ -8,14 +8,11 @@ const validatorChangeUsers = require("../config/validatorChangeUsers")
 const { getAllProducts, getProductById, postProduct, deleteProduct,
     updateProduct, postComment, deleteComment, putComment,
     postScore, deleteScore, putScore,
-    postCategories, deleteCategories, putCategories,
     postPhotos, deletePhotos, putPhotos, editCategory, imagesActions } = require("../controllers/productsController")
 
 const { newUser, login, relogin, modifyUser } = require("../controllers/userControllers")
 
 const { SendpurchaseSummary } = require("../controllers/mailerController")
-
-const { authenticate } = require("passport")
 
 router.route("/products")
     .get(getAllProducts)
@@ -60,7 +57,7 @@ router.route("/products/photos/:idProduct/:idPhoto")
 /* ----------Envio de images--------------- */
 
 router.route("/products/images/:idProduct")
-    .put(imagesActions)
+    .put(passport.authenticate("jwt", { session: false }), imagesActions)
 
 /*---------- Envio de email----------------- */
 

@@ -1,6 +1,6 @@
 import io from 'socket.io-client'
 import { useEffect, useState } from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Style/Home.css'
 import './Style/SignIn.css'
@@ -36,6 +36,12 @@ const App = (props) => {
     props.localStorageNum(response)
   }
 
+  const [socket, setSocket] = useState(null)
+
+  useEffect(() => {
+    setSocket(io('https://explore-2021.herokuapp.com'))
+  }, [])
+
   if (!props.usuarioStatus && localStorage.getItem('token')) {
     const userData = JSON.parse(localStorage.getItem('userLogged'))
     const userLoggedForzed = {
@@ -56,7 +62,7 @@ const App = (props) => {
 
   return (
     <BrowserRouter>
-      {getRoutesByRole(role)}
+      {getRoutesByRole(role, socket)}
       < ToastContainer
         position="top-center"
         autoClose={2000}

@@ -5,7 +5,6 @@ import userActions from '../redux/actions/userActions'
 
 const User = (props) => {
     const [photo, setPhoto] = useState({photo: ''})
-    const [errores, setErrores] = useState([])
     const [infoUser, setInfoUser] = useState({
         user: "",
         email: "",

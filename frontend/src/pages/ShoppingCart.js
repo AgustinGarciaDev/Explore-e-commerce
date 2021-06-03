@@ -1,7 +1,4 @@
-import { use } from "passport"
-import { useEffect, useState } from "react"
 import { connect } from "react-redux"
-import { Redirect , Link } from "react-router-dom"
 import ArticleCart from "../components/ArticleCart"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
@@ -9,7 +6,11 @@ import Header from "../components/Header"
 const ShoppingCart = (props) => {
 
     const cart = props.articles ? props.articles : []
-    let prices = cart.map(article => article.price * article.units)
+    let prices = cart.map(article => {
+        let operatorDiscount = article.price - (article.discount / 100) * article.price
+        let operator = operatorDiscount * article.units
+        return operator
+    })
     let total = prices.length === 0 ? 0 : prices.reduce((a, b) => a + b)
     return (
         <>
@@ -28,7 +29,7 @@ const ShoppingCart = (props) => {
                         cart.length === 0 ?
                             <h1>NO HAY ARTICULOS CARGADOS</h1>
                             :
-                        cart.map(article => <ArticleCart key={article._id} article={article}/>)
+                            cart.map(article => <ArticleCart key={article._id} article={article} />)
                     }
                     <div className="totalCart">
                         <div><h3>Subtotal:</h3></div>
@@ -36,10 +37,14 @@ const ShoppingCart = (props) => {
                     </div>
                 </div>
                 <div >
-                        <button>
-                        <Link to="/checkout" >Me llevo todo!!!!</Link>
-                        </button>
-                    </div>
+                    <button onClick={() => {
+                        if (cart.length === 0) {
+                            alert("tenes el carrito vacio date cuenta pa")
+                        } else {
+                            props.history.push("/checkout")
+                        }
+                    }}>Me llevo todo!!!!</button>
+                </div>
             </div>
             <Footer />
         </>
@@ -49,7 +54,7 @@ const ShoppingCart = (props) => {
 const mapStateToProps = state => {
     return {
         cart: state.cart.cart,
-        articles: state.cart.articles.filter(article => article.status === true )
+        articles: state.cart.articles.filter(article => article.status === true)
     }
 }
 
