@@ -35,9 +35,6 @@ const Checkout = ({ articles, sendMail, history }) => {
         history.push("/payment")
     }
 
-    console.log(cartArticles)
-
-
     return <div className="mainContainer">
 
         <div className="leftContainer ">
@@ -111,11 +108,11 @@ const Checkout = ({ articles, sendMail, history }) => {
                     {cartArticles.length
                         ? cartArticles.map(article => {
                             return <div >
-                                <div>
+                                <div style={{ display:"flex", alignItems:"center" }}>
                                     <div className="productImg" style={{ backgroundImage: `url('${article.coverImage}')` }} ></div>
                                     <h6>{article.name}</h6>
                                 </div>
-                                <h6> {article.units} X {article.price}</h6>
+                                <h6 style={{ width:"4rem" }}> {article.units} X {article.price}</h6>
                             </div>
 
                         })
@@ -132,17 +129,17 @@ const Checkout = ({ articles, sendMail, history }) => {
                 <div>
                     <div className="counts-flex">
                         <h6 className="d-flex">Subtotal</h6>
-                        <span>{total}</span>
+                        <span>€ {total}</span>
                     </div>
-                    <div className="counts-flex">
+                    {/* <div className="counts-flex">
                         <h6>Delivery </h6>
                         <span>Calculated at next step</span>
-                    </div>
+                    </div> */}
                 </div>
                 <hr />
                 <div className="counts-flex">
                     <h6>Total</h6>
-                    <span>{total}</span>
+                    <span>€ {total}</span>
                 </div>
             </div>
         </div>

@@ -23,6 +23,7 @@
     background-position: center;
     width: 20vh;
     height: 5rem;
+    background-image: url("http://tingarciadg.com/wp-content/uploads/2021/05/Diseno-sin-titulo-4.png");
 }
 
 .formasDePagoContainer{
@@ -143,12 +144,13 @@
 .productsContainer{ 
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;   
 }
 .productsContainer > div {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    margin: 0.7% 0;
 }
 .productsContainer > div > h6 {
     margin-left: 1%;

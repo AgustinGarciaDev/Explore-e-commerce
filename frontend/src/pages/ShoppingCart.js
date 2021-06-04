@@ -2,6 +2,7 @@ import { connect } from "react-redux"
 import ArticleCart from "../components/ArticleCart"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
+import { toast } from "react-toastify"
 
 const ShoppingCart = (props) => {
 
@@ -12,10 +13,86 @@ const ShoppingCart = (props) => {
         return operator
     })
     let total = prices.length === 0 ? 0 : prices.reduce((a, b) => a + b)
-    return (
+
+
+    
+return (
         <>
             <Header />
-            <div className="cartContainer">
+            <div className="cartMainContainer">
+                <h1>My shopping Cart</h1>
+
+                    <hr />
+
+                <div className="descriptionContainer">
+                    <h3>Description</h3>
+                    <h3>Quantity</h3>
+                    <h3>Remove</h3>
+                    <h3>Price</h3>
+                </div>
+
+                <hr />
+
+                <div className="articlesContainer">
+                    {   cart.length
+                        ? cart.map( article =>( <ArticleCart key={ article._id } article={ article } /> ) )
+                        : <div> <h5>Don't have any articles so far</h5>  </div>
+                    }
+                </div>
+
+                    <hr />
+
+                <div className="containers" >
+                    <div>
+                        <span>Discount</span>
+                        <span>20%</span>
+                    </div>
+                    <div>
+                        <span>Delivery</span>
+                        <span>$20</span>
+                    </div>
+                    <div>
+                        <span>Subtotal</span>
+                        <span>%200</span>
+                    </div>
+                    <div>
+                        <span>Total</span>
+                        <span>€ { total }</span>
+                    </div>
+                </div>
+                
+                <div className="buttonsAction">
+                    <div>
+                        <button onClick={() => {
+                        if (cart.length === 0) {
+                            toast( "your cart is empty",{ type:"warning" } )
+                        } else {
+                            props.history.push("/checkout")
+                        }}}>Checkout</button>
+                        <button onClick={()=>props.history.push("/") } >Continue shopping</button>
+                    </div>
+                    
+                </div>
+
+            </div>
+            <Footer />
+        </>
+    )
+}
+
+const mapStateToProps = state => {
+    return {
+        cart: state.cart.cart,
+        articles: state.cart.articles.filter(article => article.status === true)
+    }
+}
+
+export default connect(mapStateToProps)(ShoppingCart)
+
+
+
+
+/* <div className="cartContainer">
                 <div className="titleShoppingCart">
                     <h1>Shopping Bag</h1>
                 </div>
@@ -37,25 +114,7 @@ const ShoppingCart = (props) => {
                     </div>
                 </div>
                 <div >
-                    <button onClick={() => {
-                        if (cart.length === 0) {
-                            alert("tenes el carrito vacio date cuenta pa")
-                        } else {
-                            props.history.push("/checkout")
-                        }
+                    <button 
                     }}>Me llevo todo!!!!</button>
                 </div>
-            </div>
-            <Footer />
-        </>
-    )
-}
-
-const mapStateToProps = state => {
-    return {
-        cart: state.cart.cart,
-        articles: state.cart.articles.filter(article => article.status === true)
-    }
-}
-
-export default connect(mapStateToProps)(ShoppingCart)
+            </div> */
