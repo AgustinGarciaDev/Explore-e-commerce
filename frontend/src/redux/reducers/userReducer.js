@@ -19,7 +19,7 @@ const userReducer = (state = initialState, action) => {
             }
 
         case 'SIGNOUT_USER':
-            localStorage.clear()
+            localStorage.removeItem("user")
             return {
                 ...state,
                 usuarioStatus: null

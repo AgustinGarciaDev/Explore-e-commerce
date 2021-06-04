@@ -44,7 +44,6 @@ const cartReducer = (state = initialState, action) => {
                 articles: remove,
                 accountant: state.accountant - cont
             }
-
         case 'SUBTRACT':
             const subtract = state.articles.map(article => {
                 if (article._id === action.payload._id) {
@@ -58,13 +57,19 @@ const cartReducer = (state = initialState, action) => {
                 ...state,
                 accountant: state.accountant - 1
             }
-
         case 'NUM_CART':
             return {
                 ...state,
                 accountant: action.payload
             }
-
+        case "REMOVE_ALL":
+            localStorage.removeItem("num")
+            localStorage.removeItem("cart")
+            return{
+                ...state,
+                accountant: 0,
+                articles: [],
+            }
         default:
             return state
     }

@@ -2,9 +2,10 @@ import { useState, useEffect } from "react"
 import { connect } from "react-redux"
 import productsAction from "../redux/actions/productsActions"
 import PaymentForm from "../components/PaymentForm"
+import cartActions from "../redux/actions/cartActions"
 
 
-const Checkout = ({ articles, sendMail, history }) => {
+const Checkout = ({ articles, sendMail, history , removeAll }) => {
     const [form, setForm] = useState({ email: "", check: false, firstName: "", lastName: "", adress: "", apartment: "", city: "", country: "", postCode: "", phone: "" })
     const [countries, setCountries] = useState([])
     const [visible, setVisible] = useState(false)
@@ -32,6 +33,7 @@ const Checkout = ({ articles, sendMail, history }) => {
 
     const sendAll = () => {
         sendMail(form, creditCard, { cartArticles, total })
+        removeAll()
         history.push("/payment")
     }
 
@@ -154,7 +156,8 @@ const mapStateToProps = state => {
 
 
 const mapDispatchToProps = {
-    sendMail: productsAction.sendMail
+    sendMail: productsAction.sendMail,
+    removeAll : cartActions.removeAll
 }
 
 
