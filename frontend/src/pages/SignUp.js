@@ -31,6 +31,9 @@ const SignUp = (props) => {
         if (googleUser) {
             const response = await props.createAcount(user)
             console.log(response)
+            toast.error(response.response.error)
+
+
         } else {
             if (photo.photo) {
                 const formData = new FormData()
@@ -55,7 +58,15 @@ const SignUp = (props) => {
                     }
                 }
             } else {
-                alert("carga una imagen puto")
+                toast.error('You must complete all the fields', {
+                    position: "top-right",
+                    autoClose: 1700,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                })
             }
         }
     }
