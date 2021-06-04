@@ -26,6 +26,8 @@ const userControllers = {
             file.mv(`${__dirname}/assets/${file.name}`, (error) => {
                 if (!error) {
                     console.log("lo grabe")
+                } else {
+                    console.log(error)
                 }
             })
             console.log(req.files)
