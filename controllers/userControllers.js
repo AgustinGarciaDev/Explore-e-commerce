@@ -23,7 +23,7 @@ const userControllers = {
                   console.log(error)
               } */
             const file = req.files.photo
-            file.mv(`${__dirname}/${file.name}`, (error) => {
+            file.mv(`${__dirname}/assets/${file.name}`, (error) => {
                 if (!error) {
                     console.log("lo grabe")
                 }
