@@ -117,7 +117,13 @@
     border-radius: 2vh;
     font-size: large;
     padding: 0 1.4rem;
+    transition: all .4s;
 }
+
+.btnSendForm:hover{
+    transform: scale(1.02);
+}
+
 
 .btnGoogleSignUp{
     border: none;
@@ -135,4 +141,57 @@
     font-size: 17px;
     font-family: 'Montserrat';
     margin-top: 16px;
+}
+
+
+.container-input {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0.625rem 1.25rem;
+}
+
+.inputfile + label svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-top: -0.25em;
+    margin-right: 0.25em;
+}
+
+.iborrainputfile {
+	font-size:20px; 
+	font-weight:normal;
+	font-family: sans-serif;
+}
+
+/* style 1 */
+
+.inputfile-1 + label {
+    color: white;
+    background-color: black;
+    border-radius: 2vh;
+    width: 15rem;
+}
+
+.inputfile-1:focus + label,
+.inputfile-1.has-focus + label,
+.inputfile-1 + label:hover {
+    background-color: #636363;
 }

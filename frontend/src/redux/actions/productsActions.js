@@ -6,7 +6,11 @@ const productActions = {
     createNewProdudct: (data) => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.post('https://explore-2021.herokuapp.com/api/products', data)
+                const response = await axios.post('http://localhost:4000/api/products', data.product, {
+                    headers: {
+                        'Authorization': 'Bearer ' + data.token
+                    }
+                })
                 if (response) {
                     if (response.data.success) {
                         return response.data

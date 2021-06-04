@@ -6,9 +6,6 @@ const Admin = () => {
     return (
         <>
             <Header />
-            <NavLink to="/add-new-product" >
-                <p>add new course</p>
-            </NavLink>
             <EditProducts />
         </>
     )

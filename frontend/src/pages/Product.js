@@ -159,9 +159,7 @@ const Product = (props) => {
                     <p className={operatorDiscount === 0 ? "priceProduct" : "priceProductD"}>£ {article.price}</p>
                     <p className="priceReal">£ {operatorDiscount}</p>
                     <p style={{ color: "red" }}>{article.discount}% discount</p>
-
                     <button className="btnBuy" onClick={buy}>add to cart</button>
-
                     <div className="descProduct">
                         <p>{article.description}</p>
                     </div>
@@ -176,13 +174,22 @@ const Product = (props) => {
                 <div className="commentsContainer">
                     <div className="commentsimportant">
                         {
-                            renderComment.map(comment => <Comment
-                                key={comment._id}
-                                deleteComment={deleteComment}
-                                comment={comment}
-                                updateComment={updateComment}
-                                usuarioStatus={props.usuarioStatus}
-                            />)
+                            renderComment.length === 0
+                                ?
+                                <div className="commentsloaderContainer">
+                                    <div className="commentsLOader" >
+                                        <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_cFaBp6.json" background="transparent" speed="1" loop autoplay></lottie-player>
+                                    </div>
+                                    <p>No comments, be the first !</p>
+                                </div>
+                                :
+                                renderComment.map(comment => <Comment
+                                    key={comment._id}
+                                    deleteComment={deleteComment}
+                                    comment={comment}
+                                    updateComment={updateComment}
+                                    usuarioStatus={props.usuarioStatus}
+                                />)
                         }
                     </div>
                     <hr

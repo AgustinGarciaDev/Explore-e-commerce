@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { GoogleLogin } from 'react-google-login'
 import userActions from '../redux/actions/userActions'
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 const SignUp = (props) => {
 
@@ -11,9 +12,13 @@ const SignUp = (props) => {
     const [infoUser, setInfoUser] = useState({ user: "", email: "", password: "" })
     const [error, setError] = useState({})
     const errorsImput = { user: null, email: null, password: null }
+    const [inputText, setInputText] = useState("Select a file")
 
     const uploadPhoto = e => {
-        setPhoto({ photo: e.target.files[0] })
+        if (e.target.files[0]) {
+            setPhoto({ photo: e.target.files[0] })
+            setInputText(e.target.files[0].name)
+        }
     }
 
     const changeValue = (e) => {
@@ -30,13 +35,12 @@ const SignUp = (props) => {
 
         if (googleUser) {
             const response = await props.createAcount(user)
-            console.log(response)
         } else {
             if (photo.photo) {
                 const formData = new FormData()
-                formData.append('user', user.user )
-                formData.append('email', user.email )
-                formData.append('password', user.password )
+                formData.append('user', user.user)
+                formData.append('email', user.email)
+                formData.append('password', user.password)
                 formData.append('photo', photo.photo)
 
                 const response = await props.createAcount(formData)
@@ -50,7 +54,7 @@ const SignUp = (props) => {
                             })
                             setError(errorsImput)
                         }
-                    }else {
+                    } else {
                         toast.error(response.response.error)
                     }
                 }
@@ -62,7 +66,7 @@ const SignUp = (props) => {
 
     const responseGoogle = (response) => {
         const { email, imageUrl, givenName, googleId } = response.profileObj
-        createAccount(null, { user: givenName, email: email, password: 'a'+googleId, urlImg: imageUrl, googleFlag: true })
+        createAccount(null, { user: givenName, email: email, password: 'a' + googleId, urlImg: imageUrl, googleFlag: true })
     }
 
     return (
@@ -100,10 +104,12 @@ const SignUp = (props) => {
                     </div>
                     {error.email ? <small>{error.email}</small> : <p></p>}
 
-                    <div className="inputCointainer">
-                        <div className="upload-btn-wrapper">
-                            <input id="foto" onChange={uploadPhoto} type="file" name="myfile" />
-                        </div>
+                    <div className="container-input">
+                        <input type="file" name="file-1" id="file-1" onChange={uploadPhoto} className="inputfile inputfile-1" data-multiple-caption="{count} archivos seleccionados" multiple />
+                        <label htmlFor="file-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="iborrainputfile" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
+                            <span className="iborrainputfile">{inputText}</span>
+                        </label>
                     </div>
 
                     <div className="inputCointainer">
@@ -114,9 +120,12 @@ const SignUp = (props) => {
                     </div>
                     {error.password ? <small>{error.password}</small> : <p></p>}
 
+
                     <button className="btnSendForm" onClick={createAccount}>Create Acount</button>
                 </div>
             </section>
+
+            <Footer />
         </>
     )
 }
