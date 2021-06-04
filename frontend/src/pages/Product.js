@@ -37,7 +37,7 @@ const Product = (props) => {
         setRenderComment(item.comments)
     }
 
-    useEffect(() => {
+/*     useEffect(() => {
         scroll()
     }, [])
 
@@ -47,7 +47,7 @@ const Product = (props) => {
             left: 0,
             behavior: 'smooth'
         })
-    }
+    } */
 
     const item = async () => {
         let response = await props.allProducts()
