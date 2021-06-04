@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 import productActions from '../redux/actions/productsActions'
 import CardProductHome from '../components/Home/CardProductHome'
 import Header from "../components/Header"
+import Footer from "../components/Footer"
 const SexToyCategory = (props) => {
 
     const [sexToyPennis, setSexToyPennis] = useState([])
@@ -20,7 +21,16 @@ const SexToyCategory = (props) => {
         }
         filterProducts()
         // eslint-disable-next-line react-hooks/exhaustive-deps
+        scroll()
     }, [products])
+
+    const scroll = () => {
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
+    }
 
     const filterProducts = () => {
 
@@ -123,6 +133,7 @@ const SexToyCategory = (props) => {
 
                 </div>
             </>
+            <Footer />
         </>
     )
 }
