@@ -1,4 +1,5 @@
-import axios from "axios";
+import axios from "axios"
+import { toast } from 'react-toastify'
 
 const cartActions = {
     allProducts: () => {
@@ -33,6 +34,16 @@ const cartActions = {
     buyArticle: (product) => {
         return (dispatch, getState) => {
             dispatch({ type: 'BUY', payload: product })
+            toast.success('Product added susesfully !', {
+                position: "bottom-right",
+                autoClose: 1000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                toastId: "productAdded"
+            })
         }
     },
     removeArticle: (product) => {

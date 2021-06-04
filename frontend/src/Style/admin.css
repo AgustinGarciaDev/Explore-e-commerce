@@ -4,23 +4,40 @@
 }
 
 .adminContainer{
-    background-color: lightblue;
+    background-image: url("http://tingarciadg.com/wp-content/uploads/2021/05/pexels-sameera-ganegoda-2234783-scaled.jpg");
     width: 100%;
-    min-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 4vh 0;
 }
 
 .adminFrom{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%;
-    background: #fff;
+    width: 60%;
+    background: white;
     box-shadow: 0 1px 3px rgba(0,0,0,.2);
     border-radius: 5px;
+}
+
+@media (max-width: 800px){
+    .adminFrom{
+        width: 75%;
+    }
+}
+@media (max-width: 600px){
+    .adminFrom{
+        width: 85%;
+    }
+}
+
+.adminFrom h2{
+    margin: 2vh ;
 }
 
 small {
@@ -33,7 +50,7 @@ small {
 .adminFormInputs{
     border: none;
     background: none;
-    border-bottom: 1px solid silver;
+    border-bottom: 2px solid silver;
     outline: none;
     padding: 5px;
     width: 90%;
@@ -44,11 +61,11 @@ small {
 }
 
 .adminFormInputs:hover{
-    border-bottom: 1px solid grey;
+    border-bottom: 2px solid black;
 }
 
 .adminFormInputs:focus{
-    border-bottom: 1px solid blue;
+    border-bottom: 2px solid hsl(302, 32%, 58%);
 }
 
 .adminFormInputsNumber{
@@ -95,14 +112,29 @@ small {
     padding: 1vh;
     width: 90%;
     margin: 2vh;
-    background-color: ghostwhite;
 	border-radius: 6px;
-    border: 1px solid ghostwhite;
+    border: 2px solid silver;
+    transition: all .2s;
+}
+
+.tags-input-edit {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+    padding: 1vh;
+    width: 100%;
+    margin-top: 5vh;
+	border-radius: 6px;
+    border: 2px solid silver;
     transition: all .2s;
 }
 
 .tags-input:hover{
-    border: 1px solid hsl(240, 100%, 30%);
+    border: 2px solid black;
+}
+
+.tags-input:focus{
+    border: 2px solid hsl(302, 32%, 58%);
 }
 
 
@@ -125,7 +157,7 @@ ul {
 	font-size: 14px;
 	list-style: none;
 	border-radius: 6px;
-	margin: 0 8px 8px 0;
+	margin: 8px 8px 8px 8px;
 	background: hsl(216, 100%, 50%);
     font-size: 1rem;
 }
@@ -152,11 +184,29 @@ ul {
     margin-bottom: 8px;
 }
 
+.imagesForEdit{
+    width: 100px;
+    height: 100px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+
 .inputContainer{
-    width: 100%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: 2px solid silver;
+    border-radius: 6px;
+    margin: 2vh;
+}
+
+.inputContainer:hover{
+    border: 2px solid black;
 }
 
 label{
@@ -259,48 +309,57 @@ label{
 
 .productEditImg{
     width: 100%;
-    height: 40vh;
+    height: 30vh;
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
-    cursor: pointer;
     display: flex;
     align-items: flex-end;
     justify-content: flex-start;
-    border: 1px solid silver;
-    margin: 2vh 0;
+    border: 2px solid silver;
+    margin-top: 5vh;
+    border-radius: 6px;
 }
 
 .productEditImg input{
     flex: 1;
     border: none;
-    border-bottom: 1px solid black;
     background: none;
     outline: none;
     width: 100%;
+    padding: 5px;
 }
 .editInput{
     width: 100%;
     display: flex;
+    align-items: center;
+    border: 2px solid silver;
+    border-radius: 6px;
+    margin-top: 5vh;
 }
 
 .editInput input{
     flex: 1;
     border: none;
-    border-bottom: 1px solid black;
     background: none;
     outline: none;
-    width: 100%;
+    border-radius: 2vh;
+    margin: 1vh 0;
+    padding: 5px;
 }
+
+
 .editInput textarea{
     flex: 1;
-    border: 1px solid black;
+    border: none;
     background: none;
     outline: none;
     width: 100%;
     padding: 5px;
     resize: none;
+    min-height: 10vh;
 }
+
 
 .material-icons{
     cursor: pointer;
