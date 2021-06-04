@@ -10,8 +10,13 @@ const userControllers = {
         var error
 
         if (req.files) {
+            if (req.files.photo) {
+                var filePath = req.files.photo.tempFilePath
+            } else {
+                var filePath = req.files.tempFilePath
+            }
             console.log(req.files)
-            const { url } = await cloudinary.uploader.upload(req.files.photo.tempFilePath, { folder: "users", transformation: [{ width: 100, height: 100, gravity: "faces", crop: "thumb" }] })
+            const { url } = await cloudinary.uploader.upload(filePath, { folder: "users", transformation: [{ width: 100, height: 100, gravity: "faces", crop: "thumb" }] })
             req.body.urlImg = url
         }
         const emailExistent = await User.findOne({ email: req.body.email })
