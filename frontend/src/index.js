@@ -9,7 +9,6 @@ import mainReducer from './redux/reducers/mainReducer'
 const miStore = createStore(mainReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
-
   <Provider store={miStore}>
     <App />
   </Provider>,

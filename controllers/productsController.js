@@ -126,7 +126,7 @@ const postComment = async (req, res) => {
     const { comment } = req.body
 
     try {
-        const result = await Product.findByIdAndUpdate({ _id: idProduct }, { $push: { comments: {comment: comment, userId: userId}} }, { new: true }).populate({ path: "comments", populate: { path: "userId", select: { "_id": 1, "user": 1, "urlImg": 1, "email": 1 } } })
+        const result = await Product.findByIdAndUpdate({ _id: idProduct }, { $push: { comments: { comment: comment, userId: userId } } }, { new: true }).populate({ path: "comments", populate: { path: "userId", select: { "_id": 1, "user": 1, "urlImg": 1, "email": 1 } } })
         res.json({ success: true, result })
     } catch (error) {
         res.json({ success: false, err: "An error has occurred on our server" })
@@ -146,7 +146,6 @@ const putComment = async (req, res) => {
     const { comment } = req.body
     try {
         const result = await Product.findOneAndUpdate({ "_id": idProduct, "comments._id": idComment }, { $set: { "comments.$.comment": comment } }, { new: true }).populate({ path: "comments", populate: { path: "userId", select: { "_id": 1, "user": 1, "urlImg": 1, "email": 1 } } })
-
         res.json({ success: true, result })
     } catch (error) {
         console.log(error)
