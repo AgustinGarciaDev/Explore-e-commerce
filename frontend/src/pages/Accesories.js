@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 import productActions from '../redux/actions/productsActions'
 import CardProductHome from '../components/Home/CardProductHome'
 import Header from "../components/Header"
+import Footer from "../components/Footer"
 const Accesories = (props) => {
 
     const [sexToyPennis, setSexToyPennis] = useState([])
@@ -19,8 +20,17 @@ const Accesories = (props) => {
             setLoading(false)
         }
         filterProducts()
+        scroll()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [products])
+
+    const scroll = () => {
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
+    }
 
     const filterProducts = () => {
 
@@ -97,7 +107,6 @@ const Accesories = (props) => {
                         loading
                             ?
                             <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_9ivolvho.json" background="transparent" speed="1" loop autoplay></lottie-player>
-
                             :
                             sexToyVulva.map(item => <CardProductHome product={item} key={item._id} />)
                     }
@@ -116,13 +125,13 @@ const Accesories = (props) => {
                         loading
                             ?
                             <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_9ivolvho.json" background="transparent" speed="1" loop autoplay></lottie-player>
-
                             :
                             sexToyButts.map(item => <CardProductHome product={item} key={item._id} />)
                     }
 
                 </div>
             </>
+            <Footer />
         </>
     )
 }

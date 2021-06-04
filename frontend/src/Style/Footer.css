@@ -1,66 +1,39 @@
-.containerContentFooter{
-    background: #E62A54;
-    color: white;
-    display: flex;
-    flex-direction: column;
-}
-.containerSocial{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1em;
+.bg-white {
+    background-color: #1F1F1F !important;
+    color: white !important;
 }
 
-.containerSocial > i {
-    font-size: 3rem;
-    margin: 0 4vh;
-}
-.containerSuscribe{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2em;
+.input-group{
+    background-color: white !important;
 }
 
-.inputSuscribe{
-    border: none;
-    padding: 20px;
-    outline: none;
-    height: 2vh;
-    width: 50%;
-}
-.btnSuscribe{
-    height: 3rem;
-    margin-left: 3vh;
-    width: 6rem;
-    border: none;
-    background: white;
-    border-radius: 1vw;
-}
-.navFooterLogo{
-     display: flex;
-    background: white;
-
-}
-.navFooter{
-     display: flex;
+.bg-light {
+    background-color: black !important;
 }
 
-.titleNav{
-    color: black;
-    font-family: 'Dancing Script', cursive;
-    font-size: 3vw;
+.fa-twitter-square, .fa-facebook-f, .fa-instagram, .fa-pinterest, .fa-vimeo {
+    font-size: 30px;
+    padding: 0 5px 0 5px;
 }
-.listItemNav{
-    margin-left: 6vw;
+.text-muted{
+    color: whitesmoke !important;
 }
-.itemNav{
-    color: black;
-    font-family: 'Montserrat'
-}
-.logoFooter{
-    width: 13vw;
-    height: 6vw;
-    margin-right: 2vw;
-    margin-left: 2vw;
-}
+
+#button-addon1 {
+    color: #ffc371;
+  }
+  
+  i {
+    color: #ffc371;
+  }
+  
+  .form-control::placeholder {
+    font-size: 0.95rem;
+    color: #aaa;
+    font-style: italic;
+  }
+  
+  .form-control.shadow-0:focus {
+    box-shadow: none;
+  }
+

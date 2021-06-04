@@ -206,7 +206,7 @@ const ProductEdit = (props) => {
                                         className="newCategoryInput"
                                         type="text"
                                         onKeyUp={event => event.key === "Enter" ? imagesActions({ event, action: 'add' }) : null}
-                                        placeholder="Press enter to add categories"
+                                        placeholder="Press enter to add image"
                                     />
                                 </div>
 

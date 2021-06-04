@@ -8,43 +8,38 @@ p{
     height: 100%;
     width: 100%;
     display: flex;
+    background-color: whitesmoke;
 }
 
 .infoProducts{
-    height: 100vh;
+    height: 100%;
     width: 50%;
-   /*  background-color: blue; */
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 2em;
 }
 
-.infoProduct{
-    width: 100%;
-/*     background-color: chartreuse; */
-}
 
 .photosProducts{
-    min-height: 100vh;
     width: 50vw;
     display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.carrouselProduct{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.carrouselProduct{
-    min-height: 85%;
-    width: 85%;
-    /* margin-top: 15vh; */
-}
-
 .logoProduct{
-    height: 7vw;
     width: 100%;
-    display: flex;
-    align-items: center;
-    font-size: 30px;
-/*     background-color: brown; */
+    letter-spacing: 8px;
 }
 
 .priceProduct{
@@ -60,6 +55,26 @@ p{
     display: flex;
     align-items: center;
     text-decoration: line-through;
+    color: silver;
+}
+
+.priceReal{
+    color: #f53325;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.btnBuy{
+    margin: 2vh 0;
+    height: 5vh;
+    border: none;
+    background: linear-gradient(140deg,var(--purple),var(--pink));
+    color: white;
+    font-weight: bold;
+    border-radius: 2vh;
+    font-size: large;
+    padding: 0 1.4rem;
+    width: 12rem;
 }
 
 .cardContainer{
@@ -69,11 +84,16 @@ p{
 }
 
 .cardProduct {
-    height: 7vh;
-    width: 7vw;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
+    width: 4rem;
+    height: 4rem;
+}
+
+.infoProduct h3{
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.7rem;
 }
 
 .buyNowProduct{
@@ -88,10 +108,52 @@ p{
     width: 20vw;
 }
 
+@media (max-width: 900px){
+    .productContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .photosProducts{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        height: 50vh;
+        margin-top: 1vh;
+    }
+    .carrouselProduct{
+        height: 50vh;
+    }
+    .image-gallery-image{
+        height: 50vh;
+    }
+    .infoProducts{
+        width: 100%;
+        margin-top: 2vh;
+    }
+    .btnContainerBuy{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 500px){
+    .cardContainer{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .cardProduct{
+        margin: 2vh;
+    }
+}
+
 .descProduct{
     min-height: 30vh;
     width: 80%;
-/*     background-color: darksalmon; */
+    font-weight: 600;
+    font-size: large;
 }
 
 .descProduct > p{
@@ -286,14 +348,15 @@ p{
 }
 
 .textInput{
-    width: 100%;
-    height: 100%;
-    background-color: #1E2747;
-    border: 0px;
+    background-color: hsl(0, 0%, 94%);
+    border: none;
     outline: none;
-    font-size: 15px;
-    color: white;
-    padding: 5px 0 0 5px
+    color: black;
+    border-radius: 2vh;
+    font-size: 25px;
+    padding: 10px;
+    flex-grow: 1;
+    margin: 0 2vh;
 }
 
 .divSend{
@@ -321,9 +384,8 @@ p{
 
 .textTareaConteiner{
     display: flex;
-    width: 60%;
-    height: 8rem;
-/*     margin-top: 6em; */
+    align-items: center;
+    width: 100%;
 }
 
 .avatarComment{
@@ -337,9 +399,8 @@ p{
 }
 
 .avatarImgComment{
-    height: 60px;
-    width: 60px;
-    background-color: white;
+    width: 3rem;
+    height: 3rem;
     border-radius: 50%;
     background-position: center;
     background-repeat: no-repeat;
@@ -353,15 +414,12 @@ p{
 }
 
 .comment{
-    height: 40px;
-    width: 50vw;
-    background-color: cornsilk;
-    margin: 1em;
+    width: 90%;
+    background-color: hsl(0, 0%, 92%);
+    margin: 2vh 0vh 2vh 2vh;
     color: black;
-}
-
-.comment > p {
-    padding: 5px 0 0 10px;
+    border-radius: 2vh;
+    padding: 1em;
 }
 
 .commentConteiner{
@@ -371,10 +429,11 @@ p{
 }
 
 .modifyComment {
-    position: absolute;
-    height: 40px;
-    width: 50vw;
-    background-color: cornsilk;
+    width: 100%;
+    background-color: hsl(0, 0%, 93%);
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
     color: black;
 }
 
@@ -383,18 +442,15 @@ p{
 } */
 
 .buttonCloseOn{
-    height: 40px;
-    width: 20px;
-    color: #E50913;
+    color: black;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50%;
-    margin: 0 2px 0 2px;
 }
 
 .DivEditAndDelete{
     display: flex;
+    margin-right: 2vh;
 }
 
 .buttonCloseOn > p{
@@ -444,14 +500,48 @@ p{
     margin-top: 2em;
 }
 
+.commentAuthor{
+    font-size: x-large;
+    font-weight: 700;
+}
+
 .inputProduct{
-    min-height: 60vh;
     width: 100%;
-    background-color: cadetblue;
+    background-color: whitesmoke;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 2em;
+}
+
+.commentsContainer{
+    background-color: white;
+    padding: 2em;
+    border-radius: 2vh;
+    box-shadow: rgb(0 0 0 / 23%) 2px 2px 10px;
+    width: 70%;
+}
+
+@media (max-width: 850px){
+    .commentsContainer{
+        width: 85%;
+    }
+}
+@media (max-width: 600px){
+    .commentsContainer{
+        width: 95%;
+        padding: 2em 20px;
+    }
+    .inputProduct{
+        padding: 2em 0;
+    }
+}
+
+.commentsimportant{
+    height: 50vh;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
 .fa-shopping-cart{
@@ -500,8 +590,8 @@ p{
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 50%;
-    height: 30px;
-    width: 30px;
+    width: 4rem;
+    height: 4rem;
 }
 
 .imgUserComment > p{

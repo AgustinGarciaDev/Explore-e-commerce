@@ -17,6 +17,7 @@ import "./Style/cart.css"
 import './Style/paymentSucessFull.css'
 import 'react-credit-cards/es/styles-compiled.css';
 import "./Style/CreditCard.css"
+import './Style/listProduct.css'
 import { connect } from 'react-redux'
 import { ToastContainer } from 'react-toastify';
 import getRoutesByRole from './helpers/rutes'

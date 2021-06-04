@@ -7,7 +7,7 @@ import Header from '../components/Header';
 import cartActions from '../redux/actions/cartActions';
 import commentsActions from '../redux/actions/commentsActions';
 import ReactTooltip from 'react-tooltip';
-
+import { toast } from 'react-toastify';
 
 const Product = (props) => {
     const [article, setArticle] = useState({})
@@ -46,7 +46,7 @@ const Product = (props) => {
             top: 0,
             left: 0,
             behavior: 'smooth'
-        });
+        })
     }
 
     const item = async () => {
@@ -57,7 +57,15 @@ const Product = (props) => {
 
     const buy = () => {
         if (article.units === article.stock) {
-            alert("llegaste al stock pa")
+            toast.info('We have no more stock of this item', {
+                position: "top-center",
+                autoClose: 1700,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            })
         } else {
             props.buyArticle(article)
         }
@@ -72,10 +80,17 @@ const Product = (props) => {
         })
     }
 
-    const addComment = async (e) => {
-        e.preventDefault()
+    const addComment = async () => {
         if (/^\s+|\s+$/.test(comment.comment) || comment.comment === "") {
-            alert("You cannot post an empty comment")
+            toast.error('You cannot post an empty comment', {
+                position: "top-center",
+                autoClose: 1700,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            })
         } else {
             var response = await props.fetchComments(comment, article._id)
             if (response) {
@@ -117,6 +132,12 @@ const Product = (props) => {
         "http://tingarciadg.com/wp-content/uploads/2021/06/024-maestro.png"
     ]
 
+    const enter = (e) => {
+        if (e.key === "Enter") {
+            addComment()
+        }
+    }
+
     return (
         <>
             <Header />
@@ -132,15 +153,15 @@ const Product = (props) => {
                     <div className="logoProduct">
                         <h2 >{article.brand}</h2>
                     </div>
-                    <p className={operatorDiscount === 0 ? "priceProduct" : "priceProductD"}>£ {article.price}</p>
-                    <p style={{ fontSize: "25px" }}>£ {operatorDiscount}</p>
-                    <p style={{ color: "red" }}>{article.discount}% discount</p>
-                    <div className="buyNowProduct">
-                        <button onClick={buy}>add to cart</button>
-                    </div>
                     <div className="infoProduct">
                         <h3 >{article.name}</h3>
                     </div>
+                    <p className={operatorDiscount === 0 ? "priceProduct" : "priceProductD"}>£ {article.price}</p>
+                    <p className="priceReal">£ {operatorDiscount}</p>
+                    <p style={{ color: "red" }}>{article.discount}% discount</p>
+
+                    <button className="btnBuy" onClick={buy}>add to cart</button>
+
                     <div className="descProduct">
                         <p>{article.description}</p>
                     </div>
@@ -152,29 +173,54 @@ const Product = (props) => {
                 </div>
             </div>
             <div className="inputProduct">
-                <div>
-                    {
-                        renderComment.map(comment => <Comment
-                            key={comment._id}
-                            deleteComment={deleteComment}
-                            comment={comment}
-                            updateComment={updateComment}
-                            usuarioStatus={props.usuarioStatus}
-                        />)
-                    }
-                </div>
-                <div className="textTareaConteiner">
-                    <div className="avatarComment">
-                        <div style={{ backgroundImage: `url(${imgUser})` }} className="avatarImgComment"></div>
-                        <p style={{ color: "white", marginTop: "2px" }}>{props.usuarioStatus ? props.usuarioStatus.user : "Explore.com"}</p>
+                <div className="commentsContainer">
+                    <div className="commentsimportant">
+                        {
+                            renderComment.map(comment => <Comment
+                                key={comment._id}
+                                deleteComment={deleteComment}
+                                comment={comment}
+                                updateComment={updateComment}
+                                usuarioStatus={props.usuarioStatus}
+                            />)
+                        }
                     </div>
-                    <input className="textInput" onChange={readInput} value={comment.comment} name="comment" placeholder="Hello!" disabled={props.usuarioStatus ? false : true} required />
-                </div>
-                <div className="divSend">
-                    <button className="buttonSend" onClick={addComment}>send</button>
+                    <hr
+                        style={{
+                            color: 'black',
+                            height: 10
+                        }}
+                    />
+                    <div className="textTareaConteiner">
+                        <div style={{ backgroundImage: `url(${imgUser})` }} className="avatarImgComment"></div>
+                        <input className="textInput" onKeyPress={enter} onChange={readInput} value={comment.comment} name="comment" placeholder="Hello!" disabled={props.usuarioStatus ? false : true} required />
+                        <span onClick={() => addComment()} className="material-icons">send</span>
+                    </div>
                 </div>
             </div>
             <ReactTooltip />
+            <div className="containerIconsHome">
+                <div className="boxTextAndIcon">
+                    <i className="fas fa-truck"></i>
+                    <h2>Free Delivery</h2>
+                    <p>On Orders Over £50</p>
+                </div>
+                <div className="boxTextAndIcon">
+                    <i className="fas fa-box-open"></i>
+                    <h2>14 Day Returns</h2>
+                    <p>T&C's Apply</p>
+                </div>
+                <div className="boxTextAndIcon">
+                    <i className="fas fa-hand-holding-heart"></i>
+                    <h2>Hand Picked</h2>
+                    <p>By Our Team</p>
+                </div>
+                <div className="boxTextAndIcon">
+                    <i className="fas fa-box"></i>
+                    <h2>Discreet</h2>
+                    <p>Non-Identifiable Packaging</p>
+                </div>
+            </div>
             <Footer />
         </>
     )
