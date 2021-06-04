@@ -51,6 +51,11 @@ const cartActions = {
             dispatch({ type: 'REMOVE', payload: product })
         }
     },
+    removeAll: () => {
+        return (dispatch, getState) => {
+            dispatch({type: "REMOVE_ALL"})
+        }
+    },
     subtract: (product) => {
         return (dispatch, getState) => {
             dispatch({ type: 'SUBTRACT', payload: product })

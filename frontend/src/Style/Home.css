@@ -12,7 +12,7 @@
 }
 .contenido {
     width: 100%;
-     height: 30vw;
+     height: 35vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,8 +54,77 @@
 /* Contenct carrousel */
 
 .containerCarrousel{
-       overflow: hidden;
+    overflow: hidden;
+    margin: 0 0 5rem 0;
 }
+
+.titleSliderContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.titleSlider{
+    margin-top: 35vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13vw;
+    font-family: 'Dancing Script', cursive;
+    position: absolute;
+    z-index: 2;
+    font-weight: bold;
+    color: white;
+}
+
+.contentSliders{
+    height: 10vw;
+    width: 80%;
+/*     background-color: teal; */
+    margin-bottom: 2vw;
+}
+
+.contentSliders > *{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contentSliderTitle{
+    font-size: 30px;
+    font-family: "Montserrat";
+}
+
+.contentSliderButton{
+    color: white;
+    background-color: darkgray;
+    font-size: 0.75rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-weight: 700;
+    border: 0.15rem solid darkgray;
+    font-family: "Aileron";
+    display: inline-block;
+    color: darkgray;
+    background-color: white;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    padding-top: 1.337rem;
+    padding-bottom: 1.337rem;
+    line-height: 1;
+    height: auto;
+    white-space: unset;
+    transition: margin-top 0.2s;
+}
+
+.contentSliderButton:hover{
+    margin-top: 5px;
+    opacity: 85%;
+}
+
 .slideOne{
 
     background: url("https://sexplore.s3.eu-west-2.amazonaws.com/shopify/homepage-4-category/butt-plug.png"),linear-gradient(0deg
@@ -63,6 +132,9 @@
     background-position: center;
      background-size: contain ;  
     height: 42vw;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
 }
 
 .slideTwo{
@@ -70,6 +142,9 @@
      background-position: center;
       background-size: contain ;  
     height: 42vw;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
 }
 
 .slideThree{
@@ -77,6 +152,9 @@
  background-position: center;
   background-size: contain ;  
     height: 42vw;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
 }
 
 .slideFor{
@@ -84,6 +162,19 @@
     background-position: center;
     background-size: contain ;  
    height: 42vw;
+   display: flex !important;
+   align-items: flex-end !important;
+   justify-content: center !important;
+}
+
+.slideFive{
+    background: url("https://sexplore.s3.eu-west-2.amazonaws.com/shopify/homepage-4-category/clitoral.png"),linear-gradient(0deg,#0c6b80 0,#d22c50 100%);
+    background-position: center;
+    background-size: contain ;  
+    height: 42vw;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
 }
 
 .slideSix{
@@ -91,6 +182,9 @@
     background-position: center;
     background-size: contain ;  
     height: 42vw;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
 }
 .titleContent{
     font-family: 'Montserrat';
@@ -103,8 +197,8 @@
 
 .containerImgHome{
     background-image: url("http://baravdg.com/wp-content/uploads/2021/05/Capture.jpg");
-    height: 100%;
     width: 50%;
+    height: 100%;
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -199,6 +293,7 @@
     justify-content: space-around;
     width: 100%;
     flex-wrap: wrap;
+    margin-bottom: 3rem;
 }
 
 .boxTextAndIcon{
@@ -213,8 +308,8 @@
     background-color: var(--pink);
     background-image: linear-gradient(140deg,var(--purple),var(--pink));
     background-size: 100%;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
+/*     -webkit-background-clip: text;
+    -moz-background-clip: text; */
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
     margin-bottom: .5em;
@@ -228,4 +323,171 @@
 }
 .boxTextAndIcon > p{
      font-family: 'Montserrat';
+}
+
+/* acordion */
+
+section {
+    width: 100%;
+    min-height: 30vh;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1em;
+  }
+  
+  .container{
+    width: 100%;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  .accordion-item{
+    background-color: white;
+    border-radius: .4rem;
+  }
+  
+  .accordion-item hr{
+    border: 1px solid rgba(65, 34, 34, 0.5);
+  }
+  
+  .accordion-link{
+    font-size: 1.6rem;
+    color: black;
+    background-color: white;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    text-decoration: none !important;
+  }
+  
+  .accordion-link h3{
+    font-weight:500;
+    font-size: 20px;
+  }
+  
+  .accordion-link i{
+    color: black;
+    padding: .5rem;
+  }
+  
+  .accordion-link ul{
+    display:flex;
+    align-items: flex-end;
+    list-style-type: none;
+    margin-left: 25px;
+  }
+  
+  .accordion-link li{
+    font-size: 10px;
+    color: black;
+    padding: 0 0 1px 5px;
+  }
+  
+  .accordion-link div{
+    display: flex;
+  }
+  
+  .accordion-link .ion-md-arrow-down{
+    display: none;
+  }
+  
+  .answer{
+    max-height: 0;
+    overflow: hidden;
+    position: relative;
+    background-color: white;
+    transition: max-height 650ms;
+  }
+  
+  .answer p{
+    color: black;
+    font-size: 15px;
+    padding: 2rem;
+    
+  }
+  .accordion-item:target .answer{
+    max-height: 20rem;
+  }
+  
+  .accordion-item:target .accordion-link .ion-md-arrow-forward{
+    display: none
+  }
+  
+  .accordion-item:target .accordion-link .ion-md-arrow-down{
+    display: block;
+  }
+
+  .imageContainerTop, .imageContainerBot {
+    height: 75vh;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+.imageContainerBot {
+    background-color: black;
+    margin-bottom: 2rem;
+}
+
+.imageContainerTop > *{
+      background-color: brown;
+      height: 100%;
+      width: 50%;
+}
+
+.imageContainerBot > *{
+    background-color: brown;
+    height: 100%;
+    width: 50%;
+}
+
+.infoTop, .infoBot{
+    background-color: palevioletred;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgTop{
+    background-image: url("https://sexplore.s3.eu-west-2.amazonaws.com/shopify/blog-images/toys-together.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.imgBot{
+    background-image: url("https://sexplore.s3.eu-west-2.amazonaws.com/shopify/blog-images/three-zebras.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.infoTop > div{
+    color: white;
+    margin: 4vw 4vw 4vw 4vw;
+}
+
+.infoTop > div > h2{
+    margin-bottom: 5vh;
+    font-size: 4vw;
+}
+
+.infoBot > div{
+    color: white;
+    margin: 4vw 4vw 4vw 4vw;
+}
+
+.infoBot > div > h2{
+    margin-bottom: 5vh;
+    font-size: 4vw;
+}
+
+.infoTop, .imgTop, .infoBot, .imgBot{
+    margin: 0.01px 0.01px 0.01px 0.01px;
 }

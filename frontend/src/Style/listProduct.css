@@ -1,5 +1,55 @@
 .filterProducts{
-    height: 30vh;
+    height: 40vh;
     width: 100%;
-    background-color: black;
+/*     background-color: black; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.filterArticle{
+    margin: 1rem 0 1rem 0;
+}
+
+.filterArticle > input{
+    padding: 8px 0 8px 0;
+    width: 80vw;
+    text-align: center;
+    font-size: 30px;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid black;
+}
+
+.filterArticle > input:focus{
+    background-color: rgb(172, 172, 172);
+    color: white;
+}
+
+.filterPrice{
+    /* margin: 1rem 0 1rem 0; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.filterPrice > *{
+    margin: 5px 0 5px 0;  
+}
+
+.filterPrice > p{
+    font-size: 20px;  
+}
+
+.inputPriceValue{
+    width: 50px;
+    height: 20px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.inputPrice{
+    width: 65vw;
 }
