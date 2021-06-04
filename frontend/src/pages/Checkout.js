@@ -131,10 +131,10 @@ const Checkout = ({ articles, sendMail, history }) => {
                         <h6 className="d-flex">Subtotal</h6>
                         <span>€ {total}</span>
                     </div>
-                    <div className="counts-flex">
+                    {/* <div className="counts-flex">
                         <h6>Delivery </h6>
                         <span>Calculated at next step</span>
-                    </div>
+                    </div> */}
                 </div>
                 <hr />
                 <div className="counts-flex">
