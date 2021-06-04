@@ -34,9 +34,9 @@ const SignUp = (props) => {
         } else {
             if (photo.photo) {
                 const formData = new FormData()
-                formData.append('user', user.user )
-                formData.append('email', user.email )
-                formData.append('password', user.password )
+                formData.append('user', user.user)
+                formData.append('email', user.email)
+                formData.append('password', user.password)
                 formData.append('photo', photo.photo)
 
                 const response = await props.createAcount(formData)
@@ -50,7 +50,7 @@ const SignUp = (props) => {
                             })
                             setError(errorsImput)
                         }
-                    }else {
+                    } else {
                         toast.error(response.response.error)
                     }
                 }
@@ -62,7 +62,7 @@ const SignUp = (props) => {
 
     const responseGoogle = (response) => {
         const { email, imageUrl, givenName, googleId } = response.profileObj
-        createAccount(null, { user: givenName, email: email, password: 'a'+googleId, urlImg: imageUrl, googleFlag: true })
+        createAccount(null, { user: givenName, email: email, password: 'a' + googleId, urlImg: imageUrl, googleFlag: true })
     }
 
     return (
@@ -81,7 +81,7 @@ const SignUp = (props) => {
                         onFailure={responseGoogle}
                         cookiePolicy={'single_host_origin'}
                     />
-                    <h3 className="titleRegisterEmail">Our use your email for registration:</h3>
+                    <h3 className="titleRegisterEmail">Or use your email for registration:</h3>
 
                     <div className="inputCointainer">
 

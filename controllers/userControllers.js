@@ -10,6 +10,7 @@ const userControllers = {
         var error
 
         if (req.files) {
+            console.log(req.files)
             const { url } = await cloudinary.uploader.upload(req.files.photo.tempFilePath, { folder: "users", transformation: [{ width: 100, height: 100, gravity: "faces", crop: "thumb" }] })
             req.body.urlImg = url
         }

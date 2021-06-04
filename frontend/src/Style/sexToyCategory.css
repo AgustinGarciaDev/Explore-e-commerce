@@ -83,7 +83,7 @@
 
 .containerProductsButts{
     background-image:url("https://sexplore.s3.eu-west-2.amazonaws.com/shopify/category-page-section-dividers/anal-beads.png"),linear-gradient(140deg,var(--orange)0%,var(--yellow)100%) ;
-     height: 30vw;
+    height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
