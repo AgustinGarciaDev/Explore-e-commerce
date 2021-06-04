@@ -9,7 +9,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    flex-grow: 2;
+    flex-grow: 3;
     background-color:#F1F1F1 ;
     padding: 2.5% 2%;
 }
@@ -113,7 +113,7 @@
 }
 
 .continue{
-    width: 30% ;
+    width: 11rem ;
     height: 3.5rem;
     background-color: #FF1731;
     border: none;
@@ -163,6 +163,23 @@
     background-position-x: center;
     background-position-y: center;
     border-radius: 7px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+.productImg > span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.7rem;
+    width: 1rem ;
+    height:1rem ;
+    background-color: rgba(0,0,0,0.7) ;
+    border-radius: 50%;
+    position: relative;
+    top: -0.5rem;
+    right: -0.4rem;
+    color: whitesmoke;
 }
 
 .discountContainer{
@@ -201,13 +218,37 @@
 .counts-flex h6{
     font-size: 1.1rem;
 }
+
+.articleCheckout > div {
+    display: flex;
+    align-items: center;
+}
+.articleCheckout h6 {
+    width: 13rem;
+    margin-left: 0.5rem;
+}
+
 /* ----------paymentContainer------------------ */
 
 .paymentContainer > h1{
     text-align: center;
 }
+#PaymentForm input{
+    margin: 0.5% 0;
+}
+
 
 .MakePayment{
     display: flex;
     justify-content: center;
+}
+
+@media(max-width: 874px){
+    .mainContainer{
+       flex-direction: column;
+    }
+    #PaymentForm{
+        display: flex;
+        flex-direction: column;
+    }
 }

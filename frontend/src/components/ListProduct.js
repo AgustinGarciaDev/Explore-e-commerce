@@ -6,7 +6,7 @@ import cartActions from "../redux/actions/cartActions"
 const ListProduct = (props) => {
     const [products, setProducts] = useState([])
     const [productsCopy, setProductsCopy] = useState([])
-    const [num,setNum] = useState({numero: ""})
+    const [num, setNum] = useState({ numero: "" })
 
     useEffect(() => {
         if (props.products.length === 0) {
@@ -30,7 +30,7 @@ const ListProduct = (props) => {
 
     const readInput = (e) => {
         const value = e.target.value
-        let filterProducts = productsCopy.filter(article => article.name.toLocaleLowerCase().trim().indexOf(value.toLocaleLowerCase().trim()) === 0)
+        let filterProducts = productsCopy.filter(article => article.name.toLocaleLowerCase().trim().includes(value.toLocaleLowerCase().trim()))
         setProducts(filterProducts)
     }
 
@@ -39,22 +39,26 @@ const ListProduct = (props) => {
     }
 
     const range = (e) => {
-        console.log(e.target.value)
         const value = e.target.value
         let filterProducts = productsCopy.filter(article => article.price <= value)
         setProducts(filterProducts)
-        setNum({numero: value})
+        setNum({ numero: value })
     }
 
     return (
         <>
             <div className="filterProducts">
-                <input onChange={readInput} type="text" />
-                <input onChange={range} type="range" min="0" max="200" step="10" />
-                <input style={{color: "white"}} type="text" value={num.numero} disabled/>
+                <div className="filterArticle">
+                    <input onChange={readInput} type="text" placeholder="Find your product!" />
+                </div>
+                <div className="filterPrice">
+                    <p>PRICE:</p>
+                    <input className="inputPrice" onChange={range} type="range" min="0" max="200" step="10" />
+                    <input className="inputPriceValue" style={{ color: "black" }} type="text" value={"€ "+ num.numero} disabled />
+                </div>
             </div>
             <div>
-                <div className="titleContainerProducts"><h2>Popular sextoy</h2></div>
+                <div className="titleContainerProducts"><h2>-Popular Products-</h2></div>
                 <div className="productsListHome">
                     {
                         products.length === 0

@@ -156,3 +156,22 @@
     text-align: center;
     font-family: 'Montserrat';
 }
+
+
+.buyAnimationCss{
+    height: 100px;
+    width: 100px;
+    position: absolute;
+}
+
+.commentsLOader{
+    height: 350px;
+    width: 350px;
+}
+
+.commentsloaderContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

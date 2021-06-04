@@ -9,7 +9,6 @@ let cloudinary = require('cloudinary').v2
 const userControllers = {
     newUser: async (req, res) => {
         var error
-
         if (req.files) {
 
             try {

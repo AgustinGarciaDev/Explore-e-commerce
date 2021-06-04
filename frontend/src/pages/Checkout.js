@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react"
+import "../Style/checkout.css"
 import { connect } from "react-redux"
 import productsAction from "../redux/actions/productsActions"
 import PaymentForm from "../components/PaymentForm"
+import cartActions from "../redux/actions/cartActions"
 
 
-const Checkout = ({ articles, sendMail, history }) => {
+const Checkout = ({ articles, sendMail, history , removeAll }) => {
     const [form, setForm] = useState({ email: "", check: false, firstName: "", lastName: "", adress: "", apartment: "", city: "", country: "", postCode: "", phone: "" })
     const [countries, setCountries] = useState([])
     const [visible, setVisible] = useState(false)
@@ -32,6 +34,7 @@ const Checkout = ({ articles, sendMail, history }) => {
 
     const sendAll = () => {
         sendMail(form, creditCard, { cartArticles, total })
+        removeAll()
         history.push("/payment")
     }
 
@@ -89,7 +92,7 @@ const Checkout = ({ articles, sendMail, history }) => {
             </div>
 
             <div className={visible ? "d-block paymentContainer " : "d-none"} >
-
+                <hr/>
                 <h1>Payment</h1>
                 <hr />
                 <PaymentForm redState={readCreditCard} />
@@ -107,12 +110,14 @@ const Checkout = ({ articles, sendMail, history }) => {
 
                     {cartArticles.length
                         ? cartArticles.map(article => {
-                            return <div >
-                                <div style={{ display:"flex", alignItems:"center" }}>
-                                    <div className="productImg" style={{ backgroundImage: `url('${article.coverImage}')` }} ></div>
+                            return <div key={ article._id } className="articleCheckout" >
+                                <div>
+                                    <div className="productImg" style={{ backgroundImage: `url('${article.coverImage}')` }} >
+                                        <span>{article.units} </span>
+                                    </div>
                                     <h6>{article.name}</h6>
                                 </div>
-                                <h6 style={{ width:"4rem" }}> {article.units} X {article.price}</h6>
+                                <h6 style={{ width:"4rem" }}>{article.price}</h6>
                             </div>
 
                         })
@@ -154,7 +159,8 @@ const mapStateToProps = state => {
 
 
 const mapDispatchToProps = {
-    sendMail: productsAction.sendMail
+    sendMail: productsAction.sendMail,
+    removeAll : cartActions.removeAll
 }
 
 

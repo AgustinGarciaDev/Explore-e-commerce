@@ -8,6 +8,7 @@ import { toast } from 'react-toastify'
 const ProductEdit = (props) => {
     const [product, setProduct] = useState()
     const [productToCompare, setProductToCompare] = useState()
+    const [saveChanges, setSaveChanges] = useState([])
 
     useEffect(() => {
         if (props.products.length === 0) {
@@ -15,6 +16,9 @@ const ProductEdit = (props) => {
         } else {
             setProduct(props.products.find(product => product._id === props.match.params._id))
             setProductToCompare(props.products.find(product => product._id === props.match.params._id))
+        }
+        return function cleanUp() {
+                console.log("entro aca")
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.products])
@@ -94,10 +98,17 @@ const ProductEdit = (props) => {
     const readInput = e => {
         const value = e.target.value
         const name = e.target.name
-        setProduct({
-            ...product,
-            [name]: value
-        })
+        if (product[name] !== value) {
+            console.log("entro aca")
+            setProduct({
+                ...product,
+                [name]: value
+            })
+            setSaveChanges({
+                ...saveChanges,
+                [name]: value
+            })
+        }
     }
 
     const editProduct = async ({ name }) => {
@@ -148,7 +159,7 @@ const ProductEdit = (props) => {
                                         value={product.name}
                                         onChange={readInput}
                                     />
-                                    <span className="material-icons" onClick={() => editProduct({ name: 'name' })} >edit</span>
+                                    <span className="material-icons" style={product.name.trim() === productToCompare.name.trim() ? { color: 'black' } : { color: '#00FF16' }} onClick={() => editProduct({ name: 'name' })} >edit</span>
                                 </div>
 
                                 <div className="editInput">
@@ -157,7 +168,7 @@ const ProductEdit = (props) => {
                                         value={product.brand}
                                         onChange={readInput}
                                     />
-                                    <span className="material-icons" onClick={() => editProduct({ name: 'brand' })} >edit</span>
+                                    <span className="material-icons" style={product.brand.trim() === productToCompare.brand.trim() ? { color: 'black' } : { color: '#00FF16' }} onClick={() => editProduct({ name: 'brand' })} >edit</span>
                                 </div>
 
                                 <div className="productEditImg" style={{ backgroundImage: `url('${product.coverImage}')` }}>
@@ -166,7 +177,7 @@ const ProductEdit = (props) => {
                                         value={product.coverImage}
                                         onChange={readInput}
                                     />
-                                    <span className="material-icons" onClick={() => editProduct({ name: 'coverImage' })} >edit</span>
+                                    <span className="material-icons" style={product.coverImage.trim() === productToCompare.coverImage.trim() ? { color: 'black' } : { color: '#00FF16' }} onClick={() => editProduct({ name: 'coverImage' })} >edit</span>
                                 </div>
                                 <div className="editInput">
                                     <textarea
@@ -174,9 +185,9 @@ const ProductEdit = (props) => {
                                         value={product.description}
                                         onChange={readInput}
                                     />
-                                    <span className="material-icons" onClick={() => editProduct({ name: 'description' })} >edit</span>
+                                    <span className="material-icons" style={product.description.trim() === productToCompare.description.trim() ? { color: 'black' } : { color: '#00FF16' }} onClick={() => editProduct({ name: 'description' })} >edit</span>
                                 </div>
-                                <div className="tags-input">
+                                <div className="tags-input-edit">
                                     <ul id="tags">
                                         {product.categories.map((category, index) => (
                                             <li key={index} className="tag">
@@ -193,13 +204,12 @@ const ProductEdit = (props) => {
                                     />
                                 </div>
 
-                                <div className="tags-input">
+                                <div className="tags-input-edit">
                                     <ul id="tags">
                                         {product.productsImages.map((image, index) => (
-                                            <li key={index} className="tag">
-                                                <span className='tag-title'>{image.photo}</span>
+                                            <div key={index} className="imagesForEdit" style={{ backgroundImage: `url('${image.photo}')` }}>
                                                 <span className="material-icons" onClick={() => imagesActions({ image, action: 'delete' })} >clear</span>
-                                            </li>
+                                            </div>
                                         ))}
                                     </ul>
                                     <input
@@ -220,7 +230,7 @@ const ProductEdit = (props) => {
                                             value={product.price}
                                             onChange={readInput}
                                         />
-                                        <span className="material-icons" onClick={() => editProduct({ name: 'price' })} >edit</span>
+                                        <span className="material-icons" style={product.price.toString() === productToCompare.price.toString() ? { color: 'black' } : { color: '#00FF16' }} onClick={() => editProduct({ name: 'price' })} >edit</span>
                                     </div>
 
                                     <div className="shortInputs">
@@ -231,7 +241,7 @@ const ProductEdit = (props) => {
                                             value={product.stock}
                                             onChange={readInput}
                                         />
-                                        <span className="material-icons" onClick={() => editProduct({ name: 'stock' })} >edit</span>
+                                        <span className="material-icons" style={product.stock.toString() === productToCompare.stock.toString() ? { color: 'black' } : { color: '#00FF16' }} onClick={() => editProduct({ name: 'stock' })} >edit</span>
                                     </div>
                                 </div>
 
@@ -244,7 +254,7 @@ const ProductEdit = (props) => {
                                         value={product.discount}
                                         onChange={readInput}
                                     />
-                                    <span className="material-icons" onClick={() => editProduct({ name: 'discount' })} >edit</span>
+                                    <span className="material-icons" style={product.discount.toString() === productToCompare.discount.toString() ? { color: 'black' } : { color: '#00FF16' }} onClick={() => editProduct({ name: 'discount' })} >edit</span>
                                 </div>
                             </div>
 
