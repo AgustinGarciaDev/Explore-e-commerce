@@ -12,7 +12,6 @@ import './Style/header.css'
 import './Style/Footer.css'
 import './Style/sexToyCategory.css'
 import './Style/accesories.css'
-import './Style/checkout.css'
 import "./Style/cart.css"
 import './Style/paymentSucessFull.css'
 import 'react-credit-cards/es/styles-compiled.css';
