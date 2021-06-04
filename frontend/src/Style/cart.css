@@ -1,0 +1,137 @@
+
+.cartMainContainer{
+    display: flex;
+    flex-direction: column;
+    margin: 0 6%;
+    font-family: "montserrat";
+}
+.cartMainContainer > h1{
+    text-align: center;
+}
+
+.descriptionContainer{
+    display: flex;
+    justify-content: space-around;
+}
+.descriptionContainer h3:first-child{
+    margin-right: 10%;
+}
+
+.articlesContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.firstSection{
+   width: 30%;
+   display: flex;
+   align-items: center;
+}
+.buttonsContainer{
+   width: 20%;
+   display: flex;
+   justify-content: center;
+}
+.removeButton{
+    width: 16%;
+    display: flex;
+   justify-content: center;
+}
+
+.priceContainer{
+    width: 15%;
+    display: flex;
+   justify-content: center;
+}
+.priceContainer span{
+    font-size: 1.3rem;
+}
+
+.articleImg{
+    width: 125px;
+    height: 125px;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.buttonsContainer *{
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px;
+}
+.buttonsContainer button:first-child {
+    color: whitesmoke ;
+    background-color:#E62A54 ;
+    
+}
+.buttonsContainer span:nth-child(2){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.removeButton button{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 5px;
+    background-color: transparent;
+    border: 1px solid #CCCCCC;
+}
+
+.priceContainer{
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.containers{
+    display: flex;
+    justify-content: space-evenly;
+}
+.containers div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid #CCCCCC;
+    width: 15rem;
+    height: 4rem;
+    border-radius: 5px;
+    font-weight: 400;
+}
+.containers div:last-child{
+    width: 16rem;
+    height: 5rem;
+    font-weight: bold;
+}
+
+.buttonsAction{
+    margin: 2rem;
+    display: flex;
+    justify-content: flex-end;
+}
+.buttonsAction > div{
+    display: flex;
+    flex-direction: column;
+}
+.buttonsAction > div button{
+    margin: 0.2rem;
+    width: 14rem;
+    height: 3rem;
+    border: none;
+    background-color:#E62A54 ;
+    color: whitesmoke;
+}
+.buttonsAction > div button:nth-child(2){
+    background-color: #F5F5F5;
+    color:black;
+}
+
+.productDescription{
+    font-size: 1.1rem;
+    color:#CCCCCC ;
+}
