@@ -22,6 +22,12 @@ const userControllers = {
               } catch (error) {
                   console.log(error)
               } */
+            const file = req.files
+            /*  file.mv(`${__dirname}/${file.name}`, (error) => {
+                 if (error) {
+                     
+                 }
+             }) */
             console.log(req.files)
         }
         const emailExistent = await User.findOne({ email: req.body.email })
