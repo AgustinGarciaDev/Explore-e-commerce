@@ -160,7 +160,7 @@ const ContentHome = () => {
                 <div className="container">
                     <div className="accordion">
                         <div className="accordion-item" id="question5">
-                            <a class="accordion-link" href="#question5">
+                            <a className="accordion-link" href="#question5">
                                 <div className="flex">
                                     <h3>Is it safe to order from Explore?</h3>
                                 </div>

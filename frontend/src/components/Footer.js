@@ -10,11 +10,11 @@ const Footer = () => {
                         <div className="col-lg-4 col-md-6 mb-4 mb-lg-0"><img src="img/logo.png" alt="" width="180" className="mb-3" />
                             <p className="font-italic text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
                             <ul className="list-inline mt-4">
-                                <li className="list-inline-item"><a href="#" target="_blank" title="twitter"><i className="fab fa-twitter-square"></i></a></li>
-                                <li className="list-inline-item"><a href="#" target="_blank" title="facebook"><i className="fab fa-facebook-f"></i></a></li>
-                                <li className="list-inline-item"><a href="#" target="_blank" title="instagram"><i className="fab fa-instagram"></i></a></li>
-                                <li className="list-inline-item"><a href="#" target="_blank" title="pinterest"><i className="fab fa-pinterest"></i></a></li>
-                                <li className="list-inline-item"><a href="#" target="_blank" title="vimeo"><i className="fab fa-vimeo"></i></a></li>
+                                <li className="list-inline-item"><i className="fab fa-twitter-square"></i></li>
+                                <li className="list-inline-item"><i className="fab fa-facebook-f"></i></li>
+                                <li className="list-inline-item"><i className="fab fa-instagram"></i></li>
+                                <li className="list-inline-item"><i className="fab fa-pinterest"></i></li>
+                                <li className="list-inline-item"><i className="fab fa-vimeo"></i></li>
                             </ul>
                         </div>
                         <div className="col-lg-2 col-md-6 mb-4 mb-lg-0">

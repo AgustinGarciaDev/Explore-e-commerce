@@ -1,10 +1,10 @@
 import { useState } from "react"
 import { connect } from "react-redux"
 import cartActions from "../redux/actions/cartActions"
-import { ToastContainer, toast } from "react-toastify"
+import { toast } from "react-toastify"
 
 const ArticleCart = (props) => {
-    const { article, removeArticle, buyArticle, subtract, globalAccountant } = props
+    const { article, removeArticle, buyArticle, subtract } = props
     const [accountant, setAccountant] = useState(article.units)
     let operatorDiscount = article.price - (article.discount / 100) * article.price
 
