@@ -27,6 +27,7 @@ const PaypalButton = ({ total, sendAll }) => {
                 toast.error("Something went wrong")
             }
         }).render(paypal.current)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 

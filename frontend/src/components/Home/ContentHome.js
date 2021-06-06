@@ -1,28 +1,41 @@
-
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from "react-slick"
 import { Link } from "react-router-dom"
-const ContentHome = () => {
+import { useMediaQuery } from '@material-ui/core'
 
+const ContentHome = () => {
+    const tablet = useMediaQuery("(max-width: 900px)")
+    const smartphone = useMediaQuery("(max-width: 600px)")
 
     const settings = {
         dots: true,
         infinite: true,
-        speed: 100,
+        speed: 600,
         slidesToShow: 4,
-        slidesToScroll: 2,
-        width: 600,
+        slidesToScroll: 1,
+        autoplay: true,
         autoplaySpeed: 2000,
         arrows: true,
-    };
+    }
+
+    if (tablet) {
+        settings.slidesToShow = 2
+        settings.slidesToScroll = 2
+        settings.autoplaySpeed = 2500
+    }
+    if (smartphone) {
+        settings.slidesToScroll = 1
+        settings.slidesToShow = 1
+        settings.autoplaySpeed = 2000
+    }
 
     return (
         <>
             <div className="containerAboutUs">
                 <div className="containerImgHome"></div>
                 <div className="containerTextAbout">
-                    {/*   <img className="imgLogoContent" src="http://tingarciadg.com/wp-content/uploads/2021/06/Diseno-sin-titulo-14.png" /> */}
+                    <img className="imgLogoContent" alt="logo" src="http://tingarciadg.com/wp-content/uploads/2021/06/Diseno-sin-titulo-14.png" />
                     <h2 className="titleContent">Who are we?</h2>
                     <p className="textContent">
                         Explore is an online sex toy website that doesn't subscribe to gender stereotypes. Each toy has been handpicked by our team because we love them.
@@ -100,7 +113,7 @@ const ContentHome = () => {
             </div>
             <>
                 <div className="imageContainerTop">
-                    <div className="imgTop"></div>
+                    <div className="imgTop" />
                     <div className="infoTop">
                         <div>
                             <h2>Sex Toys Need No Gender</h2>
@@ -119,7 +132,7 @@ const ContentHome = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="imgBot"></div>
+                    <div className="imgBot" />
                 </div>
             </>
             <h2 style={{

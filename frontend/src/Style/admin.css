@@ -25,6 +25,10 @@
     border-radius: 5px;
 }
 
+.adminFrom p{
+    color: white;
+}
+
 @media (max-width: 800px){
     .adminFrom{
         width: 75%;
@@ -50,10 +54,11 @@ small {
 .adminFormInputs{
     border: none;
     background: none;
-    border-bottom: 2px solid silver;
+    border: 2px solid silver;
+    border-radius: 6px;
     outline: none;
     padding: 5px;
-    width: 90%;
+    width: 80%;
     margin: 1vh;
     letter-spacing: 1px;
     font-size: medium;
@@ -61,11 +66,11 @@ small {
 }
 
 .adminFormInputs:hover{
-    border-bottom: 2px solid black;
+    border: 2px solid black;
 }
 
 .adminFormInputs:focus{
-    border-bottom: 2px solid hsl(302, 32%, 58%);
+    border: 2px solid hsl(302, 32%, 58%);
 }
 
 .adminFormInputsNumber{
@@ -110,8 +115,8 @@ small {
 	align-items: center;
 	flex-wrap: wrap;
     padding: 1vh;
-    width: 90%;
-    margin: 2vh;
+    width: 80%;
+    margin: 2vh 0;
 	border-radius: 6px;
     border: 2px solid silver;
     transition: all .2s;
@@ -196,23 +201,16 @@ ul {
 }
 
 .inputContainer{
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 2px solid silver;
-    border-radius: 6px;
-    margin: 2vh;
-}
-
-.inputContainer:hover{
-    border: 2px solid black;
 }
 
 label{
     position: relative;
-    top: 22px;
-    color: silver;
+    top: 12px;
+    color: rgb(0, 0, 0);
 }
 .inputContainer label{
     width: 90%;
@@ -297,7 +295,7 @@ label{
     justify-content: space-around;
     align-items: center;
     background-color: whitesmoke;
-    min-height: 100vh;
+    padding-bottom: 3vh;
 }
 
 .productEditContainer{
@@ -370,6 +368,11 @@ label{
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    margin-top: 5vh;
+    border: 2px solid silver ;
+    padding: 1em;
+    border-radius: 6px;
 }
 
 .shortInputs p{
@@ -383,6 +386,7 @@ label{
     border-bottom: 1px solid silver;
     width: auto;
     margin: 0 2vh;
+    flex: 1;
 }
 
 .shortsInputsContainer{
@@ -426,4 +430,19 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+.goBackAdmin{
+    right: 20px;
+    bottom: 20px;
+    position: fixed;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 1vh;
+}
+.goBackAdmin:hover{
+    color: black;
+    background-color: rgb(82, 82, 82);
+    border-bottom: none;
 }

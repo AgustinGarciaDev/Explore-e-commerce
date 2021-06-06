@@ -78,10 +78,7 @@ const Checkout = ({ articles, sendMail, history, removeAll }) => {
                     </div>
                     <input type="text" disabled={visible ? true : false} name="email" onChange={readFields} placeholder="Email" />
                 </div>
-                {/* <div className="checkbox">
-                    <input type="checkbox" disabled={visible ? true : false} onClick={() => setForm({ ...form, check: !form.check })} />
-                    <p>Keep me up to date on news and exclusive offers</p>
-                </div> */}
+
                 <div className="deliveryAdress">
                     <h3>Delivery address</h3>
                     <div className="inputDouble">

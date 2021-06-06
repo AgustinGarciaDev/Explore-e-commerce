@@ -5,6 +5,7 @@ import { GoogleLogin } from 'react-google-login'
 import userActions from '../redux/actions/userActions'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import { Link } from 'react-router-dom'
 
 const SignUp = (props) => {
 
@@ -35,10 +36,11 @@ const SignUp = (props) => {
 
         if (googleUser) {
             const response = await props.createAcount(user)
-            console.log(response)
-            toast.error(response.response.error)
-
-
+            if (response) {
+                if (!response.success) {
+                    toast.error(response.response.error)
+                }
+            }
         } else {
             if (photo.photo) {
                 const formData = new FormData()
@@ -77,8 +79,12 @@ const SignUp = (props) => {
     }
 
     const responseGoogle = (response) => {
-        const { email, imageUrl, givenName, googleId } = response.profileObj
-        createAccount(null, { user: givenName, email: email, password: 'a' + googleId, urlImg: imageUrl, googleFlag: true })
+        if (response) {
+            if (!response.error) {
+                const { email, imageUrl, givenName, googleId } = response.profileObj
+                createAccount(null, { user: givenName, email: email, password: 'a' + googleId, urlImg: imageUrl, googleFlag: true })
+            }
+        }
     }
 
     return (
@@ -132,6 +138,9 @@ const SignUp = (props) => {
                     </div>
                     {error.password ? <small>{error.password}</small> : <p></p>}
 
+                    <div className="formbottom">
+                        <p>Already have an account? <Link to="/signin">Sign in here !</Link></p>
+                    </div>
 
                     <button className="btnSendForm" onClick={createAccount}>Create Acount</button>
                 </div>

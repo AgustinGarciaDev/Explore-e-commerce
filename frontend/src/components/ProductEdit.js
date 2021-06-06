@@ -17,9 +17,6 @@ const ProductEdit = (props) => {
             setProduct(props.products.find(product => product._id === props.match.params._id))
             setProductToCompare(props.products.find(product => product._id === props.match.params._id))
         }
-        return function cleanUp() {
-                console.log("entro aca")
-        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.products])
 
@@ -146,6 +143,7 @@ const ProductEdit = (props) => {
         <>
             <Header />
             <div className="edittingProductContainer">
+            <Link className="goBackAdmin" to="/admin">Go back</Link>
                 {
                     !product
                         ?
@@ -221,31 +219,28 @@ const ProductEdit = (props) => {
                                 </div>
 
 
-                                <div className="shortsInputsContainer">
-                                    <div className="shortInputs">
-                                        <p>Price</p>
-                                        <input
-                                            type="number"
-                                            name="price"
-                                            value={product.price}
-                                            onChange={readInput}
-                                        />
-                                        <span className="material-icons" style={product.price.toString() === productToCompare.price.toString() ? { color: 'black' } : { color: '#00FF16' }} onClick={() => editProduct({ name: 'price' })} >edit</span>
-                                    </div>
 
-                                    <div className="shortInputs">
-                                        <p>Stock</p>
-                                        <input
-                                            type="number"
-                                            name="stock"
-                                            value={product.stock}
-                                            onChange={readInput}
-                                        />
-                                        <span className="material-icons" style={product.stock.toString() === productToCompare.stock.toString() ? { color: 'black' } : { color: '#00FF16' }} onClick={() => editProduct({ name: 'stock' })} >edit</span>
-                                    </div>
+                                <div className="shortInputs">
+                                    <p>Price</p>
+                                    <input
+                                        type="number"
+                                        name="price"
+                                        value={product.price}
+                                        onChange={readInput}
+                                    />
+                                    <span className="material-icons" style={product.price.toString() === productToCompare.price.toString() ? { color: 'black' } : { color: '#00FF16' }} onClick={() => editProduct({ name: 'price' })} >edit</span>
                                 </div>
 
-
+                                <div className="shortInputs">
+                                    <p>Stock</p>
+                                    <input
+                                        type="number"
+                                        name="stock"
+                                        value={product.stock}
+                                        onChange={readInput}
+                                    />
+                                    <span className="material-icons" style={product.stock.toString() === productToCompare.stock.toString() ? { color: 'black' } : { color: '#00FF16' }} onClick={() => editProduct({ name: 'stock' })} >edit</span>
+                                </div>
                                 <div className="shortInputs">
                                     <p>Discount</p>
                                     <input
@@ -257,11 +252,8 @@ const ProductEdit = (props) => {
                                     <span className="material-icons" style={product.discount.toString() === productToCompare.discount.toString() ? { color: 'black' } : { color: '#00FF16' }} onClick={() => editProduct({ name: 'discount' })} >edit</span>
                                 </div>
                             </div>
-
-
                         )
                 }
-                <Link to="/admin">Go back</Link>
             </div>
         </>
     )

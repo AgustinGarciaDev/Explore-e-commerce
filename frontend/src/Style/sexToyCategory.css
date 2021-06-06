@@ -20,7 +20,12 @@
      color: tomato;
     font-family: 'Montserrat';
     font-weight: 800;
-    font-size: 19vh;
+    font-size: 12vw;
+}
+@media (max-width: 600px){
+    .titleCategory{
+        font-size: 15vw;
+    }
 }
 .containerTextCategory{
     width: 100%;
