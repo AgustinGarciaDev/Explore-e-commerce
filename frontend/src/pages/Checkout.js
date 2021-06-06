@@ -7,7 +7,7 @@ import cartActions from "../redux/actions/cartActions"
 import PaypalButton from "../components/PaypalButton"
 
 
-const Checkout = ({ articles, sendMail, history , removeAll }) => {
+const Checkout = ({ articles, sendMail, history, removeAll }) => {
     const [form, setForm] = useState({ email: "", check: false, firstName: "", lastName: "", adress: "", apartment: "", city: "", country: "", postCode: "", phone: "" })
     const [countries, setCountries] = useState([])
     const [visible, setVisible] = useState(false)
@@ -33,15 +33,15 @@ const Checkout = ({ articles, sendMail, history , removeAll }) => {
 
     const readCreditCard = state => { setCreditCard(state) }
 
-    const sendAll = (value) => {
-        if( value ){
+    const sendAll = (value = null) => {
+        if (value) {
             let form = {
-                email:  value.payer.email_address , 
-                firstName: value.payer.name.given_name , 
+                email: value.payer.email_address,
+                firstName: value.payer.name.given_name,
                 lastName: value.payer.name.surname,
                 country: value.payer.address.country_code,
             }
-            sendMail(form, { cardBrand:"Paypal", number:0 }, { cartArticles, total })
+            sendMail(form, { cardBrand: "Paypal", number: 0 }, { cartArticles, total })
         }
 
 
@@ -104,18 +104,18 @@ const Checkout = ({ articles, sendMail, history , removeAll }) => {
             </div>
 
             <div className={visible ? "d-block paymentContainer " : "d-none"} >
-                <hr/>
+                <hr />
                 <h1>Payment</h1>
                 <hr />
                 <PaymentForm redState={readCreditCard} />
-                            <hr/>
+                <hr />
 
-                    <div style={{ display:"flex", justifyContent:"center" }} >
+                <div style={{ display: "flex", justifyContent: "center" }} >
 
-                    <PaypalButton total={ total  } sendAll={ sendAll } />     
+                    <PaypalButton total={total} sendAll={sendAll} />
 
-                    </div>       
-                    
+                </div>
+
                 <div className="MakePayment" text-center>
                     <button onClick={sendAll} className="continue">Make payment</button>
                 </div>
@@ -129,14 +129,14 @@ const Checkout = ({ articles, sendMail, history , removeAll }) => {
 
                     {cartArticles.length
                         ? cartArticles.map(article => {
-                            return <div key={ article._id } className="articleCheckout" >
+                            return <div key={article._id} className="articleCheckout" >
                                 <div>
                                     <div className="productImg" style={{ backgroundImage: `url('${article.coverImage}')` }} >
                                         <span>{article.units} </span>
                                     </div>
                                     <h6>{article.name}</h6>
                                 </div>
-                                <h6 style={{ width:"4rem" }}>{article.price}</h6>
+                                <h6 style={{ width: "4rem" }}>{article.price}</h6>
                             </div>
 
                         })
@@ -179,7 +179,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     sendMail: productsAction.sendMail,
-    removeAll : cartActions.removeAll
+    removeAll: cartActions.removeAll
 }
 
 
