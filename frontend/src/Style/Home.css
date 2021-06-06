@@ -220,7 +220,7 @@
     align-items: center;
     justify-content: center;
     background: #f2f2f2;
-    height: 60vh;
+    height: 85vh;
 }
 
 @media (max-width: 750px){
@@ -475,6 +475,7 @@ section {
 .infoTop > div > h2{
     margin-bottom: 5vh;
     font-size: 4vw;
+    font-family: 'Montserrat';
 }
 
 .infoBot > div{
@@ -485,8 +486,13 @@ section {
 .infoBot > div > h2{
     margin-bottom: 5vh;
     font-size: 4vw;
+    font-family: 'Montserrat';
 }
 
 .infoTop, .imgTop, .infoBot, .imgBot{
     margin: 0.01px 0.01px 0.01px 0.01px;
+}
+
+.container > * {
+    font-family: 'Montserrat';
 }

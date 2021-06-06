@@ -12,7 +12,7 @@ const { getAllProducts, getProductById, postProduct, deleteProduct,
 
 const { newUser, login, relogin, modifyUser } = require("../controllers/userControllers")
 
-const { SendpurchaseSummary } = require("../controllers/mailerController")
+const { SendpurchaseSummary, sendDiscount } = require("../controllers/mailerController")
 
 router.route("/products")
     .get(getAllProducts)
@@ -65,6 +65,8 @@ router.route("/mails/sendSumary")
     .post(SendpurchaseSummary)
 // const validator = require("../config/validator")
 
+router.route("/mails/sendDiscount")
+    .post(sendDiscount)
 
 router.route("/user/signup")
     .post(validator, newUser)

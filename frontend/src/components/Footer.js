@@ -1,7 +1,62 @@
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import { connect } from "react-redux"
+import userActions from "../redux/actions/userActions"
+import { toast } from 'react-toastify';
+import swal from 'sweetalert'
 
+const Footer = (props) => {
 
-const Footer = () => {
+    const [email, setEmail] = useState({ email: "" })
+
+    const alert = (type, message) => {
+        toast[type](message, {
+            position: "top-center",
+            autoClose: 1700,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        })
+    }
+
+    const readInput = (e) => {
+        let name = e.target.name
+        let value = e.target.value
+        setEmail({
+            ...email,
+            [name]: value
+        })
+    }
+
+    const emailButton = () => {
+        if (/^\s+|\s+$/.test(email.email) || email.email === "") {
+            alert("info", "You cannot post an empty comment")
+        } else if (!(/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(email.email))) {
+            alert("error", "Incorrect email")
+        } else {
+            props.sendMail(email)
+            swal("Email sent successfully! Check message box!", {
+                buttons: {
+                    confirm: {
+                        text: "Okay",
+                        value: "confirm"
+                    }
+                },
+            })
+            .then((value) => {
+                switch (value) {
+                    case "confirm":
+                        setEmail({ email: "" })
+                        break;
+                    default:
+                        break;
+                }
+            });
+        }
+    }
+
     return (
         <>
             <footer className="bg-white">
@@ -39,9 +94,16 @@ const Footer = () => {
                             <p className="text-muted mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At itaque temporibus.</p>
                             <div className="p-1 rounded border">
                                 <div className="input-group">
-                                    <input type="email" placeholder="Enter your email address" aria-describedby="button-addon1" className="form-control border-0 shadow-0" />
+                                    <input type="email"
+                                        placeholder="Enter your email address"
+                                        aria-describedby="button-addon1"
+                                        className="form-control border-0 shadow-0"
+                                        oninput="setCustomValidity('')"
+                                        onChange={readInput}
+                                        value={email.email}
+                                        name="email" required />
                                     <div className="input-group-append">
-                                        <button id="button-addon1" type="submit" className="btn btn-link"><i className="fa fa-paper-plane"></i></button>
+                                        <button onClick={emailButton} id="button-addon1" type="submit" className="btn btn-link"><i className="fa fa-paper-plane"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -58,6 +120,17 @@ const Footer = () => {
     )
 }
 
-export default Footer
+const mapStateToProps = state => {
+    return {
+        accountant: state.cart.accountant,
+        userLooged: state.user
+    }
+}
+
+const mapDispatchToProps = {
+    sendMail: userActions.sendMail
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Footer)
 
 

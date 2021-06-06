@@ -55,6 +55,18 @@ const Product = (props) => {
         setArticle(item)
     }
 
+    const alert = (type, message) => {
+        toast[type](message, {
+            position: "top-center",
+            autoClose: 1700,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        })
+    }
+
     const buy = () => {
         if (article.units === article.stock) {
             toast.info('We have no more stock of this item', {
@@ -83,15 +95,11 @@ const Product = (props) => {
 
     const addComment = async () => {
         if (/^\s+|\s+$/.test(comment.comment) || comment.comment === "") {
-            toast.error('You cannot post an empty comment', {
-                position: "top-center",
-                autoClose: 1700,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            })
+            if (props.usuarioStatus) {
+                alert("error", 'You cannot post an empty comment')
+            } else {
+                alert("info", 'You must login first')
+            }
         } else {
             var response = await props.fetchComments(comment, article._id)
             if (response) {
