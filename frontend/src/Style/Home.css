@@ -55,7 +55,6 @@
 
 .containerCarrousel{
     overflow: hidden;
-    margin: 0 0 5rem 0;
 }
 
 .titleSliderContainer{
@@ -127,7 +126,7 @@
 
 .slideOne{
 
-    background: url("https://sexplore.s3.eu-west-2.amazonaws.com/shopify/homepage-4-category/butt-plug.png"),linear-gradient(0deg
+    background: url("http://tingarciadg.com/wp-content/uploads/2021/06/lubri.png"),linear-gradient(0deg
     ,#63cae0 0,#0f84ea 100%);
     background-position: center;
      background-size: contain ;  
@@ -168,17 +167,18 @@
 }
 
 .slideFive{
-    background: url("https://sexplore.s3.eu-west-2.amazonaws.com/shopify/homepage-4-category/clitoral.png"),linear-gradient(0deg,#0c6b80 0,#d22c50 100%);
+    background: url("http://tingarciadg.com/wp-content/uploads/2021/06/wewq.png"),linear-gradient(0deg,#0c6b80 0,#d22c50 100%);
     background-position: center;
     background-size: contain ;  
     height: 42vw;
     display: flex !important;
     align-items: flex-end !important;
     justify-content: center !important;
+    background-repeat: no-repeat;
 }
 
 .slideSix{
-    background: url("https://sexplore.s3.eu-west-2.amazonaws.com/shopify/homepage-4-category/wands.png"),linear-gradient(0deg,#0c6b80 0,#d22c50 100%);
+    background: url("http://tingarciadg.com/wp-content/uploads/2021/06/wewq.png"),linear-gradient(0deg,#0c6b80 0,#d22c50 100%);
     background-position: center;
     background-size: contain ;  
     height: 42vw;
@@ -189,6 +189,7 @@
 .titleContent{
     font-family: 'Montserrat';
     font-weight: bold;
+    font-size: 2.5rem;
 }
 .textContent{
     font-family: 'Montserrat';
@@ -205,7 +206,7 @@
 }
 
 .containerTextAbout{
-    width: 50%;
+    width: 41%;
     padding: 1em;
     display: flex;
     flex-direction: column;
@@ -328,7 +329,7 @@
 
 section {
     width: 100%;
-    min-height: 30vh;
+     min-height: 11vh;
     background-color: white;
     display: flex;
     align-items: center;
@@ -350,6 +351,7 @@ section {
   
   .accordion-item hr{
     border: 1px solid rgba(65, 34, 34, 0.5);
+    margin:0
   }
   
   .accordion-link{
@@ -360,13 +362,12 @@ section {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 0;
     text-decoration: none !important;
   }
   
   .accordion-link h3{
     font-weight:500;
-    font-size: 20px;
+    font-size: 17px;
   }
   
   .accordion-link i{
@@ -406,8 +407,6 @@ section {
   .answer p{
     color: black;
     font-size: 15px;
-    padding: 2rem;
-    
   }
   .accordion-item:target .answer{
     max-height: 20rem;
@@ -422,7 +421,7 @@ section {
   }
 
   .imageContainerTop, .imageContainerBot {
-    height: 75vh;
+    height: 83vh;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -474,7 +473,7 @@ section {
 
 .infoTop > div > h2{
     margin-bottom: 5vh;
-    font-size: 4vw;
+    font-size: 3.5vw;
     font-family: 'Montserrat';
 }
 
@@ -485,7 +484,7 @@ section {
 
 .infoBot > div > h2{
     margin-bottom: 5vh;
-    font-size: 4vw;
+    font-size: 3.5vw;
     font-family: 'Montserrat';
 }
 

@@ -1,3 +1,7 @@
+.footerImg{
+width: 100%;
+height: 10vw;
+}
 .bg-white {
     background-color: #1F1F1F !important;
     color: white !important;
@@ -24,7 +28,15 @@
   }
   
   i {
-    color: #ffc371;
+  background-color: var(--pink);
+    background-image: linear-gradient(
+140deg
+,#6f42c1,var(--pink));
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    margin-bottom: .5em;
   }
   
   .form-control::placeholder {
@@ -36,4 +48,6 @@
   .form-control.shadow-0:focus {
     box-shadow: none;
   }
-
+  .textFooterGroup{
+        color: #ffc371;
+  }

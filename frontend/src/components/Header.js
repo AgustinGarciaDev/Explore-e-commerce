@@ -17,7 +17,7 @@ const Header = (props) => {
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto" bg="light" variant="light">
                     < LinkContainer to="/sextoy" className="navigator">
-                        <Nav.Link> Sex toy </Nav.Link>
+                        <Nav.Link> Sex toys </Nav.Link>
                     </ LinkContainer>
 
                     < LinkContainer to="/accesories" className="navigator">

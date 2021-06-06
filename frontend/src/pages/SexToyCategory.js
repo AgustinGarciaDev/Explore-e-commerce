@@ -68,7 +68,9 @@ const SexToyCategory = (props) => {
                 <div className="containerPortadaSexToy">
                     <div className="containerTextCategory">
                         <h1 className="titleCategory">Sex Toys</h1>
-                        <p className="textCategory">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, dolorum! Provident, nostrum quos eos iure aperiam, enim illum placeat eaque explicabo laudantium odit, sequi porro officia repellat nobis minima quas.</p>
+                        <p className="textCategory">
+                            We don't subscribe to gender stereotypes. When you shop with us you shop based on the body part you want to pleasure.
+                        </p>
                     </div>
                     <div className="containerIcons">
                     </div>

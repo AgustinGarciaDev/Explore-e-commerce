@@ -68,7 +68,6 @@ const Accesories = (props) => {
                 <div className="containerPortadaSexToy">
                     <div className="containerTextCategory">
                         <h1 className="titleCategory">Accesories</h1>
-                        <p className="textCategory">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, dolorum! Provident, nostrum quos eos iure aperiam, enim illum placeat eaque explicabo laudantium odit, sequi porro officia repellat nobis minima quas.</p>
                     </div>
                     <div className="containerIcons">
                     </div>
@@ -98,7 +97,7 @@ const Accesories = (props) => {
                     <div className="lubricantContainer">
                         <h2>Sex Games</h2>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum repudiandae quia praesentium placeat atque sunt id iusto? Rerum odio repellat iure quidem illum quisquam, eos, sint sequi ducimus, dolor earum!
+                            Enjoy fun and engaging games with your partner.
                     </p>
                     </div>
                 </div>

@@ -50,7 +50,6 @@ const ListProduct = (props) => {
             <div className="containerPortadaSexToy">
                 <div className="containerTextCategory">
                     <h1 className="titleCategory">All products</h1>
-                    <p className="textCategory">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, dolorum! Provident, nostrum quos eos iure aperiam, enim illum placeat eaque explicabo laudantium odit, sequi porro officia repellat nobis minima quas.</p>
                 </div>
                 <div className="containerIcons">
                 </div>
@@ -58,21 +57,24 @@ const ListProduct = (props) => {
 
             <div className="filterProducts">
                 <div className="filterArticle">
+                    <h3>Type the product you are looking for:</h3>
                     <input onChange={readInput} type="text" placeholder="Find your product!" />
                 </div>
                 <div className="filterPrice">
-                    <p>PRICE:</p>
+                    <h3>What's your budget?</h3>
                     <input className="inputPrice" onChange={range} type="range" min="0" max="200" step="10" />
                     <input className="inputPriceValue" style={{ color: "black" }} type="text" value={"€ " + num.numero} disabled />
                 </div>
             </div>
             <div>
-                <div className="titleContainerProducts"><h2>-Popular Products-</h2></div>
                 <div className="productsListHome">
                     {
                         products.length === 0
                             ?
-                            <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_9ivolvho.json" background="transparent" speed="1" loop autoplay></lottie-player>
+                            <div className="containerNotFound" >
+                                <h1> No products available for that search </h1>
+                                <lottie-player src="https://assets1.lottiefiles.com/private_files/lf30_s1uhh6lz.json" style={{ width: "50vw" }} speed="1" loop autoplay></lottie-player>
+                            </div>
                             :
                             products.map(product => <CardProduct key={product._id} product={product} />)}
                 </div>
