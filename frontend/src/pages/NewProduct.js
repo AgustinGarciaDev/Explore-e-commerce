@@ -3,13 +3,14 @@ import { connect } from 'react-redux'
 import productActions from '../redux/actions/productsActions'
 import { Link } from 'react-router-dom'
 import Header from '../components/Header'
+import { toast } from 'react-toastify'
 
 const NewProduct = (props) => {
-    const [newProduct, setNewProduct] = useState({ coverImage: '', description: '', price: '', discount: '', brand: '', name: '' })
+    const [newProduct, setNewProduct] = useState({ coverImage: '', description: '', price: '', discount: '', brand: '', name: '', stock: '' })
     const [categories, setCategories] = useState([])
     const [productsImages, setProductsImages] = useState([])
     const [errors, setErrors] = useState({})
-    const errorInput = { coverImage: null, description: null, price: null, discount: null, brand: null, name: null, categories: null, productsImages: null }
+    const errorInput = { coverImage: null, description: null, price: null, discount: null, brand: null, name: null, categories: null, productsImages: null, stock: null }
 
     const addCategories = event => {
         if (event.target.value !== "") {
@@ -54,24 +55,29 @@ const NewProduct = (props) => {
             categories,
             productsImages
         }
-        const response = await props.createNewProdudct({product, token: localStorage.getItem('token')})
+        const response = await props.createNewProdudct({ product, token: localStorage.getItem('token') })
         if (response) {
             if (response.success) {
                 setErrors({})
                 setCategories([])
                 setProductsImages([])
                 setNewProduct({ coverImage: '', description: '', price: '', discount: '', brand: '', name: '' })
-                console.log("The product was added successfully")
+                toast.success('The product was added successfully!', {
+                    position: "top-right",
+                    autoClose: 1700,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                })
             } else {
                 response.error.details.map(error => {
                     errorInput[error.path[0]] = error.message
                     return null
                 })
-
                 setErrors(errorInput)
             }
-        } else {
-            console.log("Something went wrong")
         }
     }
 
@@ -91,14 +97,9 @@ const NewProduct = (props) => {
                     <div className="tags-input">
                         <ul id="tags">
                             {productsImages.map((image, index) => (
-                                <li key={index} className="tag">
-                                    <span className='tag-title'>{image.photo}</span>
-                                    <span className='tag-close-icon'
-                                        onClick={() => deleteImage(image)}
-                                    >
-                                        x
-						</span>
-                                </li>
+                                <div key={index} className="imagesForEdit" style={{ backgroundImage: `url('${image.photo}')` }}>
+                                    <span className="material-icons" onClick={() => deleteImage(image)} >clear</span>
+                                </div>
                             ))}
                         </ul>
                         <input
@@ -108,19 +109,19 @@ const NewProduct = (props) => {
                             placeholder="Press enter to add image"
                         />
                     </div>
-                    {errors.productsImages ? <small>{errors.productsImages}</small> : <p></p>}
+                    {errors.productsImages ? <small>{errors.productsImages}</small> : <p> </p>}
 
                     <div className="inputContainer">
                         <label>Product description</label>
                         <input type="text" name="description" value={newProduct.description} onChange={readInput} className="adminFormInputs" />
                     </div>
-                    {errors.description ? <small>{errors.description}</small> : <p></p>}
+                    {errors.description ? <small>{errors.description}</small> : <p> </p>}
 
                     <div className="inputContainer">
                         <label>Product name</label>
                         <input type="text" name="name" value={newProduct.name} onChange={readInput} className="adminFormInputs" />
                     </div>
-                    {errors.name ? <small>{errors.name}</small> : <p></p>}
+                    {errors.name ? <small>{errors.name}</small> : <p> </p>}
 
                     <div className="tags-input">
                         <ul id="tags">
@@ -142,13 +143,13 @@ const NewProduct = (props) => {
                             placeholder="Press enter to add categories"
                         />
                     </div>
-                    {errors.categories ? <small>{errors.categories}</small> : <p></p>}
+                    {errors.categories ? <small>{errors.categories}</small> : <p> </p>}
 
                     <div className="inputContainer">
                         <label>Product brand</label>
                         <input type="text" name="brand" value={newProduct.brand} onChange={readInput} className="adminFormInputs" />
                     </div>
-                    {errors.brand ? <small>{errors.brand}</small> : <p></p>}
+                    {errors.brand ? <small>{errors.brand}</small> : <p> </p>}
 
                     <div className="rowInputs">
                         <div>
@@ -156,7 +157,7 @@ const NewProduct = (props) => {
                                 <label htmlFor="price">Price: </label>
                                 <input type="number" name="price" value={newProduct.price} id="price" onChange={readInput} className="adminFormInputsNumber" />
                             </div>
-                            {errors.price ? <small>{errors.price}</small> : <p></p>}
+                            {errors.price ? <small>{errors.price}</small> : <p> </p>}
                         </div>
 
                         <div>
@@ -164,7 +165,15 @@ const NewProduct = (props) => {
                                 <label htmlFor="discount">Discount: </label>
                                 <input type="number" name="discount" value={newProduct.discount} onChange={readInput} className="adminFormInputsNumber" />
                             </div>
-                            {errors.discount ? <small>{errors.discount}</small> : <p></p>}
+                            {errors.discount ? <small>{errors.discount}</small> : <p> </p>}
+                        </div>
+
+                        <div>
+                            <div>
+                                <label htmlFor="stock">Stock: </label>
+                                <input type="number" name="stock" value={newProduct.stock} onChange={readInput} className="adminFormInputsNumber" />
+                            </div>
+                            {errors.stock ? <small>{errors.stock}</small> : <p> </p>}
                         </div>
 
                     </div>

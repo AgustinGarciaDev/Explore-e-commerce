@@ -65,6 +65,7 @@ const Product = (props) => {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
+                toastId: "noMoreArticles",
             })
         } else {
             props.buyArticle(article)
