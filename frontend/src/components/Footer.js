@@ -45,25 +45,28 @@ const Footer = (props) => {
                     }
                 },
             })
-            .then((value) => {
-                switch (value) {
-                    case "confirm":
-                        setEmail({ email: "" })
-                        break;
-                    default:
-                        break;
-                }
-            });
+                .then((value) => {
+                    switch (value) {
+                        case "confirm":
+                            setEmail({ email: "" })
+                            break;
+                        default:
+                            break;
+                    }
+                });
         }
     }
 
     return (
         <>
+            <img className="footerImg" src="http://tingarciadg.com/wp-content/uploads/2021/06/Vector.png" alt="" />
             <footer className="bg-white">
                 <div className="container py-5">
                     <div className="row py-4">
                         <div className="col-lg-4 col-md-6 mb-4 mb-lg-0"><img src="img/logo.png" alt="" width="180" className="mb-3" />
-                            <p className="font-italic text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+                            <p className="font-italic text-muted">
+                                When you shop with us you shop based on the body part you want to pleasure and once that packaging is open its up to you where you use it!
+                            </p>
                             <ul className="list-inline mt-4">
                                 <li className="list-inline-item"><i className="fab fa-twitter-square"></i></li>
                                 <li className="list-inline-item"><i className="fab fa-facebook-f"></i></li>
@@ -75,11 +78,9 @@ const Footer = (props) => {
                         <div className="col-lg-2 col-md-6 mb-4 mb-lg-0">
                             <h6 className="text-uppercase font-weight-bold mb-4">Shop</h6>
                             <ul className="list-unstyled mb-0">
-                                <li className="mb-2"><Link to="/products" className="text-muted">Our Products</Link></li>
-                                <li className="mb-2"><Link to="/sextoy" className="text-muted">Sex Toy</Link></li>
+                                <li className="mb-2"><Link to="/products" className="text-muted">All Products</Link></li>
+                                <li className="mb-2"><Link to="/sextoy" className="text-muted">Sex Toys</Link></li>
                                 <li className="mb-2"><Link to="/accesories" className="text-muted">Accesories</Link></li>
-                                <li className="mb-2"><Link to="" className="text-muted">Stores</Link></li>
-                                <li className="mb-2"><Link to="" className="text-muted">Our Blog</Link></li>
                             </ul>
                         </div>
                         <div className="col-lg-2 col-md-6 mb-4 mb-lg-0">
@@ -91,7 +92,7 @@ const Footer = (props) => {
                         </div>
                         <div className="col-lg-4 col-md-6 mb-lg-0">
                             <h6 className="text-uppercase font-weight-bold mb-4">Newsletter</h6>
-                            <p className="text-muted mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At itaque temporibus.</p>
+                            <p className="text-muted mb-4">Keep up with the latest news!</p>
                             <div className="p-1 rounded border">
                                 <div className="input-group">
                                     <input type="email"
@@ -112,7 +113,9 @@ const Footer = (props) => {
                 </div>
                 <div className="bg-light py-4">
                     <div className="container text-center">
-                        <p className="text-muted mb-0 py-2"> <a target="_blank" href="https://www.youtube.com/watch?v=CrZubI4MvC0">© 2021 Group 3 All rights reserved.</a> </p>
+                        <p className="text-muted mb-0 py-2 textFooterGroup">
+                            © 2021 Group 3 All rights reserved
+                        </p>
                     </div>
                 </div>
             </footer>

@@ -2,7 +2,7 @@
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from "react-slick"
-
+import { Link } from "react-router-dom"
 const ContentHome = () => {
 
 
@@ -22,52 +22,78 @@ const ContentHome = () => {
             <div className="containerAboutUs">
                 <div className="containerImgHome"></div>
                 <div className="containerTextAbout">
-                    <h2 className="titleContent">Where do I start!?</h2>
+                    {/*   <img className="imgLogoContent" src="http://tingarciadg.com/wp-content/uploads/2021/06/Diseno-sin-titulo-14.png" /> */}
+                    <h2 className="titleContent">Who are we?</h2>
                     <p className="textContent">
-                        So many toys, so little time! Knowing where to start is a minefield and that's why we have created Explore, an online sex toy website where each toy has been handpicked by out team because we love them.
+                        Explore is an online sex toy website that doesn't subscribe to gender stereotypes. Each toy has been handpicked by our team because we love them.
                 </p>
                     <p className="textContent">
-                        We don't subscribe to gender stereotypes, we let you choose toys based on your body parts so take a look, we have sex toys for Penises, Vulvas and Butts
+                        When you shop with us you shop based on the body part you want to pleasure and once that packaging is open its up to you where you use it! So take a look, we have sex toys for Penises, Vulvas, Butts and Accesories.
                 </p>
                 </div>
             </div>
             <div className="containerCarrousel">
-                <div className="titleSliderContainer"><p className="titleSlider">Sale Now On</p></div>
+                <div className="titleSliderContainer"><p className="titleSlider">Explore now</p></div>
                 <Slider {...settings}>
-                    <div className="slideOne">
-                        <div className="contentSliders">
-                            <div className="contentSliderTitle"> Lorem. </div>
-                            <div> <button className="contentSliderButton">Click ME</button> </div>
-                        </div>
-                    </div>
+
                     <div className="slideTwo">
                         <div className="contentSliders">
-                            <div className="contentSliderTitle"> Lorem. </div>
-                            <div> <button className="contentSliderButton">Click ME</button> </div>
+                            <div className="contentSliderTitle">  For penises </div>
+                            <div>
+                                <Link to="/products" className="btn-hero">
+                                    <button className="contentSliderButton">
+                                        Click ME
+                                    </button>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                     <div className="slideThree">
                         <div className="contentSliders">
-                            <div className="contentSliderTitle"> Lorem. </div>
-                            <div> <button className="contentSliderButton">Click ME</button> </div>
+                            <div className="contentSliderTitle"> For Vulva</div>
+                            <div>
+                                <Link to="/products" className="btn-hero">
+                                    <button className="contentSliderButton">
+                                        Click ME
+                                    </button>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="slideOne">
+                        <div className="contentSliders">
+                            <div className="contentSliderTitle"> Lubricants  </div>
+                            <div>
+                                <Link to="/products" className="btn-hero">
+                                    <button className="contentSliderButton">
+                                        Click ME
+                                    </button>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                     <div className="slideFor">
                         <div className="contentSliders">
-                            <div className="contentSliderTitle"> Lorem. </div>
-                            <div> <button className="contentSliderButton">Click ME</button> </div>
+                            <div className="contentSliderTitle"> For Butts </div>
+                            <div>
+                                <Link to="/products" className="btn-hero">
+                                    <button className="contentSliderButton">
+                                        Click ME
+                                    </button>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                     <div className="slideFive">
                         <div className="contentSliders">
-                            <div className="contentSliderTitle"> Lorem. </div>
-                            <div> <button className="contentSliderButton">Click ME</button> </div>
-                        </div>
-                    </div>
-                    <div className="slideSix">
-                        <div className="contentSliders">
-                            <div className="contentSliderTitle"> Lorem. </div>
-                            <div> <button className="contentSliderButton">Click ME</button> </div>
+                            <div className="contentSliderTitle"> Sex game </div>
+                            <div>
+                                <Link to="/products" className="btn-hero">
+                                    <button className="contentSliderButton">
+                                        Click ME
+                                    </button>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </Slider>
@@ -78,7 +104,7 @@ const ContentHome = () => {
                     <div className="infoTop">
                         <div>
                             <h2>Sex Toys Need No Gender</h2>
-                            <p>As children we often grow up expected to play with 'boys toys' or 'girls toys' and whilst many areas of society are, thankfully, moving on from this default setting, the world of sex toys hasn't quite moved at the same pace...</p>
+                            <p>As children we often grow up expected to play with 'boys toys' or 'girls toys' and whilst many areas of society are, thankfully, moving on from this default setting, the world of sex toys hasn't quite moved at the same pace.</p>
                         </div>
                     </div>
                 </div>
@@ -86,7 +112,11 @@ const ContentHome = () => {
                     <div className="infoBot">
                         <div>
                             <h2>We've Got You Pegged</h2>
-                            <p>You might be mistaken for thinking that 'Pegging' is a new, 21st Century 'trend', made popular by millennials and unheard of before the insta generation but whilst the catchy term seems to have been coined around the 90's, the practice of a cisgender female anally penetrating a cisgender male dates back as much as...</p>
+                            <p>
+                                You might be mistaken for thinking that 'Pegging' is a new, 21st Century 'trend'. The catchy term seems to have been coined around the 90's, but the practice of a cisgender female anally penetrating a cisgender male dates back as much as 12,000 years ago.
+
+                                Why? Well, the anal entrance and anal canal have over 4,000 nerve endings [which is as many as the head of a penis]. Those 4,000 nerve endings make the anus one of the most erogenous zones on the human body.
+                            </p>
                         </div>
                     </div>
                     <div className="imgBot"></div>
@@ -114,7 +144,7 @@ const ContentHome = () => {
                         <div className="accordion-item" id="question2">
                             <a className="accordion-link" href="#question2">
                                 <div className="flex">
-                                    <h3>How long does delivey take?</h3>
+                                    <h3>How long does delivery take?</h3>
                                 </div>
                                 <i className="icon ion-md-arrow-forward"></i>
                                 <i className="icon ion-md-arrow-down"></i>
@@ -140,7 +170,7 @@ const ContentHome = () => {
                         <div className="accordion-item" id="question4">
                             <a className="accordion-link" href="#question4">
                                 <div>
-                                    <h3>What if I am not homw when they try do deliver my parcel?</h3>
+                                    <h3>What if I am not home when they try to deliver my parcel?</h3>
                                 </div>
                                 <i className="icon ion-md-arrow-forward"></i>
                                 <i className="icon ion-md-arrow-down"></i>
@@ -168,7 +198,7 @@ const ContentHome = () => {
                                 <i className="icon ion-md-arrow-down"></i>
                             </a>
                             <div className="answer">
-                                <p>Absolutely! Sexplore is built upon the popular Shopify platform. Shopify is certified level 1 PCI DSS compliant ensuring a secure network which protects cardholder data. Find out more here</p>
+                                <p>Absolutely! </p>
                             </div>
                             <hr />
                         </div>

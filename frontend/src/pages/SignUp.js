@@ -97,7 +97,7 @@ const SignUp = (props) => {
                         onFailure={responseGoogle}
                         cookiePolicy={'single_host_origin'}
                     />
-                    <h3 className="titleRegisterEmail">Our use your email for registration:</h3>
+                    <h3 className="titleRegisterEmail">Or use your email for registration:</h3>
 
                     <div className="inputCointainer">
 
@@ -136,7 +136,28 @@ const SignUp = (props) => {
                     <button className="btnSendForm" onClick={createAccount}>Create Acount</button>
                 </div>
             </section>
-
+            <div className="containerIconsHome">
+                <div className="boxTextAndIcon">
+                    <i className="fas fa-truck"></i>
+                    <h2>Free Delivery</h2>
+                    <p>On Orders Over £50</p>
+                </div>
+                <div className="boxTextAndIcon">
+                    <i className="fas fa-box-open"></i>
+                    <h2>14 Day Returns</h2>
+                    <p>T&C's Apply</p>
+                </div>
+                <div className="boxTextAndIcon">
+                    <i className="fas fa-hand-holding-heart"></i>
+                    <h2>Hand Picked</h2>
+                    <p>By Our Team</p>
+                </div>
+                <div className="boxTextAndIcon">
+                    <i className="fas fa-box"></i>
+                    <h2>Discreet</h2>
+                    <p>Non-Identifiable Packaging</p>
+                </div>
+            </div>
             <Footer />
         </>
     )

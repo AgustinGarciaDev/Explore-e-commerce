@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { GoogleLogin } from 'react-google-login'
 import userActions from '../redux/actions/userActions'
 import Header from '../components/Header'
+import Footer from "../components/Footer";
 
 const SignIn = (props) => {
 
@@ -36,7 +37,7 @@ const SignIn = (props) => {
     }
     const responseGoogle = (response) => {
         const { email, googleId } = response.profileObj
-        loginUser(null, { email: email, password: 'a'+googleId })
+        loginUser(null, { email: email, password: 'a' + googleId })
     }
 
     return (
@@ -72,6 +73,29 @@ const SignIn = (props) => {
                     </div>
                 </div>
             </div>
+            <div className="containerIconsHome">
+                <div className="boxTextAndIcon">
+                    <i className="fas fa-truck"></i>
+                    <h2>Free Delivery</h2>
+                    <p>On Orders Over £50</p>
+                </div>
+                <div className="boxTextAndIcon">
+                    <i className="fas fa-box-open"></i>
+                    <h2>14 Day Returns</h2>
+                    <p>T&C's Apply</p>
+                </div>
+                <div className="boxTextAndIcon">
+                    <i className="fas fa-hand-holding-heart"></i>
+                    <h2>Hand Picked</h2>
+                    <p>By Our Team</p>
+                </div>
+                <div className="boxTextAndIcon">
+                    <i className="fas fa-box"></i>
+                    <h2>Discreet</h2>
+                    <p>Non-Identifiable Packaging</p>
+                </div>
+            </div>
+            <Footer />
         </>
     )
 }

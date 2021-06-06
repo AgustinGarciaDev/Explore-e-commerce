@@ -1,6 +1,7 @@
 const User = require("../models/User")
 const bcryptjs = require("bcryptjs")
 const jwt = require("jsonwebtoken")
+require("express-fileupload")
 let cloudinary = require('cloudinary').v2
 
 
@@ -9,8 +10,22 @@ const userControllers = {
     newUser: async (req, res) => {
         var error
         if (req.files) {
-            const { url } = await cloudinary.uploader.upload(req.files.photo.tempFilePath, { folder: "users", transformation: [{ width: 100, height: 100, gravity: "faces", crop: "thumb" }] })
-            req.body.urlImg = url
+
+            try {
+                const { url } = await cloudinary.uploader.upload(req.files.photo.tempFilePath, { folder: "users", transformation: [{ width: 100, height: 100, gravity: "faces", crop: "thumb" }] })
+                req.body.urlImg = url
+            } catch (error) {
+                console.log(error)
+            }
+            /*    const file = req.files.photo
+               file.mv(`${__dirname}/../build/build/assets/${file.name}`, (error) => {
+                   if (!error) {
+                       console.log("lo grabe")
+                   } else {
+                       console.log(error)
+                   }
+               })
+               console.log(req.files) */
         }
         const emailExistent = await User.findOne({ email: req.body.email })
         if (!emailExistent) {

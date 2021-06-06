@@ -55,7 +55,7 @@ const Product = (props) => {
         setArticle(item)
     }
 
-    const alert = (type,message) => {
+    const alert = (type, message) => {
         toast[type](message, {
             position: "top-center",
             autoClose: 1700,
@@ -87,9 +87,9 @@ const Product = (props) => {
     const addComment = async () => {
         if (/^\s+|\s+$/.test(comment.comment) || comment.comment === "") {
             if (props.usuarioStatus) {
-                alert("error",'You cannot post an empty comment')
+                alert("error", 'You cannot post an empty comment')
             } else {
-                alert("info",'You must login first')
+                alert("info", 'You must login first')
             }
         } else {
             var response = await props.fetchComments(comment, article._id)
