@@ -118,7 +118,7 @@ const userActions = {
 
     sendMail: (mail) => {
         return async (dispatch, getState) => {
-            const response = await axios.post("http://localhost:4000/api/mails/sendDiscount", {mail: mail})
+            const response = await axios.post("https://explore-2021.herokuapp.com/api/mails/sendDiscount", {mail: mail})
             console.log(response)
             return (response)
         }
