@@ -15,14 +15,14 @@ const ShoppingCart = (props) => {
     let total = prices.length === 0 ? 0 : prices.reduce((a, b) => a + b)
 
 
-    
-return (
+
+    return (
         <>
             <Header />
             <div className="cartMainContainer">
                 <h1>My shopping Cart</h1>
 
-                    <hr />
+                <hr />
 
                 <div className="descriptionContainer">
                     <h3>Description</h3>
@@ -34,44 +34,41 @@ return (
                 <hr />
 
                 <div className="articlesContainer">
-                    {   cart.length
-                        ? cart.map( article =>( <ArticleCart key={ article._id } article={ article } /> ) )
+                    {cart.length
+                        ? cart.map(article => (<ArticleCart key={article._id} article={article} />))
                         : <div> <h5>Don't have any articles so far</h5>  </div>
                     }
                 </div>
 
-                    <hr />
+                <hr />
 
                 <div className="containers" >
                     <div>
-                        <span>Discount</span>
-                        <span>20%</span>
-                    </div>
-                    <div>
                         <span>Delivery</span>
-                        <span>$20</span>
+                        <span>FREE</span>
                     </div>
                     <div>
                         <span>Subtotal</span>
-                        <span>%200</span>
+                        <span>€ {total}</span>
                     </div>
                     <div>
                         <span>Total</span>
-                        <span>€ { total }</span>
+                        <span>€ {total}</span>
                     </div>
                 </div>
-                
+
                 <div className="buttonsAction">
                     <div>
                         <button onClick={() => {
-                        if (cart.length === 0) {
-                            toast( "your cart is empty",{ type:"warning" } )
-                        } else {
-                            props.history.push("/checkout")
-                        }}}>Checkout</button>
-                        <button onClick={()=>props.history.push("/") } >Continue shopping</button>
+                            if (cart.length === 0) {
+                                toast("your cart is empty", { type: "warning" })
+                            } else {
+                                props.history.push("/checkout")
+                            }
+                        }}>Checkout</button>
+                        <button onClick={() => props.history.push("/")} >Continue shopping</button>
                     </div>
-                    
+
                 </div>
 
             </div>
@@ -91,30 +88,3 @@ export default connect(mapStateToProps)(ShoppingCart)
 
 
 
-
-/* <div className="cartContainer">
-                <div className="titleShoppingCart">
-                    <h1>Shopping Bag</h1>
-                </div>
-                <div className="cart">
-                    <div className="titlesCart">
-                        <div><p>Price</p></div>
-                        <div><p>Quantity</p></div>
-                        <div><p>Total</p></div>
-                    </div>
-                    {
-                        cart.length === 0 ?
-                            <h1>NO HAY ARTICULOS CARGADOS</h1>
-                            :
-                            cart.map(article => <ArticleCart key={article._id} article={article} />)
-                    }
-                    <div className="totalCart">
-                        <div><h3>Subtotal:</h3></div>
-                        <div><h3>£ {total}</h3></div>
-                    </div>
-                </div>
-                <div >
-                    <button 
-                    }}>Me llevo todo!!!!</button>
-                </div>
-            </div> */

@@ -5,10 +5,10 @@ import productsAction from "../redux/actions/productsActions"
 import PaymentForm from "../components/PaymentForm"
 import cartActions from "../redux/actions/cartActions"
 import PaypalButton from "../components/PaypalButton"
-
+import { toast } from 'react-toastify';
 
 const Checkout = ({ articles, sendMail, history, removeAll }) => {
-    const [form, setForm] = useState({ email: "", check: false, firstName: "", lastName: "", adress: "", apartment: "", city: "", country: "", postCode: "", phone: "" })
+    const [form, setForm] = useState({ email: "", firstName: "", lastName: "", adress: "", apartment: "", city: "", country: "", postCode: "", phone: "" })
     const [countries, setCountries] = useState([])
     const [visible, setVisible] = useState(false)
     const [creditCard, setCreditCard] = useState({})
@@ -38,7 +38,8 @@ const Checkout = ({ articles, sendMail, history, removeAll }) => {
 
     const readCreditCard = state => { setCreditCard(state) }
 
-    const sendAll = (value = null) => {
+    const sendAll = (value) => {
+
         if (value) {
             let form = {
                 email: value.payer.email_address,
@@ -47,12 +48,15 @@ const Checkout = ({ articles, sendMail, history, removeAll }) => {
                 country: value.payer.address.country_code,
             }
             sendMail(form, { cardBrand: "Paypal", number: 0 }, { cartArticles, total })
+                .then(data => !data && toast.error("Sorry we can't process your payment"))
+
+        } else {
+            sendMail(form, creditCard, { cartArticles, total })
+                .then(data => !data && toast.error("Sorry we can't process your payment"))
+            removeAll()
+            history.push("/payment")
         }
 
-
-        sendMail(form, creditCard, { cartArticles, total })
-        removeAll()
-        history.push("/payment")
     }
 
     return <div className="mainContainer">
@@ -74,10 +78,10 @@ const Checkout = ({ articles, sendMail, history, removeAll }) => {
                     </div>
                     <input type="text" disabled={visible ? true : false} name="email" onChange={readFields} placeholder="Email" />
                 </div>
-                <div className="checkbox">
+                {/* <div className="checkbox">
                     <input type="checkbox" disabled={visible ? true : false} onClick={() => setForm({ ...form, check: !form.check })} />
                     <p>Keep me up to date on news and exclusive offers</p>
-                </div>
+                </div> */}
                 <div className="deliveryAdress">
                     <h3>Delivery address</h3>
                     <div className="inputDouble">
@@ -114,15 +118,18 @@ const Checkout = ({ articles, sendMail, history, removeAll }) => {
                 <hr />
                 <PaymentForm redState={readCreditCard} />
                 <hr />
-
                 <div style={{ display: "flex", justifyContent: "center" }} >
 
                     <PaypalButton total={total} sendAll={sendAll} />
-
                 </div>
 
-                <div className="MakePayment" text-center>
-                    <button onClick={sendAll} className="continue">Make payment</button>
+                <div className="MakePayment">
+                    <button onClick={() => {
+                        !Object.values(form).some(value => !value.trim())
+                            ? sendAll()
+                            : toast.error("You must complete all the fields")
+                    }}
+                        className="continue">Make payment</button>
                 </div>
             </div>
 
@@ -144,16 +151,10 @@ const Checkout = ({ articles, sendMail, history, removeAll }) => {
                                 </div>
                                 <h6 style={{ width: "4rem" }}>{operatorDiscount}</h6>
                             </div>
-
                         })
                         : <h4>Don't have any articles</h4>
                     }
 
-                </div>
-                <hr />
-                <div className="discountContainer">
-                    <input type="text" placeholder="Discount code" />
-                    <button>Apply</button>
                 </div>
                 <hr />
                 <div>
