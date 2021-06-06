@@ -1,16 +1,16 @@
 .containerForm{
     background-image: url("http://tingarciadg.com/wp-content/uploads/2021/05/pexels-sameera-ganegoda-2234783-scaled.jpg");
     width: 100%;
-    height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 3vw;
+    justify-content: center;
+    padding: 5vh 0;
 }
 .formularioSignUP{
- width: 39%;
+    width: 50%;
     background: white;
     display: flex;
     flex-direction: column;
@@ -20,6 +20,11 @@
     border-radius: 1vw;
 }
 
+
+.formbottom{
+    margin: 2vh 0;
+    text-align: center;
+}
 
 .titleForm{
     color: white;
@@ -109,7 +114,7 @@
 }
 
 .btnSendForm{
-    margin: 3vh 0;
+    margin: 1vh 0;
     height: 5vh;
     border: none;
     background: linear-gradient(140deg,var(--purple),var(--pink));
@@ -132,7 +137,6 @@
     background: #3f7bf0;
     padding: 9px;
     border-radius: 1vh;
-    width: 20vw;
 }
 
 .btnGoogleSignUp > i {

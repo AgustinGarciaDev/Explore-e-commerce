@@ -12,7 +12,7 @@ const userActions = {
                         return response.data
                     } else {
                         dispatch({ type: 'SIGNIN_USER', payload: response.data.response })
-                        toast.success('Welcome back ' + response.data.response.name + '!', {
+                        toast.success('Welcome ' + response.data.response.name + '!', {
                             position: "top-center",
                             autoClose: 1700,
                             hideProgressBar: true,

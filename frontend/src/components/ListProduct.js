@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import CardProduct from "../components/CardProduct"
 import { connect } from "react-redux"
 import cartActions from "../redux/actions/cartActions"
 import CardProductHome from '../components/Home/CardProductHome'
@@ -27,6 +26,7 @@ const ListProduct = (props) => {
             left: 0,
             behavior: 'smooth'
         });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const readInput = (e) => {
@@ -63,8 +63,10 @@ const ListProduct = (props) => {
                 </div>
                 <div className="filterPrice">
                     <h3>What's your budget?</h3>
-                    <input className="inputPrice" onChange={range} type="range" min="0" max="200" step="10" />
-                    <input className="inputPriceValue" style={{ color: "black" }} type="text" value={"€ " + num.numero} disabled />
+                    <div>
+                        <input className="inputPrice" onChange={range} type="range" min="0" max="200" step="10" />
+                        <input className="inputPriceValue" style={{ color: "black" }} type="text" value={"€ " + num.numero} disabled />
+                    </div>
                 </div>
             </div>
             <div>

@@ -14,6 +14,7 @@
     align-items: center;
  
 }
+
 .filterArticle > h3{
     font-family: 'Montserrat';
     text-align: center;
@@ -43,6 +44,10 @@
     width: 100%;
 
 }
+.filterPrice > div{
+    display: flex;
+    align-items: center;
+}
 
 .filterPrice > h3{
     font-family: 'Montserrat';
@@ -55,11 +60,54 @@
     height: 20px;
     text-align: center;
     border-radius: 20px;
+    margin-left: 2vh;
 }
 
 .inputPrice{
         width: 44vw;
 }
+
+@media (max-width: 850px){
+    .filterArticle{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .filterArticle > h3{
+        width: 100%;
+        text-align: center;
+        margin: 2vh 0;
+    }
+    .filterArticle > input{
+        width: 95%;
+        margin: 2vh 0;
+    }
+    .filterPrice{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .filterPrice > h3 {
+        width: 100%;
+        text-align: center;
+    }
+    .filterPrice > div{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 2vh 0;
+    }
+    .inputPrice{
+        width: 80%;
+    }
+    .inputPriceValue{
+        margin-left: 2vh;
+    }
+}
+
+
+
 
 .containerNotFound{
     display: flex;

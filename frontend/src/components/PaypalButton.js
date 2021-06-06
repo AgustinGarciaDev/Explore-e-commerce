@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react"
-import { connect } from "react-redux"
 
 const PaypalButton =({ total, sendAll })=>{
 
@@ -23,6 +22,7 @@ const PaypalButton =({ total, sendAll })=>{
                 console.log( err )
             }
         }).render( paypal.current )
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
 

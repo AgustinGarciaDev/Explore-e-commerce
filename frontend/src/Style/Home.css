@@ -79,9 +79,20 @@
     font-weight: bold;
     color: white;
 }
+@media (max-width: 900px){
+    .titleSlider{
+        margin-top: 66vh;
+        font-size: 15vw;
+    }
+}
+@media (max-width: 600px){
+    .titleSlider{
+        margin-top: 96vh;
+        font-size: 15vw;
+    }
+}
 
 .contentSliders{
-    height: 10vw;
     width: 80%;
 /*     background-color: teal; */
     margin-bottom: 2vw;
@@ -98,6 +109,7 @@
 .contentSliderTitle{
     font-size: 30px;
     font-family: "Montserrat";
+    margin-bottom: 1vh;
 }
 
 .contentSliderButton{
@@ -133,7 +145,8 @@
     background: url("http://tingarciadg.com/wp-content/uploads/2021/06/lubri.png"),linear-gradient(0deg
     ,#63cae0 0,#0f84ea 100%);
     background-position: center;
-     background-size: contain ;  
+     background-size: cover ;  
+     background-repeat: no-repeat;
     height: 42vw;
     display: flex !important;
     align-items: flex-end !important;
@@ -143,7 +156,8 @@
 .slideTwo{
     background: url("https://sexplore.s3.eu-west-2.amazonaws.com/shopify/homepage-4-category/cock-rings.png"),linear-gradient(0deg,#f3a900 0,#ff7615 100%);
      background-position: center;
-      background-size: contain ;  
+      background-size: cover ;  
+      background-repeat: no-repeat;
     height: 42vw;
     display: flex !important;
     align-items: flex-end !important;
@@ -152,8 +166,9 @@
 
 .slideThree{
     background: url("https://sexplore.s3.eu-west-2.amazonaws.com/shopify/homepage-4-category/clitoral.png"),linear-gradient(0deg,#f54a5d 0,#671e6d 100%);
- background-position: center;
-  background-size: contain ;  
+    background-position: center;
+    background-size: cover ;
+    background-repeat: no-repeat;  
     height: 42vw;
     display: flex !important;
     align-items: flex-end !important;
@@ -163,7 +178,8 @@
 .slideFor{
    background: url("https://sexplore.s3.eu-west-2.amazonaws.com/shopify/homepage-4-category/prostate-massager.png"),linear-gradient(0deg,#8ccfde 0,#03b583 100%);
     background-position: center;
-    background-size: contain ;  
+    background-size: cover ;  
+    background-repeat: no-repeat;
    height: 42vw;
    display: flex !important;
    align-items: flex-end !important;
@@ -173,7 +189,8 @@
 .slideFive{
     background: url("http://tingarciadg.com/wp-content/uploads/2021/06/wewq.png"),linear-gradient(0deg,#0c6b80 0,#d22c50 100%);
     background-position: center;
-    background-size: contain ;  
+    background-size: cover ;  
+    background-repeat: no-repeat;
     height: 42vw;
     display: flex !important;
     align-items: flex-end !important;
@@ -184,12 +201,26 @@
 .slideSix{
     background: url("http://tingarciadg.com/wp-content/uploads/2021/06/wewq.png"),linear-gradient(0deg,#0c6b80 0,#d22c50 100%);
     background-position: center;
-    background-size: contain ;  
+    background-size: cover ;  
+    background-repeat: no-repeat;
     height: 42vw;
     display: flex !important;
     align-items: flex-end !important;
     justify-content: center !important;
 }
+
+
+@media (max-width: 900px){
+    .slideOne, .slideTwo, .slideThree, .slideFor, .slideFive, .slideSix{
+        height: 80vh;
+    }
+}
+@media (max-width: 600px){
+    .slideOne, .slideTwo, .slideThree, .slideFor, .slideFive, .slideSix{
+        height: 100vh;
+    }
+}
+
 .titleContent{
     font-family: 'Montserrat';
     font-weight: bold;
@@ -298,7 +329,6 @@
     justify-content: space-around;
     width: 100%;
     flex-wrap: wrap;
-    margin-bottom: 3rem;
 }
 
 .boxTextAndIcon{
@@ -425,50 +455,71 @@ section {
   }
 
   .imageContainerTop, .imageContainerBot {
-    height: 83vh;
+    height: 70vh;
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
   }
 
-.imageContainerBot {
-    background-color: black;
-    margin-bottom: 2rem;
-}
+    
+    .imageContainerTop > *{
+        background-color: brown;
+        height: 100%;
+        width: 50%;
+    }
+    
+    .imageContainerBot > *{
+        background-color: brown;
+        height: 100%;
+        width: 50%;
+    }
+    
+    .infoTop, .infoBot{
+        background-color: palevioletred;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .imgTop{
+        background-image: url("https://sexplore.s3.eu-west-2.amazonaws.com/shopify/blog-images/toys-together.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 50%;
+        height: 100%;
+        filter: grayscale(100%)
+    }
+    
+    .imgBot{
+        background-image: url("https://sexplore.s3.eu-west-2.amazonaws.com/shopify/blog-images/three-zebras.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 50%;
+        height: 100%;
+        filter: grayscale(100%)
+    }
 
-.imageContainerTop > *{
-      background-color: brown;
-      height: 100%;
-      width: 50%;
-}
-
-.imageContainerBot > *{
-    background-color: brown;
-    height: 100%;
-    width: 50%;
-}
-
-.infoTop, .infoBot{
-    background-color: palevioletred;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.imgTop{
-    background-image: url("https://sexplore.s3.eu-west-2.amazonaws.com/shopify/blog-images/toys-together.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.imgBot{
-    background-image: url("https://sexplore.s3.eu-west-2.amazonaws.com/shopify/blog-images/three-zebras.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+    @media (max-width: 700px){
+      .imageContainerTop, .imageContainerBot {
+          display: flex;
+          flex-direction: column;
+          height: auto;
+      }
+      .imageContainerBot{
+          flex-direction: column-reverse;
+      }
+      .imgBot, .imgTop{
+          width: 100%;
+          height: 70vh;
+      }
+      .infoTop, .infoBot{
+          width: 100%;
+          text-align: center;
+          height: 40vh;
+      }
+    }
 
 .infoTop > div{
     color: white;
