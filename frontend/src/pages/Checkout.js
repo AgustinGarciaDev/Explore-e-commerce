@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import productsAction from "../redux/actions/productsActions"
 import PaymentForm from "../components/PaymentForm"
 import cartActions from "../redux/actions/cartActions"
+import PaypalButton from "../components/PaypalButton"
 
 
 const Checkout = ({ articles, sendMail, history , removeAll }) => {
@@ -32,7 +33,18 @@ const Checkout = ({ articles, sendMail, history , removeAll }) => {
 
     const readCreditCard = state => { setCreditCard(state) }
 
-    const sendAll = () => {
+    const sendAll = (value) => {
+        if( value ){
+            let form = {
+                email:  value.payer.email_address , 
+                firstName: value.payer.name.given_name , 
+                lastName: value.payer.name.surname,
+                country: value.payer.address.country_code,
+            }
+            sendMail(form, { cardBrand:"Paypal", number:0 }, { cartArticles, total })
+        }
+
+
         sendMail(form, creditCard, { cartArticles, total })
         removeAll()
         history.push("/payment")
@@ -96,7 +108,14 @@ const Checkout = ({ articles, sendMail, history , removeAll }) => {
                 <h1>Payment</h1>
                 <hr />
                 <PaymentForm redState={readCreditCard} />
+                            <hr/>
 
+                    <div style={{ display:"flex", justifyContent:"center" }} >
+
+                    <PaypalButton total={ total  } sendAll={ sendAll } />     
+
+                    </div>       
+                    
                 <div className="MakePayment" text-center>
                     <button onClick={sendAll} className="continue">Make payment</button>
                 </div>
