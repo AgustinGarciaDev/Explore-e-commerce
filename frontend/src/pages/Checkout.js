@@ -5,7 +5,7 @@ import productsAction from "../redux/actions/productsActions"
 import PaymentForm from "../components/PaymentForm"
 import cartActions from "../redux/actions/cartActions"
 import PaypalButton from "../components/PaypalButton"
-
+import { toast } from 'react-toastify';
 
 const Checkout = ({ articles, sendMail, history , removeAll }) => {
     const [form, setForm] = useState({ email: "", check: false, firstName: "", lastName: "", adress: "", apartment: "", city: "", country: "", postCode: "", phone: "" })
@@ -34,6 +34,7 @@ const Checkout = ({ articles, sendMail, history , removeAll }) => {
     const readCreditCard = state => { setCreditCard(state) }
 
     const sendAll = (value) => {
+    
         if( value ){
             let form = {
                 email:  value.payer.email_address , 
@@ -42,12 +43,14 @@ const Checkout = ({ articles, sendMail, history , removeAll }) => {
                 country: value.payer.address.country_code,
             }
             sendMail(form, { cardBrand:"Paypal", number:0 }, { cartArticles, total })
+
+        }else{
+            sendMail(form, creditCard, { cartArticles, total })
+            .then( data => !data && toast.error("Sorry we can't process your payment") )
+            removeAll()
+            history.push("/payment")
         }
-
-
-        sendMail(form, creditCard, { cartArticles, total })
-        removeAll()
-        history.push("/payment")
+        
     }
 
     return <div className="mainContainer">
@@ -117,7 +120,7 @@ const Checkout = ({ articles, sendMail, history , removeAll }) => {
                     </div>       
                     
                 <div className="MakePayment" text-center>
-                    <button onClick={sendAll} className="continue">Make payment</button>
+                    <button onClick={ ()=> sendAll() } className="continue">Make payment</button>
                 </div>
             </div>
 

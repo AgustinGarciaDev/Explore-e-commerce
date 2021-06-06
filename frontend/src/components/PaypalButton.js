@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react"
-import { connect } from "react-redux"
+import { toast } from 'react-toastify';
 
 const PaypalButton =({ total, sendAll })=>{
 
@@ -17,7 +17,11 @@ const PaypalButton =({ total, sendAll })=>{
             },
             onApprove:(data,actions)=>{
                 const order = actions.order.capture()
-                sendAll( order.value )
+
+                order.value 
+                ? sendAll( order.value )
+                : toast.error("Sorry we can't process your payment")
+                
             },
             onerror:(err)=>{
                 console.log( err )
