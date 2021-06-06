@@ -22,7 +22,7 @@ const ContentHome = () => {
             <div className="containerAboutUs">
                 <div className="containerImgHome"></div>
                 <div className="containerTextAbout">
-                    <img src="http://tingarciadg.com/wp-content/uploads/2021/05/Diseno-sin-titulo-4.png" />
+                    <img className="imgLogoContent" src="http://tingarciadg.com/wp-content/uploads/2021/06/Diseno-sin-titulo-14.png" />
                     <h2 className="titleContent">Who are we?</h2>
                     <p className="textContent">
                         Explore is an online sex toy website that doesn't subscribe to gender stereotypes. Each toy has been handpicked by our team because we love them.

@@ -1,7 +1,6 @@
 .filterProducts{
     height: 40vh;
     width: 100%;
-/*     background-color: black; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,18 +9,26 @@
 
 .filterArticle{
     margin: 1rem 0 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
 }
-.filterArticle > p{
+.filterArticle > h3{
+    font-family: 'Montserrat';
     text-align: center;
+    width: 45vw;
 }
 
 .filterArticle > input{
     padding: 8px 0 8px 0;
-    width: 80vw;
+    width: 48vw;
     text-align: center;
     font-size: 30px;
+    border-radius: 2vw;
     outline: none;
-
+    border: 1 px solid black;
+    border: 1px solid #cccccc;
 }
 
 .filterArticle > input:focus{
@@ -30,19 +37,17 @@
 }
 
 .filterPrice{
-    /* margin: 1rem 0 1rem 0; */
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
+    width: 100%;
+
 }
 
-.filterPrice > *{
-    margin: 5px 0 5px 0;  
-}
-
-.filterPrice > p{
-    font-size: 20px;  
+.filterPrice > h3{
+    font-family: 'Montserrat';
+    text-align: center;
+    width: 45vw;
 }
 
 .inputPriceValue{
@@ -53,7 +58,7 @@
 }
 
 .inputPrice{
-    width: 65vw;
+        width: 44vw;
 }
 
 .containerNotFound{

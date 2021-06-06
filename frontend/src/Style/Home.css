@@ -53,6 +53,10 @@
 
 /* Contenct carrousel */
 
+.imgContenct{
+    width: 10vw;
+}
+
 .containerCarrousel{
     overflow: hidden;
 }
