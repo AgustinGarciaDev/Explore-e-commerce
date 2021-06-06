@@ -47,6 +47,15 @@ const ListProduct = (props) => {
 
     return (
         <>
+            <div className="containerPortadaSexToy">
+                <div className="containerTextCategory">
+                    <h1 className="titleCategory">All products</h1>
+                    <p className="textCategory">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, dolorum! Provident, nostrum quos eos iure aperiam, enim illum placeat eaque explicabo laudantium odit, sequi porro officia repellat nobis minima quas.</p>
+                </div>
+                <div className="containerIcons">
+                </div>
+            </div>
+
             <div className="filterProducts">
                 <div className="filterArticle">
                     <input onChange={readInput} type="text" placeholder="Find your product!" />
@@ -54,7 +63,7 @@ const ListProduct = (props) => {
                 <div className="filterPrice">
                     <p>PRICE:</p>
                     <input className="inputPrice" onChange={range} type="range" min="0" max="200" step="10" />
-                    <input className="inputPriceValue" style={{ color: "black" }} type="text" value={"€ "+ num.numero} disabled />
+                    <input className="inputPriceValue" style={{ color: "black" }} type="text" value={"€ " + num.numero} disabled />
                 </div>
             </div>
             <div>
