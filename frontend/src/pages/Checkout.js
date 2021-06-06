@@ -8,7 +8,7 @@ import PaypalButton from "../components/PaypalButton"
 import { toast } from 'react-toastify';
 
 const Checkout = ({ articles, sendMail, history , removeAll }) => {
-    const [form, setForm] = useState({ email: "", check: false, firstName: "", lastName: "", adress: "", apartment: "", city: "", country: "", postCode: "", phone: "" })
+    const [form, setForm] = useState({ email: "", firstName: "", lastName: "", adress: "", apartment: "", city: "", country: "", postCode: "", phone: "" })
     const [countries, setCountries] = useState([])
     const [visible, setVisible] = useState(false)
     const [creditCard, setCreditCard] = useState({})
@@ -73,10 +73,10 @@ const Checkout = ({ articles, sendMail, history , removeAll }) => {
                     </div>
                     <input type="text" disabled={visible ? true : false} name="email" onChange={readFields} placeholder="Email" />
                 </div>
-                <div className="checkbox">
+                {/* <div className="checkbox">
                     <input type="checkbox" disabled={visible ? true : false} onClick={() => setForm({ ...form, check: !form.check })} />
                     <p>Keep me up to date on news and exclusive offers</p>
-                </div>
+                </div> */}
                 <div className="deliveryAdress">
                     <h3>Delivery address</h3>
                     <div className="inputDouble">
@@ -113,15 +113,18 @@ const Checkout = ({ articles, sendMail, history , removeAll }) => {
                 <hr />
                 <PaymentForm redState={readCreditCard} />
                             <hr/>
-
                     <div style={{ display:"flex", justifyContent:"center" }} >
 
                     <PaypalButton total={ total  } sendAll={ sendAll } />     
-
                     </div>       
                     
                 <div className="MakePayment" text-center>
-                    <button onClick={ ()=> sendAll() } className="continue">Make payment</button>
+                    <button onClick={ ()=>{
+                        !Object.values(form).some(value => !value.trim() )
+                        ? sendAll()
+                        : toast.error("You must complete all the fields")
+                    }} 
+                        className="continue">Make payment</button>
                 </div>
             </div>
 
