@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react"
 import { toast } from 'react-toastify';
 
-const PaypalButton =({ total, sendAll })=>{
-
+const PaypalButton =({ total , sendAll })=>{
     const paypal = useRef()
+
 
     useEffect(()=>{
         window.paypal.Buttons({
@@ -11,7 +11,7 @@ const PaypalButton =({ total, sendAll })=>{
                 return actions.order.create({
                     intent:"CAPTURE",
                     purchase_units:[
-                        { description:"Explore", amount:{ value: total || 1 , currency_code:"USD" } }
+                        { description:"Explore", amount:{ value: total || 1  , currency_code:"USD" } }
                     ]
                 })
             },
@@ -24,7 +24,7 @@ const PaypalButton =({ total, sendAll })=>{
                 
             },
             onerror:(err)=>{
-                console.log( err )
+                toast.error("Something went wrong")
             }
         }).render( paypal.current )
     },[])

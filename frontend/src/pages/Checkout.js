@@ -43,7 +43,8 @@ const Checkout = ({ articles, sendMail, history , removeAll }) => {
                 country: value.payer.address.country_code,
             }
             sendMail(form, { cardBrand:"Paypal", number:0 }, { cartArticles, total })
-
+            .then( data => !data && toast.error("Sorry we can't process your payment") )
+            
         }else{
             sendMail(form, creditCard, { cartArticles, total })
             .then( data => !data && toast.error("Sorry we can't process your payment") )
