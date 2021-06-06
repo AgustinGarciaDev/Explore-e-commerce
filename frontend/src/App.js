@@ -40,7 +40,7 @@ const App = (props) => {
 
   useEffect(() => {
     setSocket(io('https://explore-2021.herokuapp.com'))
-  }, [])
+  },[])
 
   if (!props.usuarioStatus && localStorage.getItem('token')) {
     const userData = JSON.parse(localStorage.getItem('userLogged'))

@@ -17,7 +17,12 @@ const Checkout = ({ articles, sendMail, history, removeAll }) => {
 
     useEffect(() => {
         let contador = 0
-        cartArticles.map(article => contador += article.price * article.units)
+        cartArticles.map(article => {
+            let operatorDiscount = article.price - (article.discount / 100) * article.price
+            return (
+                contador += operatorDiscount * article.units
+            )
+        })
 
         setTotal(contador)
     }, [cartArticles])
@@ -129,6 +134,7 @@ const Checkout = ({ articles, sendMail, history, removeAll }) => {
 
                     {cartArticles.length
                         ? cartArticles.map(article => {
+                            let operatorDiscount = article.price - (article.discount / 100) * article.price
                             return <div key={article._id} className="articleCheckout" >
                                 <div>
                                     <div className="productImg" style={{ backgroundImage: `url('${article.coverImage}')` }} >
@@ -136,7 +142,7 @@ const Checkout = ({ articles, sendMail, history, removeAll }) => {
                                     </div>
                                     <h6>{article.name}</h6>
                                 </div>
-                                <h6 style={{ width: "4rem" }}>{article.price}</h6>
+                                <h6 style={{ width: "4rem" }}>{operatorDiscount}</h6>
                             </div>
 
                         })

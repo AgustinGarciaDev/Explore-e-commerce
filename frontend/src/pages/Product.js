@@ -69,16 +69,7 @@ const Product = (props) => {
 
     const buy = () => {
         if (article.units === article.stock) {
-            toast.info('We have no more stock of this item', {
-                position: "top-center",
-                autoClose: 1700,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                toastId: "noMoreArticles",
-            })
+            alert("info",'We have no more stock of this item')
         } else {
             props.buyArticle(article)
         }

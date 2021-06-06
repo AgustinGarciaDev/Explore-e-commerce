@@ -22,7 +22,7 @@ const ContentHome = () => {
             <div className="containerAboutUs">
                 <div className="containerImgHome"></div>
                 <div className="containerTextAbout">
-                    <img className="imgLogoContent" src="http://tingarciadg.com/wp-content/uploads/2021/06/Diseno-sin-titulo-14.png" />
+                    {/*   <img className="imgLogoContent" src="http://tingarciadg.com/wp-content/uploads/2021/06/Diseno-sin-titulo-14.png" /> */}
                     <h2 className="titleContent">Who are we?</h2>
                     <p className="textContent">
                         Explore is an online sex toy website that doesn't subscribe to gender stereotypes. Each toy has been handpicked by our team because we love them.
@@ -39,52 +39,61 @@ const ContentHome = () => {
                     <div className="slideTwo">
                         <div className="contentSliders">
                             <div className="contentSliderTitle">  For penises </div>
-                            <div> <button className="contentSliderButton">
+                            <div>
                                 <Link to="/products" className="btn-hero">
-                                    Click ME
+                                    <button className="contentSliderButton">
+                                        Click ME
+                                    </button>
                                 </Link>
-                            </button> </div>
+                            </div>
                         </div>
                     </div>
                     <div className="slideThree">
                         <div className="contentSliders">
                             <div className="contentSliderTitle"> For Vulva</div>
-                            <div> <button className="contentSliderButton">
+                            <div>
                                 <Link to="/products" className="btn-hero">
-                                    Click ME
+                                    <button className="contentSliderButton">
+                                        Click ME
+                                    </button>
                                 </Link>
-                            </button> </div>
+                            </div>
                         </div>
                     </div>
                     <div className="slideOne">
                         <div className="contentSliders">
                             <div className="contentSliderTitle"> Lubricants  </div>
-                            <div> <button className="contentSliderButton">
+                            <div>
                                 <Link to="/products" className="btn-hero">
-                                    Click ME
+                                    <button className="contentSliderButton">
+                                        Click ME
+                                    </button>
                                 </Link>
-                            </button> </div>
+                            </div>
                         </div>
                     </div>
                     <div className="slideFor">
                         <div className="contentSliders">
                             <div className="contentSliderTitle"> For Butts </div>
-                            <div> <button className="contentSliderButton">
+                            <div>
                                 <Link to="/products" className="btn-hero">
-                                    Click ME
+                                    <button className="contentSliderButton">
+                                        Click ME
+                                    </button>
                                 </Link>
-
-                            </button> </div>
+                            </div>
                         </div>
                     </div>
                     <div className="slideFive">
                         <div className="contentSliders">
                             <div className="contentSliderTitle"> Sex game </div>
-                            <div> <button className="contentSliderButton">
+                            <div>
                                 <Link to="/products" className="btn-hero">
-                                    Click ME
+                                    <button className="contentSliderButton">
+                                        Click ME
+                                    </button>
                                 </Link>
-                            </button> </div>
+                            </div>
                         </div>
                     </div>
                 </Slider>
