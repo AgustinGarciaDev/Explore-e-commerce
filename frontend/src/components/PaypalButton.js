@@ -25,6 +25,7 @@ const PaypalButton =({ total , sendAll })=>{
             },
             onerror:(err)=>{
                 toast.error("Something went wrong")
+                console.log( err )
             }
         }).render( paypal.current )
     },[])
