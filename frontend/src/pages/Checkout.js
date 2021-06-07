@@ -70,6 +70,14 @@ const Checkout = ({ articles, sendMail, history, removeAll, userLooged }) => {
 
     }
 
+    const lookingDown = () => {
+        window.scroll({
+            top: 100000,
+            behavior: 'smooth'
+        });
+
+    }
+
     return (
         <>
             <Header />
@@ -129,7 +137,7 @@ const Checkout = ({ articles, sendMail, history, removeAll, userLooged }) => {
                             <div>
                                 <input type="number" disabled={visible ? true : false} name="phone" onChange={readFields} placeholder="Phone (optional)" />
                             </div>
-                            <button className="continue" onClick={() => setVisible(!visible)} >{!visible ? "Continue to delivery" : "Back to form"}</button>
+                            <button className="continue" onClick={() => { setVisible(!visible); !visible && lookingDown() }} >{!visible ? "Continue to delivery" : "Back to form"}</button>
                         </div>
                     </div>
 
