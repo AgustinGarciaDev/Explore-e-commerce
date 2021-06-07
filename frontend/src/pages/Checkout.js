@@ -50,14 +50,15 @@ const Checkout = ({ articles, sendMail, history, removeAll, userLooged }) => {
     const readCreditCard = state => { setCreditCard(state) }
 
     const sendAll = (value) => {
-        console.log( value )
-
+        
         if (value) {
             let form = {
                 email: value.payer.email_address,
                 firstName: value.payer.name.given_name,
                 lastName: value.payer.name.surname,
                 country: value.payer.address.country_code,
+                carBrand:"Paypal",
+                /* number:"" */
             }
             sendMail(form, { cardBrand: "Paypal", number: 0 }, { cartArticles, total })
                 .then(data => !data 
