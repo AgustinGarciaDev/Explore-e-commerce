@@ -20,8 +20,8 @@ const SexToyCategory = (props) => {
             setLoading(false)
         }
         filterProducts()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
         scroll()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [products])
 
     const scroll = () => {

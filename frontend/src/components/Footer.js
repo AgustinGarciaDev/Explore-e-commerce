@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 import userActions from "../redux/actions/userActions"
@@ -99,7 +99,6 @@ const Footer = (props) => {
                                         placeholder="Enter your email address"
                                         aria-describedby="button-addon1"
                                         className="form-control border-0 shadow-0"
-                                        oninput="setCustomValidity('')"
                                         onChange={readInput}
                                         value={email.email}
                                         name="email" required />

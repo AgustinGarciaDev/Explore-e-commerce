@@ -158,8 +158,6 @@ const productActions = {
                     if (response.data.success) {
                         dispatch({ type: 'UPDATE_CATEGORY', payload: response.data.result })
                         return response.data
-                    } else {
-                        console.log(response.data)
                     }
                 } else {
                     toast.error(response.data.err, {
