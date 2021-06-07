@@ -50,6 +50,7 @@ const Checkout = ({ articles, sendMail, history, removeAll, userLooged }) => {
     const readCreditCard = state => { setCreditCard(state) }
 
     const sendAll = (value) => {
+        console.log( value )
 
         if (value) {
             let form = {
@@ -59,8 +60,11 @@ const Checkout = ({ articles, sendMail, history, removeAll, userLooged }) => {
                 country: value.payer.address.country_code,
             }
             sendMail(form, { cardBrand: "Paypal", number: 0 }, { cartArticles, total })
-                .then(data => !data && toast.error("Sorry we can't process your payment"))
-
+                .then(data => !data 
+                    ? toast.error("Sorry we can't process your payment")
+                    : history.push("/payment")
+                    )
+                
         } else {
             sendMail(form, creditCard, { cartArticles, total })
                 .then(data => !data && toast.error("Sorry we can't process your payment"))
