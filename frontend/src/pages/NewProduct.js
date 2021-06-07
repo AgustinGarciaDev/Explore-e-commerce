@@ -61,7 +61,7 @@ const NewProduct = (props) => {
                 setErrors({})
                 setCategories([])
                 setProductsImages([])
-                /*   setNewProduct({ coverImage: '', description: '', price: '', discount: '', brand: '', name: '', stock: '' }) */
+                setNewProduct({ coverImage: '', description: '', price: '', discount: '', brand: '', name: '', stock: '' })
                 toast.success('The product was added successfully!', {
                     position: "top-right",
                     autoClose: 1700,
