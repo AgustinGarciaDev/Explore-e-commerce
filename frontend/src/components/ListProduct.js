@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import CardProduct from "../components/CardProduct"
 import { connect } from "react-redux"
 import cartActions from "../redux/actions/cartActions"
+import CardProductHome from '../components/Home/CardProductHome'
 
 const ListProduct = (props) => {
     const [products, setProducts] = useState([])
@@ -26,6 +26,7 @@ const ListProduct = (props) => {
             left: 0,
             behavior: 'smooth'
         });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const readInput = (e) => {
@@ -62,8 +63,10 @@ const ListProduct = (props) => {
                 </div>
                 <div className="filterPrice">
                     <h3>What's your budget?</h3>
-                    <input className="inputPrice" onChange={range} type="range" min="0" max="200" step="10" />
-                    <input className="inputPriceValue" style={{ color: "black" }} type="text" value={"€ " + num.numero} disabled />
+                    <div>
+                        <input className="inputPrice" onChange={range} type="range" min="0" max="200" step="100" />
+                        <input className="inputPriceValue" style={{ color: "black" }} type="text" value={"€ " + num.numero} disabled />
+                    </div>
                 </div>
             </div>
             <div>
@@ -76,7 +79,7 @@ const ListProduct = (props) => {
                                 <lottie-player src="https://assets1.lottiefiles.com/private_files/lf30_s1uhh6lz.json" style={{ width: "50vw" }} speed="1" loop autoplay></lottie-player>
                             </div>
                             :
-                            products.map(product => <CardProduct key={product._id} product={product} />)}
+                            products.map(item => <CardProductHome product={item} key={item._id} />)}
                 </div>
             </div>
         </>

@@ -5,7 +5,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { GoogleLogin } from 'react-google-login'
 import userActions from '../redux/actions/userActions'
 import Header from '../components/Header'
-import Footer from "../components/Footer";
+import Footer from "../components/Footer"
+import { Link } from 'react-router-dom'
 
 const SignIn = (props) => {
 
@@ -35,16 +36,21 @@ const SignIn = (props) => {
         }
 
     }
+    
     const responseGoogle = (response) => {
-        const { email, googleId } = response.profileObj
-        loginUser(null, { email: email, password: 'a' + googleId })
+        if (response) {
+            if (!response.error) {
+                const { email, googleId } = response.profileObj
+                loginUser(null, { email: email, password: 'a' + googleId })
+            }
+        }
     }
 
     return (
         <>
             <Header />
             <div className="containerForm">
-                <h1 className="titleForm">Login</h1>
+                <h1 className="titleForm">Sign In</h1>
                 <div className="formularioSignUP">
                     <GoogleLogin
                         clientId="96796139704-21kkhk4q7hqudkpvga86qprq8c61i53s.apps.googleusercontent.com"
@@ -67,6 +73,9 @@ const SignIn = (props) => {
                             <p>Password</p>
                             <input name="password" onChange={changeValue} value={infoUser.password} type="password" />
                         </label>
+                    </div>
+                    <div className="formbottom">
+                        <p>Not have an account? <Link to="/signup">Sign Up here !</Link></p>
                     </div>
                     <div>
                         <button className="btnSendForm" onClick={loginUser}>Sign In</button>

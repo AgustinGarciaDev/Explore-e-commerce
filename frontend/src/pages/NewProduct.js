@@ -92,7 +92,7 @@ const NewProduct = (props) => {
                         <label>Image</label>
                         <input type="text" name="coverImage" value={newProduct.coverImage} onChange={readInput} className="adminFormInputs" />
                     </div>
-                    {errors.coverImage ? <small>{errors.coverImage}</small> : <p></p>}
+                    {errors.coverImage ? <small>{errors.coverImage}</small> : <p>.</p>}
 
                     <div className="tags-input">
                         <ul id="tags">
@@ -109,19 +109,19 @@ const NewProduct = (props) => {
                             placeholder="Press enter to add image"
                         />
                     </div>
-                    {errors.productsImages ? <small>{errors.productsImages}</small> : <p> </p>}
+                    {errors.productsImages ? <small>{errors.productsImages}</small> : <p>.</p>}
 
                     <div className="inputContainer">
                         <label>Product description</label>
                         <input type="text" name="description" value={newProduct.description} onChange={readInput} className="adminFormInputs" />
                     </div>
-                    {errors.description ? <small>{errors.description}</small> : <p> </p>}
+                    {errors.description ? <small>{errors.description}</small> : <p>.</p>}
 
                     <div className="inputContainer">
                         <label>Product name</label>
                         <input type="text" name="name" value={newProduct.name} onChange={readInput} className="adminFormInputs" />
                     </div>
-                    {errors.name ? <small>{errors.name}</small> : <p> </p>}
+                    {errors.name ? <small>{errors.name}</small> : <p>.</p>}
 
                     <div className="tags-input">
                         <ul id="tags">
@@ -143,13 +143,13 @@ const NewProduct = (props) => {
                             placeholder="Press enter to add categories"
                         />
                     </div>
-                    {errors.categories ? <small>{errors.categories}</small> : <p> </p>}
+                    {errors.categories ? <small>{errors.categories}</small> : <p>.</p>}
 
                     <div className="inputContainer">
                         <label>Product brand</label>
                         <input type="text" name="brand" value={newProduct.brand} onChange={readInput} className="adminFormInputs" />
                     </div>
-                    {errors.brand ? <small>{errors.brand}</small> : <p> </p>}
+                    {errors.brand ? <small>{errors.brand}</small> : <p>.</p>}
 
                     <div className="rowInputs">
                         <div>
@@ -157,7 +157,7 @@ const NewProduct = (props) => {
                                 <label htmlFor="price">Price: </label>
                                 <input type="number" name="price" value={newProduct.price} id="price" onChange={readInput} className="adminFormInputsNumber" />
                             </div>
-                            {errors.price ? <small>{errors.price}</small> : <p> </p>}
+                            {errors.price ? <small>{errors.price}</small> : <p>.</p>}
                         </div>
 
                         <div>
@@ -165,7 +165,7 @@ const NewProduct = (props) => {
                                 <label htmlFor="discount">Discount: </label>
                                 <input type="number" name="discount" value={newProduct.discount} onChange={readInput} className="adminFormInputsNumber" />
                             </div>
-                            {errors.discount ? <small>{errors.discount}</small> : <p> </p>}
+                            {errors.discount ? <small>{errors.discount}</small> : <p>.</p>}
                         </div>
 
                         <div>
@@ -173,12 +173,14 @@ const NewProduct = (props) => {
                                 <label htmlFor="stock">Stock: </label>
                                 <input type="number" name="stock" value={newProduct.stock} onChange={readInput} className="adminFormInputsNumber" />
                             </div>
-                            {errors.stock ? <small>{errors.stock}</small> : <p> </p>}
+                            {errors.stock ? <small>{errors.stock}</small> : <p>.</p>}
                         </div>
 
                     </div>
-                    <Link to="/admin" className="adminButton">Go back</Link>
-                    <button type="button" onClick={sendNewProdcut} className="adminButton">Add</button>
+                    <div className="adminBtnContainer">
+                        <Link to="/admin" className="adminButton">Admin</Link>
+                        <button type="button" onClick={sendNewProdcut} className="adminButton">Add</button>
+                    </div>
                 </form>
             </div>
         </>

@@ -69,16 +69,7 @@ const Product = (props) => {
 
     const buy = () => {
         if (article.units === article.stock) {
-            toast.info('We have no more stock of this item', {
-                position: "top-center",
-                autoClose: 1700,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                toastId: "noMoreArticles",
-            })
+            alert("info", 'We have no more stock of this item')
         } else {
             props.buyArticle(article)
         }
@@ -165,8 +156,8 @@ const Product = (props) => {
                     <div className="infoProduct">
                         <h3 >{article.name}</h3>
                     </div>
-                    <p className={operatorDiscount === 0 ? "priceProduct" : "priceProductD"}>£ {article.price}</p>
-                    <p className="priceReal">£ {operatorDiscount}</p>
+                    <p className={operatorDiscount === 0 ? "priceProduct" : "priceProductD"}>€ {article.price}</p>
+                    <p className="priceReal">€{operatorDiscount}</p>
                     <p style={{ color: "red" }}>{article.discount}% discount</p>
                     <button className="btnBuy" onClick={buy}>add to cart</button>
                     <div className="descProduct">

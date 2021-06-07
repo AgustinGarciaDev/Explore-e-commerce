@@ -1,5 +1,12 @@
-
 const HeroHome = () => {
+
+    const lookingDown = () => {
+        window.scroll({
+            top: 500,
+            behavior: 'smooth'
+        });
+
+    }
 
     return (
         <div className="contenedor">
@@ -10,7 +17,9 @@ const HeroHome = () => {
                 <h1 className="titleHero">Explore</h1>
                 <h4 className="subTitleHero"> Dare to explore new horizons
                 </h4>
-                <button className="callToActionHome">Start now</button>
+                <button onClick={lookingDown} className="callToActionHome">
+                    Start now
+                </button>
             </div>
         </div>
     )
