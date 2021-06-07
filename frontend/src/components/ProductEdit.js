@@ -143,7 +143,7 @@ const ProductEdit = (props) => {
         <>
             <Header />
             <div className="edittingProductContainer">
-            <Link className="goBackAdmin" to="/admin">Go back</Link>
+                <Link className="goBackAdmin" to="/admin">Go back</Link>
                 {
                     !product
                         ?
@@ -151,6 +151,7 @@ const ProductEdit = (props) => {
                         :
                         (
                             <div className="productEditContainer">
+                                <span className="editNameInput">Name</span>
                                 <div className="editInput">
                                     <input
                                         name="name"
@@ -160,6 +161,7 @@ const ProductEdit = (props) => {
                                     <span className="material-icons" style={product.name.trim() === productToCompare.name.trim() ? { color: 'black' } : { color: '#00FF16' }} onClick={() => editProduct({ name: 'name' })} >edit</span>
                                 </div>
 
+                                <span className="editNameInput">Brand</span>
                                 <div className="editInput">
                                     <input
                                         name="brand"
@@ -169,14 +171,19 @@ const ProductEdit = (props) => {
                                     <span className="material-icons" style={product.brand.trim() === productToCompare.brand.trim() ? { color: 'black' } : { color: '#00FF16' }} onClick={() => editProduct({ name: 'brand' })} >edit</span>
                                 </div>
 
-                                <div className="productEditImg" style={{ backgroundImage: `url('${product.coverImage}')` }}>
-                                    <input
-                                        name="coverImage"
-                                        value={product.coverImage}
-                                        onChange={readInput}
-                                    />
-                                    <span className="material-icons" style={product.coverImage.trim() === productToCompare.coverImage.trim() ? { color: 'black' } : { color: '#00FF16' }} onClick={() => editProduct({ name: 'coverImage' })} >edit</span>
+                                <span className="editNameInput">Cover Image</span>
+                                <div className="productImgCover">
+                                    <div className="productEditImg" style={{ backgroundImage: `url('${product.coverImage}')` }} />
+                                    <div className="editImgInput">
+                                        <input
+                                            name="coverImage"
+                                            value={product.coverImage}
+                                            onChange={readInput}
+                                        />
+                                        <span className="material-icons" style={product.coverImage.trim() === productToCompare.coverImage.trim() ? { color: 'black' } : { color: '#00FF16' }} onClick={() => editProduct({ name: 'coverImage' })} >edit</span>
+                                    </div>
                                 </div>
+                                <span className="editNameInput">Description</span>
                                 <div className="editInput">
                                     <textarea
                                         name="description"
@@ -185,6 +192,7 @@ const ProductEdit = (props) => {
                                     />
                                     <span className="material-icons" style={product.description.trim() === productToCompare.description.trim() ? { color: 'black' } : { color: '#00FF16' }} onClick={() => editProduct({ name: 'description' })} >edit</span>
                                 </div>
+                                <span className="editNameInput">Categories</span>
                                 <div className="tags-input-edit">
                                     <ul id="tags">
                                         {product.categories.map((category, index) => (
@@ -201,7 +209,7 @@ const ProductEdit = (props) => {
                                         placeholder="Press enter to add categories"
                                     />
                                 </div>
-
+                                <span className="editNameInput">Images</span>
                                 <div className="tags-input-edit">
                                     <ul id="tags">
                                         {product.productsImages.map((image, index) => (
@@ -217,9 +225,6 @@ const ProductEdit = (props) => {
                                         placeholder="Press enter to add image"
                                     />
                                 </div>
-
-
-
                                 <div className="shortInputs">
                                     <p>Price</p>
                                     <input

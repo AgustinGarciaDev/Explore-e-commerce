@@ -177,8 +177,10 @@ const NewProduct = (props) => {
                         </div>
 
                     </div>
-                    <Link to="/admin" className="adminButton">Go back</Link>
-                    <button type="button" onClick={sendNewProdcut} className="adminButton">Add</button>
+                    <div className="adminBtnContainer">
+                        <Link to="/admin" className="adminButton">Admin</Link>
+                        <button type="button" onClick={sendNewProdcut} className="adminButton">Add</button>
+                    </div>
                 </form>
             </div>
         </>

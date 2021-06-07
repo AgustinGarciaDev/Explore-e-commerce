@@ -141,6 +141,12 @@
     position: sticky;
     top: 5%;
 }
+@media(max-width: 874px){
+    .rightChildContainer{
+        height: auto;
+    }
+}
+
 .productsContainer{ 
     display: flex;
     flex-direction: column;

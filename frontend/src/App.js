@@ -26,21 +26,21 @@ import userActions from "./redux/actions/userActions"
 
 const App = (props) => {
 
-  if (localStorage.getItem("cart")) {
-    const response = JSON.parse(localStorage.getItem("cart"))
-    props.localStorage(response)
-  }
-
-  if (localStorage.getItem("num")) {
-    const response = JSON.parse(localStorage.getItem("num"))
-    props.localStorageNum(response)
-  }
 
   const [socket, setSocket] = useState(null)
 
   useEffect(() => {
     setSocket(io('https://explore-2021.herokuapp.com'))
-  },[])
+    if (localStorage.getItem("cart")) {
+      const response = JSON.parse(localStorage.getItem("cart"))
+      props.localStorage(response)
+    }
+    if (localStorage.getItem("num")) {
+      const response = JSON.parse(localStorage.getItem("num"))
+      props.localStorageNum(response)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   if (!props.usuarioStatus && localStorage.getItem('token')) {
     const userData = JSON.parse(localStorage.getItem('userLogged'))

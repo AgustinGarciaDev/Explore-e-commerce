@@ -13,9 +13,7 @@ const ShoppingCart = (props) => {
         return operator
     })
     let total = prices.length === 0 ? 0 : prices.reduce((a, b) => a + b)
-
-
-
+    
     return (
         <>
             <Header />
@@ -66,7 +64,7 @@ const ShoppingCart = (props) => {
                                 props.history.push("/checkout")
                             }
                         }}>Checkout</button>
-                        <button onClick={() => props.history.push("/")} >Continue shopping</button>
+                        <button onClick={() => props.history.push("/products")} >Continue shopping</button>
                     </div>
 
                 </div>
