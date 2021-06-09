@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useEffect, useRef } from "react"
 import { toast } from 'react-toastify';
 
 const PaypalButton = ({ total, sendAll }) => {
@@ -17,7 +17,6 @@ const PaypalButton = ({ total, sendAll }) => {
                 },
                 onApprove: async (data, actions) => {
                     const order = await actions.order.capture()
-                    console.log(order)
                     order
                         ? sendAll( order )
                         : toast.error("Sorry we can't process your payment")
@@ -28,8 +27,8 @@ const PaypalButton = ({ total, sendAll }) => {
                     console.log( err )
                 }
             }).render(paypal.current)
-            // eslint-disable-next-line react-hooks/exhaustive-deps
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [total])
 
 

@@ -476,7 +476,7 @@ return  `
                       <div class="f-fallback">
                         <h1>Hi ${ form.firstName + " " + form.lastName },</h1>
                         <p>Thanks for using Explore.This email is the receipt for your purchase.No payment is due.</p>
-                        <p>This purchase will appear as “<strong>Explore purchase</strong>” on your credit card statement for your <strong>${ creditCard.cardBrand }</strong> ending in <strong>${ creditCard.number.slice( -3 ) }</strong> . Need to <a href="{{billing_url}}">update your payment information</a>?</p>
+                        <p>This purchase will appear as “<strong>Explore purchase</strong>” on your credit card statement for your <strong>${ cardBrand && creditCard.cardBrand }</strong> ending in <strong>${ card.number ? creditCard.number.slice( -3 ) : "" }</strong> . Need to <a href="{{billing_url}}">update your payment information</a>?</p>
                         <!-- Discount -->
                         <table class="discount" align="center" width="100%" cellpadding="0" cellspacing="0" role="presentation">
                           <tr>
