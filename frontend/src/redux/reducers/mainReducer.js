@@ -8,5 +8,4 @@ const mainReducer = combineReducers({
     cart: cartReducer,
     productReducer
 })
-
 export default mainReducer

@@ -38,7 +38,6 @@ const User = (props) => {
             [e.target.name]: e.target.value
         })
     }
-   
     const changeAccount = async (dateToChange,e) => {
        
         if (!dateToChange) {

@@ -18,7 +18,6 @@ const ContentHome = () => {
         autoplaySpeed: 2000,
         arrows: true,
     }
-
     if (tablet) {
         settings.slidesToShow = 2
         settings.slidesToScroll = 2

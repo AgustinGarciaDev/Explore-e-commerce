@@ -132,7 +132,7 @@ const NewProduct = (props) => {
                                         onClick={() => deleteCategory(category)}
                                     >
                                         x
-						</span>
+                                    </span>
                                 </li>
                             ))}
                         </ul>

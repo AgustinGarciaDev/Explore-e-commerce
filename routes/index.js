@@ -4,7 +4,6 @@ const passport = require("passport")
 const productsValidator = require('../config/productsValidator')
 const validator = require("../config/validator")
 const validatorChangeUsers = require("../config/validatorChangeUsers")
-
 const { getAllProducts, getProductById, postProduct, deleteProduct,
     updateProduct, postComment, deleteComment, putComment,
     postScore, deleteScore, putScore,

@@ -3,28 +3,27 @@ import { toast } from 'react-toastify';
 
 const PaypalButton = ({ total, sendAll }) => {
     const paypal = useRef()
- 
+
     useEffect(() => {
-        if( total ){
+        if (total) {
             window.paypal.Buttons({
                 createOrder: (data, actions, error) => {
-                        return actions.order.create({
-                            intent: "CAPTURE",
-                            purchase_units: [
-                                { description: "Explore", amount: { value: total || 1, currency_code: "USD" } }
-                            ]
-                        })
+                    return actions.order.create({
+                        intent: "CAPTURE",
+                        purchase_units: [
+                            { description: "Explore", amount: { value: total || 1, currency_code: "USD" } }
+                        ]
+                    })
                 },
                 onApprove: async (data, actions) => {
                     const order = await actions.order.capture()
                     order
-                        ? sendAll( order )
+                        ? sendAll(order)
                         : toast.error("Sorry we can't process your payment")
-    
                 },
                 onerror: (err) => {
                     toast.error("Something went wrong")
-                    console.log( err )
+                    console.log(err)
                 }
             }).render(paypal.current)
         }

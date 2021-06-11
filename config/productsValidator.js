@@ -3,11 +3,9 @@ const joi = require('joi')
 const validator = (req, res, next) => {
 
     const namesRegExp = `^[a-zA-Z_ -]*`
-
     const objectSchema = joi.object({
         name: joi.string().min(1).required(),
     }).required();
-
     const imageSchema = joi.object({
         photo: joi.string().min(1).required(),
     }).required();

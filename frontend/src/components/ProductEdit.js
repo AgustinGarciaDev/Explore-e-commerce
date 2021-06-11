@@ -55,7 +55,6 @@ const ProductEdit = (props) => {
             }
         }
     }
-
     const imagesActions = async ({ action, event, image }) => {
         if (action === 'add') {
             if (event.target.value !== "") {

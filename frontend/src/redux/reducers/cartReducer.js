@@ -2,7 +2,6 @@ const initialState = {
     articles: [],
     accountant: 0
 }
-
 const cartReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'PRODUCTS':

@@ -29,15 +29,9 @@ if (process.env.NODE_ENV === "production") {
     })
 }
 
-
-
-
 const port = process.env.PORT
-
 const host = process.env.HOST || "0.0.0.0"
-
 const server = app.listen(port, host, () => console.log("app listening on port" + port + " on " + host))
-
 const io = socket(server, { cors: { origin: '*' } })
 
 io.on('connection', (socket) => {

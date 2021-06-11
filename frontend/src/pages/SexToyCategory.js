@@ -31,7 +31,6 @@ const SexToyCategory = (props) => {
             behavior: 'smooth'
         });
     }
-
     const filterProducts = () => {
 
         let penises = []

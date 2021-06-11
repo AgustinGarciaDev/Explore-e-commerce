@@ -30,7 +30,6 @@ const Product = (props) => {
             })
         }
     })
-
     const fetchComments = async () => {
         let response = await props.products()
         let item = response.find(article => article._id === props.match.params.id)

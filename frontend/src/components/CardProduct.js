@@ -29,5 +29,4 @@ const mapDispatchToProps = {
     buyArticle: cartActions.buyArticle,
 }
 
-
 export default connect(mapStateToProps, mapDispatchToProps)(CardProduct)

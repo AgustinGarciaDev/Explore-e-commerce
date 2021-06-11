@@ -29,7 +29,6 @@ const Comment = (props) => {
         }
     }
 
-    
     const confirmDeleteMessage = () => {
         swal("Are you sure you want to delete the comment?", {
             buttons: {

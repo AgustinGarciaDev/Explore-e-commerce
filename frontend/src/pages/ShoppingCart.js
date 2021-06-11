@@ -81,7 +81,6 @@ const mapStateToProps = state => {
         articles: state.cart.articles.filter(article => article.status === true)
     }
 }
-
 export default connect(mapStateToProps)(ShoppingCart)
 
 

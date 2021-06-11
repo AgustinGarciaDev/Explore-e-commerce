@@ -2,7 +2,6 @@ const Joi = require('joi')
 const validatorChangeUsers = (req, res, next) => {
 
     const schema = Joi.object({
-
         user: Joi.string().trim().min(4).pattern(new RegExp('[a-zA-z0-9]$')).messages({
             'string.min': 'You nick name must have at least 4 letters',
             'string.empty': 'Your user name is a required field',

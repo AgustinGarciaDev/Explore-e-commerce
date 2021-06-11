@@ -34,7 +34,6 @@ const SignIn = (props) => {
                 progress: undefined,
             })
         }
-
     }
     
     const responseGoogle = (response) => {
@@ -53,7 +52,7 @@ const SignIn = (props) => {
                 <h1 className="titleForm">Sign In</h1>
                 <div className="formularioSignUP">
                     <GoogleLogin
-                        clientId="96796139704-21kkhk4q7hqudkpvga86qprq8c61i53s.apps.googleusercontent.com"
+                        clientId={process.env.REACT_APP_GOOGLE_ID}
                         render={renderProps => (
                             <button className="btnGoogleSignUp" onClick={renderProps.onClick} disabled={renderProps.disabled}><i className="fab fa-google"></i>Sign in with Google</button>
                         )}

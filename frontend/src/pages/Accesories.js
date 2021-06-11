@@ -54,7 +54,6 @@ const Accesories = (props) => {
                 return null
             })
         }
-
         setSexToyPennis(penises)
         setSexToyVulva(vulva)
         setSexToyButts(butts)

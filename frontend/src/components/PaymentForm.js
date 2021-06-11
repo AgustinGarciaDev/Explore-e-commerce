@@ -11,8 +11,7 @@ export default class PaymentForm extends React.Component {
     this.setState({ [name]: value });
     this.props.redState(this.state)
   }
-
-
+  
   render() {
     return <div id="PaymentForm" >
       <Cards callback={({ issuer }) => this.setState({ ...this.state, cardBrand: issuer })} cvc={this.state.cvc} expiry={this.state.expiry} focused={this.state.focus} name={this.state.name}

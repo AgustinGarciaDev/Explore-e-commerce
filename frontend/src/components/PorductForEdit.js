@@ -12,5 +12,4 @@ const ProductForEdit = (props) => {
         </Link>
     )
 }
-
 export default ProductForEdit

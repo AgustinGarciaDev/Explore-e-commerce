@@ -4,8 +4,6 @@ const jwt = require("jsonwebtoken")
 require("express-fileupload")
 let cloudinary = require('cloudinary').v2
 
-
-
 const userControllers = {
     newUser: async (req, res) => {
         var error

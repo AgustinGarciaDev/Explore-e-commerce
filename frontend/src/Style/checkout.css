@@ -4,7 +4,6 @@
     display: flex;
     font-family: "Montserrat";
 }
-
 .leftContainer{
     display: flex;
     flex-direction: column;
