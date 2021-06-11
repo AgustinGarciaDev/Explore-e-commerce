@@ -21,7 +21,6 @@
     backdrop-filter: brightness(0.5);
     color: white;
 }
-
 @media (max-width: 1000px){
     .contenido{
         height: 45vh;

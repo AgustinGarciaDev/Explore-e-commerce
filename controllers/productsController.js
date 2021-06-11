@@ -30,7 +30,6 @@ const postProduct = async (req, res) => {
         const { url } = await cloudinary.uploader.upload(req.files.img.tempFilePath, { folder: "products" })
         req.body.coverImage = url
     }
-
     try {
         await new Product(req.body).save()
         const result = await Product.find()

@@ -18,7 +18,6 @@ const ListProduct = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.products])
 
-
     useEffect(() => {
         fetchProducts()
         window.scroll({

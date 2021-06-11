@@ -51,5 +51,4 @@ const commentsActions = {
         }
     }
 }
-
 export default commentsActions

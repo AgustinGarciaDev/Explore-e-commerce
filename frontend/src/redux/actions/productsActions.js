@@ -2,7 +2,6 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 
 const productActions = {
-
     createNewProdudct: (data) => {
         return async (dispatch, getState) => {
             try {

@@ -3,7 +3,6 @@ const template = require("../templateEmail/templateSummary")
 
 const SendpurchaseSummary = async (req,res)=>{
     const{ form, creditCard, cart } = req.body
-    
     try {
        await transporter.sendMail({
         from:"Explore",

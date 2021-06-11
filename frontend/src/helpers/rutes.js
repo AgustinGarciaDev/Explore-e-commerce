@@ -78,5 +78,4 @@ const getRoutesByRole = (role,socket) => {
         return routesProtected.routerUserLoggedAdmin(socket);
 }
 
-
 export default getRoutesByRole;

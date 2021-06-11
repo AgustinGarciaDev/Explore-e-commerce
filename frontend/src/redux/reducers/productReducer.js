@@ -10,7 +10,6 @@ const productReducer = (state = initialState, action) => {
                 ...state,
                 products: action.payload
             }
-
         case 'UPDATE_CATEGORY':
             return {
                 ...state,

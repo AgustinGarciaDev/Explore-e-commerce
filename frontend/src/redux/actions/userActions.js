@@ -37,7 +37,6 @@ const userActions = {
         }
     },
     signInUser: (infoUser) => {
-
         return async (dispatch, getState) => {
             try {
                 const response = await axios.post("https://explore-2021.herokuapp.com/api/user/signin", infoUser)

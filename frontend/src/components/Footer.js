@@ -128,7 +128,6 @@ const mapStateToProps = state => {
         userLooged: state.user
     }
 }
-
 const mapDispatchToProps = {
     sendMail: userActions.sendMail
 }

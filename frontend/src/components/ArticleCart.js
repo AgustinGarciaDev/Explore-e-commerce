@@ -38,17 +38,14 @@ const ArticleCart = (props) => {
                 <h4 className="productDescription" >{article.description.slice(0, 25)}...</h4>
             </div>
         </div>
-
         <div className="buttonsContainer">
             <button onClick={() => { addAndRemove("Add") }}>+</button>
             <span>{accountant && accountant}</span>
             <button onClick={() => { addAndRemove("remove") }}>-</button>
         </div>
-
         <div className="removeButton">
             <button onClick={remove} >X</button>
         </div>
-
         <div className="priceContainer">
             <span>€ {operatorDiscount * accountant}</span>
         </div>

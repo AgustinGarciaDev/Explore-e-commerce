@@ -2,9 +2,7 @@ const Joi = require('joi')
 const validator = (req, res, next) => {
 
     const password = /(?=.*\d)(?=.*[A-z])/
-
     const name = /^[a-z0-9_-]/
-
     const schema = Joi.object({
 
         user: Joi.string().trim().min(4).pattern(new RegExp('[a-zA-z0-9]$')).required().messages({

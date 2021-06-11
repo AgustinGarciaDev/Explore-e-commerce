@@ -2,7 +2,6 @@ import { NavLink } from "react-router-dom"
 
 const CardProductHome = (props) => {
     const { name, price, _id, brand, coverImage } = props.product
-
     return (
         <div className="containerCardProduct">
             <div className="imgProductHome" style={{ backgroundImage: (`url('${coverImage}')`) }} />

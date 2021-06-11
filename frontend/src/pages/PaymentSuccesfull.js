@@ -27,5 +27,4 @@ const PaymentSuccessFull = ({ history }) => {
         </>
     )
 }
-
 export default PaymentSuccessFull

@@ -5,7 +5,6 @@ const HeroHome = () => {
             top: 500,
             behavior: 'smooth'
         });
-
     }
 
     return (

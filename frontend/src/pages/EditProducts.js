@@ -44,7 +44,6 @@ const mapStateToProps = state => {
         products: state.productReducer.products
     }
 }
-
 const mapDispatchToPops = {
     getProducts: productActions.getAllProduct
 }

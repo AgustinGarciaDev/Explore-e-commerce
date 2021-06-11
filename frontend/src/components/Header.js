@@ -71,7 +71,6 @@ const mapStateToProps = state => {
         userLooged: state.user
     }
 }
-
 const mapDispatchToProps = {
     signOut: userActions.SignOut
 }

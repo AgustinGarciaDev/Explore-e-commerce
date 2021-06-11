@@ -22,10 +22,7 @@ import getRoutesByRole from './helpers/rutes'
 import cartActions from "./redux/actions/cartActions";
 import userActions from "./redux/actions/userActions"
 
-
-
 const App = (props) => {
-
 
   const [socket, setSocket] = useState(null)
 
