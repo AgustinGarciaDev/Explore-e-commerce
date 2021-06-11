@@ -136,7 +136,7 @@ const ContentHome = () => {
                 </div>
             </>
             <h2 style={{
-                margin: "0 0 0 1rem"
+                margin: "1rem 0 0 1rem"
             }}>FAQ Delivery</h2>
             <section>
                 <div className="container">

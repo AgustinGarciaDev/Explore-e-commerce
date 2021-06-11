@@ -489,7 +489,6 @@ section {
         background-size: cover;
         width: 50%;
         height: 100%;
-        filter: grayscale(100%)
     }
     
     .imgBot{
@@ -499,7 +498,6 @@ section {
         background-size: cover;
         width: 50%;
         height: 100%;
-        filter: grayscale(100%)
     }
 
     @media (max-width: 700px){

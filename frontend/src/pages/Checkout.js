@@ -50,23 +50,36 @@ const Checkout = ({ articles, sendMail, history, removeAll, userLooged }) => {
     const readCreditCard = state => { setCreditCard(state) }
 
     const sendAll = (value) => {
-
+        
         if (value) {
             let form = {
                 email: value.payer.email_address,
                 firstName: value.payer.name.given_name,
                 lastName: value.payer.name.surname,
                 country: value.payer.address.country_code,
+                carBrand:"Paypal",
+                /* number:"" */
             }
             sendMail(form, { cardBrand: "Paypal", number: 0 }, { cartArticles, total })
-                .then(data => !data && toast.error("Sorry we can't process your payment"))
-
+                .then(data => !data 
+                    ? toast.error("Sorry we can't process your payment")
+                    : history.push("/payment")
+                    )
+                
         } else {
             sendMail(form, creditCard, { cartArticles, total })
                 .then(data => !data && toast.error("Sorry we can't process your payment"))
             removeAll()
             history.push("/payment")
         }
+
+    }
+
+    const lookingDown = () => {
+        window.scroll({
+            top: 100000,
+            behavior: 'smooth'
+        });
 
     }
 
@@ -129,7 +142,7 @@ const Checkout = ({ articles, sendMail, history, removeAll, userLooged }) => {
                             <div>
                                 <input type="number" disabled={visible ? true : false} name="phone" onChange={readFields} placeholder="Phone (optional)" />
                             </div>
-                            <button className="continue" onClick={() => setVisible(!visible)} >{!visible ? "Continue to delivery" : "Back to form"}</button>
+                            <button className="continue" onClick={() => { setVisible(!visible); !visible && lookingDown() }} >{!visible ? "Continue to delivery" : "Back to form"}</button>
                         </div>
                     </div>
 

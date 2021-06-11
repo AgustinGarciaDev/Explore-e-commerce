@@ -32,7 +32,11 @@ const postProduct = async (req, res) => {
     }
 
     try {
-        const result = await new Product(req.body).save()
+        await new Product(req.body).save()
+        const result = await Product.find()
+            .populate({ path: "comments", populate: { path: "userId", select: { "_id": 1, "user": 1, "urlImg": 1, "email": 1 } } })
+            .populate({ path: "scores", populate: { path: "userId", select: { "_id": 1, "user": 1, "urlImg": 1 } } })
+
         res.json({ success: true, result })
     } catch (error) {
         console.log(error)

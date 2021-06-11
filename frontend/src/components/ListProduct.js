@@ -64,7 +64,7 @@ const ListProduct = (props) => {
                 <div className="filterPrice">
                     <h3>What's your budget?</h3>
                     <div>
-                        <input className="inputPrice" onChange={range} type="range" min="0" max="200" step="100" />
+                        <input className="inputPrice" onChange={range} type="range" min="0" max="200" step="20" />
                         <input className="inputPriceValue" style={{ color: "black" }} type="text" value={"€ " + num.numero} disabled />
                     </div>
                 </div>

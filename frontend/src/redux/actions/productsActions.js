@@ -13,6 +13,7 @@ const productActions = {
                 })
                 if (response) {
                     if (response.data.success) {
+                        dispatch({ type: 'GET_PRODUCTS', payload: response.data.result })
                         return response.data
                     } else {
                         return response.data
