@@ -1,6 +1,6 @@
 # Sex Shop Explore Ecommerce 
 
-Explore es aplicacin web una tienda de juguetes eroticos 
+Explore es un e-commerce de juguetes sexuales.
 <br/>
 ![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/66225450/121626821-873a4400-ca4c-11eb-932d-38bbd41b2c78.gif)
 
