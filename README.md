@@ -1,4 +1,4 @@
-# Sex Shop Explore Ecommerce 
+# SexShop "Explore" | e-commerce 
 
 Explore es un e-commerce de juguetes sexuales.
 <br/>
@@ -6,7 +6,7 @@ Explore es un e-commerce de juguetes sexuales.
 
 # Trabajo realizado
 
-Aplicacion web desarrollada de forma grupal en una semana desarrollada como parte del programa de programacion web Full Stack MERN realizado en MindHub, siguiendo buenas prácticas y metodologias ágiles para la elaboracion de la misma.
+Aplicación web desarrollada de forma grupal en el lapso de una semana, durante la formación Full Stack MERN realizado en MindHub, siguiendo buenas prácticas y metodologías ágiles para la elaboración de la misma.
 Podran ver la aplicacion web en: https://explore-2021.herokuapp.com/
 # Comenzando  🚀
 ```
@@ -19,9 +19,9 @@ npm start
 ```
 
 # Construido con 🛠️
-* [React](https://reactjs.org/) - Libreria de Frontend
+* [React](https://reactjs.org/) - Librería de Frontend
 * [CSS](https://developer.mozilla.org/es/docs/Web/CSS) - Lenguaje de estilos
-* [Redux](https://es.redux.js.org/) - Libreria para manejo del estado
+* [Redux](https://es.redux.js.org/) - Librería para manejo del estado
 * [Node](https://nodejs.org/es/) - Entorno de ejecución para JavaScript 
 * [Express](https://expressjs.com/es/) - Framework para Backend
 * [MongoDB](https://www.mongodb.com/) - Base de datos
