@@ -7,7 +7,7 @@ Explore es un e-commerce de juguetes sexuales.
 # Trabajo realizado
 
 Aplicación web desarrollada de forma grupal en el lapso de una semana, durante la formación Full Stack MERN realizado en MindHub, siguiendo buenas prácticas y metodologías ágiles para la elaboración de la misma.
-Podrás ver la aplicacion web en: https://explore-2021.herokuapp.com/
+
 # Comenzando  🚀
 ```
 # Instalar dependencias para el cliente
